@@ -151,10 +151,6 @@
   .ansvar th:nth-child(n+3) { text-align: center; }
   .ansvar td.x { text-align: center; font-weight: 700; color: var(--green); font-size: 12px; }
   .ansvar td.x.selv { color: #6b4fa0; }
-  .skaerm-3d { width: 210mm; margin: 0 auto 24px; }
-  .skaerm-3d h2 { margin: 0 0 6px; }
-  .skaerm-3d iframe { width: 100%; height: 620px; border: 0; border-radius: 10px; background: #e9e6df; }
-  @media print { .skaerm-3d { display: none; } }
   .tjek { list-style: none; margin: 0; padding: 0; font-size: 10.5px; }
   .tjek li { display: flex; gap: 7px; align-items: flex-start; padding: 3px 0; border-bottom: 1px solid var(--line); }
   .tjek li::before { content: ''; flex: 0 0 9px; height: 9px; margin-top: 2px; border: 1.2px solid #777; border-radius: 2px; }
@@ -164,7 +160,7 @@
 <body>
 
 
-<section class="page" data-fane="oversigt" data-pakke="vvs">
+<section class="page" data-fane="detaljer" data-pakke="vvs">
   <header>
     <div>
       <h1>Renovering af badeværelse</h1>
@@ -523,7 +519,7 @@
   </div>
 
   <h2>Status</h2>
-  <ul class="note">
+  <ul class="note" id="status">
     <li><b>Nu:</b> VVS, tømrer og elektriker har besigtiget – afventer tilbud. Glarmester og fliser mangler.</li>
     <li><b>Mangler valg:</b> brusearmatur M (VVS foreslår), dør R (tømrer foreslår), kanalventilator, løsning for glasvæg F (glarmester).</li>
     <li><b>Afklares:</b> fjernelse af gamle rør i rørkasse W, tilslutning af vaskens afløb til gulvafløbet, faldstammens placering (mål).</li>
@@ -554,7 +550,7 @@
 </section>
 
 
-<section class="page" data-fane="oversigt" data-pakke="vvs">
+<section class="page" data-fane="detaljer" data-pakke="vvs">
   <h2>Til køb og udførelse</h2>
   <p class="hint">Alt købes af bygherre, undtagen radiator N og evt. glasvæg F, afhængigt af glarmesterens løsning. Eksisterende inventar er fjernet ved opstart, undtagen hængeloftet.</p>
   
@@ -791,14 +787,6 @@
     div.appendChild(c);
   });
 
-  // ---- 3D (kun på skærm): viseren med faggruppen valgt, lige efter faggruppens side ----
-  document.querySelectorAll('.plan[data-fokus]').forEach(div => {
-    const side = div.closest('section'), fag = div.dataset.fokus;
-    const boks = document.createElement('div'); boks.className = 'skaerm-3d';
-    boks.innerHTML = `<h2>3D – ${side.querySelector('h1').textContent}</h2><iframe loading="lazy" src="cad/badevaerelse_3d.html#fag=${fag}${pakke === 'intern' ? '' : '&hv'}"></iframe>`;
-    side.after(boks);
-  });
-
   // ---- Faggruppe-lister hentes fra købslisten (uden pris) ----
   document.querySelectorAll('[data-fag-liste]').forEach(tb => {
     const fag = tb.dataset.fagListe;
@@ -831,7 +819,6 @@
   // ---- Fjern sider der ikke hører til udgaven, og sæt sidefod ----
   document.querySelectorAll('section.page').forEach(p => {
     if (p.dataset.pakke.split(' ').includes(pakke)) return;
-    if (p.nextElementSibling?.classList.contains('skaerm-3d')) p.nextElementSibling.remove();
     p.remove();
   });
   if (pakke !== 'intern') document.getElementById('udgave').textContent = 'Til håndværkerne';
@@ -854,28 +841,131 @@
   }
 </script>
 
+<section class="web" id="forside" data-fane="oversigt">
+  <style>
+    .web { max-width: 1080px; margin: 0 auto; padding: 56px 24px 72px; font-family: Inter, Arial, sans-serif; color: var(--ink); }
+    .web h1 { font-size: 40px; letter-spacing: -.5px; margin: 0 0 12px; }
+    .web .lead { font-size: 18px; line-height: 1.6; color: #3b3b3b; max-width: 760px; margin: 0; }
+    .web h2 { font-size: 13px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin: 56px 0 18px; }
+    .web .kort { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 2px 14px rgba(0,0,0,.06); }
+    /* projektfaser */
+    .faser { display: grid; grid-template-columns: repeat(7, 1fr); list-style: none; margin: 0; padding: 0; counter-reset: f; }
+    .faser li { position: relative; text-align: center; font-size: 13px; color: var(--muted); padding-top: 36px; }
+    .faser li::before { counter-increment: f; content: counter(f); position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+                        width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 2px solid var(--line-strong);
+                        font: 700 12px/22px Inter, Arial, sans-serif; color: var(--muted); z-index: 1; box-sizing: border-box; }
+    .faser li::after { content: ''; position: absolute; top: 12px; left: 50%; width: 100%; height: 2px; background: var(--line-strong); }
+    .faser li:last-child::after { display: none; }
+    .faser li.nu::before { border-color: var(--green); color: var(--green); box-shadow: 0 0 0 5px rgba(47,125,84,.15); }
+    .faser li.nu { color: var(--ink); }
+    .faser li b { display: block; font-weight: 600; color: var(--ink); }
+    /* status */
+    .status { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .status .kort { padding: 22px; font-size: 15px; line-height: 1.55; }
+    .status .kort b { display: block; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+    /* håndværkerugen: afhængighedslinje */
+    .flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px 26px; }
+    .flow li { position: relative; background: #fff; border-radius: 14px; padding: 16px 16px 14px; box-shadow: 0 2px 14px rgba(0,0,0,.06);
+               border-top: 4px solid var(--c, var(--line-strong)); font-size: 14px; line-height: 1.45; }
+    .flow li:not(:last-child)::after { content: '→'; position: absolute; right: -20px; top: 50%; transform: translateY(-50%); color: var(--faint); font-size: 16px; }
+    .flow .fag { font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--c, var(--muted)); }
+    .flow .hvad { display: block; font-weight: 600; margin: 4px 0 8px; }
+    .flow .kraever { font-size: 12px; color: var(--muted); }
+    .web .note-lille { margin-top: 18px; font-size: 13px; color: var(--muted); }
+    /* plan + genveje */
+    .plankort svg { display: block; width: 100%; height: auto; }
+    .genveje { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 16px; }
+    .genveje a { display: block; background: #fff; border-radius: 12px; padding: 16px; text-decoration: none; color: var(--ink);
+                 box-shadow: 0 2px 14px rgba(0,0,0,.06); border-left: 4px solid var(--c, var(--green)); font-weight: 600; font-size: 15px; }
+    .genveje a span { display: block; font-weight: 400; font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+    @media (max-width: 860px) {
+      .web { padding: 32px 16px 56px; } .web h1 { font-size: 30px; }
+      .faser { grid-template-columns: 1fr; gap: 12px; } .faser li { text-align: left; padding: 3px 0 0 40px; min-height: 28px; }
+      .faser li::before { left: 0; transform: none; } .faser li::after { display: none; }
+      .status, .genveje, .flow { grid-template-columns: 1fr; }
+      .flow li:not(:last-child)::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -24px; transform: none; }
+    }
+  </style>
+
+  <h1>Renovering af badeværelse</h1>
+  <p class="lead">Badeværelset får nyt hængeloft med spots, ny udsugning, nyt toilet og ny vask, glasvæg i brusenichen
+    og en ny rørkasse med skab. Fugerne skiftes, og enkelte fliser udskiftes – resten af fliserne bliver.
+    Detaljerne for hvert fag ligger under fanerne øverst.</p>
+
+  <h2>Hvor er vi</h2>
+  <div class="kort">
+    <ol class="faser">
+      <li class="nu"><b>Tilbud</b>nu</li>
+      <li><b>Beslut og book</b></li>
+      <li><b>Køb</b></li>
+      <li><b>Klar til start</b>alt leveret</li>
+      <li><b>Nedrivning</b>bygherre</li>
+      <li><b>Håndværkerugen</b>ca. en uge</li>
+      <li><b>Afslutning</b>bygherre</li>
+    </ol>
+  </div>
+
+  <h2>Status</h2>
+  <div class="status" id="forside-status"></div>
+
+  <h2>Håndværkerugen – rækkefølge</h2>
+  <ol class="flow">
+    <li style="--c:var(--purple)"><span class="fag">Bygherre</span><span class="hvad">Nedrivning og rens af fliser</span><span class="kraever">Dagen før start</span></li>
+    <li style="--c:var(--c-tomrer)"><span class="fag">Tømrer</span><span class="hvad">Gammelt hængeloft ned</span><span class="kraever">Kræver: nedrivning færdig</span></li>
+    <li style="--c:var(--c-vvs)"><span class="fag">VVS + el</span><span class="hvad">Nye rør, afløb og kabler</span><span class="kraever">Kræver: loftet er åbent</span></li>
+    <li style="--c:var(--c-tomrer)"><span class="fag">Tømrer</span><span class="hvad">Nyt hængeloft, rørkasse og skab W</span><span class="kraever">Kræver: rør og kabler lagt og kontrolleret</span></li>
+    <li style="--c:var(--muted)"><span class="fag">Fliser</span><span class="hvad">Udskiftning og nye fuger</span><span class="kraever">Kræver: loft og rørkasse færdige</span></li>
+    <li style="--c:var(--c-vvs)"><span class="fag">VVS</span><span class="hvad">Toilet, vask, armaturer, radiator</span><span class="kraever">Kræver: fliser færdige</span></li>
+    <li style="--c:var(--c-el)"><span class="fag">El</span><span class="hvad">Spots, dimmer, ventilator, spejle</span><span class="kraever">Kræver: loftet færdigt</span></li>
+    <li style="--c:var(--c-glas)"><span class="fag">Glarmester</span><span class="hvad">Glasvæg F</span><span class="kraever">Kræver: fliser og brusearmatur på plads</span></li>
+    <li style="--c:var(--purple)"><span class="fag">Bygherre</span><span class="hvad">Tilbehør og rengøring</span><span class="kraever">Til sidst</span></li>
+  </ol>
+  <p class="note-lille">Ny eltavle kan laves uafhængigt af resten.</p>
+
+  <h2>Rummet</h2>
+  <div class="kort plankort" id="forside-plan"></div>
+  <div class="genveje">
+    <a href="#vvs" style="--c:var(--c-vvs)">VVS<span>Rør, afløb, sanitet, udsugning</span></a>
+    <a href="#el" style="--c:var(--c-el)">El<span>Forsyning, spots, dimmer, spejle</span></a>
+    <a href="#glas" style="--c:var(--c-glas)">Glarmester<span>Glasvæg og bundskinne</span></a>
+    <a href="#tomrer" style="--c:var(--c-tomrer)">Tømrer og fliser<span>Loft, rørkasse, kasser, fuger</span></a>
+    <a href="#ansvar" style="--c:var(--green)">Hvem gør hvad<span>Fordeling af opgaverne</span></a>
+  </div>
+</section>
+<script>
+  // Status fra plantegningens forside (#status): ét kort pr. punkt, overskriften uden kolon
+  document.getElementById('forside-status').innerHTML = [...document.querySelectorAll('#status li')]
+    .map(li => `<div class="kort">${li.innerHTML.replace(/<b>(.*?):?<\/b>:?\s*/, '<b>$1</b>')}</div>`).join('');
+  // Plantegningen (forsiden viser kun rum og inventar)
+  const fp = document.getElementById('plan').cloneNode(true); fp.removeAttribute('id');
+  fp.querySelectorAll('.inst').forEach(e => e.remove());
+  fp.setAttribute('viewBox', '-20 -20 360 205');
+  document.getElementById('forside-plan').appendChild(fp);
+  document.body.prepend(document.getElementById('forside'));   // forsiden øverst
+</script>
+
 <style>
   .faner { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
            padding: 10px 12px; background: rgba(233,230,223,.95); border-bottom: 1px solid #d6d1c4; }
   .faner a { font: 600 14px Inter, Arial, sans-serif; color: #1f1f1f; text-decoration: none; padding: 8px 14px;
              border-radius: 8px; background: #fff; border: 1px solid #d6d1c4; }
   .faner a.on { background: #2f7d54; border-color: #2f7d54; color: #fff; }
-  @media print { .faner { display: none; } }
+  .tre-d iframe { display: block; width: 100%; height: calc(100vh - 62px); border: 0; background: #e9e6df; }
+  @media print { .faner, .tre-d { display: none; } }
 </style>
 <nav class="faner"></nav>
+<section class="tre-d" data-fane="3d"></section>
 <script>
-  const FANER = [['oversigt', 'Oversigt'], ['vvs', 'VVS'], ['el', 'El'], ['glas', 'Glarmester'], ['tomrer', 'Tømrer og fliser'], ['ansvar', 'Hvem gør hvad']];
+  const FANER = [['oversigt', 'Oversigt'], ['vvs', 'VVS'], ['el', 'El'], ['glas', 'Glarmester'], ['tomrer', 'Tømrer og fliser'],
+                 ['ansvar', 'Hvem gør hvad'], ['3d', '3D'], ['detaljer', 'Plan og produkter']];
   const nav = document.querySelector('.faner');
   document.body.prepend(nav);
   nav.innerHTML = FANER.map(([k, t]) => `<a href="#${k}" data-k="${k}">${t}</a>`).join('');
   function visFane() {
     const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
-    document.querySelectorAll('section.page').forEach(p => {
-      const vis = p.dataset.fane === k;
-      p.style.display = vis ? '' : 'none';
-      const n = p.nextElementSibling;
-      if (n && n.classList.contains('skaerm-3d')) n.style.display = vis ? '' : 'none';
-    });
+    document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
+    const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
+    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html#hv"></iframe>';
     nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
     scrollTo(0, 0);
   }
