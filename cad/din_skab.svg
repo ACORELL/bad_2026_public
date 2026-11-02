@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 577 474" font-family="Inter, Arial, sans-serif">
+<defs>
+  <marker id="pil" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#333"/></marker>
+  <marker id="pil2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 L10 5 L0 9 z" fill="#7aa3c8"/></marker>
+  <marker id="pil3" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 1 L10 5 L0 9 z" fill="#555"/></marker>
+  <pattern id="skrav" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" stroke="#999" stroke-width=".6"/></pattern>
+  <pattern id="ristm" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="1.5" height="3" fill="#888"/></pattern>
+</defs>
+<style>
+  .o { fill: none; stroke: #222; stroke-width: .5; }
+  .skrav { fill: url(#skrav); stroke: #222; stroke-width: .6; }
+  .inde { fill: #fff; stroke: #222; stroke-width: .6; }
+  .laage { fill: #f3efe6; stroke: #222; stroke-width: .5; }
+  .rist { fill: url(#ristm); stroke: #555; stroke-width: .3; }
+  .skinne { fill: #e4e4e4; stroke: #777; stroke-width: .4; }
+  .tynd { stroke: #999; stroke-width: .25; }
+  .mod { fill: #fff; stroke-width: .8; }
+  .mod2 { fill: #fff; fill-opacity: .55; stroke-width: .6; }
+  .kappe { fill: #f6f6f4; stroke: #aaa; stroke-width: .3; }
+  .zone { stroke: #444; stroke-width: .5; stroke-dasharray: 3 2; }
+  .hul { fill: #fff; stroke-width: .8; }
+  .h { stroke: #555; stroke-width: .2; }
+  .m { stroke: #333; stroke-width: .25; }
+  .luft { fill: none; stroke: #7aa3c8; stroke-width: .7; stroke-dasharray: 2 1.5; }
+  .boks { fill: #fff; stroke-width: .8; }
+  .led { fill: none; stroke-width: .7; }
+  .prik { stroke-dasharray: 1.5 1.5; }
+  .t { font-size: 5px; font-weight: 600; fill: #1f1f1f; }
+  .ts { font-size: 4.2px; fill: #555; }
+  .mt { font-size: 4.4px; fill: #222; }
+  .nr { font-size: 4.5px; font-weight: 700; fill: #333; text-anchor: middle; }
+  .zt { font-size: 5px; font-weight: 700; letter-spacing: .4px; }
+  .ov { font-size: 6px; font-weight: 700; fill: #1f1f1f; }
+</style>
+<text x="10.0" y="12.0" class="ov" text-anchor="start">A · Forfra, låge fjernet</text>
+<text x="10.0" y="18.0" class="ts" text-anchor="start">mål i mm</text>
+<rect x="24.0" y="28.0" width="261.0" height="256.0" class="skrav" />
+<rect x="40.0" y="44.0" width="229.0" height="224.0" class="inde" />
+<rect x="70" y="28.0" width="169" height="16" class="rist"/>
+<rect x="44.0" y="155.5" width="221.0" height="35.0" class="skinne" />
+<line x1="44.0" y1="160.5" x2="265.0" y2="160.5" class="tynd"/>
+<line x1="44.0" y1="185.5" x2="265.0" y2="185.5" class="tynd"/>
+<rect x="45.0" y="128.0" width="36.0" height="90.0" class="mod" style="stroke:#c97a00"/>
+<rect x="46.5" y="150.5" width="33.0" height="45.0" class="kappe" />
+<text x="63.0" y="171.0" class="t" text-anchor="middle">Sikring +</text>
+<text x="63.0" y="179.0" class="t" text-anchor="middle">flerp. afbr.</text>
+<rect x="81.0" y="126.0" width="19.0" height="94.0" class="mod" style="stroke:#c97a00"/>
+<rect x="82.5" y="150.5" width="16.0" height="45.0" class="kappe" />
+<text x="92.5" y="173.0" class="t" text-anchor="middle" transform="rotate(-90 92.5 173.0)">Shelly Pro Dimmer 2PM</text>
+<rect x="100.0" y="128.0" width="36.0" height="90.0" class="mod" style="stroke:#c97a00"/>
+<rect x="101.5" y="150.5" width="33.0" height="45.0" class="kappe" />
+<text x="118.0" y="171.0" class="t" text-anchor="middle">24 V DC</text>
+<text x="118.0" y="179.0" class="t" text-anchor="middle">forsyning</text>
+<rect x="136.0" y="137.0" width="80.0" height="72.0" class="mod" style="stroke:#2f7d54"/>
+<text x="176.0" y="171.0" class="t" text-anchor="middle">Styreenhed</text>
+<text x="176.0" y="179.0" class="t" text-anchor="middle">StamPLC</text>
+<rect x="216.0" y="128.0" width="18.0" height="90.0" class="mod" style="stroke:#2f7d54"/>
+<rect x="217.5" y="150.5" width="15.0" height="45.0" class="kappe" />
+<text x="227.0" y="173.0" class="t" text-anchor="middle" transform="rotate(-90 227.0 173.0)">0–10 V modul</text>
+<rect x="234.0" y="148.0" width="30.0" height="50.0" class="mod" style="stroke:#2f7d54"/>
+<text x="249.0" y="171.0" class="t" text-anchor="middle">Klemmer</text>
+<text x="249.0" y="179.0" class="t" text-anchor="middle"></text>
+<line x1="136.8" y1="48" x2="136.8" y2="264" class="zone"/>
+<text x="132.0" y="56" class="zt" text-anchor="end" style="fill:#c97a00">230 V</text>
+<text x="141.0" y="56" class="zt" style="fill:#2f7d54">LAVVOLT</text>
+<circle cx="58" cy="36.0" r="5" class="hul" style="stroke:#c97a00"/>
+<text x="58.0" y="38.0" class="nr" text-anchor="middle">1</text>
+<circle cx="88" cy="36.0" r="5" class="hul" style="stroke:#c97a00"/>
+<text x="88.0" y="38.0" class="nr" text-anchor="middle">2</text>
+<circle cx="199" cy="36.0" r="5" class="hul" style="stroke:#2f7d54"/>
+<text x="199.0" y="38.0" class="nr" text-anchor="middle">3</text>
+<circle cx="229" cy="36.0" r="5" class="hul" style="stroke:#2f7d54"/>
+<text x="229.0" y="38.0" class="nr" text-anchor="middle">4</text>
+<line x1="45.0" y1="221.0" x2="45.0" y2="234.0" class="h"/>
+<line x1="81.0" y1="221.0" x2="81.0" y2="234.0" class="h"/>
+<line x1="45.0" y1="237.0" x2="81.0" y2="237.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="63.0" y="235.2" class="mt" text-anchor="middle">36</text>
+<line x1="81.0" y1="221.0" x2="81.0" y2="234.0" class="h"/>
+<line x1="100.0" y1="221.0" x2="100.0" y2="234.0" class="h"/>
+<line x1="81.0" y1="237.0" x2="100.0" y2="237.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="90.5" y="235.2" class="mt" text-anchor="middle">19</text>
+<line x1="100.0" y1="221.0" x2="100.0" y2="234.0" class="h"/>
+<line x1="136.0" y1="221.0" x2="136.0" y2="234.0" class="h"/>
+<line x1="100.0" y1="237.0" x2="136.0" y2="237.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="118.0" y="235.2" class="mt" text-anchor="middle">36</text>
+<line x1="136.0" y1="221.0" x2="136.0" y2="234.0" class="h"/>
+<line x1="216.0" y1="221.0" x2="216.0" y2="234.0" class="h"/>
+<line x1="136.0" y1="237.0" x2="216.0" y2="237.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="176.0" y="235.2" class="mt" text-anchor="middle">80</text>
+<line x1="216.0" y1="221.0" x2="216.0" y2="234.0" class="h"/>
+<line x1="234.0" y1="221.0" x2="234.0" y2="234.0" class="h"/>
+<line x1="216.0" y1="237.0" x2="234.0" y2="237.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="225.0" y="235.2" class="mt" text-anchor="middle">18</text>
+<line x1="234.0" y1="221.0" x2="234.0" y2="234.0" class="h"/>
+<line x1="264.0" y1="221.0" x2="264.0" y2="234.0" class="h"/>
+<line x1="234.0" y1="237.0" x2="264.0" y2="237.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="249.0" y="235.2" class="mt" text-anchor="middle">30</text>
+<line x1="40.0" y1="266.0" x2="40.0" y2="301.0" class="h"/>
+<line x1="269.0" y1="266.0" x2="269.0" y2="301.0" class="h"/>
+<line x1="40.0" y1="304.0" x2="269.0" y2="304.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="154.5" y="302.2" class="mt" text-anchor="middle">229</text>
+<line x1="38.0" y1="44.0" x2="13.0" y2="44.0" class="h"/>
+<line x1="38.0" y1="268.0" x2="13.0" y2="268.0" class="h"/>
+<line x1="16.0" y1="44.0" x2="16.0" y2="268.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="14.2" y="156.0" class="mt" text-anchor="middle" transform="rotate(-90 14.2 156.0)">224</text>
+<line x1="267.0" y1="173.0" x2="278.0" y2="173.0" class="h"/>
+<line x1="267.0" y1="268.0" x2="278.0" y2="268.0" class="h"/>
+<line x1="281.0" y1="173.0" x2="281.0" y2="268.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="279.2" y="220.5" class="mt" text-anchor="middle" transform="rotate(-90 279.2 220.5)">95</text>
+<text x="154.5" y="320.0" class="ts" text-anchor="middle">Skinnens midte 1825 mm over gulv · skabets bund 1730 mm over gulv</text>
+<text x="309.0" y="12.0" class="ov" text-anchor="start">B · Snit, set fra siden</text>
+<text x="309.0" y="18.0" class="ts" text-anchor="start">bagside til venstre, låge til højre</text>
+<rect x="309.0" y="28.0" width="260.0" height="256.0" class="skrav" />
+<rect x="325.0" y="44.0" width="228.0" height="224.0" class="inde" />
+<rect x="553.0" y="50.0" width="16.0" height="218.0" class="laage" />
+<rect x="553.0" y="234.0" width="16" height="26" class="rist"/>
+<rect x="365" y="28.0" width="148" height="16" class="rist"/>
+<rect x="325.0" y="155.5" width="7.5" height="35.0" class="skinne" />
+<rect x="332.5" y="128.0" width="70" height="90" class="mod2" style="stroke:#c97a00"/>
+<rect x="332.5" y="126.0" width="69" height="94" class="mod2" style="stroke:#c97a00"/>
+<rect x="332.5" y="128.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
+<rect x="332.5" y="137.0" width="33" height="72" class="mod2" style="stroke:#2f7d54"/>
+<rect x="332.5" y="128.0" width="60" height="90" class="mod2" style="stroke:#2f7d54"/>
+<rect x="332.5" y="148.0" width="45" height="50" class="mod2" style="stroke:#2f7d54"/>
+<path d="M551 247 H523 V52" class="luft" marker-end="url(#pil2)"/>
+<text x="519.0" y="104.0" class="ts" text-anchor="end">luft ind forneden, ud i toppen</text>
+<line x1="325.0" y1="266.0" x2="325.0" y2="287.0" class="h"/>
+<line x1="553.0" y1="266.0" x2="553.0" y2="287.0" class="h"/>
+<line x1="325.0" y1="290.0" x2="553.0" y2="290.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="439.0" y="288.2" class="mt" text-anchor="middle">228</text>
+<line x1="332.5" y1="119.0" x2="332.5" y2="110.0" class="h"/>
+<line x1="402.5" y1="119.0" x2="402.5" y2="110.0" class="h"/>
+<line x1="332.5" y1="113.0" x2="402.5" y2="113.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="367.5" y="111.2" class="mt" text-anchor="middle">78</text>
+<text x="439.0" y="308.0" class="ts" text-anchor="middle">rigeligt plads til kabler foran modulerne</text>
+<text x="10.0" y="354.0" class="ov" text-anchor="start">C · Forbindelser</text>
+<text x="10.0" y="360.0" class="ts" text-anchor="start">orange = 230 V (elektriker) · grøn = lavvolt (bygherre)</text>
+<rect x="10" y="374" width="62" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
+<text x="41.0" y="382.0" class="t" text-anchor="middle">1 · 230 V ind</text>
+<text x="41.0" y="388.5" class="ts" text-anchor="middle">fra samledåse</text>
+<rect x="92" y="374" width="62" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
+<text x="123.0" y="385.5" class="t" text-anchor="middle">Sikring + afbr.</text>
+<path d="M72 383 H90" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
+<rect x="178" y="348" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
+<text x="213.0" y="356.0" class="t" text-anchor="middle">Shelly Pro 2PM</text>
+<text x="213.0" y="362.5" class="ts" text-anchor="middle">dimmer, 2 kanaler</text>
+<rect x="178" y="374" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
+<text x="213.0" y="385.5" class="t" text-anchor="middle">24 V DC forsyning</text>
+<rect x="178" y="400" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
+<text x="213.0" y="408.0" class="t" text-anchor="middle">Relæ i StamPLC</text>
+<text x="213.0" y="414.5" class="ts" text-anchor="middle">230 V-side</text>
+<rect x="178" y="426" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
+<text x="213.0" y="434.0" class="t" text-anchor="middle">2 · Spejle P og Q</text>
+<text x="213.0" y="440.5" class="ts" text-anchor="middle">fast 230 V</text>
+<path d="M154 383 H164 V357 H176" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
+<path d="M154 383 H164 V383 H176" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
+<path d="M154 383 H164 V409 H176" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
+<path d="M154 383 H164 V435 H176" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
+<rect x="272" y="336" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
+<text x="307.0" y="344.0" class="t" text-anchor="middle">Spots, kanal 1</text>
+<text x="307.0" y="350.5" class="ts" text-anchor="middle">1, 2, 5, 6, 7</text>
+<rect x="272" y="360" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
+<text x="307.0" y="368.0" class="t" text-anchor="middle">Spots, kanal 2</text>
+<text x="307.0" y="374.5" class="ts" text-anchor="middle">3, 4, 8 (nichen)</text>
+<path d="M248 357 H258 V345 H270" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
+<path d="M248 357 H258 V369 H270" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
+<rect x="272" y="400" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
+<text x="307.0" y="408.0" class="t" text-anchor="middle">Kanalventilator</text>
+<text x="307.0" y="414.5" class="ts" text-anchor="middle">230 V via relæ</text>
+<path d="M248 409 H270" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
+<rect x="366" y="374" width="70" height="18" rx="2" class="boks" style="stroke:#2f7d54"/>
+<text x="401.0" y="382.0" class="t" text-anchor="middle">StamPLC</text>
+<text x="401.0" y="388.5" class="ts" text-anchor="middle">styreenhed</text>
+<path d="M248 383 H364" class="led" style="stroke:#2f7d54" marker-end="url(#pil3)"/>
+<rect x="460" y="348" width="74" height="18" rx="2" class="boks" style="stroke:#2f7d54"/>
+<text x="497.0" y="356.0" class="t" text-anchor="middle">3 · 0–10 V-modul</text>
+<text x="497.0" y="362.5" class="ts" text-anchor="middle">→ ventilatorens hastighed</text>
+<rect x="460" y="374" width="74" height="18" rx="2" class="boks" style="stroke:#2f7d54"/>
+<text x="497.0" y="382.0" class="t" text-anchor="middle">3 · Sensormodul</text>
+<text x="497.0" y="388.5" class="ts" text-anchor="middle">fugt + flow i kanalen</text>
+<rect x="460" y="400" width="74" height="18" rx="2" class="boks" style="stroke:#2f7d54"/>
+<text x="497.0" y="408.0" class="t" text-anchor="middle">4 · Trykknap</text>
+<text x="497.0" y="414.5" class="ts" text-anchor="middle">ved døren</text>
+<path d="M436 383 H446 V357 H458" class="led" style="stroke:#2f7d54" marker-end="url(#pil3)"/>
+<path d="M436 383 H458" class="led" style="stroke:#2f7d54" marker-end="url(#pil3)"/>
+<path d="M458 409 H446 V387 H438" class="led" style="stroke:#2f7d54" marker-end="url(#pil3)"/>
+<path d="M401 392 V414 H344" class="led prik" style="stroke:#2f7d54"/>
+<text x="372.0" y="420.0" class="ts" text-anchor="start">styrer relæ og Shelly (netværk)</text>
+<text x="10.0" y="466.0" class="ts" text-anchor="start">Numrene 1–4 svarer til kabelindføringerne i toppen af skabet (tegning A).</text>
+</svg>
