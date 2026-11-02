@@ -960,20 +960,6 @@
     </ul></div>
   </div>
 
-  <h2>Håndværkerperioden – forslag til rækkefølge</h2>
-  <ol class="flow">
-    <li style="--c:var(--purple)"><span class="fag">Bygherre</span><span class="hvad">Nedrivning og rens af fliser</span><span class="kraever">Dagen før start</span></li>
-    <li style="--c:var(--c-tomrer)"><span class="fag">Tømrer</span><span class="hvad">Gammelt hængeloft ned</span><span class="kraever">Kræver: nedrivning færdig</span></li>
-    <li style="--c:var(--c-vvs)"><span class="fag">VVS + el</span><span class="hvad">Nye rør, afløb og kabler</span><span class="kraever">Kræver: loftet er åbent</span></li>
-    <li style="--c:var(--c-tomrer)"><span class="fag">Tømrer</span><span class="hvad">Nyt hængeloft, rørkasse og skab W</span><span class="kraever">Kræver: rør og kabler lagt og kontrolleret</span></li>
-    <li style="--c:var(--muted)"><span class="fag">Fliser</span><span class="hvad">Udskiftning og nye fuger</span><span class="kraever">Kræver: loft og rørkasse færdige</span></li>
-    <li style="--c:var(--c-vvs)"><span class="fag">VVS</span><span class="hvad">Toilet, vask, armaturer, radiator</span><span class="kraever">Kræver: fliser færdige</span></li>
-    <li style="--c:var(--c-el)"><span class="fag">El</span><span class="hvad">Spots, dimmer, ventilator, spejle</span><span class="kraever">Kræver: loftet færdigt</span></li>
-    <li style="--c:var(--c-glas)"><span class="fag">Glarmester</span><span class="hvad">Glasvæg F</span><span class="kraever">Kræver: fliser og brusearmatur på plads</span></li>
-    <li style="--c:var(--purple)"><span class="fag">Bygherre</span><span class="hvad">Tilbehør og rengøring</span><span class="kraever">Til sidst</span></li>
-  </ol>
-  <p class="note-lille">Tiden er bygherrens skøn (ca. 2–3 uger) – håndværkernes egne tidsplaner gælder. Glasvæggen måles typisk først efter fliserne og kan derfor komme senere. Ny eltavle kan laves uafhængigt af resten.</p>
-
   <h2>Rummet</h2>
   <div class="kort plankort" id="forside-plan"></div>
   <div class="genveje">
@@ -990,7 +976,7 @@
     .map(li => `<div class="kort">${li.innerHTML.replace(/<b>(.*?):?<\/b>:?\s*/, '<b>$1</b>')}</div>`).join('');
   // Plantegningen (forsiden viser kun rum og inventar)
   const fp = document.getElementById('plan').cloneNode(true); fp.removeAttribute('id');
-  fp.querySelectorAll('.inst').forEach(e => e.remove());
+  fp.querySelectorAll('.inst, .b').forEach(e => e.remove());   // kun rum og inventar, uden bogstaver
   fp.setAttribute('viewBox', '-20 -20 360 205');
   document.getElementById('forside-plan').appendChild(fp);
   document.body.prepend(document.getElementById('forside'));   // forsiden øverst
