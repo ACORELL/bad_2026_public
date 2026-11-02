@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 262" font-family="Inter, Arial, sans-serif">
+<defs>
+  <marker id="pil" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#333"/></marker>
+  <marker id="pil2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 L10 5 L0 9 z" fill="#7aa3c8"/></marker>
+  <marker id="pil3" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 1 L10 5 L0 9 z" fill="#555"/></marker>
+  <pattern id="skrav" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" stroke="#999" stroke-width=".6"/></pattern>
+  <pattern id="ristm" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="1.5" height="3" fill="#888"/></pattern>
+</defs>
+<style>
+  .o { fill: none; stroke: #222; stroke-width: .5; }
+  .skrav { fill: url(#skrav); stroke: #222; stroke-width: .6; }
+  .inde { fill: #fff; stroke: #222; stroke-width: .6; }
+  .laage { fill: #f3efe6; stroke: #222; stroke-width: .5; }
+  .rist { fill: url(#ristm); stroke: #555; stroke-width: .3; }
+  .skinne { fill: #e4e4e4; stroke: #777; stroke-width: .4; }
+  .tynd { stroke: #999; stroke-width: .25; }
+  .mod { fill: #fff; stroke-width: .8; }
+  .mod2 { fill: #fff; fill-opacity: .55; stroke-width: .6; }
+  .kappe { fill: #f6f6f4; stroke: #aaa; stroke-width: .3; }
+  .kanal { stroke: #2f7d54; stroke-width: 2.2; stroke-opacity: .25; }
+  .el { fill: none; stroke-width: .6; }
+  .prikket { stroke-dasharray: 2 1.2; }
+  .net { stroke-dasharray: .8 1.4; }
+  .sym { fill: #fff; stroke-width: .7; }
+  .kl { fill: #fff; stroke-width: .6; }
+  .mek { stroke: #555; stroke-width: .4; stroke-dasharray: 1.5 1; }
+  .lvzone { fill: #2f7d54; fill-opacity: .04; stroke: #2f7d54; stroke-width: .5; stroke-dasharray: 3 2; }
+  .ref { font-size: 5px; font-weight: 700; fill: #1f1f1f; }
+  .zone { stroke: #444; stroke-width: .5; stroke-dasharray: 3 2; }
+  .hul { fill: #fff; stroke-width: .8; }
+  .h { stroke: #555; stroke-width: .2; }
+  .m { stroke: #333; stroke-width: .25; }
+  .luft { fill: none; stroke: #7aa3c8; stroke-width: .7; stroke-dasharray: 2 1.5; }
+  .boks { fill: #fff; stroke-width: .8; }
+  .led { fill: none; stroke-width: .7; }
+  .prik { stroke-dasharray: 1.5 1.5; }
+  .t { font-size: 5px; font-weight: 600; fill: #1f1f1f; }
+  .ts { font-size: 4.2px; fill: #555; }
+  .mt { font-size: 4.4px; fill: #222; }
+  .nr { font-size: 4.5px; font-weight: 700; fill: #333; text-anchor: middle; }
+  .zt { font-size: 5px; font-weight: 700; letter-spacing: .4px; }
+  .ov { font-size: 6px; font-weight: 700; fill: #1f1f1f; }
+</style>
+<text x="10.0" y="8.0" class="ov" text-anchor="start">Installationsdiagram</text>
+<text x="10.0" y="14.0" class="ts" text-anchor="start">strømvejsdiagram, symboler efter IEC 60617 · princip – elektrikeren dimensionerer</text>
+<circle cx="22.0" cy="38.0" r="1.4" class="kl" style="stroke:#c97a00"/>
+<text x="18.0" y="39.6" class="ref" text-anchor="end">L</text>
+<circle cx="22.0" cy="46.0" r="1.4" class="kl" style="stroke:#c97a00"/>
+<text x="18.0" y="47.6" class="ref" text-anchor="end">N</text>
+<circle cx="22.0" cy="148.0" r="1.4" class="kl" style="stroke:#555"/>
+<text x="18.0" y="149.6" class="ref" text-anchor="end">PE</text>
+<text x="18.0" y="156.0" class="ts" text-anchor="start">1 · fra gruppe i eltavle</text>
+<text x="18.0" y="161.0" class="ts" text-anchor="start">(RCD i tavlen)</text>
+<path d="M23.4 38 H42" class="el" style="stroke:#c97a00"/>
+<path d="M23.4 46 H42" class="el" style="stroke:#c97a00"/>
+<path d="M42 38 H48.0" class="el" style="stroke:#c97a00"/>
+<path d="M56.4 38 H62" class="el" style="stroke:#c97a00"/>
+<path d="M48.0 38 L55.4 33" class="el" style="stroke:#c97a00"/>
+<path d="M54.8 36.4 L58.0 39.6 M58.0 36.4 L54.8 39.6" class="el" style="stroke:#c97a00"/>
+<path d="M42 46 H48.0" class="el" style="stroke:#c97a00"/>
+<path d="M56.4 46 H62" class="el" style="stroke:#c97a00"/>
+<path d="M48.0 46 L55.4 41" class="el" style="stroke:#c97a00"/>
+<path d="M54.8 44.4 L58.0 47.6 M58.0 44.4 L54.8 47.6" class="el" style="stroke:#c97a00"/>
+<line x1="52.2" y1="35.5" x2="52.2" y2="43.5" class="mek"/>
+<text x="52.2" y="30.0" class="ref" text-anchor="middle">Q1</text>
+<text x="52.2" y="54.0" class="ts" text-anchor="middle">sikring + flerpolet afbr.</text>
+<path d="M62 38 H575" class="el" style="stroke:#c97a00"/>
+<path d="M62 46 H575" class="el" style="stroke:#c97a00"/>
+<path d="M23.4 148 H575" class="el" style="stroke:#4a7d3a"/>
+<text x="577.0" y="39.6" class="ts" text-anchor="start">L</text>
+<text x="577.0" y="47.6" class="ts" text-anchor="start">N</text>
+<text x="577.0" y="149.6" class="ts" text-anchor="start">PE</text>
+<circle cx="95.0" cy="38.0" r="1.1" fill="#c97a00"/>
+<circle cx="105.0" cy="46.0" r="1.1" fill="#c97a00"/>
+<path d="M95 38 V60" class="el" style="stroke:#c97a00"/>
+<path d="M105 46 V60" class="el" style="stroke:#c97a00"/>
+<rect x="91" y="60" width="24" height="20" class="sym" style="stroke:#c97a00"/>
+<path d="M97 76 L109 64" class="el" style="stroke:#c97a00"/>
+<path d="M109 64 l-3.4 .4 l3 3 z" fill="#c97a00"/>
+<text x="103.0" y="58.0" class="ref" text-anchor="middle">Y1</text>
+<path d="M95 80 V96" class="el" style="stroke:#c97a00"/>
+<circle cx="95" cy="100.2" r="4.2" class="sym" style="stroke:#c97a00"/>
+<path d="M92.06 97.26 L97.94 103.14 M97.94 97.26 L92.06 103.14" class="el" style="stroke:#c97a00"/>
+<path d="M95 104.4 V112 H153" class="el" style="stroke:#c97a00"/>
+<text x="101.0" y="96.0" class="ts" text-anchor="start">5×</text>
+<text x="95.0" y="120.0" class="ref" text-anchor="middle">E1</text>
+<text x="95.0" y="125.0" class="ts" text-anchor="middle">spot 1, 2, 5–7</text>
+<path d="M111 80 V88" class="el prikket" style="stroke:#2f7d54"/>
+<circle cx="125.0" cy="38.0" r="1.1" fill="#c97a00"/>
+<circle cx="135.0" cy="46.0" r="1.1" fill="#c97a00"/>
+<path d="M125 38 V60" class="el" style="stroke:#c97a00"/>
+<path d="M135 46 V60" class="el" style="stroke:#c97a00"/>
+<rect x="121" y="60" width="24" height="20" class="sym" style="stroke:#c97a00"/>
+<path d="M127 76 L139 64" class="el" style="stroke:#c97a00"/>
+<path d="M139 64 l-3.4 .4 l3 3 z" fill="#c97a00"/>
+<text x="133.0" y="58.0" class="ref" text-anchor="middle">Y2</text>
+<path d="M125 80 V96" class="el" style="stroke:#c97a00"/>
+<circle cx="125" cy="100.2" r="4.2" class="sym" style="stroke:#c97a00"/>
+<path d="M122.06 97.26 L127.94 103.14 M127.94 97.26 L122.06 103.14" class="el" style="stroke:#c97a00"/>
+<path d="M125 104.4 V112 H153" class="el" style="stroke:#c97a00"/>
+<text x="131.0" y="96.0" class="ts" text-anchor="start">3×</text>
+<text x="125.0" y="120.0" class="ref" text-anchor="middle">E2</text>
+<text x="125.0" y="125.0" class="ts" text-anchor="middle">spot 3, 4, 8</text>
+<path d="M141 80 V88" class="el prikket" style="stroke:#2f7d54"/>
+<path d="M111 88 H161" class="el prikket" style="stroke:#2f7d54"/>
+<path d="M153 112 V46" class="el" style="stroke:#c97a00"/>
+<circle cx="153.0" cy="46.0" r="1.1" fill="#c97a00"/>
+<text x="87.0" y="68.0" class="ref" text-anchor="end">Y1, Y2</text>
+<text x="87.0" y="73.0" class="ts" text-anchor="end">Eltako SUD12/1-10V + LUD12</text>
+<text x="125.0" y="134.0" class="ts" text-anchor="middle">spots: klasse II</text>
+<circle cx="190.0" cy="38.0" r="1.1" fill="#c97a00"/>
+<circle cx="200.0" cy="46.0" r="1.1" fill="#c97a00"/>
+<path d="M190 38 V60" class="el" style="stroke:#c97a00"/>
+<path d="M200 46 V60" class="el" style="stroke:#c97a00"/>
+<rect x="184" y="60" width="22" height="22" class="sym" style="stroke:#c97a00"/>
+<path d="M184 82 L206 60" class="el" style="stroke:#c97a00"/>
+<text x="189.0" y="68.0" class="t" text-anchor="middle">~</text>
+<text x="201.0" y="79.0" class="t" text-anchor="middle">=</text>
+<line x1="212" y1="148" x2="212" y2="148" />
+<text x="210.0" y="68.0" class="ref" text-anchor="start">T1</text>
+<text x="210.0" y="73.0" class="ts" text-anchor="start">24 V DC forsyning</text>
+<circle cx="290.0" cy="38.0" r="1.1" fill="#c97a00"/>
+<path d="M290 38 V64" class="el" style="stroke:#c97a00"/>
+<path d="M290 64 V71.0" class="el" style="stroke:#c97a00"/>
+<path d="M290 78.0 V84" class="el" style="stroke:#c97a00"/>
+<path d="M290 78.0 L285 72.0" class="el" style="stroke:#c97a00"/>
+<text x="296.0" y="74.0" class="ref" text-anchor="start">K1</text>
+<text x="296.0" y="79.0" class="ts" text-anchor="start">relæ i A1</text>
+<path d="M290 84 V96" class="el" style="stroke:#c97a00"/>
+<circle cx="295.5" cy="102" r="5.5" class="sym" style="stroke:#c97a00"/>
+<text x="295.5" y="104.0" class="t" text-anchor="middle">M</text>
+<text x="295.5" y="117.0" class="ts" text-anchor="middle"></text>
+<path d="M301 102 H320 V46" class="el" style="stroke:#c97a00"/>
+<circle cx="320.0" cy="46.0" r="1.1" fill="#c97a00"/>
+<path d="M295.5 107.5 V148" class="el" style="stroke:#4a7d3a"/>
+<circle cx="295.5" cy="148.0" r="1.1" fill="#4a7d3a"/>
+<text x="284.0" y="102.0" class="ref" text-anchor="end">M · kanalventilator</text>
+<text x="284.0" y="107.0" class="ts" text-anchor="end">EC, 0–10 V-indgang (vælges)</text>
+<circle cx="410.0" cy="38.0" r="1.1" fill="#c97a00"/>
+<path d="M410 38 V96" class="el" style="stroke:#c97a00"/>
+<circle cx="410" cy="100.2" r="4.2" class="sym" style="stroke:#c97a00"/>
+<path d="M407.06 97.26 L412.94 103.14 M412.94 97.26 L407.06 103.14" class="el" style="stroke:#c97a00"/>
+<path d="M410 104.4 V112 H422 V46" class="el" style="stroke:#c97a00"/>
+<circle cx="422.0" cy="46.0" r="1.1" fill="#c97a00"/>
+<path d="M414.2 102 H430 V148" class="el" style="stroke:#4a7d3a"/>
+<circle cx="430.0" cy="148.0" r="1.1" fill="#4a7d3a"/>
+<text x="402.0" y="98.0" class="ref" text-anchor="end">P · spejl med lys</text>
+<text x="402.0" y="103.0" class="ts" text-anchor="end">egen touch-dæmpning</text>
+<circle cx="500.0" cy="38.0" r="1.1" fill="#c97a00"/>
+<path d="M500 38 V96" class="el" style="stroke:#c97a00"/>
+<circle cx="500" cy="100.2" r="4.2" class="sym" style="stroke:#c97a00"/>
+<path d="M497.06 97.26 L502.94 103.14 M502.94 97.26 L497.06 103.14" class="el" style="stroke:#c97a00"/>
+<path d="M500 104.4 V112 H512 V46" class="el" style="stroke:#c97a00"/>
+<circle cx="512.0" cy="46.0" r="1.1" fill="#c97a00"/>
+<path d="M504.2 102 H520 V148" class="el" style="stroke:#4a7d3a"/>
+<circle cx="520.0" cy="148.0" r="1.1" fill="#4a7d3a"/>
+<text x="492.0" y="98.0" class="ref" text-anchor="end">Q · makeup-spejl</text>
+<text x="492.0" y="103.0" class="ts" text-anchor="end">egen afbryder</text>
+<text x="402.0" y="110.0" class="ts" text-anchor="end">2 · fast 230 V, kabel over loftet</text>
+<rect x="62" y="162" width="513" height="86" rx="3" class="lvzone"/>
+<text x="571" y="169" class="zt" text-anchor="end" style="fill:#2f7d54">LAVSTRØM – bygherre</text>
+<text x="571" y="22" class="zt" text-anchor="end" style="fill:#c97a00">STÆRKSTRØM 230 V – elektriker</text>
+<path d="M190 82 V178 H565" class="el" style="stroke:#2f7d54"/>
+<path d="M200 82 V186 H565" class="el" style="stroke:#2f7d54"/>
+<text x="187.0" y="179.6" class="ts" text-anchor="end">+24 V</text>
+<text x="196.0" y="187.6" class="ts" text-anchor="end">0 V</text>
+<rect x="255" y="196" width="70" height="38" class="sym" style="stroke:#2f7d54"/>
+<text x="259.0" y="204.0" class="ref" text-anchor="start">A1 · StamPLC</text>
+<text x="259.0" y="209.0" class="ts" text-anchor="start">styreenhed (ESP32)</text>
+<path d="M263 178 V196" class="el" style="stroke:#2f7d54"/>
+<circle cx="263.0" cy="178.0" r="1.1" fill="#2f7d54"/>
+<path d="M269 186 V196" class="el" style="stroke:#2f7d54"/>
+<circle cx="269.0" cy="186.0" r="1.1" fill="#2f7d54"/>
+<rect x="286" y="212" width="8" height="12" class="sym" style="stroke:#2f7d54"/>
+<line x1="287.5" y1="212" x2="287.5" y2="74.5" class="mek"/>
+<path d="M120 178 V202" class="el" style="stroke:#2f7d54"/>
+<circle cx="120.0" cy="178.0" r="1.1" fill="#2f7d54"/>
+<path d="M120 202 V209.0" class="el" style="stroke:#2f7d54"/>
+<path d="M120 216.0 V222" class="el" style="stroke:#2f7d54"/>
+<path d="M120 216.0 L115 210.0" class="el" style="stroke:#2f7d54"/>
+<path d="M111 209.5 H115 M111 206.5 V212.5" class="el" style="stroke:#2f7d54"/>
+<path d="M120 222 V228 H255" class="el" style="stroke:#2f7d54"/>
+<text x="108.0" y="212.0" class="ref" text-anchor="end">S · trykknap</text>
+<text x="108.0" y="217.0" class="ts" text-anchor="end">LK FUGA, ved døren</text>
+<text x="124.0" y="226.0" class="ts" text-anchor="start">4 · lavstrømskabel</text>
+<rect x="360" y="198" width="34" height="16" class="sym" style="stroke:#2f7d54"/>
+<text x="377.0" y="208.0" class="t" text-anchor="middle">0–10 V ×3</text>
+<path d="M325 206 H360" class="el" style="stroke:#2f7d54"/>
+<path d="M377 198 V116 H299 V106.5" class="el prikket" style="stroke:#2f7d54"/>
+<path d="M368 214 V240 H161 V88" class="el prikket" style="stroke:#2f7d54"/>
+<text x="164.0" y="238.0" class="ts" text-anchor="start">1–10 V til Y1 og Y2 (kablet)</text>
+<text x="396.0" y="204.0" class="ref" text-anchor="start">U1</text>
+<text x="396.0" y="209.0" class="ts" text-anchor="start">til M, Y1, Y2 (skærmede kabler)</text>
+<rect x="440" y="220" width="40" height="14" class="sym" style="stroke:#2f7d54"/>
+<text x="460.0" y="229.0" class="t" text-anchor="middle">B1 · sensor</text>
+<path d="M325 226 H440" class="el" style="stroke:#2f7d54"/>
+<text x="436.0" y="224.0" class="ts" text-anchor="end">3 · I²C</text>
+<text x="10.0" y="256.0" class="ts" text-anchor="start">Numrene 1–4 svarer til kabelindføringerne i toppen af skabet (tegning A). Spots er klasse II (uden PE).</text>
+</svg>
