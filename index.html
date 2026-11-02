@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="da">
 <head>
+<meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <meta charset="utf-8">
 <title>Badeværelse – Plantegning</title>
@@ -225,8 +226,9 @@
         <polygon points="21,26.5 26,26 26,28 21,28" fill="#e6dcc4" stroke="#777" stroke-width=".2"/>
         <rect x="21" y="28" width="21" height="1.6" fill="#eef6f0" stroke="var(--green)" stroke-width=".3"/>
         <rect x="26" y="0" width="16" height="28" fill="url(#hatch)" stroke="var(--green)" stroke-width=".4" stroke-dasharray="1.6 .9"/>
-        <circle cx="31.7" cy="12" r="5.5" fill="#fff" stroke="#555" stroke-width=".4"/>
-        <text class="mtxt" x="31.7" y="12.9" style="fill:#555;font-size:2.4px">FS</text>
+        <rect x="26" y="0" width="14.5" height="19" fill="none" stroke="#777" stroke-width=".2" stroke-dasharray=".8 .6"/>
+        <circle cx="35" cy="13.5" r="5.5" fill="#fff" stroke="#555" stroke-width=".4"/>
+        <text class="mtxt" x="35" y="14.4" style="fill:#555;font-size:2.4px">FS</text>
         <rect x="42" y="0" width="29" height="29.6" fill="#fbf9f4" stroke="var(--green)" stroke-width=".4"/>
         <rect x="43.6" y="1.6" width="25.8" height="26.4" fill="none" stroke="var(--green)" stroke-width=".2"/>
         <rect x="43.8" y="28" width="25.4" height="1.6" fill="#fff" stroke="var(--green)" stroke-width=".3"/>
@@ -335,8 +337,8 @@
       </g>
       
       <g class="inst lag vvs">
-        <path d="M45 4 H38.6 V21 H256 V10" fill="none" stroke="#2563eb" stroke-width=".55" stroke-dasharray=".4 .9" stroke-linecap="round"/>
-        <path d="M45 7 H40.8 V23.4 H258.4 V10" fill="none" stroke="#d0453a" stroke-width=".55" stroke-dasharray=".4 .9" stroke-linecap="round"/>
+        <path d="M45 21 H256 V10" fill="none" stroke="#2563eb" stroke-width=".55" stroke-dasharray=".4 .9" stroke-linecap="round"/>
+        <path d="M45 23.4 H258.4 V10" fill="none" stroke="#d0453a" stroke-width=".55" stroke-dasharray=".4 .9" stroke-linecap="round"/>
         <text class="mtxt dim vvs" x="150" y="26.6" style="fill:#4f7fd1;font-size:2.6px">Bruser: over hængeloft</text>
       </g>
 
@@ -1021,12 +1023,30 @@
     const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
     document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
     const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
-    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html#hv"></iframe>';
+    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=631afd6a#hv"></iframe>';
     nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
     scrollTo(0, 0);
   }
   addEventListener('hashchange', visFane);
   visFane();
 </script>
-</body>
+<script>
+(() => {
+  const V = '9bbe5b5c87';
+  async function tjek() {
+    try {
+      const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
+      const ny = (await r.json()).v;
+      if (!ny || ny === V) return;
+      const q = new URLSearchParams(location.search);
+      if (q.get('v') === ny) return;                       // allerede forsøgt: undgå løkke, hvis CDN'et er bagud
+      q.set('v', ny);
+      location.replace(location.pathname + '?' + q + location.hash);
+    } catch (e) {}
+  }
+  tjek();
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) tjek(); });
+  setInterval(tjek, 5 * 60 * 1000);
+})();
+</script></body>
 </html>
