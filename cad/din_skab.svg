@@ -48,8 +48,6 @@
 <rect x="24.0" y="28.0" width="261.0" height="336.0" class="skrav" />
 <rect x="40.0" y="44.0" width="229.0" height="304.0" class="plade" />
 <rect x="70" y="28" width="169" height="16" class="rist"/>
-<rect x="269" y="278" width="16" height="50" class="rist"/>
-<rect x="269" y="64" width="16" height="50" class="rist"/>
 <rect x="44.0" y="120.5" width="221.0" height="35.0" class="skinne" />
 <line x1="44.0" y1="125.5" x2="265.0" y2="125.5" class="tynd"/>
 <line x1="44.0" y1="150.5" x2="265.0" y2="150.5" class="tynd"/>
@@ -153,18 +151,19 @@
 <line x1="267.0" y1="348.0" x2="278.0" y2="348.0" class="h"/>
 <line x1="281.0" y1="263.0" x2="281.0" y2="348.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
 <text x="279.2" y="305.5" class="mt" text-anchor="middle" transform="rotate(-90 279.2 305.5)">85</text>
-<text x="154.5" y="393.0" class="ts" text-anchor="middle">Montageplade 100 mm foran bagsiden; kabler ind i toppen bag pladen, frem ved skinnerne · riste i siden mod toilettet</text>
+<text x="154.5" y="393.0" class="ts" text-anchor="middle">Montageplade 100 mm foran bagsiden; kabler ind i toppen bag pladen, frem ved skinnerne</text>
 <text x="154.5" y="386.0" class="ts" text-anchor="middle">Skabets bund 1650 mm over gulv · skinner 1735 og 1860 mm over gulv</text>
 <text x="323.0" y="12.0" class="ov" text-anchor="start">B · Snit, set fra siden</text>
 <text x="323.0" y="18.0" class="ts" text-anchor="start">bagside til venstre, låge til højre</text>
 <rect x="323.0" y="28.0" width="260.0" height="336.0" class="skrav" />
 <rect x="339.0" y="44.0" width="228.0" height="304.0" class="inde" />
+<rect x="339.0" y="28.0" width="25.0" height="16.0" class="inde" />
+<rect x="339.0" y="348.0" width="25.0" height="16.0" class="inde" />
+<path d="M351.5 368 V24" class="luft" marker-end="url(#pil2)"/>
+<text x="366.0" y="26.0" class="ts" text-anchor="start">spalte 25</text>
 <rect x="567.0" y="50.0" width="16.0" height="298.0" class="laage" />
 <rect x="567.0" y="314.0" width="16" height="26" class="rist"/>
 <rect x="463" y="28.0" width="80" height="16" class="rist"/>
-<rect x="463" y="278" width="80" height="50" class="rist" opacity=".5"/>
-<rect x="463" y="64" width="80" height="50" class="rist" opacity=".5"/>
-<text x="503.0" y="61.0" class="ts" text-anchor="middle">rist i siden</text>
 <rect x="419.0" y="44.0" width="20.0" height="304.0" class="liste" />
 <rect x="439.0" y="44.0" width="12.0" height="304.0" class="plade" />
 <text x="379.0" y="196.0" class="ts" text-anchor="middle" transform="rotate(-90 379.0 196.0)">kabler</text>
