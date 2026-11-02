@@ -692,8 +692,8 @@
 
 <section class="page" data-fane="el" data-pakke="vvs" style="--accent:var(--c-el)">
   <div class="fag-head"><h1>Elektriker</h1><span>DIN-skab i rørkasse W</span></div>
-  <p class="hint">Øverste rum i skabet i W (165–195 cm over gulv), to vandrette skinner på den lukkede bagside: stærkstrøm (230 V) øverst, lavstrøm nederst. Én 230 V-forsyning ind. Al 230 V er fast installation og udføres af elektrikeren; bygherre monterer kun lavvolt.</p>
-  <div class="din-kort"><img src="cad/din_skab.svg?v=3c522699" alt="DIN-skab i rørkasse W: forfra, snit og forbindelser" style="display:block;width:100%"></div>
+  <p class="hint">Særskilt DIN-skab øverst i W med egen låge (163–195 cm over gulv), to vandrette skinner på en montageplade 10 cm foran bagsiden: stærkstrøm (230 V) øverst, lavstrøm nederst. Én 230 V-forsyning ind. Al 230 V er fast installation og udføres af elektrikeren; bygherre monterer kun lavvolt.</p>
+  <div class="din-kort"><img src="cad/din_skab.svg?v=6ba16fb9" alt="DIN-skab i rørkasse W: forfra, snit og forbindelser" style="display:block;width:100%"></div>
   <table class="buy din-tabel"><colgroup><col style="width:150px"><col style="width:62px"><col><col style="width:130px"></colgroup>
     <thead><tr><th>Modul</th><th>Bredde</th><th>Funktion</th><th>Monteres af</th></tr></thead>
     <tbody>
@@ -715,7 +715,7 @@
 <section class="page" data-fane="el" data-pakke="vvs" style="--accent:var(--c-el)">
   <div class="fag-head"><h1>Elektriker</h1><span>installationsdiagram</span></div>
   <p class="hint">Principdiagram fra 230 V-indgangen. Symboler efter IEC 60617. Elektrikeren dimensionerer sikring, kabler og fejlstrømsbeskyttelse.</p>
-  <div class="din-kort"><img src="cad/el_diagram.svg?v=1d7d24c4" alt="Installationsdiagram: stærkstrøm og lavstrøm" style="display:block;width:100%"></div>
+  <div class="din-kort"><img src="cad/el_diagram.svg?v=7ae7a9ca" alt="Installationsdiagram: stærkstrøm og lavstrøm" style="display:block;width:100%"></div>
   <table class="buy din-tabel"><colgroup><col style="width:46px"><col style="width:190px"><col><col style="width:110px"></colgroup>
     <thead><tr><th>Ref.</th><th>Komponent</th><th>Bemærk</th><th>Udføres af</th></tr></thead>
     <tbody>
@@ -789,6 +789,23 @@
     <li>Hvor fliser i vådzonen udskiftes, retableres membranen.</li>
     
   </ul>
+</section>
+
+
+<section class="page" data-fane="tomrer" data-pakke="vvs" style="--accent:var(--c-tomrer)">
+  <div class="fag-head"><h1>Tømrer</h1><span>rørkasse W forfra</span></div>
+  <div style="display:grid;grid-template-columns:44% 1fr;gap:16px;align-items:start">
+    <div class="din-kort"><img src="cad/w_forfra.svg?v=9cb7a6aa" alt="Rørkasse W forfra med låger, lem og mål" style="display:block;width:100%"></div>
+    <ul class="note">
+      <li><b>Mål:</b> 50 cm bred, heraf 5 cm uden på nichens væg (kileliste bag fronten mod den skrå væg); 29,6 cm dyb.</li>
+      <li><b>Lem 10–42:</b> fra midt på faldstammen og hen over skabet; ét rum bag med fordeler og faldstamme.</li>
+      <li><b>Fast front 42–57</b> med toiletrulleholder S.</li>
+      <li><b>Skab 57–163:</b> egen låge; hulrækker i hele højden, 2 flytbare hylder.</li>
+      <li><b>DIN-skab 163–195:</b> egen låge med spalterist forneden; skinnerne på en montageplade 10 cm foran bagsiden.</li>
+      <li><b>Ventilatorkasse 197–223:</b> aftagelig front; lille rist i gavlen mod vinduet.</li>
+      <li>Alle låger i flugt, tryk-og-slip. Luft: riste i siden mod toilettet ved gulv og loft, 2,5 cm spalte bagerst i bunde og hylder.</li>
+    </ul>
+  </div>
 </section>
 
 
@@ -1023,7 +1040,7 @@
     const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
     document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
     const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
-    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=1df575a2#hv"></iframe>';
+    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=cfc53909#hv"></iframe>';
     nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
     scrollTo(0, 0);
   }
@@ -1032,7 +1049,7 @@
 </script>
 <script>
 (() => {
-  const V = '20a9688e41';
+  const V = '9fb58d0c4a';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });

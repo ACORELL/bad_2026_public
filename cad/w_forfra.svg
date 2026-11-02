@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 278 638" font-family="Inter, Arial, sans-serif">
+<defs>
+  <marker id="pil" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#333"/></marker>
+  <marker id="pil2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 L10 5 L0 9 z" fill="#7aa3c8"/></marker>
+  <marker id="pil3" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 1 L10 5 L0 9 z" fill="#555"/></marker>
+  <pattern id="skrav" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" stroke="#999" stroke-width=".6"/></pattern>
+  <pattern id="ristm" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="1.5" height="3" fill="#888"/></pattern>
+</defs>
+<style>
+  .o { fill: none; stroke: #222; stroke-width: .5; }
+  .skrav { fill: url(#skrav); stroke: #222; stroke-width: .6; }
+  .plade { fill: #f1ead9; stroke: #222; stroke-width: .5; }
+  .liste { fill: #e6dcc4; stroke: #777; stroke-width: .3; }
+  .fast { fill: #f3f1ec; stroke: #444; stroke-width: .4; }
+  .dor { fill: #cfdcd2; stroke: #3d423f; stroke-width: .7; }
+  .bag { fill: none; stroke: #888; stroke-width: .35; stroke-dasharray: 2 1.4; }
+  .inde { fill: #fff; stroke: #222; stroke-width: .6; }
+  .laage { fill: #f3efe6; stroke: #222; stroke-width: .5; }
+  .rist { fill: url(#ristm); stroke: #555; stroke-width: .3; }
+  .skinne { fill: #e4e4e4; stroke: #777; stroke-width: .4; }
+  .tynd { stroke: #999; stroke-width: .25; }
+  .mod { fill: #fff; stroke-width: .8; }
+  .mod2 { fill: #fff; fill-opacity: .55; stroke-width: .6; }
+  .kappe { fill: #f6f6f4; stroke: #aaa; stroke-width: .3; }
+  .kanal { stroke: #2f7d54; stroke-width: 2.2; stroke-opacity: .25; }
+  .el { fill: none; stroke-width: .6; }
+  .prikket { stroke-dasharray: 2 1.2; }
+  .net { stroke-dasharray: .8 1.4; }
+  .sym { fill: #fff; stroke-width: .7; }
+  .kl { fill: #fff; stroke-width: .6; }
+  .mek { stroke: #555; stroke-width: .4; stroke-dasharray: 1.5 1; }
+  .lvzone { fill: #2f7d54; fill-opacity: .04; stroke: #2f7d54; stroke-width: .5; stroke-dasharray: 3 2; }
+  .ref { font-size: 5px; font-weight: 700; fill: #1f1f1f; }
+  .zone { stroke: #444; stroke-width: .5; stroke-dasharray: 3 2; }
+  .hul { fill: #fff; stroke-width: .8; }
+  .h { stroke: #555; stroke-width: .2; }
+  .m { stroke: #333; stroke-width: .25; }
+  .luft { fill: none; stroke: #7aa3c8; stroke-width: .7; stroke-dasharray: 2 1.5; }
+  .boks { fill: #fff; stroke-width: .8; }
+  .led { fill: none; stroke-width: .7; }
+  .prik { stroke-dasharray: 1.5 1.5; }
+  .t { font-size: 5px; font-weight: 600; fill: #1f1f1f; }
+  .ts { font-size: 4.2px; fill: #555; }
+  .mt { font-size: 4.4px; fill: #222; }
+  .nr { font-size: 4.5px; font-weight: 700; fill: #333; text-anchor: middle; }
+  .zt { font-size: 5px; font-weight: 700; letter-spacing: .4px; }
+  .ov { font-size: 6px; font-weight: 700; fill: #1f1f1f; }
+</style>
+<text x="10.0" y="10.0" class="ov" text-anchor="start">Rørkasse W forfra</text>
+<text x="10.0" y="16.0" class="ts" text-anchor="start">1:40 · mål i cm over gulv · grå-grøn = låge/lem (tryk-og-slip)</text>
+<line x1="30.0" y1="587.5" x2="227.5" y2="587.5" class="o"/>
+<line x1="30.0" y1="30.0" x2="227.5" y2="30.0" class="o"/>
+<text x="35.0" y="593.5" class="ts" text-anchor="start">gulv</text>
+<text x="35.0" y="28.0" class="ts" text-anchor="start">nyt hængeloft</text>
+<rect x="40.0" y="95.0" width="52.5" height="492.5" class="inde" />
+<text x="66.2" y="337.5" class="ts" text-anchor="middle" transform="rotate(-90 66.2 337.5)">nichen (radiator)</text>
+<rect x="92.5" y="95.0" width="52.5" height="492.5" class="fast" />
+<rect x="113.8" y="95.0" width="27.5" height="492.5" class="bag" />
+<text x="127.5" y="287.5" class="ts" text-anchor="middle" transform="rotate(-90 127.5 287.5)">faldstamme (bag)</text>
+<rect x="145.0" y="95.0" width="4.0" height="492.5" class="fast" />
+<rect x="213.5" y="95.0" width="4.0" height="492.5" class="fast" />
+<rect x="149.0" y="562.5" width="64.5" height="25.0" class="fast" />
+<text x="181.2" y="577.0" class="ts" text-anchor="middle">sokkel</text>
+<rect x="149.0" y="445.0" width="64.5" height="37.5" class="fast" />
+<rect x="184.5" y="455.0" width="25.0" height="17.5" class="fast" rx="1"/>
+<text x="197.0" y="465.8" class="t" text-anchor="middle">S</text>
+<rect x="149.0" y="95.0" width="64.5" height="4.0" class="fast" />
+<rect x="128.0" y="483.0" width="85.0" height="79.0" class="dor" />
+<text x="170.5" y="517.5" class="t" text-anchor="middle">Lem</text>
+<text x="170.5" y="523.5" class="ts" text-anchor="middle">fordeler + faldstamme</text>
+<rect x="149.5" y="179.5" width="63.5" height="265.5" class="dor" />
+<text x="181.2" y="307.5" class="t" text-anchor="middle">Skab</text>
+<text x="181.2" y="313.5" class="ts" text-anchor="middle">2 flytbare hylder</text>
+<rect x="149.5" y="99.5" width="63.5" height="79.5" class="dor" />
+<text x="181.2" y="135.0" class="t" text-anchor="middle">DIN-skab</text>
+<rect x="155.0" y="163.8" width="52.5" height="7.5" class="rist"/>
+<rect x="40.0" y="30.0" width="177.5" height="65.0" class="fast" />
+<rect x="40.8" y="30.8" width="176.0" height="63.5" class="dor" />
+<text x="128.8" y="64.5" class="t" text-anchor="middle">Ventilatorkasse – aftagelig front</text>
+<line x1="215.5" y1="587.5" x2="224.5" y2="587.5" class="h"/>
+<line x1="215.5" y1="562.5" x2="224.5" y2="562.5" class="h"/>
+<line x1="227.5" y1="587.5" x2="227.5" y2="562.5" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="225.7" y="575.0" class="mt" text-anchor="middle" transform="rotate(-90 225.7 575.0)">10</text>
+<line x1="215.5" y1="562.5" x2="224.5" y2="562.5" class="h"/>
+<line x1="215.5" y1="482.5" x2="224.5" y2="482.5" class="h"/>
+<line x1="227.5" y1="562.5" x2="227.5" y2="482.5" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="225.7" y="522.5" class="mt" text-anchor="middle" transform="rotate(-90 225.7 522.5)">32</text>
+<line x1="215.5" y1="482.5" x2="224.5" y2="482.5" class="h"/>
+<line x1="215.5" y1="445.0" x2="224.5" y2="445.0" class="h"/>
+<line x1="227.5" y1="482.5" x2="227.5" y2="445.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="225.7" y="463.8" class="mt" text-anchor="middle" transform="rotate(-90 225.7 463.8)">15</text>
+<line x1="215.5" y1="445.0" x2="224.5" y2="445.0" class="h"/>
+<line x1="215.5" y1="180.0" x2="224.5" y2="180.0" class="h"/>
+<line x1="227.5" y1="445.0" x2="227.5" y2="180.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="225.7" y="312.5" class="mt" text-anchor="middle" transform="rotate(-90 225.7 312.5)">106</text>
+<line x1="215.5" y1="180.0" x2="224.5" y2="180.0" class="h"/>
+<line x1="215.5" y1="100.0" x2="224.5" y2="100.0" class="h"/>
+<line x1="227.5" y1="180.0" x2="227.5" y2="100.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="225.7" y="140.0" class="mt" text-anchor="middle" transform="rotate(-90 225.7 140.0)">32</text>
+<line x1="215.5" y1="100.0" x2="224.5" y2="100.0" class="h"/>
+<line x1="215.5" y1="95.0" x2="224.5" y2="95.0" class="h"/>
+<line x1="227.5" y1="100.0" x2="227.5" y2="95.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="225.7" y="97.5" class="mt" text-anchor="middle" transform="rotate(-90 225.7 97.5)">2</text>
+<line x1="215.5" y1="95.0" x2="224.5" y2="95.0" class="h"/>
+<line x1="215.5" y1="30.0" x2="224.5" y2="30.0" class="h"/>
+<line x1="227.5" y1="95.0" x2="227.5" y2="30.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="225.7" y="62.5" class="mt" text-anchor="middle" transform="rotate(-90 225.7 62.5)">26</text>
+<text x="243.5" y="589.1" class="ts" text-anchor="start">0</text>
+<text x="243.5" y="564.1" class="ts" text-anchor="start">10</text>
+<text x="243.5" y="484.1" class="ts" text-anchor="start">42</text>
+<text x="243.5" y="446.6" class="ts" text-anchor="start">57</text>
+<text x="243.5" y="181.6" class="ts" text-anchor="start">163</text>
+<text x="243.5" y="101.6" class="ts" text-anchor="start">195</text>
+<text x="243.5" y="96.6" class="ts" text-anchor="start">197</text>
+<text x="243.5" y="31.6" class="ts" text-anchor="start">223</text>
+<line x1="92.5" y1="585.5" x2="92.5" y2="592.5" class="h"/>
+<line x1="105.0" y1="585.5" x2="105.0" y2="592.5" class="h"/>
+<line x1="92.5" y1="595.5" x2="105.0" y2="595.5" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="98.8" y="593.7" class="mt" text-anchor="middle">5</text>
+<line x1="105.0" y1="585.5" x2="105.0" y2="592.5" class="h"/>
+<line x1="217.5" y1="585.5" x2="217.5" y2="592.5" class="h"/>
+<line x1="105.0" y1="595.5" x2="217.5" y2="595.5" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="161.2" y="593.7" class="mt" text-anchor="middle">45</text>
+<line x1="92.5" y1="585.5" x2="92.5" y2="602.5" class="h"/>
+<line x1="217.5" y1="585.5" x2="217.5" y2="602.5" class="h"/>
+<line x1="92.5" y1="605.5" x2="217.5" y2="605.5" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="155.0" y="603.7" class="mt" text-anchor="middle">50</text>
+<text x="98.8" y="617.5" class="ts" text-anchor="start">5 cm uden på nichens væg (liste bag)</text>
+<text x="98.8" y="624.5" class="ts" text-anchor="start">Lemmen starter midt på faldstammen. Dybde 29,6 cm.</text>
+</svg>
