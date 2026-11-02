@@ -932,7 +932,8 @@
     .map(li => `<div>${li.innerHTML.replace(/<b>(.*?):?<\/b>:?\s*/, '<b>$1</b>')}</div>`).join('');
   // Plantegningen (forsiden viser kun rum og inventar)
   const fp = document.getElementById('plan').cloneNode(true); fp.removeAttribute('id');
-  fp.querySelectorAll('.inst, .b').forEach(e => e.remove());   // kun rum og inventar, uden bogstaver
+  fp.querySelectorAll('.inst:not(.spot), .b, .spot text').forEach(e => e.remove());   // rum, inventar og spots, uden bogstaver/numre
+  fp.querySelectorAll('.spot circle').forEach(c => { c.style.fill = '#fff'; c.style.stroke = '#2f7d54'; });
   fp.setAttribute('viewBox', '-20 -20 360 205');
   document.getElementById('forside-plan').appendChild(fp);
   document.body.prepend(document.getElementById('forside'));   // forsiden øverst
