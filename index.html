@@ -1023,7 +1023,7 @@
     const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
     document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
     const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
-    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=631afd6a#hv"></iframe>';
+    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=1df575a2#hv"></iframe>';
     nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
     scrollTo(0, 0);
   }
@@ -1032,7 +1032,7 @@
 </script>
 <script>
 (() => {
-  const V = '9bbe5b5c87';
+  const V = '20a9688e41';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
