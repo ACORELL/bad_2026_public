@@ -227,8 +227,8 @@
         <rect x="21" y="28" width="21" height="1.6" fill="#eef6f0" stroke="var(--green)" stroke-width=".3"/>
         <rect x="26" y="0" width="16" height="28" fill="url(#hatch)" stroke="var(--green)" stroke-width=".4" stroke-dasharray="1.6 .9"/>
         <rect x="26" y="0" width="14.5" height="19" fill="none" stroke="#777" stroke-width=".2" stroke-dasharray=".8 .6"/>
-        <circle cx="35" cy="13.5" r="5.5" fill="#fff" stroke="#555" stroke-width=".4"/>
-        <text class="mtxt" x="35" y="14.4" style="fill:#555;font-size:2.4px">FS</text>
+        <circle cx="32.5" cy="13.5" r="5.5" fill="#fff" stroke="#555" stroke-width=".4"/>
+        <text class="mtxt" x="32.5" y="14.4" style="fill:#555;font-size:2.4px">FS</text>
         <rect x="42" y="0" width="29" height="29.6" fill="#fbf9f4" stroke="var(--green)" stroke-width=".4"/>
         <rect x="43.6" y="1.6" width="25.8" height="26.4" fill="none" stroke="var(--green)" stroke-width=".2"/>
         <rect x="43.8" y="28" width="25.4" height="1.6" fill="#fff" stroke="var(--green)" stroke-width=".3"/>
@@ -346,6 +346,7 @@
       
       <g class="lag tomrer forslag-udsugning">
         <rect x="0" y="29.6" width="71" height="24" fill="#b5651d" fill-opacity=".07" stroke="#b5651d" stroke-width=".4" stroke-dasharray="1.4 .8"/>
+        <polygon points="0,28.4 21,26.5 21,29.6 0,29.6" fill="#b5651d" fill-opacity=".07" stroke="#b5651d" stroke-width=".4" stroke-dasharray="1.4 .8"/>
         <line x1="0" y1="53.6" x2="71" y2="53.6" stroke="#b5651d" stroke-width=".9" stroke-dasharray="1.6 .9"/>
         <rect x="-.6" y="34.6" width="1.4" height="16" fill="#fff" stroke="#b5651d" stroke-width=".3"/>
         <text class="mtxt" x="35.5" y="51.8" style="fill:#b5651d;font-size:2.8px">Ventilatorkasse, låge mod rummet</text>
@@ -588,7 +589,7 @@
       <tr data-fag="vvs"><td class="n"><span class="dot g">N</span></td><td class="t">Radiator</td><td class="txt">Leveres af VVS. Inden for den nuværendes mål: ca. 80 × 49 × 10 cm, 11 cm over gulv</td><td class="txt">Indgår i VVS-tilbud.</td></tr>
       <tr data-fag="el" data-koeb><td class="n"><span class="dot g">P</span></td><td class="t">Spejl med lys</td><td class="txt">Dansani Mido+ Glow 60×80 / 94660</td><td class="txt">Touch-dæmpning i spejlet. Fast forsyning.</td></tr>
       <tr data-fag="el" data-koeb><td class="n"><span class="dot g">Q</span></td><td class="t">Makeup-spejl med lys</td><td class="txt">Hansgrohe AddStoris / 41790340</td><td class="txt">Egen afbryder. Fast forsyning, indbygningsdåse i væg A.</td></tr>
-      <tr data-fag="tomrer" data-koeb><td class="n"><span class="dot g">R</span></td><td class="t">Dør</td><td class="txt"></td><td class="txt">Forslag til dørtype ønskes. Luftspalte under døren.</td></tr>
+      <tr data-fag="tomrer" data-koeb><td class="n"><span class="dot g">R</span></td><td class="t">Dør</td><td class="txt"></td><td class="txt">Dørtype ønskes; 196 over 25 mm trin; luftspalte.</td></tr>
       
       
       
@@ -795,7 +796,7 @@
 <section class="page" data-fane="tomrer" data-pakke="vvs" style="--accent:var(--c-tomrer)">
   <div class="fag-head"><h1>Tømrer</h1><span>rørkasse W forfra</span></div>
   <div style="display:grid;grid-template-columns:44% 1fr;gap:16px;align-items:start">
-    <div class="din-kort"><img src="cad/w_forfra.svg?v=9cb7a6aa" alt="Rørkasse W forfra med låger, lem og mål" style="display:block;width:100%"></div>
+    <div class="din-kort"><img src="cad/w_forfra.svg?v=c299b84c" alt="Rørkasse W forfra med låger, lem og mål" style="display:block;width:100%"></div>
     <ul class="note">
       <li><b>Mål:</b> 50 cm bred, heraf 5 cm uden på nichens væg (kileliste bag fronten mod den skrå væg); 29,6 cm dyb.</li>
       <li><b>Lem 10–42:</b> fra midt på faldstammen og hen over skabet; ét rum bag med fordeler og faldstamme.</li>
@@ -1040,7 +1041,7 @@
     const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
     document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
     const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
-    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=cfc53909#hv"></iframe>';
+    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=2f9ecf17#hv"></iframe>';
     nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
     scrollTo(0, 0);
   }
@@ -1049,7 +1050,7 @@
 </script>
 <script>
 (() => {
-  const V = '9fb58d0c4a';
+  const V = '9c8a5971b0';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });

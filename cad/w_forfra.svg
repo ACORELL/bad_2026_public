@@ -55,8 +55,8 @@
 <rect x="40.0" y="95.0" width="52.5" height="492.5" class="inde" />
 <text x="66.2" y="337.5" class="ts" text-anchor="middle" transform="rotate(-90 66.2 337.5)">nichen (radiator)</text>
 <rect x="92.5" y="95.0" width="52.5" height="492.5" class="fast" />
-<rect x="113.8" y="95.0" width="27.5" height="492.5" class="bag" />
-<text x="127.5" y="287.5" class="ts" text-anchor="middle" transform="rotate(-90 127.5 287.5)">faldstamme (bag)</text>
+<rect x="107.5" y="95.0" width="27.5" height="492.5" class="bag" />
+<text x="121.2" y="287.5" class="ts" text-anchor="middle" transform="rotate(-90 121.2 287.5)">faldstamme Ø11 (bag)</text>
 <rect x="145.0" y="95.0" width="4.0" height="492.5" class="fast" />
 <rect x="213.5" y="95.0" width="4.0" height="492.5" class="fast" />
 <rect x="149.0" y="562.5" width="64.5" height="25.0" class="fast" />
@@ -65,9 +65,9 @@
 <rect x="184.5" y="455.0" width="25.0" height="17.5" class="fast" rx="1"/>
 <text x="197.0" y="465.8" class="t" text-anchor="middle">S</text>
 <rect x="149.0" y="95.0" width="64.5" height="4.0" class="fast" />
-<rect x="128.0" y="483.0" width="85.0" height="79.0" class="dor" />
-<text x="170.5" y="517.5" class="t" text-anchor="middle">Lem</text>
-<text x="170.5" y="523.5" class="ts" text-anchor="middle">fordeler + faldstamme</text>
+<rect x="121.8" y="483.0" width="91.2" height="79.0" class="dor" />
+<text x="167.5" y="517.5" class="t" text-anchor="middle">Lem</text>
+<text x="167.5" y="523.5" class="ts" text-anchor="middle">fordeler + faldstamme</text>
 <rect x="149.5" y="179.5" width="63.5" height="265.5" class="dor" />
 <text x="181.2" y="307.5" class="t" text-anchor="middle">Skab</text>
 <text x="181.2" y="313.5" class="ts" text-anchor="middle">2 flytbare hylder</text>
