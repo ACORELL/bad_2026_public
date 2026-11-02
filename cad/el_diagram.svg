@@ -140,7 +140,7 @@
 <path d="M295.5 107.5 V148" class="el" style="stroke:#4a7d3a"/>
 <circle cx="295.5" cy="148.0" r="1.1" fill="#4a7d3a"/>
 <text x="284.0" y="102.0" class="ref" text-anchor="end">M · kanalventilator</text>
-<text x="284.0" y="107.0" class="ts" text-anchor="end">S&amp;P TD-160/100 Ecowatt, 0–10 V</text>
+<text x="284.0" y="107.0" class="ts" text-anchor="end">S&amp;P TD EVO-100 PF Ecowatt, 0–10 V</text>
 <circle cx="410.0" cy="38.0" r="1.1" fill="#c97a00"/>
 <path d="M410 38 V96" class="el" style="stroke:#c97a00"/>
 <circle cx="410" cy="100.2" r="4.2" class="sym" style="stroke:#c97a00"/>
