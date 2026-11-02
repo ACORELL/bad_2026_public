@@ -9,6 +9,8 @@
 <style>
   .o { fill: none; stroke: #222; stroke-width: .5; }
   .skrav { fill: url(#skrav); stroke: #222; stroke-width: .6; }
+  .plade { fill: #f1ead9; stroke: #222; stroke-width: .5; }
+  .liste { fill: #e6dcc4; stroke: #777; stroke-width: .3; }
   .inde { fill: #fff; stroke: #222; stroke-width: .6; }
   .laage { fill: #f3efe6; stroke: #222; stroke-width: .5; }
   .rist { fill: url(#ristm); stroke: #555; stroke-width: .3; }
@@ -44,8 +46,10 @@
 <text x="10.0" y="12.0" class="ov" text-anchor="start">A · Forfra, låge fjernet</text>
 <text x="10.0" y="18.0" class="ts" text-anchor="start">mål i mm</text>
 <rect x="24.0" y="28.0" width="261.0" height="336.0" class="skrav" />
-<rect x="40.0" y="44.0" width="229.0" height="304.0" class="inde" />
+<rect x="40.0" y="44.0" width="229.0" height="304.0" class="plade" />
 <rect x="70" y="28" width="169" height="16" class="rist"/>
+<rect x="269" y="278" width="16" height="50" class="rist"/>
+<rect x="269" y="64" width="16" height="50" class="rist"/>
 <rect x="44.0" y="120.5" width="221.0" height="35.0" class="skinne" />
 <line x1="44.0" y1="125.5" x2="265.0" y2="125.5" class="tynd"/>
 <line x1="44.0" y1="150.5" x2="265.0" y2="150.5" class="tynd"/>
@@ -132,7 +136,7 @@
 <circle cx="253" cy="36.0" r="5" class="hul" style="stroke:#2f7d54"/>
 <text x="253.0" y="38.0" class="nr" text-anchor="middle">4</text>
 <path d="M241 48 V223" class="kanal"/>
-<text x="245.0" y="50.0" class="ts" text-anchor="start" transform="rotate(90 245.0 50.0)">lavstrøm</text>
+<text x="245.0" y="50.0" class="ts" text-anchor="start" transform="rotate(90 245.0 50.0)">lavstrøm, bag pladen</text>
 <line x1="40.0" y1="346.0" x2="40.0" y2="367.0" class="h"/>
 <line x1="269.0" y1="346.0" x2="269.0" y2="367.0" class="h"/>
 <line x1="40.0" y1="370.0" x2="269.0" y2="370.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
@@ -149,6 +153,7 @@
 <line x1="267.0" y1="348.0" x2="278.0" y2="348.0" class="h"/>
 <line x1="281.0" y1="263.0" x2="281.0" y2="348.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
 <text x="279.2" y="305.5" class="mt" text-anchor="middle" transform="rotate(-90 279.2 305.5)">85</text>
+<text x="154.5" y="393.0" class="ts" text-anchor="middle">Montageplade 100 mm foran bagsiden; kabler ind i toppen bag pladen, frem ved skinnerne · riste i siden mod toilettet</text>
 <text x="154.5" y="386.0" class="ts" text-anchor="middle">Skabets bund 1650 mm over gulv · skinner 1735 og 1860 mm over gulv</text>
 <text x="323.0" y="12.0" class="ov" text-anchor="start">B · Snit, set fra siden</text>
 <text x="323.0" y="18.0" class="ts" text-anchor="start">bagside til venstre, låge til højre</text>
@@ -156,29 +161,40 @@
 <rect x="339.0" y="44.0" width="228.0" height="304.0" class="inde" />
 <rect x="567.0" y="50.0" width="16.0" height="298.0" class="laage" />
 <rect x="567.0" y="314.0" width="16" height="26" class="rist"/>
-<rect x="379" y="28.0" width="148" height="16" class="rist"/>
-<rect x="339.0" y="120.5" width="7.5" height="35.0" class="skinne" />
-<rect x="346.5" y="93.0" width="70" height="90" class="mod2" style="stroke:#c97a00"/>
-<rect x="346.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
-<rect x="346.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
-<rect x="346.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
-<rect x="346.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
-<rect x="346.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
-<rect x="339.0" y="245.5" width="7.5" height="35.0" class="skinne" />
-<rect x="346.5" y="227.0" width="33" height="72" class="mod2" style="stroke:#2f7d54"/>
-<rect x="346.5" y="218.0" width="60" height="90" class="mod2" style="stroke:#2f7d54"/>
-<rect x="346.5" y="238.0" width="45" height="50" class="mod2" style="stroke:#2f7d54"/>
+<rect x="463" y="28.0" width="80" height="16" class="rist"/>
+<rect x="463" y="278" width="80" height="50" class="rist" opacity=".5"/>
+<rect x="463" y="64" width="80" height="50" class="rist" opacity=".5"/>
+<text x="503.0" y="61.0" class="ts" text-anchor="middle">rist i siden</text>
+<rect x="419.0" y="44.0" width="20.0" height="304.0" class="liste" />
+<rect x="439.0" y="44.0" width="12.0" height="304.0" class="plade" />
+<text x="379.0" y="196.0" class="ts" text-anchor="middle" transform="rotate(-90 379.0 196.0)">kabler</text>
+<rect x="451.0" y="120.5" width="7.5" height="35.0" class="skinne" />
+<rect x="458.5" y="93.0" width="70" height="90" class="mod2" style="stroke:#c97a00"/>
+<rect x="458.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
+<rect x="458.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
+<rect x="458.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
+<rect x="458.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
+<rect x="458.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
+<rect x="451.0" y="245.5" width="7.5" height="35.0" class="skinne" />
+<rect x="458.5" y="227.0" width="33" height="72" class="mod2" style="stroke:#2f7d54"/>
+<rect x="458.5" y="218.0" width="60" height="90" class="mod2" style="stroke:#2f7d54"/>
+<rect x="458.5" y="238.0" width="45" height="50" class="mod2" style="stroke:#2f7d54"/>
 <path d="M565 327 H537 V52" class="luft" marker-end="url(#pil2)"/>
-<text x="533.0" y="104.0" class="ts" text-anchor="end">luft ind forneden, ud i toppen</text>
+<text x="533.0" y="104.0" class="ts" text-anchor="end">luft ind forneden,</text>
+<text x="533.0" y="110.0" class="ts" text-anchor="end">ud i toppen</text>
 <line x1="339.0" y1="346.0" x2="339.0" y2="367.0" class="h"/>
 <line x1="567.0" y1="346.0" x2="567.0" y2="367.0" class="h"/>
 <line x1="339.0" y1="370.0" x2="567.0" y2="370.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
 <text x="453.0" y="368.2" class="mt" text-anchor="middle">228</text>
-<line x1="346.5" y1="84.0" x2="346.5" y2="75.0" class="h"/>
-<line x1="416.5" y1="84.0" x2="416.5" y2="75.0" class="h"/>
-<line x1="346.5" y1="78.0" x2="416.5" y2="78.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
-<text x="381.5" y="76.2" class="mt" text-anchor="middle">78</text>
-<text x="453.0" y="386.0" class="ts" text-anchor="middle">rigeligt plads til kabler foran modulerne</text>
+<line x1="339.0" y1="84.0" x2="339.0" y2="75.0" class="h"/>
+<line x1="439.0" y1="84.0" x2="439.0" y2="75.0" class="h"/>
+<line x1="339.0" y1="78.0" x2="439.0" y2="78.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="389.0" y="76.2" class="mt" text-anchor="middle">100</text>
+<line x1="451.0" y1="84.0" x2="451.0" y2="75.0" class="h"/>
+<line x1="528.5" y1="84.0" x2="528.5" y2="75.0" class="h"/>
+<line x1="451.0" y1="78.0" x2="528.5" y2="78.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="489.8" y="76.2" class="mt" text-anchor="middle">78</text>
+<text x="453.0" y="386.0" class="ts" text-anchor="middle">kabler samles bag pladen · 38 mm fra modulerne til lågen</text>
 <text x="10.0" y="420.0" class="ov" text-anchor="start">C · Forbindelser</text>
 <text x="10.0" y="426.0" class="ts" text-anchor="start">orange = stærkstrøm 230 V (elektriker) · grøn = lavstrøm (bygherre)</text>
 <rect x="10" y="440" width="62" height="18" rx="2" class="boks" style="stroke:#c97a00"/>

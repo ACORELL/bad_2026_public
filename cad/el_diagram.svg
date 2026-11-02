@@ -9,6 +9,8 @@
 <style>
   .o { fill: none; stroke: #222; stroke-width: .5; }
   .skrav { fill: url(#skrav); stroke: #222; stroke-width: .6; }
+  .plade { fill: #f1ead9; stroke: #222; stroke-width: .5; }
+  .liste { fill: #e6dcc4; stroke: #777; stroke-width: .3; }
   .inde { fill: #fff; stroke: #222; stroke-width: .6; }
   .laage { fill: #f3efe6; stroke: #222; stroke-width: .5; }
   .rist { fill: url(#ristm); stroke: #555; stroke-width: .3; }
