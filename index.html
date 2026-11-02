@@ -520,9 +520,9 @@
 
 
   <ul class="note" id="status" hidden>
-    <li><b>Nu:</b> VVS, tømrer og elektriker har besigtiget. Planen er rettet siden (bl.a. rørkasse W med skab, afløb, udsugning) – rettelserne skal godkendes, før der gives tilbud. Glarmester findes af bygherre; fliser til udskiftning findes af bygherre.</li>
-    <li><b>Mangler valg:</b> brusearmatur M (VVS foreslår), dør R (tømrer foreslår), glarmester (bygherre finder) og løsning for glasvæg F.</li>
-    <li><b>Afklares:</b> fjernelse af gamle rør i rørkasse W, tilslutning af vaskens afløb til gulvafløbet, hvem der laver flisearbejdet, faldstammens placering (mål).</li>
+    <li><b>Nu:</b><ul><li>VVS, tømrer og elektriker har besigtiget</li><li>Planen er rettet siden – rettelserne skal godkendes, før der gives tilbud</li><li>Glarmester og fliser findes af bygherre</li></ul></li>
+    <li><b>Mangler valg:</b><ul><li>Brusearmatur M (VVS foreslår)</li><li>Dør R (tømrer foreslår)</li><li>Fliser til udskiftning (bygherre finder)</li><li>Glarmester (bygherre finder) og løsning for glasvæg F</li></ul></li>
+    <li><b>Afklares:</b><ul><li>Fjernelse af gamle rør i rørkasse W</li><li>Tilslutning af vaskens afløb til gulvafløbet</li><li>Hvem der laver flisearbejdet</li><li>Faldstammens placering (mål)</li></ul></li>
   </ul>
 
   <h2>Fast definerede vægsegmenter</h2>
@@ -858,6 +858,7 @@
     .status { display: grid; gap: 0; }
     .status div { font-size: 14.5px; line-height: 1.5; padding: 9px 0; border-bottom: 1px solid var(--line-strong); }
     .status div:first-child { padding-top: 0; } .status div:last-child { border-bottom: 0; padding-bottom: 0; }
+    .status ul { margin: 0; padding-left: 18px; } .status ul li + li { margin-top: 2px; }
     .status b { display: block; font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--green); margin-bottom: 2px; }
     /* seneste ændringer: én linje pr. helhed, dato = seneste ændring */
     .aendr { list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
@@ -877,10 +878,10 @@
     .faser li.nu::before { border-color: var(--green); color: var(--green); box-shadow: 0 0 0 5px rgba(47,125,84,.15); }
     .faser li.nu { color: var(--ink); }
     .faser li b { display: block; font-weight: 600; color: var(--ink); font-size: 13px; }
-    @media (max-height: 860px) and (min-width: 1001px) {   /* lave skærme: tættere, så alt er synligt uden scroll */
+    @media (max-height: 1000px) and (min-width: 1001px) {   /* lave skærme: tættere, så alt er synligt uden scroll */
       .web { padding-top: 12px; padding-bottom: 12px; gap: 10px 16px; } .web h1 { font-size: 24px; } .web .lead { font-size: 13.5px; }
       .web .kort { padding: 12px 16px; } .side { gap: 10px; }
-      .status div { font-size: 13px; line-height: 1.4; padding: 6px 0; } .aendr { font-size: 13px; } .aendr li { padding: 4px 0; }
+      .status div { font-size: 13px; line-height: 1.35; padding: 4px 0; } .status ul li + li { margin-top: 0; } .web h2 { margin-bottom: 6px; } .aendr { font-size: 13px; } .aendr li { padding: 4px 0; }
       .faser li { padding-top: 28px; font-size: 11px; } .faser li b { font-size: 12px; }
     }
     @media (max-width: 1000px) {
@@ -929,7 +930,7 @@
 </section>
 <script>
   // Status fra plantegningens forside (#status): ét kort pr. punkt, overskriften uden kolon
-  document.getElementById('forside-status').innerHTML = [...document.querySelectorAll('#status li')]
+  document.getElementById('forside-status').innerHTML = [...document.querySelectorAll('#status > li')]
     .map(li => `<div>${li.innerHTML.replace(/<b>(.*?):?<\/b>:?\s*/, '<b>$1</b>')}</div>`).join('');
   // Plantegningen (forsiden viser kun rum og inventar)
   const fp = document.getElementById('plan').cloneNode(true); fp.removeAttribute('id');
