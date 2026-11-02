@@ -520,7 +520,7 @@
 
 
   <ul class="note" id="status" hidden>
-    <li><b>Nu:</b> VVS, tømrer og elektriker har besigtiget – afventer tilbud. Glarmester og fliser mangler.</li>
+    <li><b>Nu:</b> VVS, tømrer og elektriker har besigtiget. Planen er rettet siden (bl.a. rørkasse W med skab, afløb, udsugning) – rettelserne skal godkendes, før der gives tilbud. Glarmester og fliser mangler.</li>
     <li><b>Mangler valg:</b> brusearmatur M (VVS foreslår), dør R (tømrer foreslår), løsning for glasvæg F (glarmester).</li>
     <li><b>Afklares:</b> fjernelse af gamle rør i rørkasse W, tilslutning af vaskens afløb til gulvafløbet, faldstammens placering (mål).</li>
   </ul>
@@ -848,13 +848,14 @@
     .web h2 { font-size: 13px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin: 56px 0 18px; }
     .web .kort { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 2px 14px rgba(0,0,0,.06); }
     /* projektfaser */
-    .faser { display: grid; grid-template-columns: repeat(7, 1fr); list-style: none; margin: 0; padding: 0; counter-reset: f; }
+    .faser { display: grid; grid-template-columns: repeat(9, 1fr); list-style: none; margin: 0; padding: 0; counter-reset: f; }
     .faser li { position: relative; text-align: center; font-size: 13px; color: var(--muted); padding-top: 36px; }
     .faser li::before { counter-increment: f; content: counter(f); position: absolute; top: 0; left: 50%; transform: translateX(-50%);
                         width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 2px solid var(--line-strong);
                         font: 700 12px/22px Inter, Arial, sans-serif; color: var(--muted); z-index: 1; box-sizing: border-box; }
     .faser li::after { content: ''; position: absolute; top: 12px; left: 50%; width: 100%; height: 2px; background: var(--line-strong); }
     .faser li:last-child::after { display: none; }
+    .faser li.faerdig::before { content: '✓'; background: var(--green); border-color: var(--green); color: #fff; }
     .faser li.nu::before { border-color: var(--green); color: var(--green); box-shadow: 0 0 0 5px rgba(47,125,84,.15); }
     .faser li.nu { color: var(--ink); }
     .faser li b { display: block; font-weight: 600; color: var(--ink); }
@@ -894,7 +895,9 @@
   <h2>Hvor er vi</h2>
   <div class="kort">
     <ol class="faser">
-      <li class="nu"><b>Tilbud</b>nu</li>
+      <li class="faerdig"><b>Besigtigelse</b>VVS, tømrer, el</li>
+      <li class="nu"><b>Godkend rettelser</b>nu</li>
+      <li><b>Tilbud</b></li>
       <li><b>Beslut og book</b></li>
       <li><b>Køb</b></li>
       <li><b>Klar til start</b>alt leveret</li>
