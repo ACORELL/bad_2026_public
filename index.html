@@ -847,12 +847,10 @@
     .web .lead { font-size: 18px; line-height: 1.6; color: #3b3b3b; max-width: 760px; margin: 0; }
     .web h2 { font-size: 13px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin: 56px 0 18px; }
     .web .kort { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 2px 14px rgba(0,0,0,.06); }
-    /* seneste ændringer: lister pr. fagområde, nyeste øverst */
-    .aendr { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 56px; }
-    .aendr h3 { margin: 18px 0 6px; font-size: 14px; color: var(--c, var(--green)); }
-    .aendr ul { list-style: none; margin: 0; padding: 0; font-size: 15px; line-height: 1.5; }
-    .aendr li { display: grid; grid-template-columns: 58px 1fr; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--line-strong); }
-    .aendr time { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 13.5px; padding-top: 1px; }
+    /* seneste ændringer: store træk, nyeste øverst */
+    .aendr { list-style: none; margin: 0; padding: 0; max-width: 760px; font-size: 16px; }
+    .aendr li { display: grid; grid-template-columns: 64px 110px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line-strong); }
+    .aendr time, .aendr .omr { color: var(--muted); font-size: 14px; padding-top: 1px; }
     /* projektfaser */
     .faser { display: grid; grid-template-columns: repeat(9, 1fr); list-style: none; margin: 0; padding: 0; counter-reset: f; }
     .faser li { position: relative; text-align: center; font-size: 13px; color: var(--muted); padding-top: 36px; }
@@ -919,48 +917,18 @@
   <div class="status" id="forside-status"></div>
 
   <h2>Seneste ændringer</h2>
-  <div class="aendr">
-    <div style="--c:var(--c-tomrer)"><h3>Rørkasse W</h3><ul>
-      <li><time>02.11</time><span>Kun faldstammen bliver – øvrige gamle rør fjernes (afklares)</span></li>
-      <li><time>02.11</time><span>Lukket søjle om faldstammen + skab mod toilettet</span></li>
-      <li><time>02.11</time><span>Lem til fordeleren, åben hylde, én låge til forråd og DIN-skab</span></li>
-      <li><time>02.11</time><span>Greb-fri låger med tryk-og-slip, i flugt med fronten</span></li>
-    </ul></div>
-    <div style="--c:var(--c-vvs)"><h3>Vand og afløb</h3><ul>
-      <li><time>02.11</time><span>Toilet og vask: rør på væggen ca. 10 cm over gulvet, over hinanden</span></li>
-      <li><time>02.11</time><span>Gulvafløb målt op; vaskens afløb skjult under skabet</span></li>
-      <li><time>02.11</time><span>Ønske: vaskens afløb ind fra siden, så risten kan løftes frit</span></li>
-      <li><time>02.11</time><span>Toilettet står 9 cm fra væggen (målt)</span></li>
-      <li><time>01.11</time><span>Fordeler med afspærring pr. forbruger i bunden af W</span></li>
-      <li><time>01.11</time><span>Bruserens rør over hængeloftet</span></li>
-    </ul></div>
-    <div style="--c:var(--c-vvs)"><h3>Udsugning</h3><ul>
-      <li><time>02.11</time><span>Kanalventilator valgt: S&amp;P TD-160/100</span></li>
-      <li><time>02.11</time><span>Udsugningen er VVS-arbejde; el tilslutter</span></li>
-      <li><time>02.11</time><span>Lille rist i ventilatorkassen</span></li>
-      <li><time>01.11</time><span>Ventilatorkasse under loftet, kanal Ø100 over loftet</span></li>
-      <li><time>01.11</time><span>Ventiler i nichen og ved toilettet, tilbageslagsspjæld i afkastet</span></li>
-      <li><time>01.11</time><span>Gammel vægventilator udgår</span></li>
-    </ul></div>
-    <div style="--c:var(--c-el)"><h3>El og lys</h3><ul>
-      <li><time>02.11</time><span>DIN-skab i rørkasse W i stedet for el-kasse på væggen</span></li>
-      <li><time>02.11</time><span>Dimmer: Shelly Pro Dimmer 2PM</span></li>
-      <li><time>01.11</time><span>8 spots i to grupper: rummet og nichen</span></li>
-      <li><time>01.11</time><span>Trykknap ved døren i stedet for lyskontakt</span></li>
-      <li><time>01.11</time><span>Ny forsyning op i loftet fra udtaget; spejle på fast forsyning</span></li>
-    </ul></div>
-    <div style="--c:var(--c-glas)"><h3>Glas og gulv</h3><ul>
-      <li><time>02.11</time><span>Glasvæggen går ikke til loftet (rummet er 223 cm)</span></li>
-      <li><time>02.11</time><span>Fleksibel vandstopper om afløbet, lige langt på begge sider</span></li>
-      <li><time>01.11</time><span>Glasvæg fra væggen ved B; afstandsvæg udgår</span></li>
-      <li><time>01.11</time><span>Bundskinne åben ved B, låg hvor man træder over</span></li>
-    </ul></div>
-    <div style="--c:var(--green)"><h3>Inventar og dokumenter</h3><ul>
-      <li><time>02.11</time><span>Reserverulleholder udgår</span></li>
-      <li><time>02.11</time><span>Vask, spejl og makeup-spejl placeret</span></li>
-      <li><time>02.11</time><span>Ny side: hvem gør hvad, og 3D-model af rummet</span></li>
-    </ul></div>
-  </div>
+  <ul class="aendr">
+    <li><time>02.11</time><span class="omr">Tømrer</span><span>Rørkasse W bygget om med skab</span></li>
+    <li><time>02.11</time><span class="omr">El</span><span>El-kasse flyttet ind i rørkasse W; dimmer valgt</span></li>
+    <li><time>02.11</time><span class="omr">VVS</span><span>Rør til toilet og vask ændret</span></li>
+    <li><time>02.11</time><span class="omr">VVS</span><span>Vaskens afløb ændret</span></li>
+    <li><time>02.11</time><span class="omr">VVS</span><span>Ventilator valgt</span></li>
+    <li><time>02.11</time><span class="omr">Glarmester</span><span>Bundskinne og vandstopper ændret</span></li>
+    <li><time>01.11</time><span class="omr">VVS</span><span>Ventilation ændret</span></li>
+    <li><time>01.11</time><span class="omr">VVS</span><span>Bruserens rør flyttet op over loftet</span></li>
+    <li><time>01.11</time><span class="omr">Glarmester</span><span>Glasvæg ændret</span></li>
+    <li><time>01.11</time><span class="omr">El</span><span>Spots og lysstyring ændret</span></li>
+  </ul>
 
 </section>
 <script>
