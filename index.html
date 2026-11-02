@@ -842,64 +842,77 @@
 
 <section class="web" id="forside" data-fane="oversigt">
   <style>
-    .web { max-width: 1440px; margin: 0 auto; padding: 56px 24px 72px; font-family: Inter, Arial, sans-serif; color: var(--ink); }
-    .web h1 { font-size: 40px; letter-spacing: -.5px; margin: 0 0 12px; }
-    .web .lead { font-size: 18px; line-height: 1.6; color: #3b3b3b; max-width: 760px; margin: 0; }
-    .web h2 { font-size: 13px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); margin: 56px 0 18px; }
-    .web .kort { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 2px 14px rgba(0,0,0,.06); }
+    /* Forside som ét skærmbillede: plan til venstre, status og ændringer til højre, faser nederst */
+    .web { max-width: 1480px; margin: 0 auto; padding: 18px 24px 24px; font-family: Inter, Arial, sans-serif; color: var(--ink);
+           display: grid; grid-template-columns: 3fr 2fr; grid-template-rows: auto 1fr auto; gap: 16px 20px;
+           grid-template-areas: "top top" "plan side" "faser faser"; min-height: calc(100vh - 62px); box-sizing: border-box; }
+    .web .top { grid-area: top; display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+    .web h1 { font-size: 28px; letter-spacing: -.3px; margin: 0; white-space: nowrap; }
+    .web .lead { font-size: 15px; line-height: 1.5; color: #3b3b3b; margin: 0; flex: 1 1 520px; }
+    .web h2 { font-size: 12px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+    .web .kort { background: #fff; border-radius: 14px; padding: 18px 20px; box-shadow: 0 2px 14px rgba(0,0,0,.06); }
+    .plankort { grid-area: plan; display: flex; align-items: center; }
+    .plankort svg { display: block; width: 100%; height: auto; max-height: calc(100vh - 290px); }
+    .side { grid-area: side; display: flex; flex-direction: column; gap: 16px; }
+    /* status */
+    .status { display: grid; gap: 0; }
+    .status div { font-size: 14.5px; line-height: 1.5; padding: 9px 0; border-bottom: 1px solid var(--line-strong); }
+    .status div:first-child { padding-top: 0; } .status div:last-child { border-bottom: 0; padding-bottom: 0; }
+    .status b { display: block; font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--green); margin-bottom: 2px; }
     /* seneste ændringer: én linje pr. helhed, dato = seneste ændring */
-    .aendr { list-style: none; margin: 0; padding: 0; max-width: 760px; font-size: 16px; }
-    .aendr li { display: grid; grid-template-columns: 64px 110px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line-strong); }
-    .aendr time, .aendr .omr { color: var(--muted); font-size: 14px; padding-top: 1px; }
+    .aendr { list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
+    .aendr li { display: grid; grid-template-columns: 52px 92px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line-strong); }
+    .aendr li:last-child { border-bottom: 0; padding-bottom: 0; } .aendr li:first-child { padding-top: 0; }
+    .aendr time, .aendr .omr { color: var(--muted); font-size: 13px; padding-top: 1px; }
     /* projektfaser */
+    .faserkort { grid-area: faser; }
     .faser { display: grid; grid-template-columns: repeat(9, 1fr); list-style: none; margin: 0; padding: 0; counter-reset: f; }
-    .faser li { position: relative; text-align: center; font-size: 13px; color: var(--muted); padding-top: 36px; }
+    .faser li { position: relative; text-align: center; font-size: 12px; color: var(--muted); padding-top: 32px; line-height: 1.35; }
     .faser li::before { counter-increment: f; content: counter(f); position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-                        width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 2px solid var(--line-strong);
-                        font: 700 12px/22px Inter, Arial, sans-serif; color: var(--muted); z-index: 1; box-sizing: border-box; }
-    .faser li::after { content: ''; position: absolute; top: 12px; left: 50%; width: 100%; height: 2px; background: var(--line-strong); }
+                        width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 2px solid var(--line-strong);
+                        font: 700 11px/20px Inter, Arial, sans-serif; color: var(--muted); z-index: 1; box-sizing: border-box; }
+    .faser li::after { content: ''; position: absolute; top: 11px; left: 50%; width: 100%; height: 2px; background: var(--line-strong); }
     .faser li:last-child::after { display: none; }
     .faser li.faerdig::before { content: '✓'; background: var(--green); border-color: var(--green); color: #fff; }
     .faser li.nu::before { border-color: var(--green); color: var(--green); box-shadow: 0 0 0 5px rgba(47,125,84,.15); }
     .faser li.nu { color: var(--ink); }
-    .faser li b { display: block; font-weight: 600; color: var(--ink); }
-    /* status */
-    .status { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .status .kort { padding: 22px; font-size: 15px; line-height: 1.55; }
-    .status .kort b { display: block; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
-    /* håndværkerugen: afhængighedslinje */
-    .flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px 26px; }
-    .flow li { position: relative; background: #fff; border-radius: 14px; padding: 16px 16px 14px; box-shadow: 0 2px 14px rgba(0,0,0,.06);
-               border-top: 4px solid var(--c, var(--line-strong)); font-size: 14px; line-height: 1.45; }
-    .flow li:not(:last-child)::after { content: '→'; position: absolute; right: -20px; top: 50%; transform: translateY(-50%); color: var(--faint); font-size: 16px; }
-    .flow .fag { font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--c, var(--muted)); }
-    .flow .hvad { display: block; font-weight: 600; margin: 4px 0 8px; }
-    .flow .kraever { font-size: 12px; color: var(--muted); }
-    .web .note-lille { margin-top: 18px; font-size: 13px; color: var(--muted); }
-    /* plan + genveje */
-    .plankort svg { display: block; width: 100%; height: auto; }
-    .genveje { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 16px; }
-    .genveje a { display: block; background: #fff; border-radius: 12px; padding: 16px; text-decoration: none; color: var(--ink);
-                 box-shadow: 0 2px 14px rgba(0,0,0,.06); border-left: 4px solid var(--c, var(--green)); font-weight: 600; font-size: 15px; }
-    .genveje a span { display: block; font-weight: 400; font-size: 12.5px; color: var(--muted); margin-top: 4px; }
-    @media (max-width: 860px) {
-      .web { padding: 32px 16px 56px; } .web h1 { font-size: 30px; }
-      .faser { grid-template-columns: 1fr; gap: 12px; } .faser li { text-align: left; padding: 3px 0 0 40px; min-height: 28px; }
+    .faser li b { display: block; font-weight: 600; color: var(--ink); font-size: 13px; }
+    @media (max-height: 860px) and (min-width: 1001px) {   /* lave skærme: tættere, så alt er synligt uden scroll */
+      .web { padding-top: 12px; padding-bottom: 12px; gap: 10px 16px; } .web h1 { font-size: 24px; } .web .lead { font-size: 13.5px; }
+      .web .kort { padding: 12px 16px; } .side { gap: 10px; }
+      .status div { font-size: 13px; line-height: 1.4; padding: 6px 0; } .aendr { font-size: 13px; } .aendr li { padding: 4px 0; }
+      .faser li { padding-top: 28px; font-size: 11px; } .faser li b { font-size: 12px; }
+    }
+    @media (max-width: 1000px) {
+      .web { grid-template-columns: 1fr; grid-template-areas: "top" "plan" "side" "faser"; min-height: 0; padding: 20px 16px 40px; }
+      .plankort svg { max-height: none; }
+      .faser { grid-template-columns: 1fr; gap: 10px; } .faser li { text-align: left; padding: 3px 0 0 38px; min-height: 26px; }
       .faser li::before { left: 0; transform: none; } .faser li::after { display: none; }
-      .status, .genveje, .flow, .aendr { grid-template-columns: 1fr; }
-      .flow li:not(:last-child)::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -24px; transform: none; }
     }
   </style>
 
-  <h1>Renovering af badeværelse</h1>
-  <p class="lead">Badeværelset får nyt hængeloft med spots, ny udsugning, nyt toilet og ny vask, glasvæg i brusenichen
-    og en ny rørkasse med skab. Fugerne skiftes, og enkelte fliser udskiftes – resten af fliserne bliver.
-    Detaljerne for hvert fag ligger under fanerne øverst.</p>
+  <div class="top">
+    <h1>Renovering af badeværelse</h1>
+    <p class="lead">Nyt hængeloft med spots, ny udsugning, nyt toilet og vask, glasvæg i brusenichen og ny rørkasse med skab.
+      Fuger skiftes, enkelte fliser udskiftes. Detaljer for hvert fag under fanerne øverst.</p>
+  </div>
 
-  <h2>Rummet</h2>
   <div class="kort plankort" id="forside-plan"></div>
-  <h2>Hvor er vi</h2>
-  <div class="kort">
+
+  <div class="side">
+    <div class="kort"><h2>Status</h2><div class="status" id="forside-status"></div></div>
+    <div class="kort"><h2>Seneste ændringer</h2>
+      <ul class="aendr">
+        <li><time>02.11</time><span class="omr">Tømrer</span><span>Rørkasse W ændret</span></li>
+        <li><time>02.11</time><span class="omr">VVS</span><span>Rør og afløb ændret</span></li>
+        <li><time>02.11</time><span class="omr">VVS</span><span>Ventilation ændret</span></li>
+        <li><time>02.11</time><span class="omr">El</span><span>El og lys ændret</span></li>
+        <li><time>02.11</time><span class="omr">Glarmester</span><span>Glasvæg og bundskinne ændret</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kort faserkort"><h2>Hvor er vi</h2>
     <ol class="faser">
       <li class="faerdig"><b>Besigtigelse</b>VVS, tømrer, el</li>
       <li class="nu"><b>Godkend rettelser</b>nu</li>
@@ -912,24 +925,11 @@
       <li><b>Afslutning</b>bygherre</li>
     </ol>
   </div>
-
-  <h2>Status</h2>
-  <div class="status" id="forside-status"></div>
-
-  <h2>Seneste ændringer</h2>
-  <ul class="aendr">
-    <li><time>02.11</time><span class="omr">Tømrer</span><span>Rørkasse W ændret</span></li>
-    <li><time>02.11</time><span class="omr">VVS</span><span>Rør og afløb ændret</span></li>
-    <li><time>02.11</time><span class="omr">VVS</span><span>Ventilation ændret</span></li>
-    <li><time>02.11</time><span class="omr">El</span><span>El og lys ændret</span></li>
-    <li><time>02.11</time><span class="omr">Glarmester</span><span>Glasvæg og bundskinne ændret</span></li>
-  </ul>
-
 </section>
 <script>
   // Status fra plantegningens forside (#status): ét kort pr. punkt, overskriften uden kolon
   document.getElementById('forside-status').innerHTML = [...document.querySelectorAll('#status li')]
-    .map(li => `<div class="kort">${li.innerHTML.replace(/<b>(.*?):?<\/b>:?\s*/, '<b>$1</b>')}</div>`).join('');
+    .map(li => `<div>${li.innerHTML.replace(/<b>(.*?):?<\/b>:?\s*/, '<b>$1</b>')}</div>`).join('');
   // Plantegningen (forsiden viser kun rum og inventar)
   const fp = document.getElementById('plan').cloneNode(true); fp.removeAttribute('id');
   fp.querySelectorAll('.inst, .b').forEach(e => e.remove());   // kun rum og inventar, uden bogstaver
