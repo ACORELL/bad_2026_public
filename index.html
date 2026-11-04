@@ -723,8 +723,8 @@
       <tr><td class="t">Y1, Y2</td><td>Eltako SUD12/1-10V + LUD12-230V</td><td class="txt">Én pr. kanal, bagkant. Styres kablet med 1–10 V fra U1 – ingen trådløs.</td><td>Elektriker</td></tr>
       <tr><td class="t">E1, E2</td><td>Spots, kanal 1 og 2</td><td class="txt">E1: spot 1, 2, 5–7 (ca. 19–24 W). E2: spot 3, 4, 8 (ca. 11–14 W). Klasse II.</td><td>Elektriker</td></tr>
       <tr><td class="t">T1</td><td>24 V DC forsyning</td><td class="txt">230 V ind; 24 V ud til lavstrømsskinnen.</td><td>Elektriker (230 V)</td></tr>
-      <tr><td class="t">K1</td><td>Relæ i styreenheden A1</td><td class="txt">Bryder ventilatorens 230 V ved service/fejl; i drift kører den altid. 230 V-siden: elektriker.</td><td>Elektriker (230 V)</td></tr>
-      <tr><td class="t">M</td><td>Kanalventilator (elektrikerens valg)</td><td class="txt">230 V via K1; 0–10 V fra U1 (skærmet), aldrig under minimum. Med PE.</td><td>Elektriker / bygherre</td></tr>
+      <tr><td class="t">K1</td><td>Relæ i styreenheden A1</td><td class="txt">Bryder ventilatorens 230 V kun ved service. Åbent: tegnet som sluttekontakt, men død A1 må ikke stoppe ventilatoren. 230 V-siden: elektriker.</td><td>Elektriker (230 V)</td></tr>
+      <tr><td class="t">M</td><td>Kanalventilator (elektrikerens valg)</td><td class="txt">230 V via K1; 0–10 V fra U1 (skærmet), minimum sikres i hardware ved ventilatoren. Med PE.</td><td>Elektriker / bygherre</td></tr>
       <tr><td class="t">P, Q</td><td>Spejl og makeup-spejl med lys</td><td class="txt">Fast 230 V, egen betjening. Kabel over loftet.</td><td>Elektriker</td></tr>
       <tr><td class="t">A1, U1, B1</td><td>Styreenhed, 0–10 V-modul (3 udgange), sensor</td><td class="txt">Lavstrøm, forsynet fra T1. U1 styrer M, Y1 og Y2.</td><td>Bygherre</td></tr>
       <tr><td class="t">S</td><td>Trykknap ved døren</td><td class="txt">LK FUGA svagstrømstryk; lavstrømskabel til A1.</td><td>Bygherre</td></tr>
@@ -1049,7 +1049,7 @@
 </script>
 <script>
 (() => {
-  const V = 'f609a94374';
+  const V = 'c1fb638628';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
