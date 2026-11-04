@@ -54,17 +54,13 @@
 <text x="35.0" y="28.0" class="ts" text-anchor="start">nyt hængeloft</text>
 <rect x="40.0" y="95.0" width="52.5" height="492.5" class="inde" />
 <text x="66.2" y="337.5" class="ts" text-anchor="middle" transform="rotate(-90 66.2 337.5)">nichen (radiator)</text>
-<rect x="92.5" y="95.0" width="52.5" height="492.5" class="fast" />
+<rect x="92.5" y="95.0" width="121.0" height="492.5" class="fast" />
 <rect x="107.5" y="95.0" width="27.5" height="492.5" class="bag" />
 <text x="121.2" y="287.5" class="ts" text-anchor="middle" transform="rotate(-90 121.2 287.5)">faldstamme Ø11 (bag)</text>
-<rect x="145.0" y="95.0" width="4.0" height="492.5" class="fast" />
 <rect x="213.5" y="95.0" width="4.0" height="492.5" class="fast" />
-<rect x="149.0" y="562.5" width="64.5" height="25.0" class="fast" />
 <text x="181.2" y="577.0" class="ts" text-anchor="middle">sokkel</text>
-<rect x="149.0" y="445.0" width="64.5" height="37.5" class="fast" />
 <rect x="184.5" y="455.0" width="25.0" height="17.5" class="fast" rx="1"/>
 <text x="197.0" y="465.8" class="t" text-anchor="middle">S</text>
-<rect x="149.0" y="95.0" width="64.5" height="4.0" class="fast" />
 <rect x="121.8" y="483.0" width="91.2" height="79.0" class="dor" />
 <text x="167.5" y="517.5" class="t" text-anchor="middle">Lem</text>
 <text x="167.5" y="523.5" class="ts" text-anchor="middle">fordeler + faldstamme</text>
