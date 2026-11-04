@@ -126,11 +126,12 @@
 <text x="210.0" y="73.0" class="ts" text-anchor="start">24 V DC forsyning</text>
 <circle cx="290.0" cy="38.0" r="1.1" fill="#c97a00"/>
 <path d="M290 38 V64" class="el" style="stroke:#c97a00"/>
-<path d="M290 64 V71.0" class="el" style="stroke:#c97a00"/>
+<path d="M290 64 V71.0 H285.5" class="el" style="stroke:#c97a00"/>
 <path d="M290 78.0 V84" class="el" style="stroke:#c97a00"/>
-<path d="M290 78.0 L285 72.0" class="el" style="stroke:#c97a00"/>
-<text x="296.0" y="74.0" class="ref" text-anchor="start">K1</text>
-<text x="296.0" y="79.0" class="ts" text-anchor="start">relæ i A1</text>
+<path d="M290 78.0 L285.5 70.2" class="el" style="stroke:#c97a00"/>
+<text x="296.0" y="72.0" class="ref" text-anchor="start">K1</text>
+<text x="296.0" y="77.0" class="ts" text-anchor="start">eget relæ, brydekontakt</text>
+<text x="296.0" y="82.0" class="ts" text-anchor="start">bryder kun ved service</text>
 <path d="M290 84 V96" class="el" style="stroke:#c97a00"/>
 <circle cx="295.5" cy="102" r="5.5" class="sym" style="stroke:#c97a00"/>
 <text x="295.5" y="104.0" class="t" text-anchor="middle">M</text>
@@ -169,15 +170,21 @@
 <path d="M200 82 V186 H565" class="el" style="stroke:#2f7d54"/>
 <text x="187.0" y="179.6" class="ts" text-anchor="end">+24 V</text>
 <text x="196.0" y="187.6" class="ts" text-anchor="end">0 V</text>
-<rect x="255" y="196" width="70" height="38" class="sym" style="stroke:#2f7d54"/>
-<text x="259.0" y="204.0" class="ref" text-anchor="start">A1 · StamPLC</text>
-<text x="259.0" y="209.0" class="ts" text-anchor="start">styreenhed (ESP32)</text>
-<path d="M263 178 V196" class="el" style="stroke:#2f7d54"/>
+<rect x="255" y="202" width="70" height="32" class="sym" style="stroke:#2f7d54"/>
+<text x="259.0" y="211.0" class="ref" text-anchor="start">A1 · StamPLC</text>
+<text x="259.0" y="216.0" class="ts" text-anchor="start">styreenhed (ESP32)</text>
+<path d="M263 178 V202" class="el" style="stroke:#2f7d54"/>
 <circle cx="263.0" cy="178.0" r="1.1" fill="#2f7d54"/>
-<path d="M269 186 V196" class="el" style="stroke:#2f7d54"/>
+<path d="M269 186 V202" class="el" style="stroke:#2f7d54"/>
 <circle cx="269.0" cy="186.0" r="1.1" fill="#2f7d54"/>
-<rect x="286" y="212" width="8" height="12" class="sym" style="stroke:#2f7d54"/>
-<line x1="287.5" y1="212" x2="287.5" y2="74.5" class="mek"/>
+<rect x="298" y="189" width="8" height="10" class="sym" style="stroke:#2f7d54"/>
+<path d="M302 178 V189" class="el" style="stroke:#2f7d54"/>
+<circle cx="302.0" cy="178.0" r="1.1" fill="#2f7d54"/>
+<path d="M302 199 V202" class="el" style="stroke:#2f7d54"/>
+<line x1="298" y1="194" x2="287.5" y2="194" class="mek"/>
+<line x1="287.5" y1="194" x2="287.5" y2="74.5" class="mek"/>
+<text x="310.0" y="193.0" class="ts" text-anchor="start">K1 · spole 24 V</text>
+<text x="310.0" y="199.0" class="ts" text-anchor="start">styres af relæ i A1</text>
 <path d="M120 178 V202" class="el" style="stroke:#2f7d54"/>
 <circle cx="120.0" cy="178.0" r="1.1" fill="#2f7d54"/>
 <path d="M120 202 V209.0" class="el" style="stroke:#2f7d54"/>
