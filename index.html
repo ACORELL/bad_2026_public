@@ -539,14 +539,7 @@
     <div><i class="afloeb"></i>Gulvafløb (under møbel)</div>
   </div>
 
-
-  <ul class="note" id="status" hidden>
-    <li><b>Nu:</b><ul><li>VVS, tømrer og elektriker har besigtiget</li><li>VVS er hovedentreprenør for VVS, el og tømrer; glarmester aftales for sig</li><li>Planen er rettet siden – rettelserne skal godkendes, før der gives tilbud</li><li>Glarmester og fliser findes af bygherre</li></ul></li>
-    <li><b>Mangler valg:</b><ul><li>Brusearmatur M (VVS foreslår)</li><li>Dør R (tømrer foreslår)</li><li>Fliser til udskiftning (bygherre finder)</li><li>Glarmester (bygherre finder) og løsning for glasvæg F</li></ul></li>
-    <li><b>Afklares:</b><ul><li>Fjernelse af gamle rør i rørkasse W</li><li>Tilslutning af vaskens afløb til gulvafløbet</li><li>Hvem der laver flisearbejdet</li><li>Faldstammens placering (mål)</li></ul></li>
-  </ul>
-
-  <h2>Fast definerede vægsegmenter</h2>
+<h2>Fast definerede vægsegmenter</h2>
   <table>
     <thead><tr><th></th><th>Segment</th><th>Mål</th></tr></thead>
     <tbody>
@@ -923,7 +916,7 @@
 
 <section class="web" id="forside" data-fane="oversigt">
   <style>
-    /* Forside som ét skærmbillede: plan til venstre, status og ændringer til højre, faser nederst */
+    /* Forside som ét skærmbillede: plan til venstre, punkter og ændringer til højre, faser nederst */
     .web { max-width: 1480px; margin: 0 auto; padding: 18px 24px 24px; font-family: Inter, Arial, sans-serif; color: var(--ink);
            display: grid; grid-template-columns: 3fr 2fr; grid-template-rows: auto 1fr auto; gap: 16px 20px;
            grid-template-areas: "top top" "plan side" "faser faser"; min-height: calc(100vh - 62px); box-sizing: border-box; }
@@ -935,12 +928,19 @@
     .plankort { grid-area: plan; display: flex; align-items: center; }
     .plankort svg { display: block; width: 100%; height: auto; max-height: calc(100vh - 290px); }
     .side { grid-area: side; display: flex; flex-direction: column; gap: 16px; }
-    /* status */
-    .status { display: grid; gap: 0; }
-    .status div { font-size: 14.5px; line-height: 1.5; padding: 9px 0; border-bottom: 1px solid var(--line-strong); }
-    .status div:first-child { padding-top: 0; } .status div:last-child { border-bottom: 0; padding-bottom: 0; }
-    .status ul { margin: 0; padding-left: 18px; } .status ul li + li { margin-top: 2px; }
-    .status b { display: block; font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--green); margin-bottom: 2px; }
+    /* det aktuelle: det vi venter på, med hvad svaret afgør */
+    .punkter { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+    .punkter li { display: grid; grid-template-columns: 11px 1fr; column-gap: 11px; font-size: 14.5px; line-height: 1.4; }
+    .punkter b { display: block; font-size: 15.5px; font-weight: 700; }
+    .punkter span { color: #55554f; }
+    .puls { width: 11px; height: 11px; margin-top: 6px; border-radius: 50%; background: var(--red); animation: aande 2.4s ease-in-out infinite; }
+    @keyframes aande {
+      0%, 100% { transform: scale(.82); box-shadow: 0 0 0 0 rgba(192,57,43,.45); }
+      50% { transform: scale(1); box-shadow: 0 0 0 7px rgba(192,57,43,0); }
+    }
+    @media (prefers-reduced-motion: reduce) { .puls { animation: none; } }
+    .ogsaa { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line-strong); font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+    .ogsaa + .ogsaa { margin-top: 4px; padding-top: 0; border-top: 0; }
     /* seneste ændringer: én linje pr. helhed, dato = seneste ændring */
     .aendr { list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
     .aendr li { display: grid; grid-template-columns: 52px 92px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line-strong); }
@@ -962,7 +962,7 @@
     @media (max-height: 1000px) and (min-width: 1001px) {   /* lave skærme: tættere, så alt er synligt uden scroll */
       .web { padding-top: 12px; padding-bottom: 12px; gap: 10px 16px; } .web h1 { font-size: 24px; } .web .lead { font-size: 13.5px; }
       .web .kort { padding: 12px 16px; } .side { gap: 10px; }
-      .status div { font-size: 13px; line-height: 1.35; padding: 4px 0; } .status ul li + li { margin-top: 0; } .web h2 { margin-bottom: 6px; } .aendr { font-size: 13px; } .aendr li { padding: 4px 0; }
+      .punkter { gap: 10px; } .punkter li { font-size: 13.5px; line-height: 1.35; } .punkter b { font-size: 14.5px; } .puls { margin-top: 4px; } .ogsaa { margin-top: 10px; padding-top: 8px; font-size: 12.5px; } .web h2 { margin-bottom: 6px; } .aendr { font-size: 13px; } .aendr li { padding: 4px 0; }
       .faser li { padding-top: 28px; font-size: 11px; } .faser li b { font-size: 12px; }
     }
     @media (max-width: 1000px) {
@@ -980,13 +980,21 @@
   <div class="kort plankort" id="forside-plan"></div>
 
   <div class="side">
-    <div class="kort"><h2>Status</h2><div class="status" id="forside-status"></div></div>
+    <div class="kort"><h2>Afventer svar</h2>
+      <ul class="punkter">
+        <li><i class="puls"></i><div><b>Kommunen</b><span>15 eller ca. 23 l/s? Afgør ventilator og kassens størrelse.</span></div></li>
+        <li><i class="puls"></i><div><b>Glarmester</b><span>Frie ende og afløb under væggen. Afgør løsning og pris for glasvæg F.</span></div></li>
+        <li><i class="puls"></i><div><b>VVS</b><span>Tilbagemelding på det nye materiale. Afgør, om der kan gives samlet tilbud.</span></div></li>
+      </ul>
+      <p class="ogsaa">Mangler valg: brusearmatur M, dør R, fliser</p>
+      <p class="ogsaa">Afklares: gamle rør i W, vaskens afløb, flisearbejde</p>
+    </div>
     <div class="kort"><h2>Seneste ændringer</h2>
       <ul class="aendr">
-        <li><time>02.11</time><span class="omr">Tømrer</span><span>Rørkasse W ændret</span></li>
+        <li><time>05.11</time><span class="omr">VVS</span><span>Ventilation ændret</span></li>
+        <li><time>05.11</time><span class="omr">El</span><span>El og lys ændret</span></li>
+        <li><time>04.11</time><span class="omr">Tømrer</span><span>Rørkasse W ændret</span></li>
         <li><time>02.11</time><span class="omr">VVS</span><span>Rør og afløb ændret</span></li>
-        <li><time>02.11</time><span class="omr">VVS</span><span>Ventilation ændret</span></li>
-        <li><time>02.11</time><span class="omr">El</span><span>El og lys ændret</span></li>
         <li><time>02.11</time><span class="omr">Glarmester</span><span>Glasvæg og bundskinne ændret</span></li>
       </ul>
     </div>
@@ -1008,9 +1016,6 @@
   </div>
 </section>
 <script>
-  // Status fra plantegningens forside (#status): ét kort pr. punkt, overskriften uden kolon
-  document.getElementById('forside-status').innerHTML = [...document.querySelectorAll('#status > li')]
-    .map(li => `<div>${li.innerHTML.replace(/<b>(.*?):?<\/b>:?\s*/, '<b>$1</b>')}</div>`).join('');
   // Plantegningen (forsiden viser kun rum og inventar)
   const fp = document.getElementById('plan').cloneNode(true); fp.removeAttribute('id');
   fp.querySelectorAll('.inst:not(.spot), .b, .spot text').forEach(e => e.remove());   // rum, inventar og spots, uden bogstaver/numre
@@ -1050,7 +1055,7 @@
 </script>
 <script>
 (() => {
-  const V = '09db1dfc04';
+  const V = '1356aa85b4';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
