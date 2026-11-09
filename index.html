@@ -87,6 +87,12 @@
   .plan[data-fokus="tomrer"] .dim.tomrer,
   .plan[data-fokus="murer"]  .dim.murer,
   .plan[data-fokus="selv"]   .dim.selv { display: inline; }
+  .plan[data-fokus="varme"]  .dim.varme { display: inline; }
+  .plan[data-fokus="varme"] .lag { opacity: .1; }
+  .plan[data-fokus="varme"] .ikke-varme { display: none; }
+  .varmeskala { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: center; font-size: 9.5px; color: var(--muted); margin: 8px 0 2px; }
+  .varmeskala i { height: 9px; border-radius: 3px; position: relative; }
+  .varmeskala i b { position: absolute; top: 11px; transform: translateX(-50%); font-weight: 500; font-style: normal; }
   .spot .k2 circle { fill: #fff; stroke: #2f5fb3; } .spot .k2 text { fill: #2f5fb3; }
   .zone { fill: #6b4fa0; fill-opacity: .06; stroke: #6b4fa0; stroke-width: .4; stroke-dasharray: 1.2 .8; }
   .zonetxt { font: 700 3.2px Inter, Arial, sans-serif; fill: #6b4fa0; text-anchor: middle; paint-order: stroke; stroke: var(--paper); stroke-width: 1; }
@@ -206,6 +212,9 @@
       </defs>
 
       
+      
+
+      
       <g class="dim tomrer">
         <polygon class="loft" points="71,0 210,0 210,7 312,7 312,95 265,95 265,141 210.4,147 210.4,161 26,161 26,142 0,139.6 -11.5,138.5 -11.5,29.5 0,28.4 21,26.5 21,29.6 71,29.6"/>
         <text class="mtxt" x="166" y="128" style="fill:#8a6a1f">Nyt hængeloft — hele rummet</text>
@@ -216,9 +225,9 @@
       <polyline class="wl" points="71,0 210,0"/>
       <polyline class="wl" points="71,0 71,29.6 21,29.6 21,26.5 0,28.4 0,139.6 26,142 26,161 121.4,161 121.4,179"/>
       
-      <polygon points="0.4,28.4 -11.5,29.5 -11.5,138.5 0.4,139.6" fill="#fff" stroke="none"/>
+      <polygon class="ikke-varme" points="0.4,28.4 -11.5,29.5 -11.5,138.5 0.4,139.6" fill="#fff" stroke="none"/>
       <polyline class="wl" points="0,28.4 -11.5,29.5"/><polyline class="wl" points="0,139.6 -11.5,138.5"/>
-      <rect x="-14.5" y="29.5" width="3" height="109" fill="#e8f1f4" stroke="#555" stroke-width=".3"/>
+      <rect class="ikke-varme" x="-14.5" y="29.5" width="3" height="109" fill="#e8f1f4" stroke="#555" stroke-width=".3"/>
       <line x1="-13" y1="29.5" x2="-13" y2="138.5" stroke="#555" stroke-width=".2"/>
       <polyline class="wl" points="210,0 210,7 312,7 312,95 265,95 265,141 210.4,147 210.4,161 192.4,161 192.4,179"/>
 
@@ -1034,7 +1043,7 @@
     const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
     document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
     const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
-    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=e0eae61c#hv"></iframe>';
+    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=818777bb#hv"></iframe>';
     nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
     scrollTo(0, 0);
   }
@@ -1043,7 +1052,7 @@
 </script>
 <script>
 (() => {
-  const V = 'dd36f10b46';
+  const V = '64b7ef2e10';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
