@@ -125,23 +125,23 @@
 <text x="210.0" y="68.0" class="ref" text-anchor="start">T1</text>
 <text x="210.0" y="73.0" class="ts" text-anchor="start">24 V DC forsyning</text>
 <circle cx="290.0" cy="38.0" r="1.1" fill="#c97a00"/>
-<path d="M290 38 V64" class="el" style="stroke:#c97a00"/>
-<path d="M290 64 V71.0 H285.5" class="el" style="stroke:#c97a00"/>
-<path d="M290 78.0 V84" class="el" style="stroke:#c97a00"/>
-<path d="M290 78.0 L285.5 70.2" class="el" style="stroke:#c97a00"/>
-<text x="296.0" y="72.0" class="ref" text-anchor="start">K1</text>
-<text x="296.0" y="77.0" class="ts" text-anchor="start">eget relæ, brydekontakt</text>
-<text x="296.0" y="82.0" class="ts" text-anchor="start">bryder kun ved service</text>
-<path d="M290 84 V96" class="el" style="stroke:#c97a00"/>
+<circle cx="304.0" cy="38.0" r="1.1" fill="#c97a00"/>
+<path d="M290 38 V96" class="el" style="stroke:#c97a00"/>
+<path d="M304 38 V64" class="el" style="stroke:#c97a00"/>
+<path d="M304 64 V71.0" class="el" style="stroke:#c97a00"/>
+<path d="M304 78.0 V84" class="el" style="stroke:#c97a00"/>
+<path d="M304 78.0 L299 72.0" class="el" style="stroke:#c97a00"/>
+<path d="M304 84 V94 H299 V97.5" class="el" style="stroke:#c97a00"/>
 <circle cx="295.5" cy="102" r="5.5" class="sym" style="stroke:#c97a00"/>
 <text x="295.5" y="104.0" class="t" text-anchor="middle">M</text>
 <text x="295.5" y="117.0" class="ts" text-anchor="middle"></text>
 <path d="M301 102 H320 V46" class="el" style="stroke:#c97a00"/>
 <circle cx="320.0" cy="46.0" r="1.1" fill="#c97a00"/>
-<path d="M295.5 107.5 V148" class="el" style="stroke:#4a7d3a"/>
-<circle cx="295.5" cy="148.0" r="1.1" fill="#4a7d3a"/>
-<text x="284.0" y="102.0" class="ref" text-anchor="end">M · kanalventilator</text>
-<text x="284.0" y="107.0" class="ts" text-anchor="end">elektrikerens valg, 0–10 V, altid min.</text>
+<text x="310.0" y="72.0" class="ref" text-anchor="start">K1</text>
+<text x="310.0" y="77.0" class="ts" text-anchor="start">sluttekontakt = boost</text>
+<text x="284.0" y="102.0" class="ref" text-anchor="end">M · vægventilator</text>
+<text x="284.0" y="107.0" class="ts" text-anchor="end">fast 230 V over Q2 (3-polet), klasse II</text>
+<text x="284.0" y="116.0" class="ts" text-anchor="end">3 · kabel op gennem W</text>
 <circle cx="410.0" cy="38.0" r="1.1" fill="#c97a00"/>
 <path d="M410 38 V96" class="el" style="stroke:#c97a00"/>
 <circle cx="410" cy="100.2" r="4.2" class="sym" style="stroke:#c97a00"/>
@@ -181,8 +181,8 @@
 <path d="M302 178 V189" class="el" style="stroke:#2f7d54"/>
 <circle cx="302.0" cy="178.0" r="1.1" fill="#2f7d54"/>
 <path d="M302 199 V202" class="el" style="stroke:#2f7d54"/>
-<line x1="298" y1="194" x2="287.5" y2="194" class="mek"/>
-<line x1="287.5" y1="194" x2="287.5" y2="74.5" class="mek"/>
+<line x1="298" y1="194" x2="301.5" y2="194" class="mek"/>
+<line x1="301.5" y1="194" x2="301.5" y2="74.5" class="mek"/>
 <text x="310.0" y="193.0" class="ts" text-anchor="start">K1 · spole 24 V</text>
 <text x="310.0" y="199.0" class="ts" text-anchor="start">styres af relæ i A1</text>
 <path d="M120 178 V202" class="el" style="stroke:#2f7d54"/>
@@ -196,16 +196,11 @@
 <text x="108.0" y="217.0" class="ts" text-anchor="end">LK FUGA, ved døren</text>
 <text x="124.0" y="226.0" class="ts" text-anchor="start">4 · lavstrømskabel</text>
 <rect x="360" y="198" width="34" height="16" class="sym" style="stroke:#2f7d54"/>
-<text x="377.0" y="208.0" class="t" text-anchor="middle">0–10 V ×3</text>
+<text x="377.0" y="208.0" class="t" text-anchor="middle">0–10 V</text>
 <path d="M325 206 H360" class="el" style="stroke:#2f7d54"/>
-<path d="M377 198 V116 H299 V106.5" class="el prikket" style="stroke:#2f7d54"/>
 <path d="M368 214 V240 H161 V88" class="el prikket" style="stroke:#2f7d54"/>
 <text x="164.0" y="238.0" class="ts" text-anchor="start">1–10 V til Y1 og Y2 (kablet)</text>
 <text x="396.0" y="204.0" class="ref" text-anchor="start">U1</text>
-<text x="396.0" y="209.0" class="ts" text-anchor="start">til M, Y1, Y2 (skærmede kabler)</text>
-<rect x="440" y="220" width="40" height="14" class="sym" style="stroke:#2f7d54"/>
-<text x="460.0" y="229.0" class="t" text-anchor="middle">B1 · sensor</text>
-<path d="M325 226 H440" class="el" style="stroke:#2f7d54"/>
-<text x="436.0" y="224.0" class="ts" text-anchor="end">3 · I²C</text>
+<text x="396.0" y="209.0" class="ts" text-anchor="start">til Y1, Y2 (skærmede kabler)</text>
 <text x="10.0" y="256.0" class="ts" text-anchor="start">Numrene 1–4 svarer til kabelindføringerne i toppen af skabet (tegning A). Spots er klasse II (uden PE).</text>
 </svg>

@@ -76,7 +76,11 @@
 <text x="178.0" y="144.0" class="t" text-anchor="middle">forsyning</text>
 <rect x="196.0" y="93.0" width="18.0" height="90.0" class="mod" style="stroke:#c97a00"/>
 <rect x="197.5" y="115.5" width="15.0" height="45.0" class="kappe" />
-<text x="207.0" y="138.0" class="t" text-anchor="middle" transform="rotate(-90 207.0 138.0)">K1 relæ 24 V-spole</text>
+<text x="207.0" y="138.0" class="t" text-anchor="middle" transform="rotate(-90 207.0 138.0)">K1 relæ boost</text>
+<rect x="214.0" y="93.0" width="36.0" height="90.0" class="mod" style="stroke:#c97a00"/>
+<rect x="215.5" y="115.5" width="33.0" height="45.0" class="kappe" />
+<text x="232.0" y="136.0" class="t" text-anchor="middle">Q2 3-pol.</text>
+<text x="232.0" y="144.0" class="t" text-anchor="middle">ventilator</text>
 <line x1="52.0" y1="184.0" x2="52.0" y2="191.0" class="h"/>
 <line x1="88.0" y1="184.0" x2="88.0" y2="191.0" class="h"/>
 <line x1="52.0" y1="194.0" x2="88.0" y2="194.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
@@ -105,6 +109,10 @@
 <line x1="214.0" y1="184.0" x2="214.0" y2="191.0" class="h"/>
 <line x1="196.0" y1="194.0" x2="214.0" y2="194.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
 <text x="205.0" y="192.2" class="mt" text-anchor="middle">18</text>
+<line x1="214.0" y1="184.0" x2="214.0" y2="191.0" class="h"/>
+<line x1="250.0" y1="184.0" x2="250.0" y2="191.0" class="h"/>
+<line x1="214.0" y1="194.0" x2="250.0" y2="194.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="232.0" y="192.2" class="mt" text-anchor="middle">36</text>
 <text x="290.0" y="108.0" class="zt" text-anchor="end">STÆRKSTRØM 230 V – elektriker</text>
 <text x="290" y="108" class="zt" text-anchor="end" style="fill:#c97a00">STÆRKSTRØM 230 V – elektriker</text>
 <rect x="44.0" y="245.5" width="250.0" height="35.0" class="skinne" />
@@ -116,7 +124,7 @@
 <rect x="132.0" y="218.0" width="36.0" height="90.0" class="mod" style="stroke:#2f7d54"/>
 <rect x="133.5" y="240.5" width="33.0" height="45.0" class="kappe" />
 <text x="150.0" y="261.0" class="t" text-anchor="middle">0–10 V</text>
-<text x="150.0" y="269.0" class="t" text-anchor="middle">3 udg.</text>
+<text x="150.0" y="269.0" class="t" text-anchor="middle">Y1, Y2</text>
 <rect x="168.0" y="238.0" width="30.0" height="50.0" class="mod" style="stroke:#2f7d54"/>
 <text x="183.0" y="261.0" class="t" text-anchor="middle">Klemmer</text>
 <text x="183.0" y="269.0" class="t" text-anchor="middle"></text>
@@ -139,8 +147,8 @@
 <text x="58.0" y="38.0" class="nr" text-anchor="middle">1</text>
 <circle cx="88" cy="36.0" r="5" class="hul" style="stroke:#c97a00"/>
 <text x="88.0" y="38.0" class="nr" text-anchor="middle">2</text>
-<circle cx="258" cy="36.0" r="5" class="hul" style="stroke:#2f7d54"/>
-<text x="258.0" y="38.0" class="nr" text-anchor="middle">3</text>
+<circle cx="118" cy="36.0" r="5" class="hul" style="stroke:#c97a00"/>
+<text x="118.0" y="38.0" class="nr" text-anchor="middle">3</text>
 <circle cx="282" cy="36.0" r="5" class="hul" style="stroke:#2f7d54"/>
 <text x="282.0" y="38.0" class="nr" text-anchor="middle">4</text>
 <path d="M270 48 V223" class="kanal"/>
@@ -185,6 +193,7 @@
 <rect x="487.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
 <rect x="487.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
 <rect x="487.5" y="93.0" width="58" height="90" class="mod2" style="stroke:#c97a00"/>
+<rect x="487.5" y="93.0" width="70" height="90" class="mod2" style="stroke:#c97a00"/>
 <rect x="480.0" y="245.5" width="7.5" height="35.0" class="skinne" />
 <rect x="487.5" y="227.0" width="33" height="72" class="mod2" style="stroke:#2f7d54"/>
 <rect x="487.5" y="218.0" width="60" height="90" class="mod2" style="stroke:#2f7d54"/>
@@ -219,8 +228,8 @@
 <rect x="178" y="440" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
 <text x="213.0" y="451.5" class="t" text-anchor="middle">24 V DC forsyning</text>
 <rect x="178" y="466" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
-<text x="213.0" y="474.0" class="t" text-anchor="middle">Relæ K1</text>
-<text x="213.0" y="480.5" class="ts" text-anchor="middle">kan skiftes, bryder kun ved service</text>
+<text x="213.0" y="474.0" class="t" text-anchor="middle">Q2 + relæ K1</text>
+<text x="213.0" y="480.5" class="ts" text-anchor="middle">3-polet afbr. · K1 = boost</text>
 <rect x="178" y="492" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
 <text x="213.0" y="500.0" class="t" text-anchor="middle">2 · Spejle P og Q</text>
 <text x="213.0" y="506.5" class="ts" text-anchor="middle">fast 230 V</text>
@@ -237,24 +246,20 @@
 <path d="M248 423 H258 V411 H270" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
 <path d="M248 423 H258 V435 H270" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
 <rect x="272" y="466" width="70" height="18" rx="2" class="boks" style="stroke:#c97a00"/>
-<text x="307.0" y="474.0" class="t" text-anchor="middle">Kanalventilator</text>
-<text x="307.0" y="480.5" class="ts" text-anchor="middle">230 V via relæ</text>
+<text x="307.0" y="474.0" class="t" text-anchor="middle">3 · Vægventilator</text>
+<text x="307.0" y="480.5" class="ts" text-anchor="middle">fast 230 V + boost</text>
 <path d="M248 475 H270" class="led" style="stroke:#c97a00" marker-end="url(#pil3)"/>
 <rect x="366" y="440" width="70" height="18" rx="2" class="boks" style="stroke:#2f7d54"/>
 <text x="401.0" y="448.0" class="t" text-anchor="middle">StamPLC</text>
 <text x="401.0" y="454.5" class="ts" text-anchor="middle">styreenhed</text>
 <path d="M248 449 H364" class="led" style="stroke:#2f7d54" marker-end="url(#pil3)"/>
 <rect x="460" y="414" width="74" height="18" rx="2" class="boks" style="stroke:#2f7d54"/>
-<text x="497.0" y="422.0" class="t" text-anchor="middle">3 · 0–10 V-modul</text>
-<text x="497.0" y="428.5" class="ts" text-anchor="middle">→ ventilator, Y1, Y2</text>
-<rect x="460" y="440" width="74" height="18" rx="2" class="boks" style="stroke:#2f7d54"/>
-<text x="497.0" y="448.0" class="t" text-anchor="middle">3 · Sensormodul</text>
-<text x="497.0" y="454.5" class="ts" text-anchor="middle">fugt + flow i kanalen</text>
+<text x="497.0" y="422.0" class="t" text-anchor="middle">0–10 V-modul</text>
+<text x="497.0" y="428.5" class="ts" text-anchor="middle">→ Y1, Y2</text>
 <rect x="460" y="466" width="74" height="18" rx="2" class="boks" style="stroke:#2f7d54"/>
 <text x="497.0" y="474.0" class="t" text-anchor="middle">4 · Trykknap</text>
 <text x="497.0" y="480.5" class="ts" text-anchor="middle">ved døren</text>
 <path d="M436 449 H446 V423 H458" class="led" style="stroke:#2f7d54" marker-end="url(#pil3)"/>
-<path d="M436 449 H458" class="led" style="stroke:#2f7d54" marker-end="url(#pil3)"/>
 <path d="M458 475 H446 V453 H438" class="led" style="stroke:#2f7d54" marker-end="url(#pil3)"/>
 <path d="M401 458 V480 H344" class="led prik" style="stroke:#2f7d54"/>
 <text x="372.0" y="486.0" class="ts" text-anchor="start">styrer relæ og dimmere – kablet</text>

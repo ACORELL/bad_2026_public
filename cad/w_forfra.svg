@@ -52,12 +52,12 @@
 <line x1="30.0" y1="30.0" x2="227.5" y2="30.0" class="o"/>
 <text x="35.0" y="593.5" class="ts" text-anchor="start">gulv</text>
 <text x="35.0" y="28.0" class="ts" text-anchor="start">nyt hængeloft</text>
-<rect x="40.0" y="95.0" width="52.5" height="492.5" class="inde" />
+<rect x="40.0" y="30.0" width="52.5" height="557.5" class="inde" />
 <text x="66.2" y="337.5" class="ts" text-anchor="middle" transform="rotate(-90 66.2 337.5)">nichen (radiator)</text>
-<rect x="92.5" y="95.0" width="121.0" height="492.5" class="fast" />
-<rect x="107.5" y="95.0" width="27.5" height="492.5" class="bag" />
+<rect x="92.5" y="30.0" width="121.0" height="557.5" class="fast" />
+<rect x="107.5" y="30.0" width="27.5" height="557.5" class="bag" />
 <text x="121.2" y="287.5" class="ts" text-anchor="middle" transform="rotate(-90 121.2 287.5)">faldstamme Ø11 (bag)</text>
-<rect x="213.5" y="95.0" width="4.0" height="492.5" class="fast" />
+<rect x="213.5" y="30.0" width="4.0" height="557.5" class="fast" />
 <text x="181.2" y="577.0" class="ts" text-anchor="middle">sokkel</text>
 <rect x="184.5" y="455.0" width="25.0" height="17.5" class="fast" rx="1"/>
 <text x="197.0" y="465.8" class="t" text-anchor="middle">S</text>
@@ -70,9 +70,10 @@
 <rect x="149.5" y="99.5" width="63.5" height="79.5" class="dor" />
 <text x="181.2" y="135.0" class="t" text-anchor="middle">DIN-skab</text>
 <rect x="155.0" y="163.8" width="52.5" height="7.5" class="rist"/>
-<rect x="40.0" y="30.0" width="177.5" height="65.0" class="fast" />
-<rect x="40.8" y="30.8" width="176.0" height="63.5" class="dor" />
-<text x="128.8" y="64.5" class="t" text-anchor="middle">Ventilatorkasse – aftagelig front</text>
+<text x="181.2" y="67.0" class="ts" text-anchor="middle">fast front</text>
+<circle cx="63.8" cy="67.5" r="24.4" fill="none" stroke="#b5651d" stroke-width=".8"/>
+<text x="63.8" y="69.5" class="t" text-anchor="middle">Z</text>
+<text x="63.8" y="75.5" class="ts" text-anchor="middle">nichens væg</text>
 <line x1="215.5" y1="587.5" x2="224.5" y2="587.5" class="h"/>
 <line x1="215.5" y1="562.5" x2="224.5" y2="562.5" class="h"/>
 <line x1="227.5" y1="587.5" x2="227.5" y2="562.5" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
@@ -94,20 +95,15 @@
 <line x1="227.5" y1="180.0" x2="227.5" y2="100.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
 <text x="225.7" y="140.0" class="mt" text-anchor="middle" transform="rotate(-90 225.7 140.0)">32</text>
 <line x1="215.5" y1="100.0" x2="224.5" y2="100.0" class="h"/>
-<line x1="215.5" y1="95.0" x2="224.5" y2="95.0" class="h"/>
-<line x1="227.5" y1="100.0" x2="227.5" y2="95.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
-<text x="225.7" y="97.5" class="mt" text-anchor="middle" transform="rotate(-90 225.7 97.5)">2</text>
-<line x1="215.5" y1="95.0" x2="224.5" y2="95.0" class="h"/>
 <line x1="215.5" y1="30.0" x2="224.5" y2="30.0" class="h"/>
-<line x1="227.5" y1="95.0" x2="227.5" y2="30.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
-<text x="225.7" y="62.5" class="mt" text-anchor="middle" transform="rotate(-90 225.7 62.5)">26</text>
+<line x1="227.5" y1="100.0" x2="227.5" y2="30.0" class="m" marker-start="url(#pil)" marker-end="url(#pil)"/>
+<text x="225.7" y="65.0" class="mt" text-anchor="middle" transform="rotate(-90 225.7 65.0)">28</text>
 <text x="243.5" y="589.1" class="ts" text-anchor="start">0</text>
 <text x="243.5" y="564.1" class="ts" text-anchor="start">10</text>
 <text x="243.5" y="484.1" class="ts" text-anchor="start">42</text>
 <text x="243.5" y="446.6" class="ts" text-anchor="start">57</text>
 <text x="243.5" y="181.6" class="ts" text-anchor="start">163</text>
 <text x="243.5" y="101.6" class="ts" text-anchor="start">195</text>
-<text x="243.5" y="96.6" class="ts" text-anchor="start">197</text>
 <text x="243.5" y="31.6" class="ts" text-anchor="start">223</text>
 <line x1="92.5" y1="585.5" x2="92.5" y2="592.5" class="h"/>
 <line x1="105.0" y1="585.5" x2="105.0" y2="592.5" class="h"/>
