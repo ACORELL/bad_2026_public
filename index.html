@@ -246,7 +246,7 @@
       <rect class="lag vvs soft" x="4.5" y="54" width="10" height="60"/>
       <g class="lag vvs">
         <polygon points="0,28.4 26,26 26,30 71,30 71,0 210,0 210,7 312,7 312,95 265,95 265,141 210.4,147 210.4,161 26,161 26,142 0,139.6" fill="#d0453a" fill-opacity=".05" stroke="#d0453a" stroke-width=".35" stroke-dasharray="1.2 .9"/>
-        <rect x="0" y="117" width="6" height="14" fill="#fff" stroke="#d0453a" stroke-width=".45"/>
+        <rect x="0" y="122" width="6" height="16" fill="#fff" stroke="#d0453a" stroke-width=".45"/>
         <text class="mtxt" x="118" y="132" style="fill:#d0453a;font-size:2.8px">Gulvvarme, hele gulvet (vand, én kreds)</text>
       </g>
       
@@ -1035,7 +1035,7 @@
     const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
     document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
     const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
-    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=56c86b86#hv"></iframe>';
+    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=11fab23f#hv"></iframe>';
     nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
     scrollTo(0, 0);
   }
@@ -1044,7 +1044,7 @@
 </script>
 <script>
 (() => {
-  const V = '5c2a5a6247';
+  const V = '2754f2aed9';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
