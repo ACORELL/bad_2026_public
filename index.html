@@ -241,9 +241,10 @@
       </g>
 
       
+      <rect class="lag vvs soft" x="4.5" y="54" width="10" height="60"/>
       <g class="lag vvs">
         <polygon points="0,28.4 26,26 26,30 71,30 71,0 210,0 210,7 312,7 312,95 265,95 265,141 210.4,147 210.4,161 26,161 26,142 0,139.6" fill="#d0453a" fill-opacity=".05" stroke="#d0453a" stroke-width=".35" stroke-dasharray="1.2 .9"/>
-        <rect x="0" y="76" width="6" height="16" fill="#fff" stroke="#d0453a" stroke-width=".45"/>
+        <rect x="0" y="117" width="6" height="14" fill="#fff" stroke="#d0453a" stroke-width=".45"/>
         <text class="mtxt" x="118" y="132" style="fill:#d0453a;font-size:2.8px">Gulvvarme, hele gulvet (vand, én kreds)</text>
       </g>
       
@@ -281,11 +282,12 @@
 
       
       <g class="lag vvs glas">
-        <rect x="167" y="7.5" width="16" height="16" fill="#fff" fill-opacity=".6" stroke="#444" stroke-width=".4" stroke-dasharray="1 .6"/>
-        <path d="M170 12 H180 M170 15.5 H180 M170 19 H180" stroke="#444" stroke-width=".3"/>
+        <rect x="167" y="7.5" width="16" height="16" fill="none" stroke="#999" stroke-width=".35" stroke-dasharray=".8 .8"/>
+        <path d="M262 10.5 V20 H175 V15.5" fill="none" stroke="#444" stroke-width="1.2" stroke-opacity=".35"/>
+        <text class="mtxt" x="232" y="23.4" style="fill:#444;font-size:2.4px">afløbsrør i kanal</text>
         
         <path class="inst" d="M161.9 28 V5.5 H175 V13.9" fill="none" stroke="#444" stroke-width=".6" stroke-dasharray="1 .6"/><circle class="inst" cx="175" cy="15.5" r="1.6" fill="#fff" stroke="#444" stroke-width=".4"/>
-        <text class="mtxt" x="187" y="16.4" style="fill:#444;font-size:2.4px">GA</text>
+        <text class="mtxt" x="175" y="5" style="fill:#777;font-size:2.2px">gl. GA lukkes</text>
       </g>
 
       
@@ -447,7 +449,7 @@
         <g transform="translate(-48 196)"><path d="M-3 0 H3" stroke="#2563eb" stroke-width=".7" stroke-dasharray="1.1 .8"/><text x="5" y="1.2" class="sigtxt">KV – koldt vand</text></g>
         <g transform="translate(-2 196)"><path d="M-3 0 H3" stroke="#d0453a" stroke-width=".7" stroke-dasharray="1.1 .8"/><text x="5" y="1.2" class="sigtxt">VV – varmt vand</text></g>
         <g transform="translate(44 196)"><use href="#s-afsp" color="#333"/><text x="5" y="1.2" class="sigtxt">Afspærringsventil (i W)</text></g>
-        <g transform="translate(104 196)"><use href="#s-ga"/><text x="5" y="1.2" class="sigtxt">GA – gulvafløb</text></g>
+        <g transform="translate(104 196)"><path d="M-3 0 H3" stroke="#444" stroke-width="1.2" stroke-opacity=".35"/><text x="5" y="1.2" class="sigtxt">Afløbsrør</text></g>
         <g transform="translate(146 196)"><rect x="-3" y="-1.5" width="6" height="3" fill="#fff" stroke="#444" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Linjeafløb</text></g>
         <g transform="translate(250 196)"><rect x="-3" y="-2" width="6" height="4" fill="#d0453a" fill-opacity=".1" stroke="#d0453a" stroke-width=".3" stroke-dasharray="1 .6"/><text x="5" y="1.2" class="sigtxt">Gulvvarme</text></g>
         <g transform="translate(208 196)"><rect x="-3" y="-2" width="6" height="4" fill="url(#hatch)" stroke="var(--green)" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Rørkasse W</text></g>
@@ -488,6 +490,7 @@
       <g class="lag vvs b g" transform="translate(161.9 17)"><circle r="4.2"/><text>L</text></g>
       <g class="lag vvs b g" transform="translate(264 36.3)"><circle r="4.2"/><text>M</text></g>
       <g class="lag vvs b g" transform="translate(10.8 83.6)"><circle r="4.2"/><text>N</text></g>
+      <g class="lag vvs b g" transform="translate(18 118)"><circle r="4.2"/><text>G</text></g>
       <g class="lag el b g" transform="translate(161.9 0)"><circle r="4.2"/><text>P</text></g>
       <g class="lag el b g" transform="translate(199 15.5)"><circle r="4.2"/><text>Q</text></g>
       <g class="lag tomrer b g" transform="translate(156.9 170.9)"><circle r="4.2"/><text>R</text></g>
@@ -507,7 +510,6 @@
     <div><i class="furn"></i>Møbel / sanitet</div>
     <div><i class="aaben"></i>Åbent punkt (!)</div>
     <div><i class="niche"></i>Nicheåbning</div>
-    <div><i class="afloeb"></i>Gulvafløb (under møbel)</div>
   </div>
 
 <h2>Fast definerede vægsegmenter</h2>
@@ -537,7 +539,7 @@
 
 <section class="page" data-fane="detaljer" data-pakke="vvs">
   <h2>Til køb og udførelse</h2>
-  <p class="hint">Alt købes af bygherre, undtagen gulvvarmen N og evt. glasvæg F, afhængigt af glarmesterens løsning. Eksisterende inventar er fjernet ved opstart, undtagen hængeloftet.</p>
+  <p class="hint">Alt købes af bygherre, undtagen radiator N, gulvvarme G og evt. glasvæg F, afhængigt af glarmesterens løsning. Eksisterende inventar er fjernet ved opstart, undtagen hængeloftet.</p>
   
   <table class="buy" id="koebsliste">
     <colgroup><col style="width:28px"><col class="emne"><col class="prod"><col></colgroup>
@@ -546,10 +548,10 @@
       <tr data-fag="glas" data-koeb><td class="n"><span class="dot g">F</span></td><td class="t">Glasvæg, fast, med støttestang</td><td class="txt">Afgøres efter glarmesterens besigtigelse</td><td class="txt">I gulvprofil fra væggen ved B, walk-in uden kant. Frie ende (!) støttes.</td></tr>
       <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">H</span></td><td class="t">Toilet</td><td class="txt">Ifö Spira Art 2.0 / 502.926.00.4</td><td class="txt"></td></tr>
       <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">J</span></td><td class="t">Møbelpakke</td><td class="txt">Sanibell Online 61×46,5, mat sort / 786031031</td><td class="txt"></td></tr>
-      <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">K</span></td><td class="t">Vandlås (evt.)</td><td class="txt">Sanibell / 750655010</td><td class="txt">I dag ingen (gulvafløbets). Rør ned bagest i skabet, knæk under skabet, lodret i gulvafløbet.</td></tr>
+      <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">K</span></td><td class="t">Vandlås</td><td class="txt">Sanibell / 750655010</td><td class="txt">Gulvafløbet lukkes, så vasken får egen vandlås. Rør ned bagest i skabet, lodret ned i gulvet.</td></tr>
       <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">L</span></td><td class="t">Blandingsbatteri til vask</td><td class="txt">Gustavsberg Sensoric 1.0 / GB4121888153</td><td class="txt">Batteri (AA). 230 V-adapter fås, ikke planlagt.</td></tr>
       <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">M</span></td><td class="t">Brusearmatur</td><td class="txt">Afventer forslag fra VVS</td><td class="txt">Type foreslås af VVS. Tilførsel uden på væg.</td></tr>
-      <tr data-fag="vvs"><td class="n"><span class="dot g">N</span></td><td class="t">Gulvvarme (vand)</td><td class="txt">Leveres af VVS. Returtemperatur-begrænser (fx Danfoss FHV-R) + PEX-rør i faldlaget</td><td class="txt">Radiatoren fjernes; tilsluttes dens rør (2-strengs, bekræftes). VVS regner varmetabet.</td></tr>
+      <tr data-fag="vvs"><td class="n"><span class="dot g">N</span></td><td class="t">Radiator + gulvvarme (G)</td><td class="txt">Leveres af VVS. Smallere radiator (skøn 60 × 40) + gulvvarme med returtemperatur-begrænser (fx Danfoss FHV-R)</td><td class="txt">Parallelt på radiatorens rør (2-strengs). VVS regner varmetabet.</td></tr>
       <tr data-fag="el" data-koeb><td class="n"><span class="dot g">P</span></td><td class="t">Spejl med lys</td><td class="txt">Dansani Mido+ Glow 60×80 / 94660</td><td class="txt">Touch-dæmpning i spejlet. Fast forsyning.</td></tr>
       <tr data-fag="el" data-koeb><td class="n"><span class="dot g">Q</span></td><td class="t">Makeup-spejl med lys</td><td class="txt">Hansgrohe AddStoris / 41790340</td><td class="txt">Egen afbryder. Fast forsyning, indbygningsdåse i væg A.</td></tr>
       <tr data-fag="tomrer" data-koeb><td class="n"><span class="dot g">R</span></td><td class="t">Dør</td><td class="txt"></td><td class="txt">Dørtype ønskes; 196 over 25 mm trin; luftspalte.</td></tr>
@@ -563,8 +565,7 @@
     <tbody data-group="yderligere">
       <tr class="grp"><td colspan="5">Yderligere</td></tr>
       <tr data-fag="fliser"><td class="n"><span class="dot p">•</span></td><td class="t">Nyt gulv</td><td class="txt"></td><td class="txt">Kun øverste lag fjernes. Faldlag med gulvvarme, membran, fliser. Nye fuger langs loftet.</td></tr>
-      <tr data-fag="fliser" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Gulvfliser + nederste række</td><td class="txt"></td><td class="txt">Samme flise som nederste række hele vejen rundt.</td></tr>
-      <tr data-fag="fliser" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Fliser til udskiftning</td><td class="txt"></td><td class="txt">15 × 15 cm, 5 mm tykke. Højest 10 stk.</td></tr>
+      <tr data-fag="fliser" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Fliser</td><td class="txt"></td><td class="txt">Gulvflise, også som nederste række på væggene. Op til 10 vægfliser 15 × 15 × 0,5 cm.</td></tr>
       
       <tr data-fag="tomrer vvs"><td class="n"><span class="dot p">•</span></td><td class="t">Køkken: lysningsplade, lem</td><td class="txt"></td><td class="txt">Inspektionslem i gasbeton til rørsamlinger (erstatter aftagelig plade).</td></tr>
       <tr data-fag="tomrer"><td class="n"><span class="dot p">•</span></td><td class="t">Tætningslister, alle vinduer</td><td class="txt"></td><td class="txt">Ventiler bevares. Dannebrog, 4 fag, koblede rammer, åbner udad.</td></tr>
@@ -573,8 +574,7 @@
       <tr data-fag="tomrer"><td class="n"><span class="dot p">•</span></td><td class="t">Hængeloft</td><td class="txt"></td><td class="txt">Svamp – inkl. nedtagning af det gamle. Føres i ét ind i vinduets lysning (ingen kant eller liste).</td></tr>
       <tr data-fag="tomrer vvs"><td class="n"><span class="dot g">W</span></td><td class="t">Nye rørkasser (W + køkken)</td><td class="txt"></td><td class="txt"></td></tr>
       <tr data-fag="vvs" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Nyt armatur i køkken</td><td class="txt">Grohe Start Hybrid / 1012432430</td><td class="txt"></td></tr>
-      <tr data-fag="vvs" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Vandlås og rist til gulvafløb</td><td class="txt"></td><td class="txt">Eksisterende afløb bliver (vasken og gulvet uden for nichen); ny rist og vandlås.</td></tr>
-      <tr data-fag="vvs glas" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Linjeafløb, 80 cm</td><td class="txt">VVS' valg</td><td class="txt">Vægnært langs C i brusenichen. Rør gennem det støbte gulv til faldstammen eller det eksisterende afløb.</td></tr>
+      <tr data-fag="vvs glas" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Linjeafløb, 80 cm</td><td class="txt">VVS' valg</td><td class="txt">Langs C; rummets eneste gulvafløb. Gamle gulvafløb lukkes.</td></tr>
       <tr data-fag="vvs" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Bundventil under vask</td><td class="txt">Grohe push-open mat sort / 747042011</td><td class="txt"></td></tr>
       <tr data-fag="vvs"><td class="n"><span class="dot p">•</span></td><td class="t">Rørføring</td><td class="txt"></td><td class="txt">Tilslutning af H, J/K, L, N og køkken.</td></tr>
       <tr data-fag="el"><td class="n"><span class="dot p">•</span></td><td class="t">Ny eltavle</td><td class="txt"></td><td class="txt">Den nuværende brummer.</td></tr>
@@ -586,7 +586,7 @@
 
 <section class="page" data-fane="ansvar" data-pakke="vvs">
   <div class="fag-head"><h1>Hvem gør hvad</h1><span>montering og udførelse</span></div>
-  <p class="hint">✓ = monterer / udfører. VVS er hovedentreprenør for VVS, el og tømrer: koordinerer, laver tidsplanen og holder afleveringen. Glarmester har egen aftale med bygherre. Bygherre køber alt undtagen gulvvarmen N og evt. glasvæg F.</p>
+  <p class="hint">✓ = monterer / udfører. VVS er hovedentreprenør for VVS, el og tømrer: koordinerer, laver tidsplanen og holder afleveringen. Glarmester har egen aftale med bygherre. Bygherre køber alt undtagen radiator N, gulvvarme G og evt. glasvæg F.</p>
   <table class="buy ansvar">
     <colgroup><col style="width:28px"><col><col span="6" style="width:68px"></colgroup>
     <thead><tr><th></th><th>Emne</th><th>VVS</th><th>El</th><th>Glarmester</th><th>Tømrer</th><th>Fliser</th><th>Bygherre</th></tr></thead>
@@ -603,9 +603,8 @@
   <ul class="note">
     <li>Gamle rør i W saves væk og proppes; kun faldstammen bliver. Forsyning ind i bunden af W, fordeler med afspærring pr. forbruger bag lemmen forneden. Toilet og vask: synlige rør på væg A ca. 10 cm over gulvet, over hinanden (koldt øverst), bag toilettet.</li>
     <li>Bruser: fra fordeleren op ved faldstammen, over loftet, ned langs C til M. Hele, isolerede rør over loftet; samlinger kun i W og ved M.</li>
-    <li><b>Gulvvarme (N):</b> radiatoren fjernes; gulvvarme med vand i hele gulvet, én kreds, tilsluttet radiatorens rør via returtemperatur-begrænser (fx Danfoss FHV-R). Forudsætter 2-strengsanlæg – bekræft. Regn varmetabet; rækker gulvet ikke, en håndklæderadiator.</li>
-    <li><b>Afløb:</b> nyt linjeafløb (80 cm) langs C i nichen; nichen og området foran har fald hertil (walk-in uden kant). Det eksisterende gulvafløb bliver til vasken og resten af gulvet. Gulvet er støbt (ca. 15–20 cm) på træbjælker: hvordan føres røret fra linjeafløbet uden at gå for dybt?</li>
-    <li><b>Spørgsmål – vaskens afløb:</b> kan det komme ind fra siden under risten, så risten kan løftes frit? Ny vandlås med hårkurv. Behøver vasken egen vandlås (K)?</li>
+    <li><b>Varme (N, G):</b> 2-strengsanlæg (returen går i en fælles stigstreng). Ny, smallere radiator under vinduet og gulvvarme i hele gulvet (én kreds, returtemperatur-begrænser fx Danfoss FHV-R), parallelt på radiatorens rør med hver sin ventil. Regn varmetabet og radiatorens størrelse.</li>
+    <li><b>Afløb:</b> nyt linjeafløb (80 cm) langs C; nichen og området foran har fald hertil (walk-in uden kant), resten af gulvet ikke fald væk herfra. Det gamle gulvafløb lukkes: brønden fjernes, og røret i en hugget kanal fra linjeafløbet kobles på brøndens udløb. Vasken får egen vandlås (K) på samme rør. Gulvet er støbt (ca. 15–20 cm) på træbjælker: kanalen må ikke gå for dybt. Hvad er udløbet (materiale, Ø), og kan det genbruges?</li>
   </ul>
 </section>
 
@@ -958,17 +957,17 @@
       <ul class="punkter">
         <li><i class="puls"></i><div><b>Kommunen</b><span>15 eller ca. 23 l/s? Afgør ventilatorens størrelse.</span></div></li>
         <li><i class="puls"></i><div><b>Glarmester</b><span>Glasvæg i gulvprofil og støtte af den frie ende. Afgør løsning og pris for glasvæg F.</span></div></li>
-        <li><i class="puls"></i><div><b>VVS</b><span>2-strengsanlæg og afløb gennem det støbte gulv. Afgør gulvvarme, linjeafløb og samlet tilbud.</span></div></li>
+        <li><i class="puls"></i><div><b>VVS</b><span>Varmetab og afløbskanal i det støbte gulv. Afgør radiatorens størrelse, linjeafløb og samlet tilbud.</span></div></li>
       </ul>
       <p class="ogsaa">Mangler valg: brusearmatur M, dør R, gulvflise</p>
       <p class="ogsaa">Afklares: foreningens godkendelse, gamle rør i W, gulv- og flisearbejde</p>
     </div>
     <div class="kort"><h2>Seneste ændringer</h2>
       <ul class="aendr">
+        <li><time>09.11</time><span class="omr">VVS</span><span>Radiator og afløb ændret</span></li>
         <li><time>09.11</time><span class="omr">VVS</span><span>Gulvvarme, linjeafløb og glasvæg ændret</span></li>
         <li><time>09.11</time><span class="omr">El</span><span>Ventilation forenklet</span></li>
         <li><time>05.11</time><span class="omr">VVS</span><span>Ventilation ændret</span></li>
-        <li><time>05.11</time><span class="omr">El</span><span>El og lys ændret</span></li>
         <li><time>02.11</time><span class="omr">VVS</span><span>Rør og afløb ændret</span></li>
       </ul>
     </div>
@@ -1020,7 +1019,7 @@
     const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
     document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
     const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
-    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=377d7bfb#hv"></iframe>';
+    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=7749fc64#hv"></iframe>';
     nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
     scrollTo(0, 0);
   }
@@ -1029,7 +1028,7 @@
 </script>
 <script>
 (() => {
-  const V = '0cba2a260d';
+  const V = '926fb3b807';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
