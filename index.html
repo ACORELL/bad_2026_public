@@ -87,9 +87,16 @@
   .plan[data-fokus="tomrer"] .dim.tomrer,
   .plan[data-fokus="murer"]  .dim.murer,
   .plan[data-fokus="selv"]   .dim.selv { display: inline; }
-  .plan[data-fokus="varme"]  .dim.varme { display: inline; }
-  .plan[data-fokus="varme"] .lag { opacity: .1; }
-  .plan[data-fokus="varme"] .ikke-varme { display: none; }
+  .plan[data-fokus="varme"]  .dim.varme, .plan[data-fokus="varme-tid"] .dim.varme { display: inline; }
+  .plan[data-fokus="varme"] .lag, .plan[data-fokus="varme-tid"] .lag { opacity: .1; }
+  .plan[data-fokus="varme"] .ikke-varme, .plan[data-fokus="varme-tid"] .ikke-varme { display: none; }
+  .opv-styr { display: flex; gap: 10px; align-items: center; margin-top: 8px; font-size: 11px; }
+  .opv-styr button { font: 600 11px Inter, Arial, sans-serif; border: 1px solid var(--line-strong); background: #fff; border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+  .opv-styr input { flex: 1; accent-color: var(--accent); }
+  .opv-styr span { width: 70px; text-align: right; font-variant-numeric: tabular-nums; }
+  .opv-leg { display: flex; gap: 16px; font-size: 10px; margin: 0 0 4px; }
+  .opv-leg i { display: inline-block; width: 14px; height: 2px; margin-right: 6px; vertical-align: middle; }
+  @media print { .skaerm { display: none !important; } }
   .varmeskala { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: center; font-size: 9.5px; color: var(--muted); margin: 8px 0 2px; }
   .varmeskala i { height: 9px; border-radius: 3px; position: relative; }
   .varmeskala i b { position: absolute; top: 11px; transform: translateX(-50%); font-weight: 500; font-style: normal; }
@@ -212,7 +219,7 @@
       </defs>
 
       
-      <g class="dim varme"><image href="cad/varmekort.png?v=1144acc5" x="-15" y="-4" width="330" height="169" preserveAspectRatio="none"/></g>
+      <g class="dim varme"><image href="cad/varmekort.png?v=122dca0c" x="-15" y="-4" width="330" height="169" preserveAspectRatio="none"/></g>
 
       
       <g class="dim tomrer">
@@ -639,7 +646,7 @@
     <div>
       <h2>Overflader</h2>
       <table class="compact"><tbody>
-        <tr><td>Gulv, middel</td><td class="num" style="white-space:nowrap">32,6 °C</td><td></td></tr><tr><td>Gulv ved vinduet (de første 30 cm)</td><td class="num" style="white-space:nowrap">41,7 °C</td><td> <span class="warn" style="white-space:nowrap">over 33 °C</span></td></tr><tr><td>Gulv, koldeste sted (hjørnet ved vinduet)</td><td class="num" style="white-space:nowrap">24,2 °C</td><td></td></tr><tr><td>Gulv, varmeste sted (ved fremløbet)</td><td class="num" style="white-space:nowrap">45,7 °C</td><td> <span class="warn" style="white-space:nowrap">over 33 °C</span></td></tr><tr><td>Vindue, glas</td><td class="num" style="white-space:nowrap">10,9 °C</td><td> <span class="warn" style="white-space:nowrap">under dugpunkt</span></td></tr><tr><td>Omkring udsugningshullet Z</td><td class="num" style="white-space:nowrap">11,7 °C</td><td> <span class="warn" style="white-space:nowrap">under dugpunkt</span></td></tr><tr><td>Ydervæg, midt på</td><td class="num" style="white-space:nowrap">17,4 °C</td><td></td></tr><tr><td>Væg A mod trappen</td><td class="num" style="white-space:nowrap">21,7 °C</td><td></td></tr><tr><td>Skorstensvæggen</td><td class="num" style="white-space:nowrap">22,8 °C</td><td></td></tr>
+        <tr><td>Gulv, middel</td><td class="num" style="white-space:nowrap">32,0 °C</td><td></td></tr><tr><td>Gulv ved vinduet (de første 30 cm)</td><td class="num" style="white-space:nowrap">41,3 °C</td><td> <span class="warn" style="white-space:nowrap">over 33 °C</span></td></tr><tr><td>Gulv, koldeste sted (hjørnet ved vinduet)</td><td class="num" style="white-space:nowrap">24,2 °C</td><td></td></tr><tr><td>Gulv, varmeste sted (ved fremløbet)</td><td class="num" style="white-space:nowrap">45,4 °C</td><td> <span class="warn" style="white-space:nowrap">over 33 °C</span></td></tr><tr><td>Vindue, glas</td><td class="num" style="white-space:nowrap">10,9 °C</td><td> <span class="warn" style="white-space:nowrap">under dugpunkt</span></td></tr><tr><td>Omkring udsugningshullet Z</td><td class="num" style="white-space:nowrap">11,7 °C</td><td> <span class="warn" style="white-space:nowrap">under dugpunkt</span></td></tr><tr><td>Ydervæg, midt på</td><td class="num" style="white-space:nowrap">17,4 °C</td><td></td></tr><tr><td>Væg A mod trappen</td><td class="num" style="white-space:nowrap">21,7 °C</td><td></td></tr><tr><td>Skorstensvæggen</td><td class="num" style="white-space:nowrap">22,8 °C</td><td></td></tr>
       </tbody></table>
       <p class="hint" style="margin-top:6px">Dugpunkt ved 24 °C og 60 % RF: 15,8 °C. Kolde flader under dugpunktet dugger, når luften er fugtig (efter bad). Over ca. 33 °C bliver gulvet ubehageligt varmt at gå på.</p>
     </div>
@@ -648,9 +655,9 @@
       <table class="compact"><tbody>
         <tr><td>Vindue og lysning</td><td class="num" style="white-space:nowrap">198 W</td></tr><tr><td>Udsugning (luft)</td><td class="num" style="white-space:nowrap">188 W</td></tr><tr><td>Ydervæg</td><td class="num" style="white-space:nowrap">130 W</td></tr><tr><td>Mod trappen (A, B, C)</td><td class="num" style="white-space:nowrap">100 W</td></tr><tr><td>Mod opvarmede rum</td><td class="num" style="white-space:nowrap">46 W</td></tr><tr><td>Skorsten</td><td class="num" style="white-space:nowrap">18 W</td></tr>
         <tr><td class="t">Rummets varmetab i alt</td><td class="num t" style="white-space:nowrap">680 W</td></tr>
-        <tr><td>Gulvvarmen op i rummet (93 W/m² på 4,3 m²)</td><td class="num">405 W</td></tr>
-        <tr><td class="t">Resten til radiatoren (skøn)</td><td class="num t" style="white-space:nowrap">ca. 275 W</td></tr>
-        <tr><td>Gulvvarmen ned til køkkenet (bliver i lejligheden)</td><td class="num">54 W</td></tr>
+        <tr><td>Gulvvarmen op i rummet (87 W/m² på 4,3 m²)</td><td class="num">377 W</td></tr>
+        <tr><td class="t">Resten til radiatoren (skøn)</td><td class="num t" style="white-space:nowrap">ca. 303 W</td></tr>
+        <tr><td>Gulvvarmen ned til køkkenet (bliver i lejligheden)</td><td class="num">52 W</td></tr>
       </tbody></table>
     </div>
   </div>
@@ -662,6 +669,58 @@
     <li>Gulvvarme: rørføringen fra 3D-modellen (32,5 m), vand ind 55 °C og ud 28 °C. Returbegrænseren holder returen på ca. 28 °C ved at skrue ned for flowet; det er reguleringen. Rørene i ca. 4 cm afretning direkte på ca. 10 cm gammelt støbt gulv, der spreder varmen. Betonens masse udjævner over tid, men ændrer ikke, hvor det er varmest. Radiatoren og luftens bevægelse er ikke regnet med.</li>
     
   </ul>
+
+</section>
+
+
+<section class="page" id="opvarmning" data-fane="vvs" data-pakke="vvs" style="--accent:var(--c-vvs)">
+  <div class="fag-head"><h1>Forventet varme</h1><span>opvarmning fra koldt gulv · bygherrens skøn · −12 °C ude</span></div>
+  <div class="plan" data-fokus="varme-tid"></div>
+
+  <div class="opv-styr skaerm"><button type="button" id="opv-spil">▶ Afspil</button>
+    <input type="range" id="opv-tid" min="0" max="11" step="1" value="6"><span id="opv-t"></span></div>
+  <p class="hint" style="margin:6px 0 0">Kortet viser gulvet <b id="opv-tekst">efter 3 timer</b> fra koldt gulv, med samme farveskala som forrige side. Kurven viser hele forløbet.</p>
+  <h2>Gulvets temperatur fra koldt gulv</h2>
+  <div class="opv-leg"><span><i style="background:#2a78d6"></i>Gulv, middel</span><span><i style="background:#eb6834"></i>Gulv ved vinduet</span><span><i style="background:#1baf7a"></i>Gulv, koldeste sted</span></div>
+  <svg viewBox="0 0 726 210" style="display:block;width:100%;height:auto" role="img" aria-label="Gulvets temperatur under opvarmning"><style>.ax{font:9.5px Inter,Arial,sans-serif;fill:#6b6b6b}.lb{font:600 10px Inter,Arial,sans-serif;fill:#1f1f1f}</style><line x1="34" x2="576" y1="184.0" y2="184.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="187.5" text-anchor="end" class="ax">15 °C</text><line x1="34" x2="576" y1="155.0" y2="155.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="158.5" text-anchor="end" class="ax">20 °C</text><line x1="34" x2="576" y1="126.0" y2="126.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="129.5" text-anchor="end" class="ax">25 °C</text><line x1="34" x2="576" y1="97.0" y2="97.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="100.5" text-anchor="end" class="ax">30 °C</text><line x1="34" x2="576" y1="68.0" y2="68.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="71.5" text-anchor="end" class="ax">35 °C</text><line x1="34" x2="576" y1="39.0" y2="39.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="42.5" text-anchor="end" class="ax">40 °C</text><line x1="34" x2="576" y1="10.0" y2="10.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="13.5" text-anchor="end" class="ax">45 °C</text><text x="34.0" y="202" text-anchor="middle" class="ax">0 t</text><text x="124.3" y="202" text-anchor="middle" class="ax">2 t</text><text x="214.7" y="202" text-anchor="middle" class="ax">4 t</text><text x="305.0" y="202" text-anchor="middle" class="ax">6 t</text><text x="395.3" y="202" text-anchor="middle" class="ax">8 t</text><text x="485.7" y="202" text-anchor="middle" class="ax">10 t</text><text x="576.0" y="202" text-anchor="middle" class="ax">12 t</text><line x1="34" x2="576" y1="184" y2="184" stroke="#c9c3b5" stroke-width="1"/><path d="M34.0,135.2 L45.3,127.6 L56.6,121.4 L67.9,116.1 L79.2,111.7 L90.5,107.9 L101.8,104.7 L113.0,101.9 L124.3,99.5 L135.6,97.5 L146.9,95.7 L158.2,94.2 L169.5,93.0 L180.8,91.9 L192.1,91.0 L203.4,90.2 L214.7,89.5 L226.0,89.0 L237.2,88.5 L248.5,88.1 L259.8,87.8 L271.1,87.5 L282.4,87.3 L293.7,87.1 L305.0,86.9 L316.3,86.8 L327.6,86.7 L338.9,86.6 L350.2,86.5 L361.5,86.4 L372.8,86.4 L384.0,86.3 L395.3,86.3 L406.6,86.3 L417.9,86.3 L429.2,86.2 L440.5,86.2 L451.8,86.2 L463.1,86.2 L474.4,86.2 L485.7,86.2 L497.0,86.1 L508.2,86.1 L519.5,86.1 L530.8,86.0 L542.1,86.0 L553.4,86.0 L564.7,86.0 L576.0,86.0" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round"/><path d="M34.0,144.4 L45.3,126.4 L56.6,112.0 L67.9,100.0 L79.2,89.9 L90.5,81.3 L101.8,74.0 L113.0,67.7 L124.3,62.4 L135.6,57.9 L146.9,54.0 L158.2,50.7 L169.5,47.9 L180.8,45.5 L192.1,43.5 L203.4,41.7 L214.7,40.2 L226.0,38.9 L237.2,37.8 L248.5,37.0 L259.8,36.2 L271.1,35.5 L282.4,34.9 L293.7,34.5 L305.0,34.0 L316.3,33.7 L327.6,33.4 L338.9,33.1 L350.2,32.9 L361.5,32.7 L372.8,32.6 L384.0,32.4 L395.3,32.3 L406.6,32.2 L417.9,32.2 L429.2,32.0 L440.5,32.0 L451.8,31.9 L463.1,31.9 L474.4,31.8 L485.7,31.8 L497.0,31.8 L508.2,31.7 L519.5,31.7 L530.8,31.6 L542.1,31.6 L553.4,31.6 L564.7,31.6 L576.0,31.6" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round"/><path d="M34.0,156.0 L45.3,153.9 L56.6,151.5 L67.9,148.8 L79.2,145.9 L90.5,142.9 L101.8,142.4 L113.0,141.9 L124.3,141.4 L135.6,140.9 L146.9,140.4 L158.2,139.9 L169.5,139.3 L180.8,138.9 L192.1,138.4 L203.4,137.9 L214.7,137.4 L226.0,137.0 L237.2,136.6 L248.5,136.2 L259.8,135.9 L271.1,135.5 L282.4,135.2 L293.7,134.9 L305.0,134.6 L316.3,134.4 L327.6,134.1 L338.9,133.8 L350.2,133.7 L361.5,133.4 L372.8,133.2 L384.0,133.1 L395.3,132.9 L406.6,132.7 L417.9,132.6 L429.2,132.5 L440.5,132.4 L451.8,132.3 L463.1,132.1 L474.4,132.0 L485.7,132.0 L497.0,131.9 L508.2,131.8 L519.5,131.7 L530.8,131.7 L542.1,131.6 L553.4,131.6 L564.7,131.5 L576.0,131.5" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linejoin="round"/><circle cx="576.0" cy="31.6" r="4" fill="#eb6834" stroke="#fff" stroke-width="2"/><text x="585.0" y="35.1" class="lb">Gulv ved vinduet 41,3 °C</text><circle cx="576.0" cy="86.0" r="4" fill="#2a78d6" stroke="#fff" stroke-width="2"/><text x="585.0" y="89.5" class="lb">Gulv, middel 31,9 °C</text><circle cx="576.0" cy="131.5" r="4" fill="#1baf7a" stroke="#fff" stroke-width="2"/><text x="585.0" y="135.0" class="lb">Gulv, koldeste sted 24,1 °C</text><rect x="28.4" y="10" width="11.3" height="174" fill="transparent"><title>0,00 t: middel 23,4 °C · ved vinduet 21,8 °C · koldeste 19,8 °C · -22 W op i rummet · flow 72 l/h</title></rect><rect x="39.6" y="10" width="11.3" height="174" fill="transparent"><title>0,25 t: middel 24,7 °C · ved vinduet 24,9 °C · koldeste 20,2 °C · 39 W op i rummet · flow 54 l/h</title></rect><rect x="50.9" y="10" width="11.3" height="174" fill="transparent"><title>0,50 t: middel 25,8 °C · ved vinduet 27,4 °C · koldeste 20,6 °C · 89 W op i rummet · flow 47 l/h</title></rect><rect x="62.2" y="10" width="11.3" height="174" fill="transparent"><title>0,75 t: middel 26,7 °C · ved vinduet 29,5 °C · koldeste 21,1 °C · 131 W op i rummet · flow 42 l/h</title></rect><rect x="73.5" y="10" width="11.3" height="174" fill="transparent"><title>1,00 t: middel 27,5 °C · ved vinduet 31,2 °C · koldeste 21,6 °C · 167 W op i rummet · flow 38 l/h</title></rect><rect x="84.8" y="10" width="11.3" height="174" fill="transparent"><title>1,25 t: middel 28,1 °C · ved vinduet 32,7 °C · koldeste 22,1 °C · 197 W op i rummet · flow 34 l/h</title></rect><rect x="96.1" y="10" width="11.3" height="174" fill="transparent"><title>1,50 t: middel 28,7 °C · ved vinduet 34,0 °C · koldeste 22,2 °C · 223 W op i rummet · flow 31 l/h</title></rect><rect x="107.4" y="10" width="11.3" height="174" fill="transparent"><title>1,75 t: middel 29,2 °C · ved vinduet 35,0 °C · koldeste 22,2 °C · 246 W op i rummet · flow 29 l/h</title></rect><rect x="118.7" y="10" width="11.3" height="174" fill="transparent"><title>2,00 t: middel 29,6 °C · ved vinduet 36,0 °C · koldeste 22,3 °C · 265 W op i rummet · flow 27 l/h</title></rect><rect x="130.0" y="10" width="11.3" height="174" fill="transparent"><title>2,25 t: middel 29,9 °C · ved vinduet 36,7 °C · koldeste 22,4 °C · 281 W op i rummet · flow 25 l/h</title></rect><rect x="141.3" y="10" width="11.3" height="174" fill="transparent"><title>2,50 t: middel 30,2 °C · ved vinduet 37,4 °C · koldeste 22,5 °C · 295 W op i rummet · flow 23 l/h</title></rect><rect x="152.6" y="10" width="11.3" height="174" fill="transparent"><title>2,75 t: middel 30,5 °C · ved vinduet 38,0 °C · koldeste 22,6 °C · 307 W op i rummet · flow 22 l/h</title></rect><rect x="163.9" y="10" width="11.3" height="174" fill="transparent"><title>3,00 t: middel 30,7 °C · ved vinduet 38,5 °C · koldeste 22,7 °C · 317 W op i rummet · flow 21 l/h</title></rect><rect x="175.1" y="10" width="11.3" height="174" fill="transparent"><title>3,25 t: middel 30,9 °C · ved vinduet 38,9 °C · koldeste 22,8 °C · 326 W op i rummet · flow 20 l/h</title></rect><rect x="186.4" y="10" width="11.3" height="174" fill="transparent"><title>3,50 t: middel 31,0 °C · ved vinduet 39,2 °C · koldeste 22,9 °C · 334 W op i rummet · flow 19 l/h</title></rect><rect x="197.7" y="10" width="11.3" height="174" fill="transparent"><title>3,75 t: middel 31,2 °C · ved vinduet 39,5 °C · koldeste 22,9 °C · 340 W op i rummet · flow 18 l/h</title></rect><rect x="209.0" y="10" width="11.3" height="174" fill="transparent"><title>4,00 t: middel 31,3 °C · ved vinduet 39,8 °C · koldeste 23,0 °C · 345 W op i rummet · flow 17 l/h</title></rect><rect x="220.3" y="10" width="11.3" height="174" fill="transparent"><title>4,25 t: middel 31,4 °C · ved vinduet 40,0 °C · koldeste 23,1 °C · 350 W op i rummet · flow 17 l/h</title></rect><rect x="231.6" y="10" width="11.3" height="174" fill="transparent"><title>4,50 t: middel 31,5 °C · ved vinduet 40,2 °C · koldeste 23,2 °C · 354 W op i rummet · flow 16 l/h</title></rect><rect x="242.9" y="10" width="11.3" height="174" fill="transparent"><title>4,75 t: middel 31,5 °C · ved vinduet 40,4 °C · koldeste 23,2 °C · 357 W op i rummet · flow 16 l/h</title></rect><rect x="254.2" y="10" width="11.3" height="174" fill="transparent"><title>5,00 t: middel 31,6 °C · ved vinduet 40,5 °C · koldeste 23,3 °C · 359 W op i rummet · flow 16 l/h</title></rect><rect x="265.5" y="10" width="11.3" height="174" fill="transparent"><title>5,25 t: middel 31,6 °C · ved vinduet 40,6 °C · koldeste 23,4 °C · 362 W op i rummet · flow 15 l/h</title></rect><rect x="276.8" y="10" width="11.3" height="174" fill="transparent"><title>5,50 t: middel 31,7 °C · ved vinduet 40,7 °C · koldeste 23,4 °C · 364 W op i rummet · flow 15 l/h</title></rect><rect x="288.1" y="10" width="11.3" height="174" fill="transparent"><title>5,75 t: middel 31,7 °C · ved vinduet 40,8 °C · koldeste 23,5 °C · 365 W op i rummet · flow 15 l/h</title></rect><rect x="299.4" y="10" width="11.3" height="174" fill="transparent"><title>6,00 t: middel 31,7 °C · ved vinduet 40,9 °C · koldeste 23,5 °C · 366 W op i rummet · flow 15 l/h</title></rect><rect x="310.6" y="10" width="11.3" height="174" fill="transparent"><title>6,25 t: middel 31,8 °C · ved vinduet 40,9 °C · koldeste 23,6 °C · 367 W op i rummet · flow 15 l/h</title></rect><rect x="321.9" y="10" width="11.3" height="174" fill="transparent"><title>6,50 t: middel 31,8 °C · ved vinduet 41,0 °C · koldeste 23,6 °C · 368 W op i rummet · flow 14 l/h</title></rect><rect x="333.2" y="10" width="11.3" height="174" fill="transparent"><title>6,75 t: middel 31,8 °C · ved vinduet 41,0 °C · koldeste 23,6 °C · 369 W op i rummet · flow 14 l/h</title></rect><rect x="344.5" y="10" width="11.3" height="174" fill="transparent"><title>7,00 t: middel 31,8 °C · ved vinduet 41,0 °C · koldeste 23,7 °C · 370 W op i rummet · flow 14 l/h</title></rect><rect x="355.8" y="10" width="11.3" height="174" fill="transparent"><title>7,25 t: middel 31,8 °C · ved vinduet 41,1 °C · koldeste 23,7 °C · 370 W op i rummet · flow 14 l/h</title></rect><rect x="367.1" y="10" width="11.3" height="174" fill="transparent"><title>7,50 t: middel 31,8 °C · ved vinduet 41,1 °C · koldeste 23,8 °C · 371 W op i rummet · flow 14 l/h</title></rect><rect x="378.4" y="10" width="11.3" height="174" fill="transparent"><title>7,75 t: middel 31,8 °C · ved vinduet 41,1 °C · koldeste 23,8 °C · 371 W op i rummet · flow 14 l/h</title></rect><rect x="389.7" y="10" width="11.3" height="174" fill="transparent"><title>8,00 t: middel 31,8 °C · ved vinduet 41,1 °C · koldeste 23,8 °C · 371 W op i rummet · flow 14 l/h</title></rect><rect x="401.0" y="10" width="11.3" height="174" fill="transparent"><title>8,25 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,8 °C · 371 W op i rummet · flow 14 l/h</title></rect><rect x="412.3" y="10" width="11.3" height="174" fill="transparent"><title>8,50 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,9 °C · 372 W op i rummet · flow 14 l/h</title></rect><rect x="423.6" y="10" width="11.3" height="174" fill="transparent"><title>8,75 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,9 °C · 372 W op i rummet · flow 14 l/h</title></rect><rect x="434.9" y="10" width="11.3" height="174" fill="transparent"><title>9,00 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,9 °C · 372 W op i rummet · flow 14 l/h</title></rect><rect x="446.1" y="10" width="11.3" height="174" fill="transparent"><title>9,25 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,9 °C · 372 W op i rummet · flow 14 l/h</title></rect><rect x="457.4" y="10" width="11.3" height="174" fill="transparent"><title>9,50 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,9 °C · 372 W op i rummet · flow 14 l/h</title></rect><rect x="468.7" y="10" width="11.3" height="174" fill="transparent"><title>9,75 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="480.0" y="10" width="11.3" height="174" fill="transparent"><title>10,00 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="491.3" y="10" width="11.3" height="174" fill="transparent"><title>10,25 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="502.6" y="10" width="11.3" height="174" fill="transparent"><title>10,50 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="513.9" y="10" width="11.3" height="174" fill="transparent"><title>10,75 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="525.2" y="10" width="11.3" height="174" fill="transparent"><title>11,00 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="536.5" y="10" width="11.3" height="174" fill="transparent"><title>11,25 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="547.8" y="10" width="11.3" height="174" fill="transparent"><title>11,50 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,0 °C · 374 W op i rummet · flow 14 l/h</title></rect><rect x="559.1" y="10" width="11.3" height="174" fill="transparent"><title>11,75 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,1 °C · 374 W op i rummet · flow 14 l/h</title></rect><rect x="570.4" y="10" width="11.3" height="174" fill="transparent"><title>12,00 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,1 °C · 374 W op i rummet · flow 14 l/h</title></rect><line id="tidslinje" x1="169.5" x2="169.5" y1="10" y2="184" stroke="#555" stroke-width="1" stroke-dasharray="3 3"/></svg>
+  <ul class="note">
+    <li>Halvvejs efter ca. 1,2 timer, næsten færdig (90 %) efter ca. 3,8 timer. Betonen gør gulvet trægt, men det følger vejret inden for samme døgn.</li>
+    <li>Forskellen mellem gulvet ved vinduet og det koldeste sted vokser fra ca. 14 grader efter 2 timer til ca. 17 grader, når gulvet er varmt. Returbegrænseren skruer ned for flowet, fra ca. 72 til ca. 14 l/h, så vandet køler af tidligt på ruten, og varmen samler sig ved fremløbet langs vinduet.</li>
+    <li>Et jævnere gulv kræver mere flow og lavere temperatur ind i gulvet. Hvordan gulvvarmen tilsluttes, er VVS' valg.</li>
+  </ul>
+  <p class="hint">Skøn med samme antagelser som forrige side. Returbegrænseren sat til 28 °C, højst 100 l/h. Gulvet starter, som det er uden gulvvarme.</p>
+<script>
+addEventListener('DOMContentLoaded', () => {
+  const T = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 12], N = T.length, BOKS = [-15, -4, 330, 169], X = t => 34 + t / 12 * 542;
+  const img = document.querySelector('#opvarmning .plan image');
+  if (!img) return;
+  const svg = img.ownerSVGElement, ns = 'http://www.w3.org/2000/svg';
+  const cp = document.createElementNS(ns, 'clipPath'); cp.id = 'opv-klip';
+  const r = document.createElementNS(ns, 'rect');
+  [['x', BOKS[0]], ['y', BOKS[1]], ['width', BOKS[2]], ['height', BOKS[3]]].forEach(([a, v]) => r.setAttribute(a, v));
+  cp.appendChild(r); svg.querySelector('defs').appendChild(cp);
+  img.parentNode.setAttribute('clip-path', 'url(#opv-klip)');
+  img.setAttribute('href', 'cad/opvarmning.png?v=010f857b'); img.setAttribute('height', BOKS[3] * N);
+  const fmt = t => String(t).replace('.', ',') + (t === 1 ? ' time' : ' timer');
+  const vis = k => {
+    img.setAttribute('y', BOKS[1] - BOKS[3] * k);
+    document.getElementById('opv-t').textContent = fmt(T[k]);
+    document.getElementById('opv-tekst').textContent = T[k] === 0 ? 'ved start (koldt)' : 'efter ' + fmt(T[k]);
+    const l = document.getElementById('tidslinje'); l.setAttribute('x1', X(T[k])); l.setAttribute('x2', X(T[k]));
+    document.getElementById('opv-tid').value = k;
+  };
+  let k = 6, ur = null;
+  const knap = document.getElementById('opv-spil');
+  const stop = () => { clearInterval(ur); ur = null; knap.textContent = '▶ Afspil'; };
+  vis(k);
+  document.getElementById('opv-tid').oninput = e => { stop(); vis(+e.target.value); };
+  knap.onclick = () => {
+    if (ur) return stop();
+    knap.textContent = '❚❚ Pause'; k = 0; vis(k);
+    ur = setInterval(() => { k = (k + 1) % N; vis(k); }, 700);
+  };
+});
+</script>
 
 </section>
 
@@ -1080,7 +1139,7 @@
     const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
     document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
     const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
-    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=61a3573b#hv"></iframe>';
+    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=09168e12#hv"></iframe>';
     nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
     scrollTo(0, 0);
   }
@@ -1089,7 +1148,7 @@
 </script>
 <script>
 (() => {
-  const V = '2abba687a5';
+  const V = 'a78363e3b6';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
