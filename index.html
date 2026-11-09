@@ -16,7 +16,7 @@
     --wall: #111111; --green: #2f7d54; --orange: #d98a10; --red: #c0392b;
     --blue: #2563eb; --glass: #3f8fa8; --purple: #6b4fa0; --paper: #fbfaf7;
     --tint: #f4f1e9; --tint-2: #ebe6da;
-    --c-vvs: #2f5fb3; --c-el: #c57a0c; --c-glas: #2f7f97; --c-tomrer: #8a6a1f; --c-intern: #6b4fa0;
+    --c-vvs: #2f5fb3; --c-el: #c57a0c; --c-glas: #2f7f97; --c-tomrer: #8a6a1f; --c-murer: #a4503a; --c-intern: #6b4fa0;
     --accent: var(--green);
   }
   * { box-sizing: border-box; }
@@ -79,11 +79,13 @@
   .plan[data-fokus="el"]     .lag.el,
   .plan[data-fokus="glas"]   .lag.glas,
   .plan[data-fokus="tomrer"] .lag.tomrer,
+  .plan[data-fokus="murer"]  .lag.murer,
   .plan[data-fokus="selv"]   .lag.selv { opacity: 1; }
   .plan[data-fokus="vvs"]    .dim.vvs,
   .plan[data-fokus="el"]     .dim.el,
   .plan[data-fokus="glas"]   .dim.glas,
   .plan[data-fokus="tomrer"] .dim.tomrer,
+  .plan[data-fokus="murer"]  .dim.murer,
   .plan[data-fokus="selv"]   .dim.selv { display: inline; }
   .spot .k2 circle { fill: #fff; stroke: #2f5fb3; } .spot .k2 text { fill: #2f5fb3; }
   .zone { fill: #6b4fa0; fill-opacity: .06; stroke: #6b4fa0; stroke-width: .4; stroke-dasharray: 1.2 .8; }
@@ -281,7 +283,7 @@
       </g>
 
       
-      <g class="lag vvs glas">
+      <g class="lag vvs glas murer">
         <rect x="167" y="7.5" width="16" height="16" fill="none" stroke="#999" stroke-width=".35" stroke-dasharray=".8 .8"/>
         
         <path class="inst" d="M161.9 28 V5.5 H175 V13.9" fill="none" stroke="#444" stroke-width=".6" stroke-dasharray="1 .6"/><circle class="inst" cx="175" cy="15.5" r="1.6" fill="#fff" stroke="#444" stroke-width=".4"/>
@@ -303,7 +305,7 @@
         <line x1="212" y1="95" x2="264" y2="95" stroke="#555" stroke-width=".6" stroke-dasharray="1.6 .8"/>
         <circle cx="211.5" cy="95" r="1.1" fill="#555"/><circle cx="264.9" cy="95" r="1.1" fill="#555"/>
       </g>
-      <g class="lag vvs glas">
+      <g class="lag vvs glas murer">
         <rect x="222" y="7" width="80" height="7" fill="#fff" stroke="#444" stroke-width=".4"/>
         <path d="M224 10.5 H300" stroke="#444" stroke-width=".3" stroke-dasharray="1 .6"/>
         <text class="mtxt" x="290" y="19" style="fill:#444;font-size:2.4px">linjeafløb 80</text>
@@ -426,6 +428,11 @@
       </g>
 
       
+      <g class="dim murer">
+        <polygon points="0,28.4 26,26 26,30 71,30 71,0 210,0 210,7 312,7 312,95 265,95 265,141 210.4,147 210.4,161 26,161 26,142 0,139.6" fill="#a4503a" fill-opacity=".07" stroke="#a4503a" stroke-width="1.1" stroke-opacity=".55"/>
+        <text class="mtxt" x="118" y="126" style="fill:#a4503a;font-size:2.8px">Nyt gulv med gulvfliser</text>
+      </g>
+      
       <g class="dim glas">
         <rect x="210.7" y="7" width="1.6" height="89" fill="#333" stroke="none"/>
       </g>
@@ -451,6 +458,11 @@
         <g transform="translate(-48 196)"><use href="#s-lampe" color="var(--green)"/><text x="5" y="1.2" class="sigtxt">Spot, hul Ø76</text></g>
         <g transform="translate(-4 196)"><rect x="-3" y="-2" width="6" height="4" fill="url(#hatch)" stroke="var(--green)" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Rørkasse W</text></g>
         <g transform="translate(36 196)"><rect x="-3" y="-2" width="6" height="4" fill="#f4e9cf"/><text x="5" y="1.2" class="sigtxt">Nyt hængeloft</text></g>
+      </g>
+      <g class="dim murer signatur">
+        <g transform="translate(-48 196)"><rect x="-3" y="-2" width="6" height="4" fill="#a4503a" fill-opacity=".1" stroke="#a4503a" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Nyt gulv</text></g>
+        <g transform="translate(2 196)"><path d="M-3 0 H3" stroke="#a4503a" stroke-width="1.1" stroke-opacity=".55"/><text x="5" y="1.2" class="sigtxt">Nederste række fliser</text></g>
+        <g transform="translate(72 196)"><rect x="-3" y="-1.5" width="6" height="3" fill="#fff" stroke="#444" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Linjeafløb</text></g>
       </g>
       <g class="dim glas signatur">
         <g transform="translate(-48 196)"><path d="M-3 0 H3" stroke="var(--glass)" stroke-width="1"/><text x="5" y="1.2" class="sigtxt">Glasvæg F</text></g>
@@ -556,8 +568,8 @@
     </tbody>
     <tbody data-group="yderligere">
       <tr class="grp"><td colspan="5">Yderligere</td></tr>
-      <tr data-fag="fliser"><td class="n"><span class="dot p">•</span></td><td class="t">Nyt gulv</td><td class="txt"></td><td class="txt">Nye gulvfliser med gulvvarme, godt fald mod risten. Nye fuger langs loftet.</td></tr>
-      <tr data-fag="fliser" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Fliser</td><td class="txt"></td><td class="txt">Gulvflise, også som nederste række på væggene. Op til 10 vægfliser 15 × 15 × 0,5 cm.</td></tr>
+      <tr data-fag="murer"><td class="n"><span class="dot p">•</span></td><td class="t">Nyt gulv</td><td class="txt"></td><td class="txt">Nye gulvfliser med gulvvarme, godt fald mod risten. Nye fuger langs loftet.</td></tr>
+      <tr data-fag="murer" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Fliser</td><td class="txt"></td><td class="txt">Gulvflise, også som nederste række på væggene. Op til 10 vægfliser 15 × 15 × 0,5 cm.</td></tr>
       
       <tr data-fag="tomrer vvs"><td class="n"><span class="dot p">•</span></td><td class="t">Køkken: lysningsplade, lem</td><td class="txt"></td><td class="txt">Inspektionslem i gasbeton til rørsamlinger (erstatter aftagelig plade).</td></tr>
       <tr data-fag="tomrer"><td class="n"><span class="dot p">•</span></td><td class="t">Tætningslister, alle vinduer</td><td class="txt"></td><td class="txt">Ventiler bevares. Dannebrog, 4 fag, koblede rammer, åbner udad.</td></tr>
@@ -581,7 +593,7 @@
   <p class="hint">✓ = monterer / udfører. VVS er hovedentreprenør for VVS, el og tømrer: koordinerer, laver tidsplanen og holder afleveringen. Glarmester har egen aftale med bygherre. Bygherre køber alt undtagen radiator N, gulvvarme G og evt. glasvæg F.</p>
   <table class="buy ansvar">
     <colgroup><col style="width:28px"><col><col span="6" style="width:68px"></colgroup>
-    <thead><tr><th></th><th>Emne</th><th>VVS</th><th>El</th><th>Glarmester</th><th>Tømrer</th><th>Fliser</th><th>Bygherre</th></tr></thead>
+    <thead><tr><th></th><th>Emne</th><th>VVS</th><th>El</th><th>Glarmester</th><th>Tømrer</th><th>Murer</th><th>Bygherre</th></tr></thead>
     <tbody id="ansvar"></tbody>
   </table>
 </section>
@@ -726,18 +738,13 @@
 
 
 <section class="page" data-fane="tomrer" data-pakke="vvs" style="--accent:var(--c-tomrer)">
-  <div class="fag-head"><h1>Tømrer og flisearbejde</h1></div>
+  <div class="fag-head"><h1>Tømrer</h1></div>
   <div class="plan" data-fokus="tomrer"></div>
 
-  <h2>Tømrer</h2>
+  <h2>Opgaver</h2>
   <table class="buy"><colgroup><col style="width:28px"><col class="emne"><col class="prod"><col></colgroup>
     <thead><tr><th></th><th>Emne</th><th>Type / model</th><th>Kommentar</th></tr></thead>
     <tbody data-fag-liste="tomrer"></tbody></table>
-
-  <h2>Murer / flisemontør</h2>
-  <table class="buy"><colgroup><col style="width:28px"><col class="emne"><col class="prod"><col></colgroup>
-    <thead><tr><th></th><th>Emne</th><th>Type / model</th><th>Kommentar</th></tr></thead>
-    <tbody data-fag-liste="fliser"></tbody></table>
 
   <h2>Bemærk</h2>
   <ul class="note">
@@ -764,6 +771,25 @@
     </ul>
   </div>
 </section>
+
+
+<section class="page" data-fane="murer" data-pakke="vvs" style="--accent:var(--c-murer)">
+  <div class="fag-head"><h1>Murer</h1></div>
+  <div class="plan" data-fokus="murer"></div>
+
+  <h2>Opgaver</h2>
+  <table class="buy"><colgroup><col style="width:28px"><col class="emne"><col class="prod"><col></colgroup>
+    <thead><tr><th></th><th>Emne</th><th>Type / model</th><th>Kommentar</th></tr></thead>
+    <tbody data-fag-liste="murer"></tbody></table>
+
+  <h2>Bemærk</h2>
+  <ul class="note">
+    <li>Gulvet er støbt på træbjælker.</li>
+    <li>Gulvvarme og linjeafløb leveres og lægges af VVS.</li>
+    
+  </ul>
+</section>
+
 
 
 <script>
@@ -832,7 +858,7 @@
     });
   });
   // ---- Hvem gør hvad: én række pr. linje i købslisten, ✓ i de faggrupper der står i data-fag ----
-  const ANSVAR = ['vvs', 'el', 'glas', 'tomrer', 'fliser', 'selv'];
+  const ANSVAR = ['vvs', 'el', 'glas', 'tomrer', 'murer', 'selv'];
   const ansvar = document.getElementById('ansvar');
   const ansvarRk = (dot, emne, fag) => {
     const r = document.createElement('tr');
@@ -950,7 +976,7 @@
         <li><i class="puls"></i><div><b>VVS</b><span>Varmetab og afløbskanal i det støbte gulv. Afgør radiatorens størrelse, linjeafløb og samlet tilbud.</span></div></li>
       </ul>
       <p class="ogsaa">Mangler valg: brusearmatur M, dør R, gulvflise</p>
-      <p class="ogsaa">Afklares: foreningens godkendelse, gamle rør i W, gulv- og flisearbejde</p>
+      <p class="ogsaa">Afklares: foreningens godkendelse, gamle rør i W, murerarbejde</p>
     </div>
     <div class="kort"><h2>Seneste ændringer</h2>
       <ul class="aendr">
@@ -1000,7 +1026,7 @@
 <nav class="faner"></nav>
 <section class="tre-d" data-fane="3d"></section>
 <script>
-  const FANER = [['oversigt', 'Oversigt'], ['vvs', 'VVS'], ['el', 'El'], ['glas', 'Glarmester'], ['tomrer', 'Tømrer og fliser'],
+  const FANER = [['oversigt', 'Oversigt'], ['vvs', 'VVS'], ['el', 'El'], ['glas', 'Glarmester'], ['tomrer', 'Tømrer'], ['murer', 'Murer'],
                  ['ansvar', 'Hvem gør hvad'], ['3d', '3D'], ['detaljer', 'Plan og produkter']];
   const nav = document.querySelector('.faner');
   document.body.prepend(nav);
@@ -1009,7 +1035,7 @@
     const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
     document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
     const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
-    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=b349fd40#hv"></iframe>';
+    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=64605f07#hv"></iframe>';
     nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
     scrollTo(0, 0);
   }
@@ -1018,7 +1044,7 @@
 </script>
 <script>
 (() => {
-  const V = 'f5004100a2';
+  const V = 'e702eb262c';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
