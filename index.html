@@ -31,6 +31,9 @@
   .punkter b { display: block; font-weight: 700; }
   .punkter span { font-size: 14.5px; line-height: 1.45; color: var(--muted); }
   .panel svg { display: block; width: 100%; height: auto; }
+  .legende { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 10px 0 0; padding: 0; list-style: none; font-size: 12.5px; color: var(--muted); }
+  .legende li { display: flex; align-items: center; gap: 6px; }
+  .panel .legende svg, #print-tegning .legende svg { display: block; flex: none; width: 26px; height: 18px; max-height: none; overflow: visible; }
   .panel h3 { font-size: 15px; margin: 0 0 8px; }
   .panel h4 { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin: 18px 0 6px; padding-top: 12px; border-top: 1px solid var(--line); }
   .spec { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.5; }
@@ -53,7 +56,8 @@
   .tre-d:fullscreen .hjoerne, .tre-d.fuld-css .hjoerne { top: 6px; right: 6px; }   /* flugter med 3D-knapperne (6 px inde i modellen) */   /* flugter med 3D-knapperne, også i fuld skærm */
   .tre-d:fullscreen .tre-d-ramme, .tre-d.fuld-css .tre-d-ramme { height: 100%; min-height: 0; border-radius: 0; }
   #plan2d:fullscreen, #plan2d.fuld-css { display: flex; flex-direction: column; justify-content: center; padding: 54px 32px 24px; background: #fff; overflow: auto; }
-  #plan2d:fullscreen svg.plan, #plan2d.fuld-css svg.plan { width: auto; max-width: 100%; max-height: calc(100vh - 90px); margin: 0 auto; }
+  #plan2d:fullscreen svg.plan, #plan2d.fuld-css svg.plan { width: auto; max-width: 100%; max-height: calc(100vh - 150px); margin: 0 auto; }
+  #plan2d:fullscreen .legende, #plan2d.fuld-css .legende { justify-content: center; }
   .fuld-css { position: fixed !important; inset: 0; z-index: 1000; margin: 0 !important; border-radius: 0 !important; }
   .tabel { overflow-x: auto; }
   .prod { border-collapse: collapse; width: 100%; min-width: 560px; margin-top: 8px; font-size: 12.5px; line-height: 1.35; }
@@ -86,7 +90,8 @@
     body.kun-tegning #print-tegning { display: block; }
     #print-tegning h1 { font-size: 16pt; margin: 0 0 2mm; }
     #print-tegning h2 { font-size: 11pt; letter-spacing: 0; text-transform: none; color: var(--ink); margin: 0 0 4mm; }
-    #print-tegning svg { display: block; width: 100%; height: auto; max-height: 165mm; }
+    #print-tegning svg { display: block; width: 100%; height: auto; max-height: 150mm; }
+    #print-tegning .legende { font-size: 9pt; color: #444; }
     #print-tegning img { display: block; width: 100%; max-height: 165mm; object-fit: contain; }
     #print-tegning .skift { break-before: page; }
     #print { display: block; }
@@ -185,14 +190,15 @@ const OMKREDS = (() => { const k = ([x, y]) => [156 + .975 * (x - 156), 80 + .97
   const P = RUM.split(' ').map(p => k(p.split(',').map(Number))), ring = [...P.slice(9), ...P.slice(0, 9)], yd = ring[0][1];
   return 'M' + [[k([121.4, 161])[0], yd], ...ring, [k([192.4, 161])[0], yd]].map(q => q.map(v => v.toFixed(2)).join(' ')).join(' L'); })();
 const rf = (x, y, t, anker = 'start') => `<text class="rf" x="${x}" y="${y}" text-anchor="${anker}">${t}</text>`;
-const plan = (p) => `<svg class="plan" viewBox="-24 -24 350 232" xmlns="http://www.w3.org/2000/svg" role="img">
+const plan = (p) => `<svg class="plan" viewBox="-24 -24 350 204" xmlns="http://www.w3.org/2000/svg" role="img">
   <style>.plan text{font:6px Inter,Arial,sans-serif;fill:#444}.plan .rf{font-weight:700;fill:${NY}}.plan .e{fill:none;stroke:${EKS};stroke-width:.35}.plan .m{fill:none;stroke:#777;stroke-width:.35}.plan .mt{font-size:5px;fill:#777}.plan .h{stroke:#bbb;stroke-width:.25;stroke-dasharray:1 1}.plan .lg{font-size:5.5px}.plan .kb{fill:none;stroke:${NY};stroke-width:.5;stroke-dasharray:2.2 1.2}</style>
   ${DEFS}
   <polygon points="${RUM}" fill="#faf8f3" stroke="#333" stroke-width="1.1"/>
   ${p.bar ? '' : EKSIST}
   ${p.tegn}
-  <g transform="translate(-20 182)">${p.legend.map((l, i) => `<g transform="translate(${(i % 4) * 84} ${Math.floor(i / 4) * 14})">${l[0]}<text class="lg" x="${l[2] || 14}" y="2">${l[1]}</text></g>`).join('')}</g>
 </svg>`;
+const legende = p => `<ul class="legende">${p.legend.map(l => `<li><svg viewBox="-1 -4.5 12 9" aria-hidden="true"><g class="plan">${l[0]}</g></svg>${l[1]}</li>`).join('')}</ul>`;
+const tegning = p => plan(p) + legende(p);
 
 // El-plan: målkæder til spots, spots E1–E8 (nummerering som plantegningen), kabelføringer fra X2
 const SPOTS = [[110, 45], [174, 45], [238, 45], [286, 45], [46, 117], [110, 117], [174, 117], [238, 117]];
@@ -462,7 +468,7 @@ const DIAGRAM = D;
 
 // ---------- Visning: én fane ad gangen på skærm, alle fag efter hinanden ved print
 const NAVN = { vvs: 'VVS', tomrer: 'Tømrer', el: 'El', glas: 'Glasvæg', fuger: 'Fuger' };
-const panel = fag => `<h3>${NAVN[fag]}</h3>` + plan(PLANER[fag])
+const panel = fag => `<h3>${NAVN[fag]}</h3>` + tegning(PLANER[fag])
   + (fag === 'el' ? `<h4>Strømvejsskema</h4>${DIAGRAM}` : '')
   + `<h4>Specifikation</h4><ul class="spec">${SPEC[fag].map(x => `<li>${x}</li>`).join('')}</ul>`
   + `<h4>Komponentliste</h4>${tabel(KOMP[fag])}`;
@@ -485,7 +491,7 @@ function udskrivTegning(html) {
   setTimeout(() => window.print(), 50);
 }
 function pdf(hvad) {
-  if (hvad === 'tegning') return udskrivTegning(`<h2>${NAVN[valgt]}: plan</h2>` + plan(PLANER[valgt])
+  if (hvad === 'tegning') return udskrivTegning(`<h2>${NAVN[valgt]}: plan</h2>` + tegning(PLANER[valgt])
     + (valgt === 'el' ? `<div class="skift"><h2>El: strømvejsskema</h2>${DIAGRAM}</div>` : ''));
   if (hvad === '3d') return ramme3d.contentWindow?.postMessage({ foto: true }, '*');     // svaret kommer som {foto}
   window.print();
@@ -522,7 +528,7 @@ document.addEventListener('fullscreenchange', opdaterFuld); document.addEventLis
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.querySelector('.fuld-css')) { document.querySelector('.fuld-css').classList.remove('fuld-css'); opdaterFuld(); } });
 function vis(fag) {
   valgt = fag;
-  document.getElementById('plan2d').innerHTML = '<div class="hjoerne"><button data-pdf="tegning">Gem PDF</button><button class="fuld" data-fuld></button></div>' + plan(PLANER[fag]);
+  document.getElementById('plan2d').innerHTML = '<div class="hjoerne"><button data-pdf="tegning">Gem PDF</button><button class="fuld" data-fuld></button></div>' + tegning(PLANER[fag]);
   opdaterFuld();
   document.getElementById('tavle').innerHTML = indhold(fag);
   til3d();
@@ -534,7 +540,7 @@ document.getElementById('print').innerHTML = Object.keys(NAVN).map(f => `<sectio
 </script>
 <script>
 (() => {
-  const V = '3f2953c259';
+  const V = 'defc574107';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
