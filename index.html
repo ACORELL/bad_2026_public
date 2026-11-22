@@ -18,7 +18,8 @@
   .kort { background: var(--card); border-radius: 14px; padding: 22px 24px; box-shadow: 0 2px 14px rgba(0,0,0,.06); margin-bottom: 20px; }
   ul { margin: 0; padding-left: 20px; }
   li + li { margin-top: 6px; }
-  .raekke { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: start; }
+  .raekke { display: grid; grid-template-columns: 190px 1fr; gap: 20px; align-items: start; }
+  .raekke > .kort:first-child { position: sticky; top: 20px; }
   .raekke > * { min-width: 0; }
   .to { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .to > * { min-width: 0; }
@@ -27,15 +28,15 @@
   .punkter button { all: unset; display: block; width: 100%; box-sizing: border-box; cursor: pointer; padding: 12px 14px; border-radius: 10px; border-left: 3px solid transparent; }
   .punkter button:hover { background: var(--bg); }
   .punkter button[aria-selected="true"] { background: var(--bg); border-left-color: var(--green); }
-  .punkter b { display: block; font-weight: 700; margin-bottom: 2px; }
+  .punkter b { display: block; font-weight: 700; }
   .punkter span { font-size: 14.5px; line-height: 1.45; color: var(--muted); }
-  .tavle { position: sticky; top: 20px; }
   .panel svg { display: block; width: 100%; height: auto; }
   .panel h3 { font-size: 15px; margin: 0 0 8px; }
   .panel h4 { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin: 18px 0 6px; padding-top: 12px; border-top: 1px solid var(--line); }
   .spec { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.5; }
   .spec li + li { margin-top: 4px; }
-  .tre-d { margin: 4px 0 0; font-size: 13px; }
+  .tre-d { padding: 8px; }
+  .tre-d-ramme { display: block; width: 100%; height: min(62vh, 560px); border: 0; border-radius: 9px; background: #f1efea; }
   .tabel { overflow-x: auto; }
   .prod { border-collapse: collapse; width: 100%; min-width: 560px; margin-top: 8px; font-size: 12.5px; line-height: 1.35; }
   .prod th, .prod td { text-align: left; vertical-align: top; padding: 5px 8px 5px 0; border-bottom: 1px solid var(--line); }
@@ -44,7 +45,11 @@
   #print { display: none; }
   @media (max-width: 860px) {
     .raekke, .to { grid-template-columns: 1fr; }
-    .tavle { position: static; }
+    .tre-d-ramme { height: 62vh; }
+    .raekke > .kort:first-child { position: static; }
+    .punkter { display: flex; flex-wrap: wrap; gap: 6px; }
+    .punkter button { width: auto; padding: 8px 14px; border-left: 0; border-bottom: 3px solid transparent; }
+    .punkter button[aria-selected="true"] { border-bottom-color: var(--green); }
     main { padding: 32px 16px 48px; }
     h1 { font-size: 25px; }
   }
@@ -67,20 +72,23 @@
 <body>
 <main>
   <h1>Renovering af badeværelse</h1>
-  <p class="lead">Oplæg til renovering af badeværelse, ca. 4,5 m², etageejendom i København K. Gulv og vægfliser bevares. Vi søger én entreprenør for VVS, el, tømrer og fuger; glasvæggen kan udføres af glarmester. Løsning og produkter er et forslag, og entreprenørens erfaring og alternativer er velkomne.</p>
+  <p class="lead">Oplæg til renovering af badeværelse, ca. 4,5 m², etageejendom i København K. Gulv og vægfliser bevares. Vi søger én entreprenør for VVS, el, tømrer, fuger og montage af glasvæggen. Løsning og produkter er et forslag, og entreprenørens erfaring og alternativer er velkomne.</p>
 
   <div class="raekke">
     <div class="kort">
       <h2>Opgaven</h2>
       <ul class="punkter" role="tablist">
-        <li><button role="tab" data-fag="vvs" aria-selected="true"><b>VVS</b><span>Opsatsvask med armatur, toilet med skjult cisterne, brusearmatur, radiator, afspærring, køkkenarmatur. Bruserens rør over loftet.</span></button></li>
-        <li><button role="tab" data-fag="tomrer"><b>Tømrer</b><span>Nyt hængeloft. Rørkasser i bad og køkken. Kasse langs væggen med bordplade og underskab. Ny dør. Tilvalg: tætningslister i alle vinduer.</span></button></li>
-        <li><button role="tab" data-fag="el"><b>El</b><span>8 spots på K1, ventilator i nichens loft med boost via K2, spejl og makeupspejl på fast forsyning. Forsyning fra eksisterende udtag. Tilvalg: ny gruppetavle.</span></button></li>
-        <li><button role="tab" data-fag="glas"><b>Glasvæg</b><span>Fast glasvæg 50 cm mellem bruser og bordplade.</span></button></li>
-        <li><button role="tab" data-fag="fuger"><b>Fuger</b><span>Elastiske fuger ved gulv og loft rundt i rummet, langs kasse og bordplade mod væggen og om toilettets fod.</span></button></li>
+        <li><button role="tab" data-fag="vvs" aria-selected="true"><b>VVS</b></button></li>
+        <li><button role="tab" data-fag="tomrer"><b>Tømrer</b></button></li>
+        <li><button role="tab" data-fag="el"><b>El</b></button></li>
+        <li><button role="tab" data-fag="glas"><b>Glasvæg</b></button></li>
+        <li><button role="tab" data-fag="fuger"><b>Fuger</b></button></li>
       </ul>
     </div>
-    <div class="kort tavle panel" role="tabpanel" id="tavle"></div>
+    <div>
+      <div class="kort tre-d"><iframe class="tre-d-ramme" src="udsugning-3d.html?v=7cdf10f0" title="3D-model af badeværelset: drej, zoom og klik på delene"></iframe></div>
+      <div class="kort tavle panel" role="tabpanel" id="tavle"></div>
+    </div>
   </div>
 
   <div class="to">
@@ -298,10 +306,10 @@ const SPEC = {
     'Forslag: bygherre leverer og indstiller K1 og K2, elektrikeren monterer.',
     '<b>GT</b> Tilvalg: ny gruppetavle for lejligheden, erstatter den eksisterende. Eksisterende grupper overføres. Elektrikeren foreslår opbygning.'],
   glas: [
-    '<b>G1</b> Fast glasvæg ca. 50 cm, højde ca. 180 cm, i nicheåbningen ved bordpladen T8.',
+    '<b>G1</b> Fast glasvæg ca. 50 cm, standard walk-in-væg ca. 200 cm høj, i nicheåbningen ved bordpladen T8.',
     'Uden gulvprofil og uden fuge under: fri af gulvet, så vand kan løbe under til gulvafløbet under T9.',
-    'Stabiliseringsstang 45° fra glassets top nær den frie ende ind til nichens bagvæg, sort.',
-    'Udføres af entreprenør eller glarmester.'],
+    'Sort stabiliseringsstang fra glassets top nær den frie ende ind til nichens bagvæg, gerne 45° (efter vægsystemet).',
+    'Monteres af entreprenøren (VVS).'],
   fuger: [
     '<b>F1</b> Elastisk fuge langs gulvet rundt i hele rummet og langs T1.',
     '<b>F2</b> Elastisk fuge langs T7 og T8 mod væggen, langs foden af T7 og rundt om toilettets fod langs gulvet.',
@@ -346,7 +354,7 @@ const KOMP = {
     ['E10', 'Makeupspejl med lys', 'Ø16 cm, 3× forstørrelse, LED, teleskoparm, IP20, fast 230 V. Beskyttelsesklasse afklares', 'Hansgrohe AddStoris, mat sort', '41790670', '1', 'Bygherre'],
     ['GT', 'Gruppetavle', 'Tilvalg. Lejlighedens tavle, eksisterende grupper overføres, RCD, reserve', 'Elektrikeren foreslår', '', '1', 'Elektriker']],
   glas: [
-    ['G1', 'Glasvæg', 'Fast sidevæg 50 × ca. 180 cm, 8 mm hærdet klart glas, sort vægprofil, monteret hævet over gulvet uden gulvprofil, stabiliseringsstang 45° sort. Dansani Match fast væg 47–49 cm sort findes, men kun med vandret stang', 'Glarmester, specialmål', 'Afklares', '1', 'Bygherre']],
+    ['G1', 'Glasvæg', 'Standard fast walk-in-væg ca. 50 × 200 cm, klart hærdet glas, sort vægprofil, monteret hævet over gulvet uden gulvprofil, sort stabiliseringsstang (45° hvis systemet tillader det)', 'Fx Dansani Match fast væg 47–49 cm, sort', 'Afklares', '1', 'Bygherre']],
   fuger: [
     ['F1, F2', 'Sanitetsfugemasse', 'Elastisk fuge. Farve aftales', 'Entreprenørens valg', '', '', 'Entreprenør']],
 };
@@ -418,9 +426,7 @@ const DIAGRAM = D;
 
 // ---------- Visning: én fane ad gangen på skærm, alle fag efter hinanden ved print
 const NAVN = { vvs: 'VVS', tomrer: 'Tømrer', el: 'El', glas: 'Glasvæg', fuger: 'Fuger' };
-const TRE_D = { vvs: ['', '3D-model'], tomrer: ['', '3D-model'], el: ['', '3D-model'] };
 const panel = fag => `<h3>${NAVN[fag]}</h3>` + plan(PLANER[fag])
-  + (TRE_D[fag] ? `<p class="tre-d"><a href="udsugning-3d.html?v=e54f8e5e${TRE_D[fag][0]}" target="_blank" rel="noopener">${TRE_D[fag][1]}</a></p>` : '')
   + (fag === 'el' ? `<h4>Strømvejsskema</h4>${DIAGRAM}` : '')
   + `<h4>Specifikation</h4><ul class="spec">${SPEC[fag].map(x => `<li>${x}</li>`).join('')}</ul>`
   + `<h4>Komponentliste</h4>${tabel(KOMP[fag])}`;
@@ -435,7 +441,7 @@ document.getElementById('print').innerHTML = Object.keys(NAVN).map(f => `<sectio
 </script>
 <script>
 (() => {
-  const V = '280b2dcd83';
+  const V = '550bc9427a';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
