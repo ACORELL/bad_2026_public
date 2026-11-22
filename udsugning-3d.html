@@ -5,14 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Badeværelse 3D</title>
 <style>
-  :root { --ink: #1f1f1f; --muted: #6b6b6b; --line: #e3ded2; --acc: #2f5fb3; }
+  :root { --ink: #1f1f1f; --muted: #6b6b6b; --line: #e4dfd3; --acc: #2f7d54; }
   html, body { margin: 0; height: 100%; background: #f1efea; font-family: Inter, Arial, sans-serif; color: var(--ink); overflow: hidden; }
   canvas { display: block; }
-  #panel { display: flex; gap: 6px; flex-wrap: wrap; position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,.95); border-radius: 12px; padding: 12px 14px; box-shadow: 0 4px 18px rgba(0,0,0,.10); font-size: 12px; max-width: calc(100% - 56px); }
+  /* knapperne flugter med sidens fuld skærm-knap (6 px fra kanten, 34 px høje) */
+  #panel { display: flex; gap: 6px; flex-wrap: wrap; position: absolute; top: 6px; left: 6px; font-size: 12.5px; max-width: calc(100% - 60px); }
   h1 { font-size: 14px; margin: 0 0 8px; }
   .row { display: flex; gap: 6px; flex-wrap: wrap; }
   [hidden] { display: none !important; }
-  button { font: inherit; border: 1px solid var(--line); background: #fff; border-radius: 7px; padding: 6px 10px; cursor: pointer; }
+  button { font: inherit; height: 34px; border: 1px solid var(--line); background: rgba(255,255,255,.95); border-radius: 8px; padding: 0 12px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.10); }
+  button:hover { border-color: var(--acc); }
   button.on { background: var(--acc); color: #fff; border-color: var(--acc); }
   #info { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); background: rgba(31,31,31,.88); color: #fff; padding: 7px 12px; border-radius: 99px; font-size: 12px; pointer-events: none; opacity: 0; transition: opacity .15s; max-width: calc(100% - 40px); text-align: center; }
   #hint { position: absolute; bottom: 14px; right: 14px; color: var(--muted); font-size: 11px; }
@@ -29,6 +31,7 @@
 <div id="panel"><button id="visalt" aria-pressed="false" hidden>Vis alt</button><button id="vaegge" aria-pressed="false">Skjul vægge</button></div>
 <div id="info"></div>
 <div id="hint">Træk: drej · Højreklik: flyt · Scroll: zoom · Klik: navn</div>
+<script>if (parent !== window) document.getElementById('hint').hidden = true;   // siden har en ?-knap</script>
 
 <script type="module">
 import * as THREE from 'three';
@@ -247,6 +250,16 @@ renderer.domElement.addEventListener('pointerup', e => {
 });
 addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); composer.setSize(innerWidth, innerHeight); });
 renderer.setAnimationLoop(() => { controls.update(); composer.render(); });
+// Foto til PDF: siden sender {foto}; billedet renderes i højere opløsning og sendes tilbage (knapperne er HTML og kommer ikke med)
+addEventListener('message', e => {
+  if (!e.data?.foto) return;
+  const pr = renderer.getPixelRatio(), k = Math.max(2, Math.min(4, 2400 / innerWidth));
+  renderer.setPixelRatio(k); composer.setPixelRatio(k); composer.setSize(innerWidth, innerHeight);
+  composer.render();
+  const url = renderer.domElement.toDataURL('image/jpeg', .92);
+  renderer.setPixelRatio(pr); composer.setPixelRatio(pr); composer.setSize(innerWidth, innerHeight);
+  e.source.postMessage({ foto: url, fokus: fokusFag }, '*');
+});
 </script>
 </body>
 </html>

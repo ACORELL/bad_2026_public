@@ -40,6 +40,24 @@
   .tre-d { padding: 8px; display: flex; }
   .tre-d-ramme { display: block; flex: 1; width: 100%; min-height: 380px; border: 0; border-radius: 9px; background: #f1efea; }
   .plan2d { padding: 14px 16px; }
+  .tre-d { position: relative; }
+  .hjoerne { position: absolute; top: 14px; right: 14px; z-index: 2; display: flex; gap: 6px; }
+  .hjoerne button { height: 34px; font: inherit; font-size: 12.5px; padding: 0 12px; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.95); box-shadow: 0 2px 10px rgba(0,0,0,.10); cursor: pointer; }
+  .hjoerne button:hover { border-color: var(--green); }
+  .fuld { width: 34px; height: 34px; display: grid; place-items: center; padding: 0; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.95); box-shadow: 0 2px 10px rgba(0,0,0,.10); cursor: pointer; }
+  .fuld:hover { border-color: var(--green); }
+  .panel .fuld svg, .fuld svg { display: block; width: 18px; height: 18px; }
+  .hjoerne .fuld { padding: 0; }
+  .hjaelp-boks { position: absolute; top: 40px; right: 0; width: min(300px, calc(100vw - 48px)); padding: 10px 14px; font-size: 12.5px; line-height: 1.5; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,.14); text-align: left; }
+  .hjaelp-boks ul { margin: 0; padding-left: 16px; }
+  .hjaelp-boks li { margin: 2px 0; }
+  #plan2d { position: relative; padding-top: 54px; }
+  .tre-d:fullscreen, .tre-d.fuld-css { padding: 0; background: #f1efea; }
+  .tre-d:fullscreen .hjoerne, .tre-d.fuld-css .hjoerne { top: 6px; right: 6px; }   /* flugter med 3D-knapperne (6 px inde i modellen) */   /* flugter med 3D-knapperne, også i fuld skærm */
+  .tre-d:fullscreen .tre-d-ramme, .tre-d.fuld-css .tre-d-ramme { height: 100%; min-height: 0; border-radius: 0; }
+  #plan2d:fullscreen, #plan2d.fuld-css { display: flex; flex-direction: column; justify-content: center; padding: 54px 32px 24px; background: #fff; overflow: auto; }
+  #plan2d:fullscreen svg.plan, #plan2d.fuld-css svg.plan { width: auto; max-width: 100%; max-height: calc(100vh - 90px); margin: 0 auto; }
+  .fuld-css { position: fixed !important; inset: 0; z-index: 1000; margin: 0 !important; border-radius: 0 !important; }
   .tabel { overflow-x: auto; }
   .prod { border-collapse: collapse; width: 100%; min-width: 560px; margin-top: 8px; font-size: 12.5px; line-height: 1.35; }
   .prod th, .prod td { text-align: left; vertical-align: top; padding: 5px 8px 5px 0; border-bottom: 1px solid var(--line); }
@@ -72,6 +90,7 @@
     #print-tegning h1 { font-size: 16pt; margin: 0 0 2mm; }
     #print-tegning h2 { font-size: 11pt; letter-spacing: 0; text-transform: none; color: var(--ink); margin: 0 0 4mm; }
     #print-tegning svg { display: block; width: 100%; height: auto; max-height: 165mm; }
+    #print-tegning img { display: block; width: 100%; max-height: 165mm; object-fit: contain; }
     #print-tegning .skift { break-before: page; }
     #print { display: block; }
     .kort { box-shadow: none; border: 1px solid var(--line); border-radius: 0; padding: 12px 14px; margin-bottom: 12px; break-inside: avoid; }
@@ -102,7 +121,7 @@
     </div>
     <div>
       <div class="tegninger">
-        <div class="kort tre-d"><iframe class="tre-d-ramme" src="udsugning-3d.html?v=b09f035d" title="3D-model af badeværelset: drej, zoom og klik på delene"></iframe></div>
+        <div class="kort tre-d"><div class="hjoerne"><button data-pdf="3d">Gem PDF</button><button class="fuld" data-hjaelp="3d" aria-expanded="false" aria-label="Hjælp" title="Hjælp"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9a3 3 0 1 1 4.2 2.75c-.8.35-1.2 1-1.2 1.85V14"/><circle cx="12" cy="18" r=".9" fill="currentColor" stroke="none"/></svg></button><button class="fuld" data-fuld></button></div><iframe class="tre-d-ramme" src="udsugning-3d.html?v=736766e1" title="3D-model af badeværelset: drej, zoom og klik på delene"></iframe></div>
         <div class="kort panel plan2d" id="plan2d"></div>
       </div>
       <div class="kort tavle panel" role="tabpanel" id="tavle"></div>
@@ -460,20 +479,78 @@ let valgt = 'vvs';
 const til3d = () => ramme3d.contentWindow?.postMessage({ fag: valgt }, '*');          // 3D fremhæver det valgte fag
 addEventListener('message', e => { if (e.data?.klar3d) til3d(); });
 // PDF: browserens udskrift → Gem som PDF. 'tegning' = det valgte fags plan (og strømvejsskema) på liggende A4; 'alt' = hele oplægget
+function udskrivTegning(html) {
+  const aktiv = iFuld(); if (aktiv) fuldSkaerm(aktiv);                                // ud af fuld skærm før udskrift
+  document.getElementById('print-tegning').innerHTML = `<h1>Renovering af badeværelse</h1>` + html;
+  const st = document.createElement('style'); st.textContent = '@page { size: A4 landscape; margin: 12mm; }';
+  document.head.appendChild(st); document.body.classList.add('kun-tegning');
+  addEventListener('afterprint', () => { document.body.classList.remove('kun-tegning'); st.remove(); }, { once: true });
+  setTimeout(() => window.print(), 50);
+}
 function pdf(hvad) {
-  if (hvad === 'tegning') {
-    document.getElementById('print-tegning').innerHTML = `<h1>Renovering af badeværelse</h1><h2>${NAVN[valgt]}: plan</h2>` + plan(PLANER[valgt])
-      + (valgt === 'el' ? `<div class="skift"><h2>El: strømvejsskema</h2>${DIAGRAM}</div>` : '');
-    const st = document.createElement('style'); st.textContent = '@page { size: A4 landscape; margin: 12mm; }';
-    document.head.appendChild(st); document.body.classList.add('kun-tegning');
-    addEventListener('afterprint', () => { document.body.classList.remove('kun-tegning'); st.remove(); }, { once: true });
-  }
+  if (hvad === 'tegning') return udskrivTegning(`<h2>${NAVN[valgt]}: plan</h2>` + plan(PLANER[valgt])
+    + (valgt === 'el' ? `<div class="skift"><h2>El: strømvejsskema</h2>${DIAGRAM}</div>` : ''));
+  if (hvad === '3d') return ramme3d.contentWindow?.postMessage({ foto: true }, '*');     // svaret kommer som {foto}
   window.print();
 }
+addEventListener('message', e => {
+  if (!e.data?.foto) return;
+  const titel = e.data.fokus && e.data.fokus !== 'alle' ? `3D: ${NAVN[e.data.fokus]}` : '3D: hele rummet';
+  udskrivTegning(`<h2>${titel}</h2><img src="${e.data.foto}" alt="${titel}">`);
+});
 document.addEventListener('click', e => { const b = e.target.closest('[data-pdf]'); if (b) pdf(b.dataset.pdf); });
+// Fuld skærm for 3D og for 2D-planen hver for sig. Hvor browseren ikke kan (fx iPhone), dækker kortet skærmen med CSS.
+const iFuld = () => document.fullscreenElement || document.webkitFullscreenElement || document.querySelector('.fuld-css');
+function opdaterFuld() {
+  document.querySelectorAll('[data-fuld]').forEach(b => {
+    const luk = iFuld() && iFuld().contains(b), tekst = luk ? 'Luk fuld skærm' : 'Fuld skærm';
+    b.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${luk ? 'M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5' : 'M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5'}"/></svg>`;
+    b.setAttribute('aria-label', tekst); b.title = tekst;
+  });
+}
+function fuldSkaerm(el) {
+  const aktiv = iFuld();
+  if (aktiv) {
+    if (aktiv.classList.contains('fuld-css')) aktiv.classList.remove('fuld-css');
+    else (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    if (aktiv === el) return opdaterFuld();
+  }
+  const req = el.requestFullscreen || el.webkitRequestFullscreen;
+  const css = () => { el.classList.add('fuld-css'); opdaterFuld(); };          // reserve: dæk vinduet, hvis browseren afviser
+  if (req && (document.fullscreenEnabled || document.webkitFullscreenEnabled)) { const p = req.call(el); if (p && p.catch) p.catch(css); } else css();
+  opdaterFuld();
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-fuld]'); if (b) fuldSkaerm(b.closest('.tre-d, #plan2d')); });
+document.addEventListener('fullscreenchange', opdaterFuld); document.addEventListener('webkitfullscreenchange', opdaterFuld);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.querySelector('.fuld-css')) { document.querySelector('.fuld-css').classList.remove('fuld-css'); opdaterFuld(); } });
+// ?-knappen: kort hjælp til hver visning; lukker ved klik udenfor, Escape eller klik ind i 3D
+const HJAELP = {
+  '3d': ['Træk: drej', 'Højreklik og træk (to fingre): flyt', 'Scroll (knib): zoom', 'Klik på en del: navnet vises',
+         'Fanen fremhæver fagets dele, <b>Vis alt</b> viser hele rummet', '<b>Skjul vægge</b> giver frit udsyn ind i rummet',
+         '<b>Gem PDF</b> gemmer det, du ser lige nu'],
+  '2d': ['Set oppefra, mål i cm. Væg A øverst, døren nederst', 'Nyt arbejde er kraftigt, det eksisterende tyndt gråt',
+         'Andre fag står som grå baggrund', 'Stiplet: skjult over loftet eller bag beklædning',
+         'Betegnelserne (fx V1, E9) står i listerne under tegningerne', '<b>Gem PDF</b> giver planen på liggende A4'],
+};
+function lukHjaelp() {
+  document.querySelectorAll('.hjaelp-boks').forEach(b => b.remove());
+  document.querySelectorAll('[data-hjaelp]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-hjaelp]');
+  if (!b) { if (!e.target.closest('.hjaelp-boks')) lukHjaelp(); return; }
+  const aaben = b.getAttribute('aria-expanded') === 'true';
+  lukHjaelp();
+  if (aaben) return;
+  b.setAttribute('aria-expanded', 'true');
+  b.parentElement.insertAdjacentHTML('beforeend', `<div class="hjaelp-boks" role="note"><ul>${HJAELP[b.dataset.hjaelp].map(x => `<li>${x}</li>`).join('')}</ul></div>`);
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') lukHjaelp(); });
+addEventListener('blur', lukHjaelp);                                                  // klik ind i 3D-rammen
 function vis(fag) {
   valgt = fag;
-  document.getElementById('plan2d').innerHTML = plan(PLANER[fag]) + '<div class="pdf"><button data-pdf="tegning">Tegning som PDF</button></div>';
+  document.getElementById('plan2d').innerHTML = '<div class="hjoerne"><button data-pdf="tegning">Gem PDF</button><button class="fuld" data-hjaelp="2d" aria-expanded="false" aria-label="Hjælp" title="Hjælp"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9a3 3 0 1 1 4.2 2.75c-.8.35-1.2 1-1.2 1.85V14"/><circle cx="12" cy="18" r=".9" fill="currentColor" stroke="none"/></svg></button><button class="fuld" data-fuld></button></div>' + plan(PLANER[fag]);
+  opdaterFuld();
   document.getElementById('tavle').innerHTML = indhold(fag);
   til3d();
   knapper.forEach(k => k.setAttribute('aria-selected', k.dataset.fag === fag));
@@ -484,7 +561,7 @@ document.getElementById('print').innerHTML = Object.keys(NAVN).map(f => `<sectio
 </script>
 <script>
 (() => {
-  const V = '100a603a9c';
+  const V = 'a2d271974f';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
