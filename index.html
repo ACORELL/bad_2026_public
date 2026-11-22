@@ -48,9 +48,6 @@
   .fuld:hover { border-color: var(--green); }
   .panel .fuld svg, .fuld svg { display: block; width: 18px; height: 18px; }
   .hjoerne .fuld { padding: 0; }
-  .hjaelp-boks { position: absolute; top: 40px; right: 0; width: min(300px, calc(100vw - 48px)); padding: 10px 14px; font-size: 12.5px; line-height: 1.5; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,.14); text-align: left; }
-  .hjaelp-boks ul { margin: 0; padding-left: 16px; }
-  .hjaelp-boks li { margin: 2px 0; }
   #plan2d { position: relative; padding-top: 54px; }
   .tre-d:fullscreen, .tre-d.fuld-css { padding: 0; background: #f1efea; }
   .tre-d:fullscreen .hjoerne, .tre-d.fuld-css .hjoerne { top: 6px; right: 6px; }   /* flugter med 3D-knapperne (6 px inde i modellen) */   /* flugter med 3D-knapperne, også i fuld skærm */
@@ -121,7 +118,7 @@
     </div>
     <div>
       <div class="tegninger">
-        <div class="kort tre-d"><div class="hjoerne"><button data-pdf="3d">Gem PDF</button><button class="fuld" data-hjaelp="3d" aria-expanded="false" aria-label="Hjælp" title="Hjælp"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9a3 3 0 1 1 4.2 2.75c-.8.35-1.2 1-1.2 1.85V14"/><circle cx="12" cy="18" r=".9" fill="currentColor" stroke="none"/></svg></button><button class="fuld" data-fuld></button></div><iframe class="tre-d-ramme" src="udsugning-3d.html?v=736766e1" title="3D-model af badeværelset: drej, zoom og klik på delene"></iframe></div>
+        <div class="kort tre-d"><div class="hjoerne"><button data-pdf="3d">Gem PDF</button><button class="fuld" data-fuld></button></div><iframe class="tre-d-ramme" src="udsugning-3d.html?v=6663ce54" title="3D-model af badeværelset: drej, zoom og klik på delene"></iframe></div>
         <div class="kort panel plan2d" id="plan2d"></div>
       </div>
       <div class="kort tavle panel" role="tabpanel" id="tavle"></div>
@@ -523,33 +520,9 @@ function fuldSkaerm(el) {
 document.addEventListener('click', e => { const b = e.target.closest('[data-fuld]'); if (b) fuldSkaerm(b.closest('.tre-d, #plan2d')); });
 document.addEventListener('fullscreenchange', opdaterFuld); document.addEventListener('webkitfullscreenchange', opdaterFuld);
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.querySelector('.fuld-css')) { document.querySelector('.fuld-css').classList.remove('fuld-css'); opdaterFuld(); } });
-// ?-knappen: kort hjælp til hver visning; lukker ved klik udenfor, Escape eller klik ind i 3D
-const HJAELP = {
-  '3d': ['Træk: drej', 'Højreklik og træk (to fingre): flyt', 'Scroll (knib): zoom', 'Klik på en del: navnet vises',
-         'Fanen fremhæver fagets dele, <b>Vis alt</b> viser hele rummet', '<b>Skjul vægge</b> giver frit udsyn ind i rummet',
-         '<b>Gem PDF</b> gemmer det, du ser lige nu'],
-  '2d': ['Set oppefra, mål i cm. Væg A øverst, døren nederst', 'Nyt arbejde er kraftigt, det eksisterende tyndt gråt',
-         'Andre fag står som grå baggrund', 'Stiplet: skjult over loftet eller bag beklædning',
-         'Betegnelserne (fx V1, E9) står i listerne under tegningerne', '<b>Gem PDF</b> giver planen på liggende A4'],
-};
-function lukHjaelp() {
-  document.querySelectorAll('.hjaelp-boks').forEach(b => b.remove());
-  document.querySelectorAll('[data-hjaelp]').forEach(b => b.setAttribute('aria-expanded', 'false'));
-}
-document.addEventListener('click', e => {
-  const b = e.target.closest('[data-hjaelp]');
-  if (!b) { if (!e.target.closest('.hjaelp-boks')) lukHjaelp(); return; }
-  const aaben = b.getAttribute('aria-expanded') === 'true';
-  lukHjaelp();
-  if (aaben) return;
-  b.setAttribute('aria-expanded', 'true');
-  b.parentElement.insertAdjacentHTML('beforeend', `<div class="hjaelp-boks" role="note"><ul>${HJAELP[b.dataset.hjaelp].map(x => `<li>${x}</li>`).join('')}</ul></div>`);
-});
-document.addEventListener('keydown', e => { if (e.key === 'Escape') lukHjaelp(); });
-addEventListener('blur', lukHjaelp);                                                  // klik ind i 3D-rammen
 function vis(fag) {
   valgt = fag;
-  document.getElementById('plan2d').innerHTML = '<div class="hjoerne"><button data-pdf="tegning">Gem PDF</button><button class="fuld" data-hjaelp="2d" aria-expanded="false" aria-label="Hjælp" title="Hjælp"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9a3 3 0 1 1 4.2 2.75c-.8.35-1.2 1-1.2 1.85V14"/><circle cx="12" cy="18" r=".9" fill="currentColor" stroke="none"/></svg></button><button class="fuld" data-fuld></button></div>' + plan(PLANER[fag]);
+  document.getElementById('plan2d').innerHTML = '<div class="hjoerne"><button data-pdf="tegning">Gem PDF</button><button class="fuld" data-fuld></button></div>' + plan(PLANER[fag]);
   opdaterFuld();
   document.getElementById('tavle').innerHTML = indhold(fag);
   til3d();
@@ -561,7 +534,7 @@ document.getElementById('print').innerHTML = Object.keys(NAVN).map(f => `<sectio
 </script>
 <script>
 (() => {
-  const V = 'a2d271974f';
+  const V = '3f2953c259';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
