@@ -136,6 +136,7 @@
       <ul>
         <li>Bygherre kan selv stå for nedrivning og bortskaffelse, undtagen hængeloft, radiator, toilet, ventilator og tilvalgene T6 og GT. Entreprenøren må gerne foreslå andet.</li>
         <li>Komponentlisterne foreslår produkter og hvem der leverer (kolonnen Leveres af). Bygherre kan levere de markerede produkter selv, eller entreprenøren kan levere dem. Produkter markeret Afklares vælges i fællesskab før opstart.</li>
+        <li>Bygherre kan selv stå for maling af rørkasserne T2 og T3 og kassen T7.</li>
         <li>Bygherre indstiller gerne selv relæmodulerne K1 og K2.</li>
         <li>Mål er vejledende og kontrolleres på stedet.</li>
       </ul>
@@ -145,7 +146,7 @@
       <ul>
         <li>Fast pris, opdelt pr. fag: VVS, el, tømrer, fuger og glasvæg.</li>
         <li>Gerne pris både med og uden bygherrens egne leverancer og nedrivning.</li>
-        <li>Separat pris på køkkenet: V8 og T3.</li>
+        <li>Separat pris på køkkenet: V8, T3 og afspærringen V7 i køkkenet.</li>
         <li>Separat pris på tilvalg: T6 og GT.</li>
         <li>Forventet varighed i arbejdsdage.</li>
       </ul>
@@ -189,10 +190,11 @@ const EKSIST = `
 const OMKREDS = (() => { const k = ([x, y]) => [156 + .975 * (x - 156), 80 + .975 * (y - 80)];
   const P = RUM.split(' ').map(p => k(p.split(',').map(Number))), ring = [...P.slice(9), ...P.slice(0, 9)], yd = ring[0][1];
   return 'M' + [[k([121.4, 161])[0], yd], ...ring, [k([192.4, 161])[0], yd]].map(q => q.map(v => v.toFixed(2)).join(' ')).join(' L'); })();
+// Symboler og skravering defineres én gang uden for main: ellers forsvinder mønstre (fx T2's skravering) i udskriften, hvor main/.raekke er skjult
+document.body.insertAdjacentHTML('afterbegin', `<svg width="0" height="0" style="position:absolute" aria-hidden="true">${DEFS}</svg>`);
 const rf = (x, y, t, anker = 'start') => `<text class="rf" x="${x}" y="${y}" text-anchor="${anker}">${t}</text>`;
 const plan = (p) => `<svg class="plan" viewBox="-24 -24 350 204" xmlns="http://www.w3.org/2000/svg" role="img">
   <style>.plan text{font:6px Inter,Arial,sans-serif;fill:#444}.plan .rf{font-weight:700;fill:${NY}}.plan .e{fill:none;stroke:${EKS};stroke-width:.35}.plan .m{fill:none;stroke:#777;stroke-width:.35}.plan .mt{font-size:5px;fill:#777}.plan .h{stroke:#bbb;stroke-width:.25;stroke-dasharray:1 1}.plan .lg{font-size:5.5px}.plan .kb{fill:none;stroke:${NY};stroke-width:.5;stroke-dasharray:2.2 1.2}</style>
-  ${DEFS}
   <polygon points="${RUM}" fill="#faf8f3" stroke="#333" stroke-width="1.1"/>
   ${p.bar ? '' : EKSIST}
   ${p.tegn}
@@ -344,7 +346,7 @@ const SPEC = {
     '<b>E9</b> Spejl med lys, centreret over V1, fast forsyning. PE fremføres.',
     '<b>E10</b> Makeupspejl med lys på arm, på væggen tæt ved venstre side af E9, vinklet mod pladsen foran vasken, fast forsyning, egen betjening. IP20: elektrikeren bekræfter zonen.',
     '<b>X1</b> Forsyning fra eksisterende udtag, op i væggen og over loftet til samledåse <b>X2</b> med K1 og K2. X2 i kassen på T2 bag T4.',
-    'Kabler fra X2 til E1–E8, M1, E9 og S1 over loftet.',
+    'Kabler fra X2 til E1–E8, M1, E9, E10, X3 og S1 over loftet.',
     'Forslag: bygherre leverer og indstiller K1 og K2, elektrikeren monterer.',
     '<b>GT</b> Tilvalg: ny gruppetavle for lejligheden, erstatter den eksisterende. Eksisterende grupper overføres. Elektrikeren foreslår opbygning.'],
   glas: [
@@ -540,7 +542,7 @@ document.getElementById('print').innerHTML = Object.keys(NAVN).map(f => `<sectio
 </script>
 <script>
 (() => {
-  const V = 'defc574107';
+  const V = 'c0d2876f6c';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
