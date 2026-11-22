@@ -35,17 +35,25 @@
   .panel h4 { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin: 18px 0 6px; padding-top: 12px; border-top: 1px solid var(--line); }
   .spec { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.5; }
   .spec li + li { margin-top: 4px; }
-  .tre-d { padding: 8px; }
-  .tre-d-ramme { display: block; width: 100%; height: min(62vh, 560px); border: 0; border-radius: 9px; background: #f1efea; }
+  .tegninger { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .tegninger > .kort { margin: 0; min-width: 0; }
+  .tre-d { padding: 8px; display: flex; }
+  .tre-d-ramme { display: block; flex: 1; width: 100%; min-height: 380px; border: 0; border-radius: 9px; background: #f1efea; }
+  .plan2d { padding: 14px 16px; }
   .tabel { overflow-x: auto; }
   .prod { border-collapse: collapse; width: 100%; min-width: 560px; margin-top: 8px; font-size: 12.5px; line-height: 1.35; }
   .prod th, .prod td { text-align: left; vertical-align: top; padding: 5px 8px 5px 0; border-bottom: 1px solid var(--line); }
   .prod th { font-size: 11px; letter-spacing: .6px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
   .prod td:first-child { font-weight: 700; white-space: nowrap; }
-  #print { display: none; }
+  #print, #print-tegning { display: none; }
+  .pdf { display: flex; gap: 8px; justify-content: flex-end; margin: 10px 0 0; }
+  .pdf-alt { justify-content: flex-start; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .pdf button { font: inherit; font-size: 13px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); cursor: pointer; }
+  .pdf button:hover { border-color: var(--green); }
   @media (max-width: 860px) {
     .raekke, .to { grid-template-columns: 1fr; }
-    .tre-d-ramme { height: 62vh; }
+    .tegninger { grid-template-columns: 1fr; }
+    .tre-d-ramme { min-height: 0; height: 62vh; }
     .raekke > .kort:first-child { position: static; }
     .punkter { display: flex; flex-wrap: wrap; gap: 6px; }
     .punkter button { width: auto; padding: 8px 14px; border-left: 0; border-bottom: 3px solid transparent; }
@@ -58,7 +66,13 @@
     body { background: #fff; font-size: 11pt; }
     main { max-width: none; padding: 0; }
     .lead { margin-bottom: 14px; }
-    .raekke { display: none; }
+    .raekke, .pdf { display: none; }
+    body.kun-tegning main { display: none; }
+    body.kun-tegning #print-tegning { display: block; }
+    #print-tegning h1 { font-size: 16pt; margin: 0 0 2mm; }
+    #print-tegning h2 { font-size: 11pt; letter-spacing: 0; text-transform: none; color: var(--ink); margin: 0 0 4mm; }
+    #print-tegning svg { display: block; width: 100%; height: auto; max-height: 165mm; }
+    #print-tegning .skift { break-before: page; }
     #print { display: block; }
     .kort { box-shadow: none; border: 1px solid var(--line); border-radius: 0; padding: 12px 14px; margin-bottom: 12px; break-inside: avoid; }
     .to { grid-template-columns: 1fr 1fr; }
@@ -84,9 +98,13 @@
         <li><button role="tab" data-fag="glas"><b>Glasvæg</b></button></li>
         <li><button role="tab" data-fag="fuger"><b>Fuger</b></button></li>
       </ul>
+      <div class="pdf pdf-alt"><button data-pdf="alt">Hele oplægget som PDF</button></div>
     </div>
     <div>
-      <div class="kort tre-d"><iframe class="tre-d-ramme" src="udsugning-3d.html?v=7cdf10f0" title="3D-model af badeværelset: drej, zoom og klik på delene"></iframe></div>
+      <div class="tegninger">
+        <div class="kort tre-d"><iframe class="tre-d-ramme" src="udsugning-3d.html?v=b09f035d" title="3D-model af badeværelset: drej, zoom og klik på delene"></iframe></div>
+        <div class="kort panel plan2d" id="plan2d"></div>
+      </div>
       <div class="kort tavle panel" role="tabpanel" id="tavle"></div>
     </div>
   </div>
@@ -115,6 +133,7 @@
 
   <div id="print"></div>
 </main>
+<div id="print-tegning"></div>
 <script>
 // ---------- Planer: cm, set fra oven. Væg A = nord (øverst), døren i syd. Samme geometri som plantegningen.
 // Tegnemåde: eksisterende tyndt gråt, nyt kraftigt sort. Skjulte føringer over loftet stiplet (ISO 128).
@@ -170,14 +189,15 @@ function maalkaede() {
     + SPOTS.filter(([x, y]) => y === 45 || x === 46).map(([x, y]) => `<line x1="${x}" y1="${y - 4.5}" x2="${x}" y2="-12" class="h"/>`).join('')
     + [[110, 45], [46, 117]].map(([x, y]) => `<line x1="${x - 4.5}" y1="${y}" x2="-12" y2="${y}" class="h"/>`).join('');
 }
-const KABLER = `<path class="kb" d="M38 159 H27.4 V72 H60 V64"/>
-    <path class="kb" d="M60 52 V45 H286 M110 45 V117 M46 117 H238"/>
-    <path class="kb" d="M66 59 H90 V76 H262 V66.4"/>
-    <path class="kb" d="M66 55 H72 V22 H166.9 V12.8 M128 22 V12.8 M98 22 V26"/>
-    <path class="kb" d="M64 64 V150 H200 V164.6"/>`;
+const KABLER = `<path class="kb" d="M38 159 H27.4 V72 H60 V41 M60 72 V150 H200 V164.6"/>
+    <path class="kb" d="M60 41 V45 H286 M110 45 V117 M46 117 H238 M262 45 V59.6"/>
+    <path class="kb" d="M60 37 V22 H166.9 V12.8 M128 22 V12.8 M98 22 V26"/>`;
 
 // Kanal Ø100 over loftet fra M1 i nichen til det eksisterende hul: to stiplede linjer i kanalens bredde (ISO 128, over snitplanet)
-const KANAL = `<path d="M262 58 H41 V31.5 H14.5 V27.6 M262 68 H31 V41.5 H4.5 V27.6" fill="none" stroke="${NY}" stroke-width=".5" stroke-dasharray="2.2 1.2"/><path d="M5.5 29.4 L13.5 31.4" stroke="${NY}" stroke-width="1"/><circle cx="5.5" cy="29.4" r=".9" fill="${NY}"/>`;   // tilbageslagsspjæld ved hullet
+const VENT = '#9c978d';
+const KANAL = `<path d="M262 63 H36 V36.5 H9.5 V27.6" fill="none" stroke="${VENT}" stroke-width="10.6" stroke-linejoin="miter"/>`
+  + `<path d="M262 63 H36 V36.5 H9.5 V27.6" fill="none" stroke="#e9e6df" stroke-width="10" stroke-linejoin="miter"/>`
+  + `<path d="M5.5 29.4 L13.5 31.4" stroke="${VENT}" stroke-width="1"/><circle cx="5.5" cy="29.4" r=".9" fill="${VENT}"/>`;   // ventilation (andet fag) som baggrund   // tilbageslagsspjæld ved hullet
 const PLANER = {
   vvs: { tegn: `
     <rect x="71" y="0" width="47" height="29.6" fill="none" stroke="${NY}" stroke-width=".4"/>
@@ -226,11 +246,11 @@ const PLANER = {
     ${KANAL}
     ${KABLER}
     ${SPOTS.map(([x, y], i) => `<use href="#s-spot" x="${x}" y="${y}"/>` + rf(x + 4.5, y - 4.5, 'E' + (i + 1))).join('')}
-    <use href="#s-vent" x="262" y="63"/>${rf(267, 61.5, 'M1')}
+    <use href="#s-vent" x="262" y="63"/>${rf(266.5, 56, 'M1')}
     <rect x="136.9" y="0" width="60" height="1.6" fill="${NY}"/><use href="#s-vaeg" x="166.9" y="6"/>${rf(162, 12, 'E9', 'end')}<use href="#s-vaeg" x="128" y="6"/>${rf(133, 13, 'E10')}
     <use href="#s-tryk" x="200" y="167"/>${rf(204, 172, 'S1')}
     <g transform="translate(38 159) rotate(-90)"><use href="#s-udtag"/></g>${rf(42, 157, 'X1')}
-    <path class="kb" d="M60 41 V64 M60 55 H66 M60 59 H66"/><use href="#s-daase" x="60" y="39"/>${rf(57, 41, 'X2', 'end')}
+    <use href="#s-daase" x="60" y="39"/>${rf(57, 41, 'X2', 'end')}
     <use href="#s-udtag" x="100" y="26"/>${rf(96, 30, 'X3', 'end')}`,
     legend: [
       [`<use href="#s-spot" x="5" y="0"/>`, 'spot'],
@@ -240,8 +260,8 @@ const PLANER = {
       [`<use href="#s-tryk" x="5" y="0"/>`, 'tryk'],
       [`<g transform="translate(5 -2) scale(.75)"><use href="#s-vaeg"/></g>`, 'spejl med lys'],
       [`<path d="M0 0 H10" class="kb"/>`, 'kabel over loft'],
-      [`<path d="M0 -2.2 H10 M0 2.2 H10" stroke="${NY}" stroke-width=".5" stroke-dasharray="2.2 1.2"/>`, 'kanal Ø100 over loft'],
-      [`<path d="M2 -2 L8 2" stroke="${NY}" stroke-width="1"/><circle cx="2" cy="-2" r=".9" fill="${NY}"/>`, 'tilbageslagsspjæld'],
+      [`<path d="M0 0 H10" stroke="${VENT}" stroke-width="5.6"/><path d="M0 0 H10" stroke="#e9e6df" stroke-width="5"/>`, 'ventilation Ø100 (baggrund)'],
+      [`<path d="M2 -2 L8 2" stroke="${VENT}" stroke-width="1"/><circle cx="2" cy="-2" r=".9" fill="${VENT}"/>`, 'tilbageslagsspjæld'],
     ] },
   glas: { tegn: `
     <path d="M71 0 L199.9 0 L199.9 50.5 A2.5 2.5 0 0 1 197.4 53 L141 53 C127 53 128 29.6 116 29.6 L71 29.6" fill="none" stroke="${NY}" stroke-width=".5"/>
@@ -290,7 +310,7 @@ const SPEC = {
     '<b>T4</b> Aftagelig front på kassen på T2: adgang til X2 (K1, K2) og tilbageslagsspjældet.',
     '<b>T5</b> Dør med karm og gerigter, luftspalte forneden. Tømreren foreslår.',
     '<b>T7</b> Kasse langs væggen fra T2 til forbi toilettet, i ét med T2 og med fronten i flugt. Rummer V10 og rør til V1 og V9. Overflade som T2. Hylde mellem T7 og T9, underside i flugt med T9, front i flugt med T2, åben bagtil.',
-    '<b>T8</b> Bordplade i én højde over T7 og T9, ca. 85 cm over gulv, ca. 53 cm dyb, i flugt med T2 over T7 og blød bue ud til T9. Ca. 7,5 cm udhæng over T9 foran og 2,5 cm mod G1 med rundt hjørne, fri af G1. Materiale afklares: lyst træ ca. 3 cm eller lys kvartskomposit 2 cm. Bæres af T7 og skjulte konsoller over T9.',
+    '<b>T8</b> Bordplade i én højde over T7 og T9, ca. 85 cm over gulv, ca. 53 cm dyb, i flugt med T2 over T7 og blød bue ud til T9. Ca. 7,5 cm udhæng over T9 foran og 2,5 cm mod G1 med rundt hjørne, fri af G1. Lys kvartskomposit, 2 cm. Bæres af T7 og skjulte konsoller over T9.',
     '<b>T9</b> Underskab under T8, væghængt med frit gulv under, skyggefuge mod T8.',
     '<b>T6</b> Tilvalg: tætningslister i alle vinduer, 9 vinduer à 4 fag, koblede rammer, udadgående. Gamle lister fjernes, rillen renses, nye monteres. Ventiler bevares.'],
   el: [
@@ -335,7 +355,7 @@ const KOMP = {
     ['T4', 'Aftagelig front', 'På kassen på T2, adgang til X2 og spjæld', 'Tømrer', '', '1', 'Tømrer'],
     ['T5', 'Dør', 'Indvendig dør med karm og gerigter, luftspalte forneden', 'Tømreren foreslår', '', '1', 'Tømrer'],
     ['T7', 'Kasse langs væg', 'Skelet med vådrumsplader, ca. 30 cm dyb i flugt med T2, overflade som T2, hylde mod T9', 'Tømrer', '', '1', 'Tømrer'],
-    ['T8', 'Bordplade', 'Lyst træ ca. 3 cm eller lys kvartskomposit 2 cm, ca. 129 × 53 cm, blød bue ved toilettet, frie hjørner afrundet', 'Afklares', 'Afklares', '1', 'Tømrer'],
+    ['T8', 'Bordplade', 'Lys kvartskomposit 2 cm, ca. 129 × 53 cm, blød bue ved toilettet, frie hjørner afrundet', 'Afklares', 'Afklares', '1', 'Tømrer'],
     ['T9', 'Underskab', 'Væghængt, 60 × 44 × 40 cm, 1 skuffe med udskæring til afløb, soft-close. Frontens finish (sort struktur) kontrolleres', 'Dansani Mido+ 60×44, sort', 'P40-1029', '1', 'Bygherre'],
     ['T6', 'Tætningslister', 'Tilvalg. Svejseliste til eksisterende rille, 36 fag', 'Primo 6307, grå', '6307-2003-49', 'ca. 110 m', 'Bygherre']],
   el: [
@@ -431,8 +451,31 @@ const panel = fag => `<h3>${NAVN[fag]}</h3>` + plan(PLANER[fag])
   + `<h4>Specifikation</h4><ul class="spec">${SPEC[fag].map(x => `<li>${x}</li>`).join('')}</ul>`
   + `<h4>Komponentliste</h4>${tabel(KOMP[fag])}`;
 const knapper = [...document.querySelectorAll('.punkter button')];
+const indhold = fag => `<h3>${NAVN[fag]}</h3>`
+  + (fag === 'el' ? `<h4>Strømvejsskema</h4>${DIAGRAM}` : '')
+  + `<h4>Specifikation</h4><ul class="spec">${SPEC[fag].map(x => `<li>${x}</li>`).join('')}</ul>`
+  + `<h4>Komponentliste</h4>${tabel(KOMP[fag])}`;
+const ramme3d = document.querySelector('.tre-d-ramme');
+let valgt = 'vvs';
+const til3d = () => ramme3d.contentWindow?.postMessage({ fag: valgt }, '*');          // 3D fremhæver det valgte fag
+addEventListener('message', e => { if (e.data?.klar3d) til3d(); });
+// PDF: browserens udskrift → Gem som PDF. 'tegning' = det valgte fags plan (og strømvejsskema) på liggende A4; 'alt' = hele oplægget
+function pdf(hvad) {
+  if (hvad === 'tegning') {
+    document.getElementById('print-tegning').innerHTML = `<h1>Renovering af badeværelse</h1><h2>${NAVN[valgt]}: plan</h2>` + plan(PLANER[valgt])
+      + (valgt === 'el' ? `<div class="skift"><h2>El: strømvejsskema</h2>${DIAGRAM}</div>` : '');
+    const st = document.createElement('style'); st.textContent = '@page { size: A4 landscape; margin: 12mm; }';
+    document.head.appendChild(st); document.body.classList.add('kun-tegning');
+    addEventListener('afterprint', () => { document.body.classList.remove('kun-tegning'); st.remove(); }, { once: true });
+  }
+  window.print();
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-pdf]'); if (b) pdf(b.dataset.pdf); });
 function vis(fag) {
-  document.getElementById('tavle').innerHTML = panel(fag);
+  valgt = fag;
+  document.getElementById('plan2d').innerHTML = plan(PLANER[fag]) + '<div class="pdf"><button data-pdf="tegning">Tegning som PDF</button></div>';
+  document.getElementById('tavle').innerHTML = indhold(fag);
+  til3d();
   knapper.forEach(k => k.setAttribute('aria-selected', k.dataset.fag === fag));
 }
 knapper.forEach(k => k.addEventListener('click', () => vis(k.dataset.fag)));
@@ -441,7 +484,7 @@ document.getElementById('print').innerHTML = Object.keys(NAVN).map(f => `<sectio
 </script>
 <script>
 (() => {
-  const V = '550bc9427a';
+  const V = '100a603a9c';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
