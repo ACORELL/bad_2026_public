@@ -1,4 +1,4 @@
 # Badeværelse – renovering
 
-Skrivebeskyttet udgave til håndværkerne: https://acorell.github.io/bad_2026_public/
-Faner: #vvs, #el, #glas, #tomrer, #murer, #ansvar (fx https://acorell.github.io/bad_2026_public/#el)
+Oplæg til entreprenører: https://acorell.github.io/bad_2026_public/
+3D-model: https://acorell.github.io/bad_2026_public/udsugning-3d.html

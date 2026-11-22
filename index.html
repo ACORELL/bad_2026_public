@@ -1,1188 +1,441 @@
 <!doctype html>
 <html lang="da">
 <head>
-<meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Cache-Control" content="no-cache">
 <meta charset="utf-8">
-<title>Badeværelse – Plantegning</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Renovering af badeværelse</title>
 <style>
-  @page { size: A4; margin: 0; }
-  :root {
-    --ink: #1f1f1f; --muted: #6b6b6b; --faint: #9a9a9a;
-    --line: #eeeeee; --line-strong: #d8d2c4;
-    --wall: #111111; --green: #2f7d54; --orange: #d98a10; --red: #c0392b;
-    --blue: #2563eb; --glass: #3f8fa8; --purple: #6b4fa0; --paper: #fbfaf7;
-    --tint: #f4f1e9; --tint-2: #ebe6da;
-    --c-vvs: #2f5fb3; --c-el: #c57a0c; --c-glas: #2f7f97; --c-tomrer: #8a6a1f; --c-murer: #a4503a; --c-intern: #6b4fa0;
-    --accent: var(--green);
-  }
+  :root { --ink: #1f1f1f; --muted: #6b6b6b; --line: #e4dfd3; --bg: #f6f4ef; --card: #fff; --green: #2f7d54; }
   * { box-sizing: border-box; }
-  html, body { margin: 0; background: #e9e9e9; }
-  body { font-family: Inter, Arial, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .page { width: 210mm; height: 297mm; padding: 42px; margin: 16px auto; background: #fff; overflow: hidden; position: relative; }
-  @media print { html, body { background: #fff; } .page { margin: 0; break-after: page; } section.page:last-of-type { break-after: auto; } }
-
-  /* Hoved */
-  header { display: flex; justify-content: space-between; align-items: flex-start; background: var(--tint); border-left: 6px solid var(--green); border-radius: 10px; padding: 14px 18px 14px 16px; }
-  header h1 { font-size: 22px; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.4px; }
-  header address { font-style: normal; font-size: 12px; line-height: 18px; display: grid; grid-template-columns: auto auto; column-gap: 36px; }
-  header .dato { text-align: right; font-size: 11px; color: var(--muted); }
-  header .dato b { display: block; color: var(--ink); font-weight: 700; font-size: 13px; margin-top: 2px; }
-  .udgave { display: inline-block; margin-top: 10px; padding: 3px 9px; border-radius: 99px; background: var(--ink); color: #fff; font-size: 10px; font-weight: 600; letter-spacing: .3px; }
-  .udgave:empty { display: none; }
-
-  h2 { display: flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: 1px; color: var(--ink); text-transform: uppercase; margin: 16px 0 8px; }
-  h2::before { content: ''; width: 9px; height: 9px; border-radius: 2px; background: var(--accent); flex: 0 0 9px; }
-  .page > h2:first-child { margin-top: 0; }
-
-  /* Faggruppe-sider */
-  .fag-head { display: flex; justify-content: space-between; align-items: center; background: var(--accent); color: #fff; border-radius: 10px; padding: 11px 16px; margin-bottom: 12px; }
-  .fag-head h1 { font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -0.3px; }
-  .fag-head span { font-size: 10.5px; font-weight: 600; opacity: .85; }
-
-  /* Sidefod */
-  .fod { position: absolute; left: 42px; right: 42px; bottom: 14px; display: flex; justify-content: space-between; font-size: 9px; color: var(--faint); border-top: 1px solid var(--line); padding-top: 5px; }
-  .fokus-note { font-size: 10px; color: var(--muted); margin: 6px 0 0; }
-
-  /* Plantegning */
-  .plan { background: var(--tint); border-radius: 10px; padding: 7px; }
-  .plan svg { display: block; width: 100%; background: var(--paper); border-radius: 6px; box-shadow: 0 0 0 1px var(--tint-2); }
-  .legend { display: grid; grid-template-columns: repeat(4, auto); gap: 6px 16px; font-size: 11px; margin: 10px 0 2px; align-items: center; }
-  .legend div { display: flex; align-items: center; gap: 10px; }
-  .legend i { flex: 0 0 26px; display: inline-block; }
-  .legend .wall { height: 5px; background: var(--wall); }
-  .legend .new { height: 5px; background: var(--green); }
-  .legend .furn { height: 1px; background: #7a7a7a; }
-  .legend .pipe { height: 3px; background: repeating-linear-gradient(90deg, var(--blue) 0 5px, transparent 5px 9px); }
-  .legend .pipe.varm { background: repeating-linear-gradient(90deg, #d0453a 0 5px, transparent 5px 9px); }
-  .legend .forslag { height: 6px; border-radius: 3px; background: rgba(181,101,29,.2); border: 1px dashed #b5651d; }
-  .legend .el { flex-basis: 12px; height: 12px; border-radius: 50%; border: 1.5px solid var(--orange); background: #fff; }
-  .legend .aaben { flex-basis: 12px; height: 12px; border-radius: 50%; background: var(--red); }
-  .legend .niche { height: 0; border-top: 2px dashed #555; }
-  .legend .afloeb { flex-basis: 12px; height: 12px; border-radius: 1px; border: 1.5px dashed #444; background: repeating-linear-gradient(0deg, #fff 0 2px, #444 2px 3px); }
-  .legend .spot { flex-basis: 26px; height: 14px; background: center / 14px 14px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-5 -5 10 10'%3E%3Ccircle r='4.2' fill='%23fff' stroke='%232f7d54' stroke-width='0.8'/%3E%3Cpath d='M-3 -3L3 3M3 -3L-3 3' stroke='%232f7d54' stroke-width='0.7'/%3E%3C/svg%3E"); }
-
-  /* Lag: på faggruppe-sider nedtones alt andet end gruppens egne lag */
-  .dim { display: none; }
-  /* Håndværker-udgave (plantegning.html#hv): skjuler interne noter, priser og egne opgaver */
-  body.hv .intern, body.hv .plan .lag.selv:not(.el) { display: none !important; }
-  body.skjul-udsugning .forslag-udsugning { display: none !important; }
-  .valg { position: fixed; top: 16px; right: 16px; z-index: 9; background: #fff; border-radius: 10px; padding: 10px 12px; box-shadow: 0 4px 16px rgba(0,0,0,.15); font-size: 12px; display: grid; gap: 4px; }
-  .valg label { display: flex; gap: 6px; align-items: center; cursor: pointer; }
-  @media print { .valg { display: none; } }
-  .plan:not([data-fokus]) .inst { display: none; }   /* forsiden: kun rum og inventar; installationer vises på fagsiderne */
-  .plan[data-fokus] .lag { opacity: .14; }
-  .plan[data-fokus="vvs"]    .lag.vvs,
-  .plan[data-fokus="el"]     .lag.el,
-  .plan[data-fokus="glas"]   .lag.glas,
-  .plan[data-fokus="tomrer"] .lag.tomrer,
-  .plan[data-fokus="murer"]  .lag.murer,
-  .plan[data-fokus="selv"]   .lag.selv { opacity: 1; }
-  .plan[data-fokus="vvs"]    .dim.vvs,
-  .plan[data-fokus="el"]     .dim.el,
-  .plan[data-fokus="glas"]   .dim.glas,
-  .plan[data-fokus="tomrer"] .dim.tomrer,
-  .plan[data-fokus="murer"]  .dim.murer,
-  .plan[data-fokus="selv"]   .dim.selv { display: inline; }
-  .plan[data-fokus="varme"]  .dim.varme, .plan[data-fokus="varme-tid"] .dim.varme { display: inline; }
-  .plan[data-fokus="varme"] .lag, .plan[data-fokus="varme-tid"] .lag { opacity: .1; }
-  .plan[data-fokus="varme"] .ikke-varme, .plan[data-fokus="varme-tid"] .ikke-varme { display: none; }
-  .opv-styr { display: flex; gap: 10px; align-items: center; margin-top: 8px; font-size: 11px; }
-  .opv-styr button { font: 600 11px Inter, Arial, sans-serif; border: 1px solid var(--line-strong); background: #fff; border-radius: 6px; padding: 4px 10px; cursor: pointer; }
-  .opv-styr input { flex: 1; accent-color: var(--accent); }
-  .opv-styr span { width: 70px; text-align: right; font-variant-numeric: tabular-nums; }
-  .opv-leg { display: flex; gap: 16px; font-size: 10px; margin: 0 0 4px; }
-  .opv-leg i { display: inline-block; width: 14px; height: 2px; margin-right: 6px; vertical-align: middle; }
-  @media print { .skaerm { display: none !important; } }
-  .varmeskala { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: center; font-size: 9.5px; color: var(--muted); margin: 8px 0 2px; }
-  .varmeskala i { height: 9px; border-radius: 3px; position: relative; }
-  .varmeskala i b { position: absolute; top: 11px; transform: translateX(-50%); font-weight: 500; font-style: normal; }
-  .spot .k2 circle { fill: #fff; stroke: #2f5fb3; } .spot .k2 text { fill: #2f5fb3; }
-  .zone { fill: #6b4fa0; fill-opacity: .06; stroke: #6b4fa0; stroke-width: .4; stroke-dasharray: 1.2 .8; }
-  .zonetxt { font: 700 3.2px Inter, Arial, sans-serif; fill: #6b4fa0; text-anchor: middle; paint-order: stroke; stroke: var(--paper); stroke-width: 1; }
-  .plan[data-fokus] .lag .lag { opacity: 1; }
-  .plan[data-fokus="vvs"] .lag.glas:has(> .lag.vvs) { opacity: 1; }
-  .plan[data-fokus="vvs"] .lag.glas:has(> .lag.vvs) > :not(.lag.vvs) { opacity: .14; }
-
-  /* SVG-symboler (enheder = cm) */
-  .wl { fill: none; stroke: var(--wall); stroke-width: .9; stroke-linejoin: miter; }
-  .furn { fill: #fff; stroke: #333; stroke-width: .4; }
-  .soft { fill: #fff; stroke: #7a7a7a; stroke-width: .3; }
-  .el { fill: #fff; stroke: var(--orange); stroke-width: .4; }
-  .b circle { stroke: var(--paper); stroke-width: .7; }
-  .b text { stroke: none; fill: #fff; font: 700 4px Inter, Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
-  .b.g circle { fill: var(--green); }
-  .b.k circle { fill: var(--wall); stroke-width: .5; } .b.k text { font-size: 3.3px; }
-  .b.r circle { fill: var(--red); }
-  .lbl { font: 600 4.2px Inter, Arial, sans-serif; fill: var(--ink); text-anchor: middle; paint-order: stroke; stroke: var(--paper); stroke-width: 1.2; }
-  .spot circle { fill: #fff; stroke: var(--green); stroke-width: .5; }
-  .spot path { stroke: var(--green); stroke-width: .45; fill: none; }
-  .spot .k2 path { stroke: #2f5fb3; }
-  .spot text { fill: var(--green); font: 700 3.2px Inter, Arial, sans-serif; text-anchor: middle; dominant-baseline: central; paint-order: stroke; stroke: var(--paper); stroke-width: .9; }
-  .grid { stroke: #cfc7b3; stroke-width: .25; stroke-dasharray: 1 1; fill: none; }
-  .mline { stroke: var(--red); stroke-width: .3; fill: none; }
-  .mext { stroke: var(--red); stroke-width: .15; stroke-dasharray: .8 .8; opacity: .6; fill: none; }
-  .mtxt { font: 700 3.6px Inter, Arial, sans-serif; fill: var(--red); text-anchor: middle; paint-order: stroke; stroke: var(--paper); stroke-width: 1; }
-  .loft { fill: #f4e9cf; opacity: .7; }
-  .sigtxt { font: 500 3.1px Inter, Arial, sans-serif; fill: #333; stroke: none; dominant-baseline: central; }
-
-  /* Tabeller */
-  table { width: 100%; border-collapse: collapse; }
-  th { font-size: 9.5px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; text-align: left; padding: 5px 6px; background: var(--tint); }
-  th:first-child { border-radius: 6px 0 0 6px; } th:last-child { border-radius: 0 6px 6px 0; }
-  td { padding: 4px 6px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 10.5px; }
-  td.n { width: 28px; padding-left: 7px; padding-right: 0; }
-  .dot { display: inline-flex; width: 19px; height: 19px; border-radius: 50%; color: #fff; font-size: 11px; font-weight: 700; align-items: center; justify-content: center; }
-  .dot.k { background: var(--wall); } .dot.g { background: var(--green); } .dot.o { background: var(--orange); } .dot.p { background: var(--purple); } .dot.r { background: var(--red); }
-  .dot.s { background: #fff7e0; color: var(--green); border: 1.5px solid var(--green); }
-  .t { font-weight: 700; } .sub { color: var(--muted); font-size: 11px; margin-top: 2px; }
-  .maal { color: var(--red); font-weight: 700; width: 80px; }
-  .compact td { padding-top: 2px; padding-bottom: 2px; }
-  .num { text-align: right; width: 60px; font-variant-numeric: tabular-nums; }
-
-  .buy td { font-size: 10.5px; }
-  #koebsliste td { padding-top: 2.5px; padding-bottom: 2.5px; }
-  .buy td.txt { font-family: Arial, "Liberation Sans", sans-serif; font-size: 10px; line-height: 1.25; }
-  .buy td.pris { text-align: right; width: 70px; font-family: Arial, "Liberation Sans", sans-serif; }
-  .buy col.emne { width: 160px; } .buy col.prod { width: 215px; }
-  .buy tr.grp td { font-size: 9.5px; font-weight: 700; color: var(--muted); letter-spacing: .5px; text-transform: uppercase; background: var(--tint); border-bottom: 0; padding-top: 5px; padding-bottom: 5px; }
-  .buy tfoot td { border-bottom: 1px solid var(--line); color: var(--muted); }
-  .buy tfoot tr:first-child td { border-top: 2px solid #555; }
-  .buy tfoot .total td { font-size: 14px; font-weight: 700; color: var(--ink); border-bottom: 0; padding-top: 10px; }
-  .buy tfoot .total td.pris { font-weight: 400; font-size: 14px; }
-  .warn { color: var(--red); font-weight: 700; }
-
-  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .steps { margin: 0; padding: 0; list-style: none; counter-reset: s; font-size: 10.5px; }
-  .steps li { counter-increment: s; display: grid; grid-template-columns: 22px 120px 1fr; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--line); }
-  .steps li::before { content: counter(s); font-weight: 700; color: var(--muted); }
-  .steps.nummereret li { grid-template-columns: 120px 1fr; } .steps.nummereret li::before { content: none; }
-  .steps b { font-weight: 700; }
-  .note { font-size: 10.5px; line-height: 1.38; margin: 0; padding: 8px 12px 6px 28px; background: var(--tint); border-radius: 8px; }
-  .note li { margin-bottom: 3px; }
-  .hint { font-size: 10px; color: var(--muted); margin: -4px 0 8px; }
-  .ansvar th:nth-child(n+3) { text-align: center; }
-  .ansvar td.x { text-align: center; font-weight: 700; color: var(--green); font-size: 12px; }
-  .ansvar td.x.selv { color: #6b4fa0; }
-  .indkob a { color: var(--ink); } .indkob td { font-size: 10px; }
-  .din-kort { background: #fff; border: 1px solid var(--line-strong); border-radius: 8px; padding: 10px; margin: 8px 0 12px; }
-  .din-tegning { display: block; width: 100%; height: auto; }
-  .din-tegning .dt { font: 600 7.5px Inter, Arial, sans-serif; fill: #1f1f1f; }
-  .din-tegning .dt-s { font: 6.5px Inter, Arial, sans-serif; fill: #555; }
-  .din-tegning .dt-z { font: 700 8px Inter, Arial, sans-serif; letter-spacing: .5px; }
-  .din-tabel td { font-size: 10px; }
-  .tjek { list-style: none; margin: 0; padding: 0; font-size: 10.5px; }
-  .tjek li { display: flex; gap: 7px; align-items: flex-start; padding: 3px 0; border-bottom: 1px solid var(--line); }
-  .tjek li::before { content: ''; flex: 0 0 9px; height: 9px; margin-top: 2px; border: 1.2px solid #777; border-radius: 2px; }
-  .tjek .dot { flex: 0 0 15px; height: 15px; font-size: 8.5px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 Inter, "Segoe UI", Arial, sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 48px 28px 64px; }
+  h1 { font-size: 30px; letter-spacing: -.4px; margin: 0 0 10px; }
+  .lead { font-size: 17px; color: var(--muted); margin: 0 0 32px; }
+  h2 { font-size: 12px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  .kort { background: var(--card); border-radius: 14px; padding: 22px 24px; box-shadow: 0 2px 14px rgba(0,0,0,.06); margin-bottom: 20px; }
+  ul { margin: 0; padding-left: 20px; }
+  li + li { margin-top: 6px; }
+  .raekke { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: start; }
+  .raekke > * { min-width: 0; }
+  .to { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .to > * { min-width: 0; }
+  .punkter { list-style: none; padding: 0; margin: 0; }
+  .punkter li { margin: 0; }
+  .punkter button { all: unset; display: block; width: 100%; box-sizing: border-box; cursor: pointer; padding: 12px 14px; border-radius: 10px; border-left: 3px solid transparent; }
+  .punkter button:hover { background: var(--bg); }
+  .punkter button[aria-selected="true"] { background: var(--bg); border-left-color: var(--green); }
+  .punkter b { display: block; font-weight: 700; margin-bottom: 2px; }
+  .punkter span { font-size: 14.5px; line-height: 1.45; color: var(--muted); }
+  .tavle { position: sticky; top: 20px; }
+  .panel svg { display: block; width: 100%; height: auto; }
+  .panel h3 { font-size: 15px; margin: 0 0 8px; }
+  .panel h4 { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin: 18px 0 6px; padding-top: 12px; border-top: 1px solid var(--line); }
+  .spec { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.5; }
+  .spec li + li { margin-top: 4px; }
+  .tre-d { margin: 4px 0 0; font-size: 13px; }
+  .tabel { overflow-x: auto; }
+  .prod { border-collapse: collapse; width: 100%; min-width: 560px; margin-top: 8px; font-size: 12.5px; line-height: 1.35; }
+  .prod th, .prod td { text-align: left; vertical-align: top; padding: 5px 8px 5px 0; border-bottom: 1px solid var(--line); }
+  .prod th { font-size: 11px; letter-spacing: .6px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .prod td:first-child { font-weight: 700; white-space: nowrap; }
+  #print { display: none; }
+  @media (max-width: 860px) {
+    .raekke, .to { grid-template-columns: 1fr; }
+    .tavle { position: static; }
+    main { padding: 32px 16px 48px; }
+    h1 { font-size: 25px; }
+  }
+  @media print {
+    @page { size: A4; margin: 14mm; }
+    body { background: #fff; font-size: 11pt; }
+    main { max-width: none; padding: 0; }
+    .lead { margin-bottom: 14px; }
+    .raekke { display: none; }
+    #print { display: block; }
+    .kort { box-shadow: none; border: 1px solid var(--line); border-radius: 0; padding: 12px 14px; margin-bottom: 12px; break-inside: avoid; }
+    .to { grid-template-columns: 1fr 1fr; }
+    .fag { break-before: page; border: 0; padding: 0; }
+    .fag svg { break-inside: avoid; }
+    .prod { min-width: 0; }
+    .tabel { overflow: visible; }
+  }
 </style>
 </head>
 <body>
+<main>
+  <h1>Renovering af badeværelse</h1>
+  <p class="lead">Oplæg til renovering af badeværelse, ca. 4,5 m², etageejendom i København K. Gulv og vægfliser bevares. Vi søger én entreprenør for VVS, el, tømrer og fuger; glasvæggen kan udføres af glarmester. Løsning og produkter er et forslag, og entreprenørens erfaring og alternativer er velkomne.</p>
 
-
-<section class="page" data-fane="detaljer" data-pakke="vvs">
-  <header>
-    <div>
-      <h1>Renovering af badeværelse</h1>
-      
-    </div>
-    <div class="dato">Opdateret<b>09.11.2026</b><span class="udgave" id="udgave"></span></div>
-  </header>
-
-  <h2>Plantegning</h2>
-  <div class="plan">
-    
-    <svg id="plan" viewBox="-53 -27 387 217" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="hatch" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <line x1="0" y1="0" x2="0" y2="3" stroke="#b9d6c4" stroke-width=".3"/>
-        </pattern>
-        <marker id="pil-el" viewBox="0 0 4 4" refX="3.5" refY="2" markerWidth="4" markerHeight="4" orient="auto" markerUnits="userSpaceOnUse">
-          <path d="M0.5 0.5 L3.5 2 L0.5 3.5" fill="none" stroke="var(--orange)" stroke-width=".6"/>
-        </marker>
-        <marker id="arrow" viewBox="0 0 4 4" refX="3.5" refY="2" markerWidth="4" markerHeight="4" orient="auto" markerUnits="userSpaceOnUse">
-          <path d="M0.5 0.5 L3.5 2 L0.5 3.5" fill="none" stroke="var(--blue)" stroke-width=".5"/>
-        </marker>
-
-        
-        <g id="s-lampe"><circle r="3" fill="#fff" stroke="currentColor" stroke-width=".45"/><path d="M-2.1 -2.1 L2.1 2.1 M2.1 -2.1 L-2.1 2.1" stroke="currentColor" stroke-width=".45"/></g>
-        <g id="s-lampe-eks"><circle r="3" fill="#fff" stroke="currentColor" stroke-width=".4" stroke-dasharray=".8 .5"/><path d="M-2.1 -2.1 L2.1 2.1 M2.1 -2.1 L-2.1 2.1" stroke="currentColor" stroke-width=".4"/></g>
-        <g id="s-tryk"><circle r="2.2" fill="#fff" stroke="currentColor" stroke-width=".45"/><circle r=".8" fill="currentColor"/></g>
-        <g id="s-udtag"><path d="M0 -2.8 A2.8 2.8 0 0 1 0 2.8 Z" fill="#fff" stroke="currentColor" stroke-width=".45"/><path d="M-1.6 0 H0" stroke="currentColor" stroke-width=".45"/></g>
-        <g id="s-vent"><circle r="2.8" fill="#fff" stroke="currentColor" stroke-width=".45"/><path d="M0 0 C-.6 -1.8 1.2 -2.4 1.4 -1.2 Z M0 0 C.6 1.8 -1.2 2.4 -1.4 1.2 Z" fill="currentColor"/></g>
-        <g id="s-uv"><rect x="-3" y="-3" width="6" height="6" fill="#fff" stroke="currentColor" stroke-width=".45"/><path d="M-3 -3 L3 3 M3 -3 L-3 3" stroke="currentColor" stroke-width=".3"/></g>
-        <g id="s-afsp"><path d="M-1.4 -1 L1.4 1 L1.4 -1 L-1.4 1 Z" fill="#fff" stroke="currentColor" stroke-width=".35"/></g>
-        <g id="s-ga"><rect x="-3" y="-3" width="6" height="6" fill="#fff" stroke="#444" stroke-width=".4"/><path d="M-2 -1.5 H2 M-2 0 H2 M-2 1.5 H2" stroke="#444" stroke-width=".3"/></g>
-      </defs>
-
-      
-      <g class="dim varme"><image href="cad/varmekort.png?v=122dca0c" x="-15" y="-4" width="330" height="169" preserveAspectRatio="none"/></g>
-
-      
-      <g class="dim tomrer">
-        <polygon class="loft" points="71,0 210,0 210,7 312,7 312,95 265,95 265,141 210.4,147 210.4,161 26,161 26,142 0,139.6 -11.5,138.5 -11.5,29.5 0,28.4 21,26.5 21,29.6 71,29.6"/>
-        <text class="mtxt" x="166" y="128" style="fill:#8a6a1f">Nyt hængeloft — hele rummet</text>
-      </g>
-
-      
-      <rect x="-10" y="-10" width="332" height="181" fill="none" stroke="#111" stroke-width="1.4"/>
-      <polyline class="wl" points="71,0 210,0"/>
-      <polyline class="wl" points="71,0 71,29.6 21,29.6 21,26.5 0,28.4 0,139.6 26,142 26,161 121.4,161 121.4,179"/>
-      
-      <polygon class="ikke-varme" points="0.4,28.4 -11.5,29.5 -11.5,138.5 0.4,139.6" fill="#fff" stroke="none"/>
-      <polyline class="wl" points="0,28.4 -11.5,29.5"/><polyline class="wl" points="0,139.6 -11.5,138.5"/>
-      <rect class="ikke-varme" x="-14.5" y="29.5" width="3" height="109" fill="#e8f1f4" stroke="#555" stroke-width=".3"/>
-      <line x1="-13" y1="29.5" x2="-13" y2="138.5" stroke="#555" stroke-width=".2"/>
-      <polyline class="wl" points="210,0 210,7 312,7 312,95 265,95 265,141 210.4,147 210.4,161 192.4,161 192.4,179"/>
-
-      
-      <g class="lag vvs tomrer">
-        <rect x="26" y="0" width="16" height="28" fill="#eef6f0"/>
-        <polygon points="21,26.5 26,26 26,28 21,28" fill="#e6dcc4" stroke="#777" stroke-width=".2"/>
-        <rect x="21" y="28" width="21" height="1.6" fill="#eef6f0" stroke="var(--green)" stroke-width=".3"/>
-        <rect x="26" y="0" width="16" height="28" fill="url(#hatch)" stroke="var(--green)" stroke-width=".4" stroke-dasharray="1.6 .9"/>
-        <rect x="26" y="0" width="14.5" height="19" fill="none" stroke="#777" stroke-width=".2" stroke-dasharray=".8 .6"/>
-        <circle cx="32.5" cy="13.5" r="5.5" fill="#fff" stroke="#555" stroke-width=".4"/>
-        <text class="mtxt" x="32.5" y="14.4" style="fill:#555;font-size:2.4px">FS</text>
-        <rect x="42" y="0" width="29" height="29.6" fill="#fbf9f4" stroke="var(--green)" stroke-width=".4"/>
-        <rect x="43.6" y="1.6" width="25.8" height="26.4" fill="none" stroke="var(--green)" stroke-width=".2"/>
-        <rect x="43.8" y="28" width="25.4" height="1.6" fill="#fff" stroke="var(--green)" stroke-width=".3"/>
-      </g>
-
-      
-      <g class="inst lag el selv">
-        <rect x="44" y="11.6" width="25" height="6.5" rx=".5" fill="#fff" fill-opacity=".8" stroke="var(--green)" stroke-width=".3" stroke-dasharray=".8 .5"/>
-        <text class="mtxt" x="56.5" y="20.6" style="fill:var(--green);font-size:2.2px">DIN</text>
-      </g>
-
-      
-      <rect class="lag vvs soft" x="4.5" y="54" width="10" height="60"/>
-      <g class="lag vvs">
-        <polygon points="0,28.4 26,26 26,30 71,30 71,0 210,0 210,7 312,7 312,95 265,95 265,141 210.4,147 210.4,161 26,161 26,142 0,139.6" fill="#d0453a" fill-opacity=".05" stroke="#d0453a" stroke-width=".35" stroke-dasharray="1.2 .9"/>
-        <rect x="0" y="122" width="6" height="16" fill="#fff" stroke="#d0453a" stroke-width=".45"/>
-        <text class="mtxt" x="118" y="132" style="fill:#d0453a;font-size:2.8px">Gulvvarme, hele gulvet (vand, én kreds)</text>
-      </g>
-      
-      <g class="lag tomrer vvs el">
-        <polygon points="26,26 0,28.4 -11.5,29.5 -11.5,138.5 0,139.6 26,142" fill="#9e6b54" fill-opacity=".08" stroke="#9e6b54" stroke-width=".35" stroke-dasharray="1.4 .9"/>
-        <text class="mtxt" transform="translate(21.5 84) rotate(-90)" style="fill:#7a4a36;font-size:2.4px">Murværk lige over loftet – ingen plads til ventilator over loftet</text>
-      </g>
-
-      
-      <g class="lag">
-        <rect class="soft" x="37.8" y="139.8" width="70.7" height="21.2"/>
-        <text class="lbl" x="73.2" y="151.8" style="stroke:none">Skab</text>
-        
-        <rect x="74.1" y="0" width="40" height="21.2" fill="none" stroke="#7a7a7a" stroke-width=".3" stroke-dasharray="1.2 .8"/>
-      </g>
-
-      
-      <g class="lag vvs" transform="translate(0 9)">
-        <rect class="furn" x="76.65" y="0" width="35.5" height="18.5" rx="1.2"/>
-        <rect x="87.4" y="5.4" width="14" height="7.8" rx=".5" fill="#fff" stroke="#9a9a9a" stroke-width=".3"/>
-        <line x1="94.4" y1="5.4" x2="94.4" y2="13.2" stroke="#9a9a9a" stroke-width=".3"/>
-        <path class="furn" d="M79.05 18.5 H109.75 Q112.15 18.5 112.15 20.9 V41 C112.15 55 103.4 65 94.4 65 C85.4 65 76.65 55 76.65 41 V20.9 Q76.65 18.5 79.05 18.5 Z"/>
-        <path d="M81.65 21.9 H107.15 Q109.15 21.9 109.15 23.9 V41 C109.15 53 101.4 62 94.4 62 C87.4 62 79.65 53 79.65 41 V23.9 Q79.65 21.9 81.65 21.9 Z" fill="none" stroke="#c4c4c4" stroke-width=".25"/>
-        <circle cx="88.2" cy="21.1" r=".7" fill="#666"/><circle cx="100.6" cy="21.1" r=".7" fill="#666"/>
-      </g>
-
-      
-      <g class="lag vvs">
-        <rect class="furn" x="131.4" y="0" width="61" height="45.5" rx="1"/>
-        <line x1="132.6" y1="14" x2="191.2" y2="14" stroke="#d0d0d0" stroke-width=".3" stroke-dasharray="1.4 1"/>
-        <rect x="136.4" y="16.6" width="51" height="24.3" rx="6" fill="none" stroke="#333" stroke-width=".3"/>
-        <circle class="furn" cx="161.9" cy="8.2" r="4.6" stroke-width=".35"/>
-        <rect class="furn" x="160.4" y="8.2" width="3" height="12" rx="1.5" stroke-width=".35"/>
-      </g>
-
-      
-      <g class="lag vvs glas murer">
-        <rect x="167" y="7.5" width="16" height="16" fill="none" stroke="#999" stroke-width=".35" stroke-dasharray=".8 .8"/>
-        
-        <path class="inst" d="M161.9 28 V5.5 H175 V13.9" fill="none" stroke="#444" stroke-width=".6" stroke-dasharray="1 .6"/><circle class="inst" cx="175" cy="15.5" r="1.6" fill="#fff" stroke="#444" stroke-width=".4"/>
-        <text class="mtxt" x="175" y="5" style="fill:#777;font-size:2.2px">gl. gulvafløb nedlægges</text>
-      </g>
-
-      
-      <g class="lag el">
-        <rect x="131.4" y="-.8" width="61" height="1.5" rx=".3" fill="#eef4f5" stroke="var(--glass)" stroke-width=".3"/>
-        
-        <rect x="197.5" y="0" width="3" height="1" fill="#fff" stroke="#333" stroke-width=".3"/>
-        <line x1="199" y1="1" x2="199" y2="9" stroke="#333" stroke-width=".4"/>
-        <rect x="191" y="9" width="16" height="1.2" rx=".6" fill="#eef4f5" stroke="var(--glass)" stroke-width=".3"/>
-      </g>
-
-      
-      <g class="lag glas">
-        <rect x="211" y="7" width="1" height="89.1" fill="var(--glass)"/>
-        <line x1="212" y1="95" x2="264" y2="95" stroke="#555" stroke-width=".6" stroke-dasharray="1.6 .8"/>
-        <circle cx="211.5" cy="95" r="1.1" fill="#555"/><circle cx="264.9" cy="95" r="1.1" fill="#555"/>
-      </g>
-      <g class="lag vvs glas murer">
-        <rect x="222" y="7" width="80" height="7" fill="#fff" stroke="#444" stroke-width=".4"/>
-        <path d="M224 10.5 H300" stroke="#444" stroke-width=".3" stroke-dasharray="1 .6"/>
-        <text class="mtxt" x="290" y="19" style="fill:#444;font-size:2.4px">linjeafløb 80</text>
-      </g>
-
-      
-      <g class="lag vvs" transform="translate(2 0)">
-        <rect class="furn" x="250.8" y="7" width="1.1" height="2.4" stroke-width=".3"/>
-        <rect class="furn" x="272.1" y="7" width="1.1" height="2.4" stroke-width=".3"/>
-        <rect class="furn" x="249.8" y="9.3" width="24.4" height="1.6" rx=".8" stroke-width=".35"/>
-        <circle cx="249.8" cy="10.1" r="1.5" fill="#fff" stroke="#444" stroke-width=".3"/>
-        <circle cx="274.2" cy="10.1" r="1.5" fill="#fff" stroke="#444" stroke-width=".3"/>
-        <rect class="furn" x="261.4" y="10.1" width="1.2" height="20.6" rx=".6" stroke-width=".3"/>
-        <circle class="furn" cx="262" cy="36.3" r="8.4" stroke-width=".5"/>
-        <circle cx="262" cy="36.3" r="6.1" fill="none" stroke="#cfcfcf" stroke-width=".25"/>
-        <circle cx="262" cy="36.3" r="3.4" fill="none" stroke="#dcdcdc" stroke-width=".2"/>
-      </g>
-
-      
-      <g class="lag tomrer">
-        <line x1="121.4" y1="171" x2="121.4" y2="100" stroke="#a5a5a5" stroke-width=".3"/>
-        <path d="M121.4 100 A71 71 0 0 1 192.4 171" fill="none" stroke="#a5a5a5" stroke-width=".3" stroke-dasharray="1.2 1"/>
-      </g>
-
-      
-      
-
-      
-      <g class="inst lag vvs">
-        <path d="M64 2.2 H156" fill="none" stroke="#2563eb" stroke-width=".55" stroke-dasharray="1.1 .8"/>
-        <path d="M64 4.6 H167" fill="none" stroke="#d0453a" stroke-width=".55" stroke-dasharray="1.1 .8"/>
-        <rect x="45" y="3" width="20" height="18" rx="1" fill="#fff" fill-opacity=".7" stroke="#555" stroke-width=".35"/>
-        <text class="mtxt" x="55" y="15" style="fill:#555;font-size:2.4px">fordeler</text>
-        <circle cx="80" cy="2.2" r="1.3" fill="#fff" stroke="#2563eb" stroke-width=".4"/><circle cx="80" cy="2.2" r=".45" fill="#2563eb"/>
-        <circle cx="156" cy="2.2" r="1.3" fill="#fff" stroke="#2563eb" stroke-width=".4"/><circle cx="156" cy="2.2" r=".45" fill="#2563eb"/>
-        <circle cx="167" cy="4.6" r="1.3" fill="#fff" stroke="#d0453a" stroke-width=".4"/><circle cx="167" cy="4.6" r=".45" fill="#d0453a"/>
-        <use href="#s-afsp" x="71.5" y="2.2" color="#2563eb"/><use href="#s-afsp" x="71.5" y="4.6" color="#d0453a"/>
-        <text class="mtxt" x="125" y="1.4" style="fill:#2563eb;font-size:2.4px">KV</text>
-        <text class="mtxt" x="125" y="7.8" style="fill:#d0453a;font-size:2.4px">VV</text>
-      </g>
-      
-      <g class="inst lag vvs">
-        <path d="M45 21 H256 V10" fill="none" stroke="#2563eb" stroke-width=".55" stroke-dasharray=".4 .9" stroke-linecap="round"/>
-        <path d="M45 23.4 H258.4 V10" fill="none" stroke="#d0453a" stroke-width=".55" stroke-dasharray=".4 .9" stroke-linecap="round"/>
-        <text class="mtxt dim vvs" x="150" y="26.6" style="fill:#4f7fd1;font-size:2.6px">Bruser: over hængeloft</text>
-      </g>
-
-      
-      <g class="inst lag el forslag forslag-udsugning">
-        <polygon points="-.2,28.4 19.2,26.7 19.2,33.7 -.2,35.4" fill="#b5651d" fill-opacity=".12" stroke="#b5651d" stroke-width=".4"/>
-        <path d="M50 14 V18 H22 L17 27.5" fill="none" stroke="var(--orange)" stroke-width=".55"/>
-        <text class="mtxt" x="13" y="40" style="fill:#b5651d;font-size:2.8px">Z · vægventilator</text>
-      </g>
-
-      
-      <g class="inst lag el">
-        <g>
-          <use href="#s-lampe-eks" x="175.1" y="32" color="var(--orange)"/>
-        </g>
-        <g>
-          <circle cx="174" cy="-.2" r="2.2" fill="#fff" stroke="var(--orange)" stroke-width=".35" stroke-dasharray=".6 .45"/>
-          <line x1="172.9" y1="-.2" x2="175.1" y2="-.2" stroke="var(--orange)" stroke-width=".25"/>
-        </g>
-        <g>
-          <use href="#s-vent" x="9.5" y="28.9" color="var(--orange)"/>
-        </g>
-        <g>
-          <use href="#s-udtag" transform="translate(38 159.4) rotate(-90)" color="var(--orange)"/>
-          <path d="M38 176 V162" fill="none" stroke="#8a5a1a" stroke-width=".7" marker-end="url(#pil-el)"/>
-          <text class="mtxt" x="38" y="180" style="fill:#8a5a1a;font-size:2.6px">tilførsel gennem væg</text>
-          
-          <path d="M38 159 H27.4 V60 H40" fill="none" stroke="var(--orange)" stroke-width=".55"/>
-          <path d="M40 60 H55 V15" fill="none" stroke="var(--orange)" stroke-width=".55" marker-end="url(#pil-el)"/>
-          <circle cx="40" cy="60" r="1.4" fill="var(--orange)"/>
-          <text class="mtxt" x="52" y="63.6" style="fill:#b06f08;font-size:2.4px">samledåse</text>
-          <text class="mtxt" transform="translate(31 104) rotate(-90)" style="fill:#b06f08;font-size:3px">Ny forsyning: op i loft → DIN-skab i W</text>
-        </g>
-      </g>
-
-      
-      <g class="dim el tomrer grid">
-        
-        <line x1="110" y1="45" x2="174" y2="45"/><line x1="46" y1="117" x2="174" y2="117"/>
-        <line x1="110" y1="45" x2="110" y2="117"/><line x1="174" y1="45" x2="174" y2="117"/>
-        <line x1="238" y1="45" x2="286" y2="45"/><line x1="238" y1="45" x2="238" y2="117"/>
-      </g>
-      
-      <g class="dim el selv">
-        <path d="M101 36 H183 V126 H37 V108 H101 Z" fill="#2f7d54" fill-opacity=".05" stroke="#2f7d54" stroke-width=".4" stroke-dasharray="1.4 .8" stroke-linejoin="round"/>
-        <path d="M174 45 H110 V117 M46 117 H174" fill="none" stroke="#2f7d54" stroke-width=".5" stroke-opacity=".6"/>
-        <text class="zonetxt" x="110" y="83" style="fill:#2f7d54">Kanal 1 – rummet</text>
-        <path d="M229 36 H295 V54 H247 V126 H229 Z" fill="#2f5fb3" fill-opacity=".06" stroke="#2f5fb3" stroke-width=".4" stroke-dasharray="1.4 .8" stroke-linejoin="round"/>
-        <path d="M286 45 H238 V117" fill="none" stroke="#2f5fb3" stroke-width=".5" stroke-opacity=".6"/>
-        <text class="zonetxt" x="264" y="59" style="fill:#2f5fb3">Kanal 2 – nichen</text>
-      </g>
-      <g class="inst lag el tomrer selv spot">
-        <g transform="translate(110 45)"><circle r="3.8"/><path d="M-2.7 -2.7 L2.7 2.7 M2.7 -2.7 L-2.7 2.7"/><text x="4.8" y="-3.8">1</text></g>
-        <g transform="translate(174 45)"><circle r="3.8"/><path d="M-2.7 -2.7 L2.7 2.7 M2.7 -2.7 L-2.7 2.7"/><text x="4.8" y="-3.8">2</text></g>
-        <g class="k2" transform="translate(238 45)"><circle r="3.8"/><path d="M-2.7 -2.7 L2.7 2.7 M2.7 -2.7 L-2.7 2.7"/><text x="4.8" y="-3.8">3</text></g>
-        <g class="k2" transform="translate(286 45)"><circle r="3.8"/><path d="M-2.7 -2.7 L2.7 2.7 M2.7 -2.7 L-2.7 2.7"/><text x="4.8" y="-3.8">4</text></g>
-        <g transform="translate(46 117)"><circle r="3.8"/><path d="M-2.7 -2.7 L2.7 2.7 M2.7 -2.7 L-2.7 2.7"/><text x="4.8" y="-3.8">5</text></g>
-        <g transform="translate(110 117)"><circle r="3.8"/><path d="M-2.7 -2.7 L2.7 2.7 M2.7 -2.7 L-2.7 2.7"/><text x="4.8" y="-3.8">6</text></g>
-        <g transform="translate(174 117)"><circle r="3.8"/><path d="M-2.7 -2.7 L2.7 2.7 M2.7 -2.7 L-2.7 2.7"/><text x="4.8" y="-3.8">7</text></g>
-        <g class="k2" transform="translate(238 117)"><circle r="3.8"/><path d="M-2.7 -2.7 L2.7 2.7 M2.7 -2.7 L-2.7 2.7"/><text x="4.8" y="-3.8">8</text></g>
-      </g>
-
-      
-      
-      
-
-      
-      <g class="inst lag el selv">
-        <use href="#s-tryk" x="197.4" y="173.6" color="var(--green)"/>
-        
-        <path d="M64 12 V5 H199 V2.2 M162 5 V1" fill="none" stroke="var(--orange)" stroke-width=".45"/>
-        <text class="mtxt" x="128" y="8.6" style="fill:#b06f08;font-size:2.4px">230 V fast til spejle P og Q</text>
-        <path d="M197.4 179.4 V150 H60 V12" fill="none" stroke="var(--green)" stroke-width=".5" stroke-dasharray=".8 .7"/>
-        <text class="mtxt" x="105" y="148.4" style="fill:var(--green);font-size:2.8px">Lavvolt: trykknap ved døren → styreenhed</text>
-        <g class="b g" transform="translate(205.4 176)"><circle r="4.2"/><text>Y</text></g>
-      </g>
-
-      
-      <g class="dim murer">
-        <polygon points="0,28.4 26,26 26,30 71,30 71,0 210,0 210,7 312,7 312,95 265,95 265,141 210.4,147 210.4,161 26,161 26,142 0,139.6" fill="#a4503a" fill-opacity=".07" stroke="#a4503a" stroke-width="1.1" stroke-opacity=".55"/>
-        <text class="mtxt" x="118" y="126" style="fill:#a4503a;font-size:2.8px">Nyt gulv med gulvfliser</text>
-      </g>
-      
-      <g class="dim glas">
-        <rect x="210.7" y="7" width="1.6" height="89" fill="#333" stroke="none"/>
-      </g>
-
-      <g class="dim el signatur">
-        <g transform="translate(-48 196)"><use href="#s-lampe" color="var(--green)"/><text x="5" y="1.2" class="sigtxt">Spot, Ø76 (nr.)</text></g>
-        <g transform="translate(-1 196)"><use href="#s-lampe-eks" color="var(--orange)"/><text x="5" y="1.2" class="sigtxt">Eksist. lampeudtag</text></g>
-        <g transform="translate(49 196)"><use href="#s-udtag" x="-1" color="var(--orange)"/><text x="5" y="1.2" class="sigtxt">Forsyning / udtag</text></g>
-        <g transform="translate(97 196)"><path d="M-3 0 H2.4" stroke="var(--orange)" stroke-width=".6" marker-end="url(#pil-el)"/><text x="5" y="1.2" class="sigtxt">Ny 230 V-forsyning</text></g>
-        <g transform="translate(148 196)"><use href="#s-tryk" color="var(--green)"/><text x="5" y="1.2" class="sigtxt">Trykknap, lavvolt</text></g>
-        <g transform="translate(194 196)"><path d="M-3 0 H3" stroke="var(--green)" stroke-width=".7" stroke-dasharray=".6 .8"/><text x="5" y="1.2" class="sigtxt">Lavvoltkabel</text></g>
-        <g transform="translate(231 196)"><rect x="-3" y="-1.5" width="6" height="3" fill="#b5651d" fill-opacity=".12" stroke="#b5651d" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Vægventilator Z</text></g>
-      </g>
-      <g class="dim vvs signatur">
-        <g transform="translate(-48 196)"><path d="M-3 0 H3" stroke="#2563eb" stroke-width=".7" stroke-dasharray="1.1 .8"/><text x="5" y="1.2" class="sigtxt">KV – koldt vand</text></g>
-        <g transform="translate(-2 196)"><path d="M-3 0 H3" stroke="#d0453a" stroke-width=".7" stroke-dasharray="1.1 .8"/><text x="5" y="1.2" class="sigtxt">VV – varmt vand</text></g>
-        <g transform="translate(44 196)"><use href="#s-afsp" color="#333"/><text x="5" y="1.2" class="sigtxt">Afspærringsventil (i W)</text></g>
-        <g transform="translate(146 196)"><rect x="-3" y="-1.5" width="6" height="3" fill="#fff" stroke="#444" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Linjeafløb</text></g>
-        <g transform="translate(250 196)"><rect x="-3" y="-2" width="6" height="4" fill="#d0453a" fill-opacity=".1" stroke="#d0453a" stroke-width=".3" stroke-dasharray="1 .6"/><text x="5" y="1.2" class="sigtxt">Gulvvarme</text></g>
-        <g transform="translate(208 196)"><rect x="-3" y="-2" width="6" height="4" fill="url(#hatch)" stroke="var(--green)" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Rørkasse W</text></g>
-      </g>
-      <g class="dim tomrer signatur">
-        <g transform="translate(-48 196)"><use href="#s-lampe" color="var(--green)"/><text x="5" y="1.2" class="sigtxt">Spot, hul Ø76</text></g>
-        <g transform="translate(-4 196)"><rect x="-3" y="-2" width="6" height="4" fill="url(#hatch)" stroke="var(--green)" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Rørkasse W</text></g>
-        <g transform="translate(36 196)"><rect x="-3" y="-2" width="6" height="4" fill="#f4e9cf"/><text x="5" y="1.2" class="sigtxt">Nyt hængeloft</text></g>
-      </g>
-      <g class="dim murer signatur">
-        <g transform="translate(-48 196)"><rect x="-3" y="-2" width="6" height="4" fill="#a4503a" fill-opacity=".1" stroke="#a4503a" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Nyt gulv</text></g>
-        <g transform="translate(2 196)"><path d="M-3 0 H3" stroke="#a4503a" stroke-width="1.1" stroke-opacity=".55"/><text x="5" y="1.2" class="sigtxt">Nederste række fliser</text></g>
-        <g transform="translate(72 196)"><rect x="-3" y="-1.5" width="6" height="3" fill="#fff" stroke="#444" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Linjeafløb</text></g>
-      </g>
-      <g class="dim glas signatur">
-        <g transform="translate(-48 196)"><path d="M-3 0 H3" stroke="var(--glass)" stroke-width="1"/><text x="5" y="1.2" class="sigtxt">Glasvæg F</text></g>
-        
-        <g transform="translate(28 196)"><circle r="2.2" fill="var(--red)"/><text x="5" y="1.2" class="sigtxt">Åbent punkt (!)</text></g>
-        <g transform="translate(120 196)"><rect x="-3" y="-1.5" width="6" height="3" fill="#fff" stroke="#444" stroke-width=".3"/><text x="5" y="1.2" class="sigtxt">Linjeafløb</text></g>
-      </g>
-
-      
-      <g id="maal"></g>
-
-      
-      <text class="lbl" transform="translate(-17 84) rotate(-90)">Vindue 109</text>
-      <text class="lbl" x="156.9" y="180">Dør</text>
-
-      
-      <g class="b k" transform="translate(139 -4)"><circle r="3.2"/><text>A</text></g>
-      <g class="b k" transform="translate(213.9 3.5)"><circle r="3.2"/><text>B</text></g>
-      <g class="b k" transform="translate(260.9 3)"><circle r="3.2"/><text>C</text></g>
-      <g class="b k" transform="translate(316 51)"><circle r="3.2"/><text>D</text></g>
-      <g class="b k" transform="translate(288.4 99)"><circle r="3.2"/><text>E</text></g>
-
-      
-      <g class="lag vvs tomrer b g" transform="translate(36 21)"><circle r="4.2"/><text>W</text></g>
-            <g class="lag glas b g" transform="translate(211.5 56.5)"><circle r="4.2"/><text>F</text></g>
-      <g class="lag vvs b g" transform="translate(94.4 40)"><circle r="4.2"/><text>H</text></g>
-      <g class="lag vvs b g" transform="translate(161.9 29.5)"><circle r="4.2"/><text>J</text></g>
-      <g class="lag vvs b g" transform="translate(146 41)"><circle r="4.2"/><text>K</text></g>
-      <g class="lag vvs b g" transform="translate(161.9 17)"><circle r="4.2"/><text>L</text></g>
-      <g class="lag vvs b g" transform="translate(264 36.3)"><circle r="4.2"/><text>M</text></g>
-      <g class="lag vvs b g" transform="translate(10.8 83.6)"><circle r="4.2"/><text>N</text></g>
-      <g class="lag vvs b g" transform="translate(18 118)"><circle r="4.2"/><text>G</text></g>
-      <g class="lag el b g" transform="translate(161.9 0)"><circle r="4.2"/><text>P</text></g>
-      <g class="lag el b g" transform="translate(199 15.5)"><circle r="4.2"/><text>Q</text></g>
-      <g class="lag tomrer b g" transform="translate(156.9 170.9)"><circle r="4.2"/><text>R</text></g>
-      
-      
-      
-      <g class="lag el b g" transform="translate(9 43.5)"><circle r="4.2"/><text>Z</text></g>
-
-      
-      <g class="lag glas b r" transform="translate(205 102)"><circle r="3.2"/><text style="font-size:3.6px">!</text></g>
-    </svg>
-  </div>
-
-  <div class="legend">
-    <div><i class="wall"></i>Fast defineret vægsegment</div>
-    <div><i class="new"></i>Nyt produkt / arbejde</div>
-    <div><i class="furn"></i>Møbel / sanitet</div>
-    <div><i class="aaben"></i>Åbent punkt (!)</div>
-    <div><i class="niche"></i>Nicheåbning</div>
-  </div>
-
-<h2>Fast definerede vægsegmenter</h2>
-  <table>
-    <thead><tr><th></th><th>Segment</th><th>Mål</th></tr></thead>
-    <tbody>
-      <tr><td class="n"><span class="dot k">A</span></td><td><div class="t">Bagvæg bag toilet og vask</div><div class="sub">toilet (H), vask (J) og batteri (L) monteres her; fra den nye rørkasse W til B (142 cm til den gamle kasse)</div></td><td class="maal">139 cm</td></tr>
-      <tr><td class="n"><span class="dot k">B</span></td><td><div class="t">Lille væg mellem A og C</div><div class="sub">kort hjørnestykke op til brusenichen</div></td><td class="maal">7 cm</td></tr>
-      <tr><td class="n"><span class="dot k">C</span></td><td><div class="t">Brusenichens bagvæg</div><div class="sub">nichens lange væg mod nord; brusearmaturet (M) sidder ca. midt på</div></td><td class="maal">102 cm</td></tr>
-      <tr><td class="n"><span class="dot k">D</span></td><td><div class="t">Sidevæg i bruseniche</div><div class="sub">nichens korte væg mod øst</div></td><td class="maal">88 cm</td></tr>
-      <tr><td class="n"><span class="dot k">E</span></td><td><div class="t">Brusenichens bundvæg</div><div class="sub">murværk fra hjørnet; støttestang fra glasvæg (F) fæstnes her</div></td><td class="maal">47 cm</td></tr>
-    </tbody>
-  </table>
-
-  <h2>Eksisterende elinstallation</h2>
-  <table class="compact" id="eksisterende-el">
-    <thead><tr><th></th><th>Punkt</th></tr></thead>
-    <tbody>
-      <tr><td class="n"><span class="dot o">+</span></td><td class="t">Lampeudtag over vask</td></tr>
-      <tr><td class="n"><span class="dot o">~</span></td><td class="t">Kabel i væg A</td></tr>
-      <tr><td class="n"><span class="dot o">×</span></td><td class="t">Ventilator <span class="sub" style="font-weight:400">— udskiftes med Z på samme hul</span></td></tr>
-      <tr><td class="n"><span class="dot o">•</span></td><td class="t">Forsyning til rummet <span class="sub" style="font-weight:400">— fast forsyning til lys, ventilation og udtag</span></td></tr>
-    </tbody>
-  </table>
-</section>
-
-
-<section class="page" data-fane="detaljer" data-pakke="vvs">
-  <h2>Til køb og udførelse</h2>
-  <p class="hint">Alt købes af bygherre, undtagen radiator N, gulvvarme G, linjeafløb (VVS), dør R (tømrer) og evt. glasvæg F, afhængigt af glarmesterens løsning. Eksisterende inventar er fjernet ved opstart, undtagen hængeloftet og radiatoren.</p>
-  
-  <table class="buy" id="koebsliste">
-    <colgroup><col style="width:28px"><col class="emne"><col class="prod"><col></colgroup>
-    <thead><tr><th></th><th>Emne</th><th>Type / model</th><th>Kommentar</th></tr></thead>
-    <tbody data-group="produkter">
-      <tr data-fag="glas" data-koeb><td class="n"><span class="dot g">F</span></td><td class="t">Glasvæg, fast, med støttestang</td><td class="txt">Afgøres efter glarmesterens besigtigelse</td><td class="txt">Walk-in uden kant. Frie ende (!) støttes.</td></tr>
-      <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">H</span></td><td class="t">Toilet</td><td class="txt">Ifö Spira Art 2.0 / 502.926.00.4</td><td class="txt"></td></tr>
-      <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">J</span></td><td class="t">Møbelpakke</td><td class="txt">Sanibell Online 61×46,5, mat sort / 786031031</td><td class="txt"></td></tr>
-      <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">K</span></td><td class="t">Vandlås</td><td class="txt">Sanibell / 750655010</td><td class="txt">Gulvafløbet nedlægges, så vasken får egen vandlås.</td></tr>
-      <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">L</span></td><td class="t">Blandingsbatteri til vask</td><td class="txt">Gustavsberg Sensoric 1.0 / GB4121888153</td><td class="txt">Batteri (AA). 230 V-adapter fås, ikke planlagt.</td></tr>
-      <tr data-fag="vvs" data-koeb><td class="n"><span class="dot g">M</span></td><td class="t">Brusearmatur</td><td class="txt">Afventer forslag fra VVS</td><td class="txt">Type foreslås af VVS. Tilførsel uden på væg.</td></tr>
-      <tr data-fag="vvs"><td class="n"><span class="dot g">N</span></td><td class="t">Radiator + gulvvarme (G)</td><td class="txt">Leveres af VVS. Smallere radiator under vinduet + gulvvarme i hele gulvet</td><td class="txt">På fjernvarmen. Varmetabet er en bekymring.</td></tr>
-      <tr data-fag="el" data-koeb><td class="n"><span class="dot g">P</span></td><td class="t">Spejl med lys</td><td class="txt">Dansani Mido+ Glow 60×80 / 94660</td><td class="txt">Touch-dæmpning i spejlet. Fast forsyning.</td></tr>
-      <tr data-fag="el" data-koeb><td class="n"><span class="dot g">Q</span></td><td class="t">Makeup-spejl med lys</td><td class="txt">Hansgrohe AddStoris, mat sort / 41790670</td><td class="txt">Egen afbryder. Fast forsyning, indbygningsdåse i væg A.</td></tr>
-      <tr data-fag="tomrer"><td class="n"><span class="dot g">R</span></td><td class="t">Dør</td><td class="txt">Tømrer foreslår og køber</td><td class="txt">196 over 25 mm trin; luftspalte.</td></tr>
-      
-      
-      
-      <tr data-fag="el" data-koeb><td class="n"><span class="dot g">X</span></td><td class="t">Indbygningsspots, 8 stk. + pærer, 10 stk.</td><td class="txt">Astro Minima Round IP65, mat sort / 1249017<br>Philips MASTER LEDspot Value 3,7 W GU10 927, dæmpbar / EAN 8719514308114</td><td class="txt">Hul Ø76, dybde 110 mm. 2 pærer i reserve.</td></tr>
-      <tr data-fag="el" data-koeb><td class="n"><span class="dot g">Y</span></td><td class="t">Lysdæmper, 2 kanaler</td><td class="txt">2 × Eltako SUD12/1-10V + LUD12-230V (DIN, bagkant, 1–10 V-styret)<br>Tryk: LK FUGA svagstrømstryk 2 slutte + LED, hvid / 507 D 6511</td><td class="txt">I DIN-skabet i W. Kanal 1: spot 1, 2, 5–7. Kanal 2: spot 3, 4, 8 (tjek minimumslast). Kablet 1–10 V, ingen trådløs.</td></tr>
-      <tr data-fag="el" data-koeb><td class="n"><span class="dot g">Z</span></td><td class="t">Udsugning</td><td class="txt">Vægventilator: elektrikerens valg (eks. Titon Ultimate dMEV TP640H)</td><td class="txt">Krav: konstant drift, mindst 15 l/s, fugtstyring, boost. På det eksisterende hul i ydervæggen.</td></tr>
-    </tbody>
-    <tbody data-group="yderligere">
-      <tr class="grp"><td colspan="5">Yderligere</td></tr>
-      <tr data-fag="murer"><td class="n"><span class="dot p">•</span></td><td class="t">Nyt gulv</td><td class="txt"></td><td class="txt">Nye gulvfliser med gulvvarme, godt fald mod risten. Nye fuger langs loftet.</td></tr>
-      <tr data-fag="murer" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Fliser</td><td class="txt"></td><td class="txt">Gulvflise, også som nederste række på væggene. Op til 10 vægfliser 15 × 15 × 0,5 cm.</td></tr>
-      
-      <tr data-fag="tomrer vvs"><td class="n"><span class="dot p">•</span></td><td class="t">Køkken: lysningsplade, lem</td><td class="txt"></td><td class="txt">Inspektionslem i gasbeton til rørsamlinger (erstatter aftagelig plade).</td></tr>
-      <tr data-fag="tomrer"><td class="n"><span class="dot p">•</span></td><td class="t">Tætningslister, alle vinduer</td><td class="txt">Primo 6307 svejseliste, grå (passer i den eksisterende rille)</td><td class="txt">Udskiftning af de gamle lister, 36 fag. Ventiler bevares. Dannebrog, 4 fag, koblede rammer, åbner udad.</td></tr>
-      <tr data-fag="tomrer"><td class="n"><span class="dot p">•</span></td><td class="t">Maling af vindue i badeværelset</td><td class="txt"></td><td class="txt">Koblede rammer: inder- og yderramme pr. fag. Rammen 11,5 cm inde.</td></tr>
-      <tr data-fag="tomrer"><td class="n"><span class="dot p">•</span></td><td class="t">Nye gerigter om døren</td><td class="txt"></td><td class="txt"></td></tr>
-      <tr data-fag="tomrer"><td class="n"><span class="dot p">•</span></td><td class="t">Hængeloft</td><td class="txt"></td><td class="txt">Svamp – inkl. nedtagning af det gamle. Føres i ét ind i vinduets lysning (ingen kant eller liste).</td></tr>
-      <tr data-fag="tomrer vvs"><td class="n"><span class="dot g">W</span></td><td class="t">Nye rørkasser (W + køkken)</td><td class="txt"></td><td class="txt"></td></tr>
-      <tr data-fag="vvs" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Nyt armatur i køkken</td><td class="txt">Grohe Start Hybrid / 1012432430</td><td class="txt"></td></tr>
-      <tr data-fag="vvs glas"><td class="n"><span class="dot p">•</span></td><td class="t">Linjeafløb, 80 cm</td><td class="txt">VVS' valg og leverance</td><td class="txt">Langs C. Erstatter det gamle gulvafløb.</td></tr>
-      <tr data-fag="vvs" data-koeb><td class="n"><span class="dot p">•</span></td><td class="t">Bundventil under vask</td><td class="txt">Hansgrohe push-open mat sort / 747042011</td><td class="txt"></td></tr>
-      <tr data-fag="vvs"><td class="n"><span class="dot p">•</span></td><td class="t">Rørføring</td><td class="txt"></td><td class="txt">Tilslutning af H, J/K, L, N og køkken.</td></tr>
-      <tr data-fag="el"><td class="n"><span class="dot p">•</span></td><td class="t">Ny eltavle</td><td class="txt"></td><td class="txt">Den nuværende brummer.</td></tr>
-    </tbody>
-    
-  </table>
-</section>
-
-
-<section class="page" data-fane="ansvar" data-pakke="vvs">
-  <div class="fag-head"><h1>Hvem gør hvad</h1><span>montering og udførelse</span></div>
-  <p class="hint">✓ = monterer / udfører. VVS er hovedentreprenør for VVS, el og tømrer: koordinerer, laver tidsplanen og holder afleveringen. Glarmester har egen aftale med bygherre. Bygherre køber alt undtagen radiator N, gulvvarme G, linjeafløb (VVS), dør R (tømrer) og evt. glasvæg F.</p>
-  <table class="buy ansvar">
-    <colgroup><col style="width:28px"><col><col span="6" style="width:68px"></colgroup>
-    <thead><tr><th></th><th>Emne</th><th>VVS</th><th>El</th><th>Glarmester</th><th>Tømrer</th><th>Murer</th><th>Bygherre</th></tr></thead>
-    <tbody id="ansvar"></tbody>
-  </table>
-</section>
-
-
-<section class="page" data-fane="vvs" data-pakke="vvs" style="--accent:var(--c-vvs)">
-  <div class="fag-head"><h1>VVS-installatør</h1></div>
-  <div class="plan" data-fokus="vvs"></div>
-
-  <h2>Bemærk</h2>
-  <ul class="note">
-    <li>Gamle rør i W saves væk og proppes; kun faldstammen bliver. Forsyning ind i bunden af W, fordeler med afspærring pr. forbruger bag lemmen forneden. Toilet og vask: synlige rør på væg A ca. 10 cm over gulvet, over hinanden (koldt øverst), bag toilettet.</li>
-    <li>Bruser: fra fordeleren op ved faldstammen, over loftet, ned langs C til M. Hele, isolerede rør over loftet; samlinger kun i W og ved M.</li>
-    <li><b>Varme (N, G):</b> ny, smallere radiator under vinduet og gulvvarme i hele gulvet, på fjernvarmen (2-strengs). Varmetabet er en bekymring (ydervæg og vindue), så det skal regnes med. Fremløbet er op til ca. 55 °C på kolde dage; gulvet ved fremløbet må ikke blive for varmt at gå på.</li>
-    <li><b>Afløb:</b> nyt linjeafløb langs C, walk-in uden kant, godt fald mod risten. Det gamle gulvafløb nedlægges; vasken får egen vandlås (K). Gulvet er støbt på træbjælker.</li>
-  </ul>
-</section>
-
-<section class="page" data-fane="vvs" data-pakke="vvs" style="--accent:var(--c-vvs)">
-  <div class="fag-head"><h1>VVS-installatør</h1><span>opgaver og produkter</span></div>
-  <table class="buy"><colgroup><col style="width:28px"><col class="emne"><col class="prod"><col></colgroup>
-    <thead><tr><th></th><th>Emne</th><th>Type / model</th><th>Kommentar</th></tr></thead>
-    <tbody data-fag-liste="vvs"></tbody></table>
-</section>
-
-
-<section class="page" data-fane="vvs" data-pakke="vvs" style="--accent:var(--c-vvs)">
-  <div class="fag-head"><h1>Forventet varme</h1><span>bygherrens skøn · kold vinterdag, −12 °C ude · til information</span></div>
-  <div class="plan" data-fokus="varme"></div>
-
-  <div class="varmeskala"><span>koldt</span><i style="background:linear-gradient(90deg, rgb(44, 74, 154) 0%, rgb(79, 134, 198) 12%, rgb(169, 205, 224) 26%, rgb(242, 239, 230) 41%, rgb(246, 196, 140) 53%, rgb(228, 112, 64) 65%, rgb(163, 32, 28) 76%, rgb(88, 12, 52) 100%)"><b style="left:0%">10</b><b style="left:12%">14</b><b style="left:26%">19</b><b style="left:41%">24</b><b style="left:53%">28</b><b style="left:65%">32</b><b style="left:76%">36</b><b style="left:100%">44</b></i><span>varmt °C</span></div>
-  <p class="hint" style="margin:14px 0 0">Gulv: overfladetemperatur. Bånd langs væggene: vægtemperatur 110 cm over gulvet. Hvid ≈ rummets 24 °C. Mønsteret er mere sikkert end selve graderne.</p>
-  <div class="cols">
-    <div>
-      <h2>Overflader</h2>
-      <table class="compact"><tbody>
-        <tr><td>Gulv, middel</td><td class="num" style="white-space:nowrap">32,0 °C</td><td></td></tr><tr><td>Gulv ved vinduet (de første 30 cm)</td><td class="num" style="white-space:nowrap">41,3 °C</td><td> <span class="warn" style="white-space:nowrap">over 33 °C</span></td></tr><tr><td>Gulv, koldeste sted (hjørnet ved vinduet)</td><td class="num" style="white-space:nowrap">24,2 °C</td><td></td></tr><tr><td>Gulv, varmeste sted (ved fremløbet)</td><td class="num" style="white-space:nowrap">45,4 °C</td><td> <span class="warn" style="white-space:nowrap">over 33 °C</span></td></tr><tr><td>Vindue, glas</td><td class="num" style="white-space:nowrap">10,9 °C</td><td> <span class="warn" style="white-space:nowrap">under dugpunkt</span></td></tr><tr><td>Omkring udsugningshullet Z</td><td class="num" style="white-space:nowrap">11,7 °C</td><td> <span class="warn" style="white-space:nowrap">under dugpunkt</span></td></tr><tr><td>Ydervæg, midt på</td><td class="num" style="white-space:nowrap">17,4 °C</td><td></td></tr><tr><td>Væg A mod trappen</td><td class="num" style="white-space:nowrap">21,7 °C</td><td></td></tr><tr><td>Skorstensvæggen</td><td class="num" style="white-space:nowrap">22,8 °C</td><td></td></tr>
-      </tbody></table>
-      <p class="hint" style="margin-top:6px">Dugpunkt ved 24 °C og 60 % RF: 15,8 °C. Kolde flader under dugpunktet dugger, når luften er fugtig (efter bad). Over ca. 33 °C bliver gulvet ubehageligt varmt at gå på.</p>
-    </div>
-    <div>
-      <h2>Varmebalance</h2>
-      <table class="compact"><tbody>
-        <tr><td>Vindue og lysning</td><td class="num" style="white-space:nowrap">198 W</td></tr><tr><td>Udsugning (luft)</td><td class="num" style="white-space:nowrap">188 W</td></tr><tr><td>Ydervæg</td><td class="num" style="white-space:nowrap">130 W</td></tr><tr><td>Mod trappen (A, B, C)</td><td class="num" style="white-space:nowrap">100 W</td></tr><tr><td>Mod opvarmede rum</td><td class="num" style="white-space:nowrap">46 W</td></tr><tr><td>Skorsten</td><td class="num" style="white-space:nowrap">18 W</td></tr>
-        <tr><td class="t">Rummets varmetab i alt</td><td class="num t" style="white-space:nowrap">680 W</td></tr>
-        <tr><td>Gulvvarmen op i rummet (87 W/m² på 4,3 m²)</td><td class="num">377 W</td></tr>
-        <tr><td class="t">Resten til radiatoren (skøn)</td><td class="num t" style="white-space:nowrap">ca. 303 W</td></tr>
-        <tr><td>Gulvvarmen ned til køkkenet (bliver i lejligheden)</td><td class="num">52 W</td></tr>
-      </tbody></table>
-    </div>
-  </div>
-  <h2>Antagelser</h2>
-  <ul class="note">
-    <li>Inde 24 °C, ude −12 °C, ingen sol (lille gård). Køkken under 20 °C, opvarmet lejlighed over. Trappe bag A, B og C 12 °C. Skorstenen er lukket og ikke kold (18 °C). D, dørvæggen og den skrå væg mod opvarmede rum (20 °C).</li>
-    <li>U-værdier (W/m²K): vindue 2,8 (koblede rammer, enkeltglas), brystning 1,9 (ca. 25 cm uisoleret mur), nichens vægge 1,4, indervægge 1,5. Ikke målt.</li>
-    <li>Udsugning 15 l/s: ca. 3 l/s kommer direkte ind gennem vinduets ventil (skøn), resten fra lejligheden.</li>
-    <li>Gulvvarme: rørføringen fra 3D-modellen (32,5 m), vand ind 55 °C og ud 28 °C. Returbegrænseren holder returen på ca. 28 °C ved at skrue ned for flowet; det er reguleringen. Rørene i ca. 4 cm afretning direkte på ca. 10 cm gammelt støbt gulv, der spreder varmen. Betonens masse udjævner over tid, men ændrer ikke, hvor det er varmest. Radiatoren og luftens bevægelse er ikke regnet med.</li>
-    
-  </ul>
-
-</section>
-
-
-<section class="page" id="opvarmning" data-fane="vvs" data-pakke="vvs" style="--accent:var(--c-vvs)">
-  <div class="fag-head"><h1>Forventet varme</h1><span>opvarmning fra koldt gulv · bygherrens skøn · −12 °C ude</span></div>
-  <div class="plan" data-fokus="varme-tid"></div>
-
-  <div class="opv-styr skaerm"><button type="button" id="opv-spil">▶ Afspil</button>
-    <input type="range" id="opv-tid" min="0" max="11" step="1" value="6"><span id="opv-t"></span></div>
-  <p class="hint" style="margin:6px 0 0">Kortet viser gulvet <b id="opv-tekst">efter 3 timer</b> fra koldt gulv, med samme farveskala som forrige side. Kurven viser hele forløbet.</p>
-  <h2>Gulvets temperatur fra koldt gulv</h2>
-  <div class="opv-leg"><span><i style="background:#2a78d6"></i>Gulv, middel</span><span><i style="background:#eb6834"></i>Gulv ved vinduet</span><span><i style="background:#1baf7a"></i>Gulv, koldeste sted</span></div>
-  <svg viewBox="0 0 726 210" style="display:block;width:100%;height:auto" role="img" aria-label="Gulvets temperatur under opvarmning"><style>.ax{font:9.5px Inter,Arial,sans-serif;fill:#6b6b6b}.lb{font:600 10px Inter,Arial,sans-serif;fill:#1f1f1f}</style><line x1="34" x2="576" y1="184.0" y2="184.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="187.5" text-anchor="end" class="ax">15 °C</text><line x1="34" x2="576" y1="155.0" y2="155.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="158.5" text-anchor="end" class="ax">20 °C</text><line x1="34" x2="576" y1="126.0" y2="126.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="129.5" text-anchor="end" class="ax">25 °C</text><line x1="34" x2="576" y1="97.0" y2="97.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="100.5" text-anchor="end" class="ax">30 °C</text><line x1="34" x2="576" y1="68.0" y2="68.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="71.5" text-anchor="end" class="ax">35 °C</text><line x1="34" x2="576" y1="39.0" y2="39.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="42.5" text-anchor="end" class="ax">40 °C</text><line x1="34" x2="576" y1="10.0" y2="10.0" stroke="#ece8de" stroke-width="1"/><text x="28" y="13.5" text-anchor="end" class="ax">45 °C</text><text x="34.0" y="202" text-anchor="middle" class="ax">0 t</text><text x="124.3" y="202" text-anchor="middle" class="ax">2 t</text><text x="214.7" y="202" text-anchor="middle" class="ax">4 t</text><text x="305.0" y="202" text-anchor="middle" class="ax">6 t</text><text x="395.3" y="202" text-anchor="middle" class="ax">8 t</text><text x="485.7" y="202" text-anchor="middle" class="ax">10 t</text><text x="576.0" y="202" text-anchor="middle" class="ax">12 t</text><line x1="34" x2="576" y1="184" y2="184" stroke="#c9c3b5" stroke-width="1"/><path d="M34.0,135.2 L45.3,127.6 L56.6,121.4 L67.9,116.1 L79.2,111.7 L90.5,107.9 L101.8,104.7 L113.0,101.9 L124.3,99.5 L135.6,97.5 L146.9,95.7 L158.2,94.2 L169.5,93.0 L180.8,91.9 L192.1,91.0 L203.4,90.2 L214.7,89.5 L226.0,89.0 L237.2,88.5 L248.5,88.1 L259.8,87.8 L271.1,87.5 L282.4,87.3 L293.7,87.1 L305.0,86.9 L316.3,86.8 L327.6,86.7 L338.9,86.6 L350.2,86.5 L361.5,86.4 L372.8,86.4 L384.0,86.3 L395.3,86.3 L406.6,86.3 L417.9,86.3 L429.2,86.2 L440.5,86.2 L451.8,86.2 L463.1,86.2 L474.4,86.2 L485.7,86.2 L497.0,86.1 L508.2,86.1 L519.5,86.1 L530.8,86.0 L542.1,86.0 L553.4,86.0 L564.7,86.0 L576.0,86.0" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round"/><path d="M34.0,144.4 L45.3,126.4 L56.6,112.0 L67.9,100.0 L79.2,89.9 L90.5,81.3 L101.8,74.0 L113.0,67.7 L124.3,62.4 L135.6,57.9 L146.9,54.0 L158.2,50.7 L169.5,47.9 L180.8,45.5 L192.1,43.5 L203.4,41.7 L214.7,40.2 L226.0,38.9 L237.2,37.8 L248.5,37.0 L259.8,36.2 L271.1,35.5 L282.4,34.9 L293.7,34.5 L305.0,34.0 L316.3,33.7 L327.6,33.4 L338.9,33.1 L350.2,32.9 L361.5,32.7 L372.8,32.6 L384.0,32.4 L395.3,32.3 L406.6,32.2 L417.9,32.2 L429.2,32.0 L440.5,32.0 L451.8,31.9 L463.1,31.9 L474.4,31.8 L485.7,31.8 L497.0,31.8 L508.2,31.7 L519.5,31.7 L530.8,31.6 L542.1,31.6 L553.4,31.6 L564.7,31.6 L576.0,31.6" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round"/><path d="M34.0,156.0 L45.3,153.9 L56.6,151.5 L67.9,148.8 L79.2,145.9 L90.5,142.9 L101.8,142.4 L113.0,141.9 L124.3,141.4 L135.6,140.9 L146.9,140.4 L158.2,139.9 L169.5,139.3 L180.8,138.9 L192.1,138.4 L203.4,137.9 L214.7,137.4 L226.0,137.0 L237.2,136.6 L248.5,136.2 L259.8,135.9 L271.1,135.5 L282.4,135.2 L293.7,134.9 L305.0,134.6 L316.3,134.4 L327.6,134.1 L338.9,133.8 L350.2,133.7 L361.5,133.4 L372.8,133.2 L384.0,133.1 L395.3,132.9 L406.6,132.7 L417.9,132.6 L429.2,132.5 L440.5,132.4 L451.8,132.3 L463.1,132.1 L474.4,132.0 L485.7,132.0 L497.0,131.9 L508.2,131.8 L519.5,131.7 L530.8,131.7 L542.1,131.6 L553.4,131.6 L564.7,131.5 L576.0,131.5" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linejoin="round"/><circle cx="576.0" cy="31.6" r="4" fill="#eb6834" stroke="#fff" stroke-width="2"/><text x="585.0" y="35.1" class="lb">Gulv ved vinduet 41,3 °C</text><circle cx="576.0" cy="86.0" r="4" fill="#2a78d6" stroke="#fff" stroke-width="2"/><text x="585.0" y="89.5" class="lb">Gulv, middel 31,9 °C</text><circle cx="576.0" cy="131.5" r="4" fill="#1baf7a" stroke="#fff" stroke-width="2"/><text x="585.0" y="135.0" class="lb">Gulv, koldeste sted 24,1 °C</text><rect x="28.4" y="10" width="11.3" height="174" fill="transparent"><title>0,00 t: middel 23,4 °C · ved vinduet 21,8 °C · koldeste 19,8 °C · -22 W op i rummet · flow 72 l/h</title></rect><rect x="39.6" y="10" width="11.3" height="174" fill="transparent"><title>0,25 t: middel 24,7 °C · ved vinduet 24,9 °C · koldeste 20,2 °C · 39 W op i rummet · flow 54 l/h</title></rect><rect x="50.9" y="10" width="11.3" height="174" fill="transparent"><title>0,50 t: middel 25,8 °C · ved vinduet 27,4 °C · koldeste 20,6 °C · 89 W op i rummet · flow 47 l/h</title></rect><rect x="62.2" y="10" width="11.3" height="174" fill="transparent"><title>0,75 t: middel 26,7 °C · ved vinduet 29,5 °C · koldeste 21,1 °C · 131 W op i rummet · flow 42 l/h</title></rect><rect x="73.5" y="10" width="11.3" height="174" fill="transparent"><title>1,00 t: middel 27,5 °C · ved vinduet 31,2 °C · koldeste 21,6 °C · 167 W op i rummet · flow 38 l/h</title></rect><rect x="84.8" y="10" width="11.3" height="174" fill="transparent"><title>1,25 t: middel 28,1 °C · ved vinduet 32,7 °C · koldeste 22,1 °C · 197 W op i rummet · flow 34 l/h</title></rect><rect x="96.1" y="10" width="11.3" height="174" fill="transparent"><title>1,50 t: middel 28,7 °C · ved vinduet 34,0 °C · koldeste 22,2 °C · 223 W op i rummet · flow 31 l/h</title></rect><rect x="107.4" y="10" width="11.3" height="174" fill="transparent"><title>1,75 t: middel 29,2 °C · ved vinduet 35,0 °C · koldeste 22,2 °C · 246 W op i rummet · flow 29 l/h</title></rect><rect x="118.7" y="10" width="11.3" height="174" fill="transparent"><title>2,00 t: middel 29,6 °C · ved vinduet 36,0 °C · koldeste 22,3 °C · 265 W op i rummet · flow 27 l/h</title></rect><rect x="130.0" y="10" width="11.3" height="174" fill="transparent"><title>2,25 t: middel 29,9 °C · ved vinduet 36,7 °C · koldeste 22,4 °C · 281 W op i rummet · flow 25 l/h</title></rect><rect x="141.3" y="10" width="11.3" height="174" fill="transparent"><title>2,50 t: middel 30,2 °C · ved vinduet 37,4 °C · koldeste 22,5 °C · 295 W op i rummet · flow 23 l/h</title></rect><rect x="152.6" y="10" width="11.3" height="174" fill="transparent"><title>2,75 t: middel 30,5 °C · ved vinduet 38,0 °C · koldeste 22,6 °C · 307 W op i rummet · flow 22 l/h</title></rect><rect x="163.9" y="10" width="11.3" height="174" fill="transparent"><title>3,00 t: middel 30,7 °C · ved vinduet 38,5 °C · koldeste 22,7 °C · 317 W op i rummet · flow 21 l/h</title></rect><rect x="175.1" y="10" width="11.3" height="174" fill="transparent"><title>3,25 t: middel 30,9 °C · ved vinduet 38,9 °C · koldeste 22,8 °C · 326 W op i rummet · flow 20 l/h</title></rect><rect x="186.4" y="10" width="11.3" height="174" fill="transparent"><title>3,50 t: middel 31,0 °C · ved vinduet 39,2 °C · koldeste 22,9 °C · 334 W op i rummet · flow 19 l/h</title></rect><rect x="197.7" y="10" width="11.3" height="174" fill="transparent"><title>3,75 t: middel 31,2 °C · ved vinduet 39,5 °C · koldeste 22,9 °C · 340 W op i rummet · flow 18 l/h</title></rect><rect x="209.0" y="10" width="11.3" height="174" fill="transparent"><title>4,00 t: middel 31,3 °C · ved vinduet 39,8 °C · koldeste 23,0 °C · 345 W op i rummet · flow 17 l/h</title></rect><rect x="220.3" y="10" width="11.3" height="174" fill="transparent"><title>4,25 t: middel 31,4 °C · ved vinduet 40,0 °C · koldeste 23,1 °C · 350 W op i rummet · flow 17 l/h</title></rect><rect x="231.6" y="10" width="11.3" height="174" fill="transparent"><title>4,50 t: middel 31,5 °C · ved vinduet 40,2 °C · koldeste 23,2 °C · 354 W op i rummet · flow 16 l/h</title></rect><rect x="242.9" y="10" width="11.3" height="174" fill="transparent"><title>4,75 t: middel 31,5 °C · ved vinduet 40,4 °C · koldeste 23,2 °C · 357 W op i rummet · flow 16 l/h</title></rect><rect x="254.2" y="10" width="11.3" height="174" fill="transparent"><title>5,00 t: middel 31,6 °C · ved vinduet 40,5 °C · koldeste 23,3 °C · 359 W op i rummet · flow 16 l/h</title></rect><rect x="265.5" y="10" width="11.3" height="174" fill="transparent"><title>5,25 t: middel 31,6 °C · ved vinduet 40,6 °C · koldeste 23,4 °C · 362 W op i rummet · flow 15 l/h</title></rect><rect x="276.8" y="10" width="11.3" height="174" fill="transparent"><title>5,50 t: middel 31,7 °C · ved vinduet 40,7 °C · koldeste 23,4 °C · 364 W op i rummet · flow 15 l/h</title></rect><rect x="288.1" y="10" width="11.3" height="174" fill="transparent"><title>5,75 t: middel 31,7 °C · ved vinduet 40,8 °C · koldeste 23,5 °C · 365 W op i rummet · flow 15 l/h</title></rect><rect x="299.4" y="10" width="11.3" height="174" fill="transparent"><title>6,00 t: middel 31,7 °C · ved vinduet 40,9 °C · koldeste 23,5 °C · 366 W op i rummet · flow 15 l/h</title></rect><rect x="310.6" y="10" width="11.3" height="174" fill="transparent"><title>6,25 t: middel 31,8 °C · ved vinduet 40,9 °C · koldeste 23,6 °C · 367 W op i rummet · flow 15 l/h</title></rect><rect x="321.9" y="10" width="11.3" height="174" fill="transparent"><title>6,50 t: middel 31,8 °C · ved vinduet 41,0 °C · koldeste 23,6 °C · 368 W op i rummet · flow 14 l/h</title></rect><rect x="333.2" y="10" width="11.3" height="174" fill="transparent"><title>6,75 t: middel 31,8 °C · ved vinduet 41,0 °C · koldeste 23,6 °C · 369 W op i rummet · flow 14 l/h</title></rect><rect x="344.5" y="10" width="11.3" height="174" fill="transparent"><title>7,00 t: middel 31,8 °C · ved vinduet 41,0 °C · koldeste 23,7 °C · 370 W op i rummet · flow 14 l/h</title></rect><rect x="355.8" y="10" width="11.3" height="174" fill="transparent"><title>7,25 t: middel 31,8 °C · ved vinduet 41,1 °C · koldeste 23,7 °C · 370 W op i rummet · flow 14 l/h</title></rect><rect x="367.1" y="10" width="11.3" height="174" fill="transparent"><title>7,50 t: middel 31,8 °C · ved vinduet 41,1 °C · koldeste 23,8 °C · 371 W op i rummet · flow 14 l/h</title></rect><rect x="378.4" y="10" width="11.3" height="174" fill="transparent"><title>7,75 t: middel 31,8 °C · ved vinduet 41,1 °C · koldeste 23,8 °C · 371 W op i rummet · flow 14 l/h</title></rect><rect x="389.7" y="10" width="11.3" height="174" fill="transparent"><title>8,00 t: middel 31,8 °C · ved vinduet 41,1 °C · koldeste 23,8 °C · 371 W op i rummet · flow 14 l/h</title></rect><rect x="401.0" y="10" width="11.3" height="174" fill="transparent"><title>8,25 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,8 °C · 371 W op i rummet · flow 14 l/h</title></rect><rect x="412.3" y="10" width="11.3" height="174" fill="transparent"><title>8,50 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,9 °C · 372 W op i rummet · flow 14 l/h</title></rect><rect x="423.6" y="10" width="11.3" height="174" fill="transparent"><title>8,75 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,9 °C · 372 W op i rummet · flow 14 l/h</title></rect><rect x="434.9" y="10" width="11.3" height="174" fill="transparent"><title>9,00 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,9 °C · 372 W op i rummet · flow 14 l/h</title></rect><rect x="446.1" y="10" width="11.3" height="174" fill="transparent"><title>9,25 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,9 °C · 372 W op i rummet · flow 14 l/h</title></rect><rect x="457.4" y="10" width="11.3" height="174" fill="transparent"><title>9,50 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 23,9 °C · 372 W op i rummet · flow 14 l/h</title></rect><rect x="468.7" y="10" width="11.3" height="174" fill="transparent"><title>9,75 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="480.0" y="10" width="11.3" height="174" fill="transparent"><title>10,00 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="491.3" y="10" width="11.3" height="174" fill="transparent"><title>10,25 t: middel 31,9 °C · ved vinduet 41,2 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="502.6" y="10" width="11.3" height="174" fill="transparent"><title>10,50 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="513.9" y="10" width="11.3" height="174" fill="transparent"><title>10,75 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="525.2" y="10" width="11.3" height="174" fill="transparent"><title>11,00 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="536.5" y="10" width="11.3" height="174" fill="transparent"><title>11,25 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,0 °C · 373 W op i rummet · flow 14 l/h</title></rect><rect x="547.8" y="10" width="11.3" height="174" fill="transparent"><title>11,50 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,0 °C · 374 W op i rummet · flow 14 l/h</title></rect><rect x="559.1" y="10" width="11.3" height="174" fill="transparent"><title>11,75 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,1 °C · 374 W op i rummet · flow 14 l/h</title></rect><rect x="570.4" y="10" width="11.3" height="174" fill="transparent"><title>12,00 t: middel 31,9 °C · ved vinduet 41,3 °C · koldeste 24,1 °C · 374 W op i rummet · flow 14 l/h</title></rect><line id="tidslinje" x1="169.5" x2="169.5" y1="10" y2="184" stroke="#555" stroke-width="1" stroke-dasharray="3 3"/></svg>
-  <ul class="note">
-    <li>Halvvejs efter ca. 1,2 timer, næsten færdig (90 %) efter ca. 3,8 timer. Betonen gør gulvet trægt, men det følger vejret inden for samme døgn.</li>
-    <li>Forskellen mellem gulvet ved vinduet og det koldeste sted vokser fra ca. 14 grader efter 2 timer til ca. 17 grader, når gulvet er varmt. Returbegrænseren skruer ned for flowet, fra ca. 72 til ca. 14 l/h, så vandet køler af tidligt på ruten, og varmen samler sig ved fremløbet langs vinduet.</li>
-    <li>Det gælder en kold dag med ca. 55 °C ind. På milde dage er fremløbet lavere, og gulvet ved vinduet køligere (se næste side).</li>
-  </ul>
-  <p class="hint">Skøn med samme antagelser som forrige side. Returbegrænseren sat til 28 °C, højst 100 l/h. Gulvet starter, som det er uden gulvvarme.</p>
-<script>
-addEventListener('DOMContentLoaded', () => {
-  const T = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 12], N = T.length, BOKS = [-15, -4, 330, 169], X = t => 34 + t / 12 * 542;
-  const img = document.querySelector('#opvarmning .plan image');
-  if (!img) return;
-  const svg = img.ownerSVGElement, ns = 'http://www.w3.org/2000/svg';
-  const cp = document.createElementNS(ns, 'clipPath'); cp.id = 'opv-klip';
-  const r = document.createElementNS(ns, 'rect');
-  [['x', BOKS[0]], ['y', BOKS[1]], ['width', BOKS[2]], ['height', BOKS[3]]].forEach(([a, v]) => r.setAttribute(a, v));
-  cp.appendChild(r); svg.querySelector('defs').appendChild(cp);
-  img.parentNode.setAttribute('clip-path', 'url(#opv-klip)');
-  img.setAttribute('href', 'cad/opvarmning.png?v=010f857b'); img.setAttribute('height', BOKS[3] * N);
-  const fmt = t => String(t).replace('.', ',') + (t === 1 ? ' time' : ' timer');
-  const vis = k => {
-    img.setAttribute('y', BOKS[1] - BOKS[3] * k);
-    document.getElementById('opv-t').textContent = fmt(T[k]);
-    document.getElementById('opv-tekst').textContent = T[k] === 0 ? 'ved start (koldt)' : 'efter ' + fmt(T[k]);
-    const l = document.getElementById('tidslinje'); l.setAttribute('x1', X(T[k])); l.setAttribute('x2', X(T[k]));
-    document.getElementById('opv-tid').value = k;
-  };
-  let k = 6, ur = null;
-  const knap = document.getElementById('opv-spil');
-  const stop = () => { clearInterval(ur); ur = null; knap.textContent = '▶ Afspil'; };
-  vis(k);
-  document.getElementById('opv-tid').oninput = e => { stop(); vis(+e.target.value); };
-  knap.onclick = () => {
-    if (ur) return stop();
-    knap.textContent = '❚❚ Pause'; k = 0; vis(k);
-    ur = setInterval(() => { k = (k + 1) % N; vis(k); }, 700);
-  };
-});
-</script>
-
-</section>
-
-
-<section class="page" data-fane="vvs" data-pakke="vvs" style="--accent:var(--c-vvs)">
-  <div class="fag-head"><h1>Gulvvarme: kold og mild dag</h1><span>samme returbegrænser, ingen pumpe · bygherrens skøn</span></div>
-
-  <div class="cols" style="margin-top:4px">
-    <figure style="margin:0"><svg viewBox="-15 -4 330 169" style="display:block;width:100%;background:var(--paper);border-radius:6px"><image href="cad/varmekort_kold.png?v=741775dd" x="-15" y="-4" width="330" height="169" preserveAspectRatio="none"/><polygon points="0.0,28.4 26.0,26.0 26.0,0.0 210.0,0.0 210.0,7.0 312.0,7.0 312.0,95.0 265.0,95.0 265.0,141.0 210.4,147.0 210.4,161.0 26.0,161.0 26.0,142.0 0.0,139.6" fill="none" stroke="#111" stroke-width="1"/></svg><figcaption class="hint" style="margin:4px 0 0"><b>Kold dag</b>, −12 °C ude: ca. 55 °C ind. Returbegrænseren skruer flowet ned til ca. 14 l/h.</figcaption></figure>
-    <figure style="margin:0"><svg viewBox="-15 -4 330 169" style="display:block;width:100%;background:var(--paper);border-radius:6px"><image href="cad/varmekort_mild.png?v=e47ca9d2" x="-15" y="-4" width="330" height="169" preserveAspectRatio="none"/><polygon points="0.0,28.4 26.0,26.0 26.0,0.0 210.0,0.0 210.0,7.0 312.0,7.0 312.0,95.0 265.0,95.0 265.0,141.0 210.4,147.0 210.4,161.0 26.0,161.0 26.0,142.0 0.0,139.6" fill="none" stroke="#111" stroke-width="1"/></svg><figcaption class="hint" style="margin:4px 0 0"><b>Mild dag</b>: ca. 40 °C ind. Samme returbegrænser, flowet ca. 22 l/h.</figcaption></figure>
-  </div>
-  <div class="cols">
-    <div>
-      <h2>Stationært</h2>
-      <table class="compact"><thead><tr><th></th><th class="num">Kold dag</th><th class="num">Mild dag</th></tr></thead><tbody>
-        <tr><td>Vand ind</td><td class="num" style="white-space:nowrap">55,0 °C</td><td class="num" style="white-space:nowrap">40,0 °C</td></tr><tr><td>Retur</td><td class="num" style="white-space:nowrap">28,0 °C</td><td class="num" style="white-space:nowrap">28,0 °C</td></tr><tr><td>Flow</td><td class="num" style="white-space:nowrap">14 l/h</td><td class="num" style="white-space:nowrap">22 l/h</td></tr>
-        <tr><td>Gulv, middel</td><td class="num" style="white-space:nowrap">32,0 °C</td><td class="num" style="white-space:nowrap">29,4 °C</td></tr><tr><td>Gulv ved vinduet</td><td class="num" style="white-space:nowrap">41,3 °C</td><td class="num" style="white-space:nowrap">33,1 °C</td></tr>
-        <tr><td>Gulv, koldeste sted</td><td class="num" style="white-space:nowrap">24,2 °C</td><td class="num" style="white-space:nowrap">24,1 °C</td></tr><tr><td>Gulv, varmeste sted</td><td class="num" style="white-space:nowrap">45,4 °C</td><td class="num" style="white-space:nowrap">35,1 °C</td></tr>
-        <tr><td>Forskel vindue og koldeste</td><td class="num" style="white-space:nowrap">17 grader</td><td class="num" style="white-space:nowrap">9 grader</td></tr>
-        <tr><td>Varme op i rummet</td><td class="num" style="white-space:nowrap">377 W</td><td class="num" style="white-space:nowrap">257 W</td></tr>
-      </tbody></table>
-    </div>
-    <div>
-      <h2>Det betyder</h2>
-      <ul class="note">
-        <li>Fremløbet følger udetemperaturen. Gulvet ved vinduet bliver ca. 41 °C på de koldeste dage og ca. 33 °C på milde dage.</li>
-        <li>Mønsteret er det samme: varmest ved fremløbet langs vinduet, hvor det er koldest. Uden pumpe kan vandet ind ikke blandes ned.</li>
-        <li>Returbegrænserens indstilling og rørføringen er VVS' valg.</li>
+  <div class="raekke">
+    <div class="kort">
+      <h2>Opgaven</h2>
+      <ul class="punkter" role="tablist">
+        <li><button role="tab" data-fag="vvs" aria-selected="true"><b>VVS</b><span>Opsatsvask med armatur, toilet med skjult cisterne, brusearmatur, radiator, afspærring, køkkenarmatur. Bruserens rør over loftet.</span></button></li>
+        <li><button role="tab" data-fag="tomrer"><b>Tømrer</b><span>Nyt hængeloft. Rørkasser i bad og køkken. Kasse langs væggen med bordplade og underskab. Ny dør. Tilvalg: tætningslister i alle vinduer.</span></button></li>
+        <li><button role="tab" data-fag="el"><b>El</b><span>8 spots på K1, ventilator i nichens loft med boost via K2, spejl og makeupspejl på fast forsyning. Forsyning fra eksisterende udtag. Tilvalg: ny gruppetavle.</span></button></li>
+        <li><button role="tab" data-fag="glas"><b>Glasvæg</b><span>Fast glasvæg 50 cm mellem bruser og bordplade.</span></button></li>
+        <li><button role="tab" data-fag="fuger"><b>Fuger</b><span>Elastiske fuger ved gulv og loft rundt i rummet, langs kasse og bordplade mod væggen og om toilettets fod.</span></button></li>
       </ul>
     </div>
+    <div class="kort tavle panel" role="tabpanel" id="tavle"></div>
   </div>
-  <h2>Opvarmning fra koldt gulv</h2>
-  <div class="opv-leg"><span><i style="background:#eb6834"></i>Ved vinduet</span><span><i style="background:#1baf7a"></i>Koldeste sted</span><span>— kold dag</span><span>- - mild dag</span></div>
-  <svg viewBox="0 0 726 190" style="display:block;width:100%;height:auto" role="img" aria-label="Opvarmning, kold og mild dag"><style>.ax{font:9.5px Inter,Arial,sans-serif;fill:#6b6b6b}.lb{font:600 10px Inter,Arial,sans-serif;fill:#1f1f1f}</style><line x1="38" x2="566" y1="164.0" y2="164.0" stroke="#ece8de"/><text x="32" y="167.5" text-anchor="end" class="ax">15 °C</text><line x1="38" x2="566" y1="138.3" y2="138.3" stroke="#ece8de"/><text x="32" y="141.8" text-anchor="end" class="ax">20 °C</text><line x1="38" x2="566" y1="112.7" y2="112.7" stroke="#ece8de"/><text x="32" y="116.2" text-anchor="end" class="ax">25 °C</text><line x1="38" x2="566" y1="87.0" y2="87.0" stroke="#ece8de"/><text x="32" y="90.5" text-anchor="end" class="ax">30 °C</text><line x1="38" x2="566" y1="61.3" y2="61.3" stroke="#ece8de"/><text x="32" y="64.8" text-anchor="end" class="ax">35 °C</text><line x1="38" x2="566" y1="35.7" y2="35.7" stroke="#ece8de"/><text x="32" y="39.2" text-anchor="end" class="ax">40 °C</text><line x1="38" x2="566" y1="10.0" y2="10.0" stroke="#ece8de"/><text x="32" y="13.5" text-anchor="end" class="ax">45 °C</text><text x="38.0" y="182" text-anchor="middle" class="ax">0 t</text><text x="126.0" y="182" text-anchor="middle" class="ax">2 t</text><text x="214.0" y="182" text-anchor="middle" class="ax">4 t</text><text x="302.0" y="182" text-anchor="middle" class="ax">6 t</text><text x="390.0" y="182" text-anchor="middle" class="ax">8 t</text><text x="478.0" y="182" text-anchor="middle" class="ax">10 t</text><text x="566.0" y="182" text-anchor="middle" class="ax">12 t</text><line x1="38" x2="566" y1="164" y2="164" stroke="#c9c3b5"/><path d="M38.0,128.9 L49.0,113.0 L60.0,100.3 L71.0,89.7 L82.0,80.7 L93.0,73.1 L104.0,66.6 L115.0,61.1 L126.0,56.4 L137.0,52.4 L148.0,49.0 L159.0,46.0 L170.0,43.6 L181.0,41.4 L192.0,39.6 L203.0,38.1 L214.0,36.7 L225.0,35.6 L236.0,34.6 L247.0,33.9 L258.0,33.2 L269.0,32.6 L280.0,32.1 L291.0,31.7 L302.0,31.3 L313.0,30.9 L324.0,30.7 L335.0,30.5 L346.0,30.3 L357.0,30.1 L368.0,30.0 L379.0,29.9 L390.0,29.8 L401.0,29.7 L412.0,29.6 L423.0,29.5 L434.0,29.5 L445.0,29.4 L456.0,29.4 L467.0,29.3 L478.0,29.3 L489.0,29.2 L500.0,29.2 L511.0,29.2 L522.0,29.1 L533.0,29.1 L544.0,29.1 L555.0,29.1 L566.0,29.1" fill="none" stroke="#eb6834" stroke-width="2" stroke-dasharray="" stroke-linejoin="round"/><path d="M38.0,128.9 L49.0,119.9 L60.0,112.6 L71.0,106.5 L82.0,101.4 L93.0,97.0 L104.0,93.3 L115.0,90.1 L126.0,87.4 L137.0,85.0 L148.0,83.0 L159.0,81.4 L170.0,79.9 L181.0,78.6 L192.0,77.6 L203.0,76.6 L214.0,75.8 L225.0,75.1 L236.0,74.6 L247.0,74.1 L258.0,73.6 L269.0,73.2 L280.0,72.9 L291.0,72.6 L302.0,72.4 L313.0,72.2 L324.0,72.0 L335.0,71.9 L346.0,71.8 L357.0,71.6 L368.0,71.5 L379.0,71.4 L390.0,71.3 L401.0,71.3 L412.0,71.2 L423.0,71.2 L434.0,71.1 L445.0,71.1 L456.0,71.1 L467.0,71.0 L478.0,71.0 L489.0,71.0 L500.0,71.0 L511.0,71.0 L522.0,71.0 L533.0,71.0 L544.0,70.9 L555.0,70.9 L566.0,70.9" fill="none" stroke="#eb6834" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round"/><path d="M38.0,139.3 L49.0,137.4 L60.0,135.2 L71.0,132.8 L82.0,130.3 L93.0,127.6 L104.0,127.2 L115.0,126.8 L126.0,126.3 L137.0,125.9 L148.0,125.4 L159.0,124.9 L170.0,124.5 L181.0,124.1 L192.0,123.6 L203.0,123.2 L214.0,122.8 L225.0,122.4 L236.0,122.1 L247.0,121.7 L258.0,121.4 L269.0,121.1 L280.0,120.8 L291.0,120.5 L302.0,120.3 L313.0,120.1 L324.0,119.8 L335.0,119.6 L346.0,119.4 L357.0,119.2 L368.0,119.1 L379.0,118.9 L390.0,118.8 L401.0,118.6 L412.0,118.5 L423.0,118.4 L434.0,118.3 L445.0,118.2 L456.0,118.1 L467.0,118.0 L478.0,118.0 L489.0,117.9 L500.0,117.8 L511.0,117.7 L522.0,117.7 L533.0,117.6 L544.0,117.6 L555.0,117.5 L566.0,117.5" fill="none" stroke="#1baf7a" stroke-width="2" stroke-dasharray="" stroke-linejoin="round"/><path d="M38.0,139.3 L49.0,137.4 L60.0,135.5 L71.0,133.5 L82.0,131.4 L93.0,129.4 L104.0,127.3 L115.0,126.8 L126.0,126.4 L137.0,125.9 L148.0,125.4 L159.0,125.0 L170.0,124.6 L181.0,124.1 L192.0,123.7 L203.0,123.3 L214.0,122.9 L225.0,122.6 L236.0,122.3 L247.0,121.9 L258.0,121.6 L269.0,121.3 L280.0,121.0 L291.0,120.8 L302.0,120.6 L313.0,120.3 L324.0,120.1 L335.0,120.0 L346.0,119.9 L357.0,119.8 L368.0,119.6 L379.0,119.5 L390.0,119.4 L401.0,119.4 L412.0,119.3 L423.0,119.2 L434.0,119.1 L445.0,119.0 L456.0,118.9 L467.0,118.8 L478.0,118.7 L489.0,118.6 L500.0,118.5 L511.0,118.5 L522.0,118.4 L533.0,118.3 L544.0,118.2 L555.0,118.2 L566.0,118.1" fill="none" stroke="#1baf7a" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round"/><circle cx="566.0" cy="29.1" r="3.5" fill="#eb6834" stroke="#fff" stroke-width="2"/><text x="574.0" y="32.6" class="lb">Kold dag, ved vinduet 41,3 °C</text><circle cx="566.0" cy="70.9" r="3.5" fill="#eb6834" stroke="#fff" stroke-width="2"/><text x="574.0" y="74.4" class="lb">Mild dag, ved vinduet 33,1 °C</text><circle cx="566.0" cy="117.5" r="3.5" fill="#1baf7a" stroke="#fff" stroke-width="2"/><text x="574.0" y="121.0" class="lb">Kold dag, koldeste 24,1 °C</text><circle cx="566.0" cy="118.1" r="3.5" fill="#1baf7a" stroke="#fff" stroke-width="2"/><text x="574.0" y="133.0" class="lb">Mild dag, koldeste 23,9 °C</text><rect x="32.5" y="10" width="11.0" height="154" fill="transparent"><title>0,00 t: kold dag: vindue 21,8 / koldeste 19,8 °C · mild dag: vindue 21,8 / koldeste 19,8 °C</title></rect><rect x="43.5" y="10" width="11.0" height="154" fill="transparent"><title>0,25 t: kold dag: vindue 24,9 / koldeste 20,2 °C · mild dag: vindue 23,6 / koldeste 20,2 °C</title></rect><rect x="54.5" y="10" width="11.0" height="154" fill="transparent"><title>0,50 t: kold dag: vindue 27,4 / koldeste 20,6 °C · mild dag: vindue 25,0 / koldeste 20,6 °C</title></rect><rect x="65.5" y="10" width="11.0" height="154" fill="transparent"><title>0,75 t: kold dag: vindue 29,5 / koldeste 21,1 °C · mild dag: vindue 26,2 / koldeste 20,9 °C</title></rect><rect x="76.5" y="10" width="11.0" height="154" fill="transparent"><title>1,00 t: kold dag: vindue 31,2 / koldeste 21,6 °C · mild dag: vindue 27,2 / koldeste 21,4 °C</title></rect><rect x="87.5" y="10" width="11.0" height="154" fill="transparent"><title>1,25 t: kold dag: vindue 32,7 / koldeste 22,1 °C · mild dag: vindue 28,1 / koldeste 21,8 °C</title></rect><rect x="98.5" y="10" width="11.0" height="154" fill="transparent"><title>1,50 t: kold dag: vindue 34,0 / koldeste 22,2 °C · mild dag: vindue 28,8 / koldeste 22,1 °C</title></rect><rect x="109.5" y="10" width="11.0" height="154" fill="transparent"><title>1,75 t: kold dag: vindue 35,0 / koldeste 22,2 °C · mild dag: vindue 29,4 / koldeste 22,2 °C</title></rect><rect x="120.5" y="10" width="11.0" height="154" fill="transparent"><title>2,00 t: kold dag: vindue 36,0 / koldeste 22,3 °C · mild dag: vindue 29,9 / koldeste 22,3 °C</title></rect><rect x="131.5" y="10" width="11.0" height="154" fill="transparent"><title>2,25 t: kold dag: vindue 36,7 / koldeste 22,4 °C · mild dag: vindue 30,4 / koldeste 22,4 °C</title></rect><rect x="142.5" y="10" width="11.0" height="154" fill="transparent"><title>2,50 t: kold dag: vindue 37,4 / koldeste 22,5 °C · mild dag: vindue 30,8 / koldeste 22,5 °C</title></rect><rect x="153.5" y="10" width="11.0" height="154" fill="transparent"><title>2,75 t: kold dag: vindue 38,0 / koldeste 22,6 °C · mild dag: vindue 31,1 / koldeste 22,6 °C</title></rect><rect x="164.5" y="10" width="11.0" height="154" fill="transparent"><title>3,00 t: kold dag: vindue 38,5 / koldeste 22,7 °C · mild dag: vindue 31,4 / koldeste 22,7 °C</title></rect><rect x="175.5" y="10" width="11.0" height="154" fill="transparent"><title>3,25 t: kold dag: vindue 38,9 / koldeste 22,8 °C · mild dag: vindue 31,6 / koldeste 22,8 °C</title></rect><rect x="186.5" y="10" width="11.0" height="154" fill="transparent"><title>3,50 t: kold dag: vindue 39,2 / koldeste 22,9 °C · mild dag: vindue 31,8 / koldeste 22,9 °C</title></rect><rect x="197.5" y="10" width="11.0" height="154" fill="transparent"><title>3,75 t: kold dag: vindue 39,5 / koldeste 22,9 °C · mild dag: vindue 32,0 / koldeste 22,9 °C</title></rect><rect x="208.5" y="10" width="11.0" height="154" fill="transparent"><title>4,00 t: kold dag: vindue 39,8 / koldeste 23,0 °C · mild dag: vindue 32,2 / koldeste 23,0 °C</title></rect><rect x="219.5" y="10" width="11.0" height="154" fill="transparent"><title>4,25 t: kold dag: vindue 40,0 / koldeste 23,1 °C · mild dag: vindue 32,3 / koldeste 23,1 °C</title></rect><rect x="230.5" y="10" width="11.0" height="154" fill="transparent"><title>4,50 t: kold dag: vindue 40,2 / koldeste 23,2 °C · mild dag: vindue 32,4 / koldeste 23,1 °C</title></rect><rect x="241.5" y="10" width="11.0" height="154" fill="transparent"><title>4,75 t: kold dag: vindue 40,4 / koldeste 23,2 °C · mild dag: vindue 32,5 / koldeste 23,2 °C</title></rect><rect x="252.5" y="10" width="11.0" height="154" fill="transparent"><title>5,00 t: kold dag: vindue 40,5 / koldeste 23,3 °C · mild dag: vindue 32,6 / koldeste 23,3 °C</title></rect><rect x="263.5" y="10" width="11.0" height="154" fill="transparent"><title>5,25 t: kold dag: vindue 40,6 / koldeste 23,4 °C · mild dag: vindue 32,7 / koldeste 23,3 °C</title></rect><rect x="274.5" y="10" width="11.0" height="154" fill="transparent"><title>5,50 t: kold dag: vindue 40,7 / koldeste 23,4 °C · mild dag: vindue 32,7 / koldeste 23,4 °C</title></rect><rect x="285.5" y="10" width="11.0" height="154" fill="transparent"><title>5,75 t: kold dag: vindue 40,8 / koldeste 23,5 °C · mild dag: vindue 32,8 / koldeste 23,4 °C</title></rect><rect x="296.5" y="10" width="11.0" height="154" fill="transparent"><title>6,00 t: kold dag: vindue 40,9 / koldeste 23,5 °C · mild dag: vindue 32,8 / koldeste 23,5 °C</title></rect><rect x="307.5" y="10" width="11.0" height="154" fill="transparent"><title>6,25 t: kold dag: vindue 40,9 / koldeste 23,6 °C · mild dag: vindue 32,9 / koldeste 23,5 °C</title></rect><rect x="318.5" y="10" width="11.0" height="154" fill="transparent"><title>6,50 t: kold dag: vindue 41,0 / koldeste 23,6 °C · mild dag: vindue 32,9 / koldeste 23,6 °C</title></rect><rect x="329.5" y="10" width="11.0" height="154" fill="transparent"><title>6,75 t: kold dag: vindue 41,0 / koldeste 23,6 °C · mild dag: vindue 33,0 / koldeste 23,6 °C</title></rect><rect x="340.5" y="10" width="11.0" height="154" fill="transparent"><title>7,00 t: kold dag: vindue 41,0 / koldeste 23,7 °C · mild dag: vindue 33,0 / koldeste 23,6 °C</title></rect><rect x="351.5" y="10" width="11.0" height="154" fill="transparent"><title>7,25 t: kold dag: vindue 41,1 / koldeste 23,7 °C · mild dag: vindue 33,0 / koldeste 23,6 °C</title></rect><rect x="362.5" y="10" width="11.0" height="154" fill="transparent"><title>7,50 t: kold dag: vindue 41,1 / koldeste 23,8 °C · mild dag: vindue 33,0 / koldeste 23,6 °C</title></rect><rect x="373.5" y="10" width="11.0" height="154" fill="transparent"><title>7,75 t: kold dag: vindue 41,1 / koldeste 23,8 °C · mild dag: vindue 33,0 / koldeste 23,7 °C</title></rect><rect x="384.5" y="10" width="11.0" height="154" fill="transparent"><title>8,00 t: kold dag: vindue 41,1 / koldeste 23,8 °C · mild dag: vindue 33,0 / koldeste 23,7 °C</title></rect><rect x="395.5" y="10" width="11.0" height="154" fill="transparent"><title>8,25 t: kold dag: vindue 41,2 / koldeste 23,8 °C · mild dag: vindue 33,1 / koldeste 23,7 °C</title></rect><rect x="406.5" y="10" width="11.0" height="154" fill="transparent"><title>8,50 t: kold dag: vindue 41,2 / koldeste 23,9 °C · mild dag: vindue 33,1 / koldeste 23,7 °C</title></rect><rect x="417.5" y="10" width="11.0" height="154" fill="transparent"><title>8,75 t: kold dag: vindue 41,2 / koldeste 23,9 °C · mild dag: vindue 33,1 / koldeste 23,7 °C</title></rect><rect x="428.5" y="10" width="11.0" height="154" fill="transparent"><title>9,00 t: kold dag: vindue 41,2 / koldeste 23,9 °C · mild dag: vindue 33,1 / koldeste 23,8 °C</title></rect><rect x="439.5" y="10" width="11.0" height="154" fill="transparent"><title>9,25 t: kold dag: vindue 41,2 / koldeste 23,9 °C · mild dag: vindue 33,1 / koldeste 23,8 °C</title></rect><rect x="450.5" y="10" width="11.0" height="154" fill="transparent"><title>9,50 t: kold dag: vindue 41,2 / koldeste 23,9 °C · mild dag: vindue 33,1 / koldeste 23,8 °C</title></rect><rect x="461.5" y="10" width="11.0" height="154" fill="transparent"><title>9,75 t: kold dag: vindue 41,2 / koldeste 24,0 °C · mild dag: vindue 33,1 / koldeste 23,8 °C</title></rect><rect x="472.5" y="10" width="11.0" height="154" fill="transparent"><title>10,00 t: kold dag: vindue 41,2 / koldeste 24,0 °C · mild dag: vindue 33,1 / koldeste 23,8 °C</title></rect><rect x="483.5" y="10" width="11.0" height="154" fill="transparent"><title>10,25 t: kold dag: vindue 41,2 / koldeste 24,0 °C · mild dag: vindue 33,1 / koldeste 23,8 °C</title></rect><rect x="494.5" y="10" width="11.0" height="154" fill="transparent"><title>10,50 t: kold dag: vindue 41,3 / koldeste 24,0 °C · mild dag: vindue 33,1 / koldeste 23,9 °C</title></rect><rect x="505.5" y="10" width="11.0" height="154" fill="transparent"><title>10,75 t: kold dag: vindue 41,3 / koldeste 24,0 °C · mild dag: vindue 33,1 / koldeste 23,9 °C</title></rect><rect x="516.5" y="10" width="11.0" height="154" fill="transparent"><title>11,00 t: kold dag: vindue 41,3 / koldeste 24,0 °C · mild dag: vindue 33,1 / koldeste 23,9 °C</title></rect><rect x="527.5" y="10" width="11.0" height="154" fill="transparent"><title>11,25 t: kold dag: vindue 41,3 / koldeste 24,0 °C · mild dag: vindue 33,1 / koldeste 23,9 °C</title></rect><rect x="538.5" y="10" width="11.0" height="154" fill="transparent"><title>11,50 t: kold dag: vindue 41,3 / koldeste 24,0 °C · mild dag: vindue 33,1 / koldeste 23,9 °C</title></rect><rect x="549.5" y="10" width="11.0" height="154" fill="transparent"><title>11,75 t: kold dag: vindue 41,3 / koldeste 24,1 °C · mild dag: vindue 33,1 / koldeste 23,9 °C</title></rect><rect x="560.5" y="10" width="11.0" height="154" fill="transparent"><title>12,00 t: kold dag: vindue 41,3 / koldeste 24,1 °C · mild dag: vindue 33,1 / koldeste 23,9 °C</title></rect></svg>
 
-</section>
-
-
-<section class="page" data-fane="el" data-pakke="vvs" style="--accent:var(--c-el)">
-  <div class="fag-head"><h1>Elektriker</h1></div>
-  <div class="plan" data-fokus="el"></div>
-
-  <div class="cols" style="margin-top:4px">
-    <div>
-      <h2>Spotplacering <span style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--muted)">– cm fra vinduesvæg (X) og væg A (Y)</span></h2>
-      <table class="compact">
-        <thead><tr><th></th><th class="num">X cm</th><th class="num">Y cm</th><th class="num">Kanal</th><th>Placering</th></tr></thead>
-        <tbody>
-          <tr><td class="n"><span class="dot s">1</span></td><td class="num">110</td><td class="num">45</td><td class="num">1</td><td>Over toilet/vask</td></tr>
-          <tr><td class="n"><span class="dot s">2</span></td><td class="num">174</td><td class="num">45</td><td class="num">1</td><td>Mellem vask og bruseniche</td></tr>
-          <tr><td class="n"><span class="dot s">3</span></td><td class="num">238</td><td class="num">45</td><td class="num">2</td><td>Bruseniche, vest</td></tr>
-          <tr><td class="n"><span class="dot s">4</span></td><td class="num">286</td><td class="num">45</td><td class="num">2</td><td>Bruseniche, øst</td></tr>
-          <tr><td class="n"><span class="dot s">5</span></td><td class="num">46</td><td class="num">117</td><td class="num">1</td><td>Midt for rørkasse W</td></tr>
-          <tr><td class="n"><span class="dot s">6</span></td><td class="num">110</td><td class="num">117</td><td class="num">1</td><td>Midt i rummet</td></tr>
-          <tr><td class="n"><span class="dot s">7</span></td><td class="num">174</td><td class="num">117</td><td class="num">1</td><td>Ved døren</td></tr>
-          <tr><td class="n"><span class="dot s">8</span></td><td class="num">238</td><td class="num">117</td><td class="num">2</td><td>Foran indgangen til brusenichen</td></tr>
-        </tbody>
-      </table>
+  <div class="to">
+    <div class="kort">
+      <h2>Oplæg til fordeling</h2>
+      <ul>
+        <li>Bygherre kan selv stå for nedrivning og bortskaffelse, undtagen hængeloft, radiator, toilet, ventilator og tilvalgene T6 og GT. Entreprenøren må gerne foreslå andet.</li>
+        <li>Komponentlisterne foreslår produkter og hvem der leverer (kolonnen Leveres af). Bygherre kan levere de markerede produkter selv, eller entreprenøren kan levere dem. Produkter markeret Afklares vælges i fællesskab før opstart.</li>
+        <li>Bygherre indstiller gerne selv relæmodulerne K1 og K2.</li>
+        <li>Mål er vejledende og kontrolleres på stedet.</li>
+      </ul>
     </div>
-    <div>
-      <h2>Bemærk</h2>
-      <ul class="note">
-        <li>Spots må rykkes få cm ved bjælker; rækker og kolonner skal flugte.</li>
-        <li>P og Q: fast forsyning (egen betjening); Q på indbygningsdåse. Lampeudtag over vask nedlægges.</li>
-        <li>Forsyning fra udtaget ved skabet (•) op i loftet til samledåse → DIN-skabet i W.</li>
-        <li>Dåse uden for døren (påbygning, 3 moduler): øverste kontakt erstattes af lavvolts trykknap, lyset afkobles. Øvrige moduler beholdes – adskil lavvolt og 230 V.</li>
-        <li><b>Udsugning (Z):</b> vægventilator på det eksisterende hul. Fast 230 V fra DIN-skabet; boost via relæ K1.</li>
+    <div class="kort">
+      <h2>Tilbud</h2>
+      <ul>
+        <li>Fast pris, opdelt pr. fag: VVS, el, tømrer, fuger og glasvæg.</li>
+        <li>Gerne pris både med og uden bygherrens egne leverancer og nedrivning.</li>
+        <li>Separat pris på køkkenet: V8 og T3.</li>
+        <li>Separat pris på tilvalg: T6 og GT.</li>
+        <li>Forventet varighed i arbejdsdage.</li>
       </ul>
     </div>
   </div>
 
-  <h2>Produkter</h2>
-  <table class="buy"><colgroup><col style="width:28px"><col class="emne"><col class="prod"><col></colgroup>
-    <thead><tr><th></th><th>Emne</th><th>Type / model</th><th>Kommentar</th></tr></thead>
-    <tbody data-fag-liste="el"></tbody></table>
-</section>
-
-
-<section class="page" data-fane="el" data-pakke="vvs" style="--accent:var(--c-el)">
-  <div class="fag-head"><h1>Elektriker</h1><span>DIN-skab i rørkasse W</span></div>
-  <p class="hint">Særskilt DIN-skab øverst i W med egen låge (163–195 cm over gulv), to vandrette skinner på en montageplade 10 cm foran bagsiden: stærkstrøm (230 V) øverst, lavstrøm nederst. Én 230 V-forsyning ind. Al 230 V er fast installation og udføres af elektrikeren; bygherre monterer kun lavvolt.</p>
-  <div class="din-kort"><img src="cad/din_skab.svg?v=a037a926" alt="DIN-skab i rørkasse W: forfra, snit og forbindelser" style="display:block;width:100%"></div>
-  <table class="buy din-tabel"><colgroup><col style="width:150px"><col style="width:62px"><col><col style="width:130px"></colgroup>
-    <thead><tr><th>Modul</th><th>Bredde</th><th>Funktion</th><th>Monteres af</th></tr></thead>
-    <tbody>
-      <tr><td class="t">Sikring + flerpolet afbryder</td><td>ca. 36 mm</td><td class="txt">Én forsyning ind til hele skabet. Type vælges af elektrikeren.</td><td>Elektriker</td></tr>
-      <tr><td class="t">Y1, Y2: Eltako SUD12/1-10V + LUD12-230V</td><td>4 × 18 mm</td><td class="txt">Lysdæmper pr. kanal, bagkant, styret med 1–10 V (kablet). Y1: spot 1, 2, 5–7. Y2: spot 3, 4, 8.</td><td>Elektriker</td></tr>
-      <tr><td class="t">24 V DC forsyning</td><td>ca. 36 mm</td><td class="txt">Til styreenhed, 0–10 V-modul og K1's spole.</td><td>Elektriker (230 V ind)</td></tr>
-      <tr><td class="t">Q2: 3-polet afbryder + sikring</td><td>ca. 36 mm</td><td class="txt">Til ventilatoren.</td><td>Elektriker</td></tr>
-      <tr><td class="t">K1: relæ, boost</td><td>ca. 18 mm</td><td class="txt">Relæ med 24 V-spole i sokkel, så det let kan skiftes. Sluttekontakten giver 230 V på ventilatorens styreledning (boost).</td><td>Elektriker</td></tr>
-      <tr><td class="t">Styreenhed (M5Stack StamPLC)</td><td>ca. 80 mm</td><td class="txt">Styrer lys og ventilatorens boost. Relæerne bruges kun som styrerelæer.</td><td>Bygherre</td></tr>
-      <tr><td class="t">0–10 V-modul</td><td>ca. 18 mm</td><td class="txt">Styresignal til dimmerne Y1 og Y2.</td><td>Bygherre</td></tr>
-      <tr><td class="t">Klemmer</td><td>ca. 30 mm</td><td class="txt">Fordeling af 24 V og styrekabler.</td><td>Bygherre</td></tr>
-    </tbody></table>
-  <ul class="note" style="margin-top:8px">
-    <li><b>Elektriker (fast installation):</b> forsyning ind, sikring/afbryder, dimmere Y1/Y2 med kabler til spots, 24 V-forsyningens 230 V, ventilatoren (fast 230 V over 3-polet afbryder, styreledning via K1), fast 230 V til spejle P og Q.</li>
-    <li><b>Bygherre (lavvolt):</b> styreenhed, 0–10 V-modul, klemmer, styrekabler og trykknappens lavvoltskabel.</li>
-    <li>To skinner med god plads: stærkstrøm øverst, lavstrøm nederst – helt adskilt. Elektrikeren vurderer temperatur og kapsling.</li>
-  </ul>
-</section>
-
-
-<section class="page" data-fane="el" data-pakke="vvs" style="--accent:var(--c-el)">
-  <div class="fag-head"><h1>Elektriker</h1><span>installationsdiagram</span></div>
-  <p class="hint">Principdiagram fra 230 V-indgangen. Symboler efter IEC 60617. Elektrikeren dimensionerer sikring, kabler og fejlstrømsbeskyttelse.</p>
-  <div class="din-kort"><img src="cad/el_diagram.svg?v=c3721d70" alt="Installationsdiagram: stærkstrøm og lavstrøm" style="display:block;width:100%"></div>
-  <table class="buy din-tabel"><colgroup><col style="width:46px"><col style="width:190px"><col><col style="width:110px"></colgroup>
-    <thead><tr><th>Ref.</th><th>Komponent</th><th>Bemærk</th><th>Udføres af</th></tr></thead>
-    <tbody>
-      <tr><td class="t">Q1</td><td>Sikring + flerpolet afbryder</td><td class="txt">Én forsyning ind fra gruppe i eltavlen (RCD i tavlen).</td><td>Elektriker</td></tr>
-      <tr><td class="t">Y1, Y2</td><td>Eltako SUD12/1-10V + LUD12-230V</td><td class="txt">Én pr. kanal, bagkant. Styres kablet med 1–10 V fra U1 – ingen trådløs.</td><td>Elektriker</td></tr>
-      <tr><td class="t">E1, E2</td><td>Spots, kanal 1 og 2</td><td class="txt">E1: spot 1, 2, 5–7 (ca. 19–24 W). E2: spot 3, 4, 8 (ca. 11–14 W). Klasse II.</td><td>Elektriker</td></tr>
-      <tr><td class="t">T1</td><td>24 V DC forsyning</td><td class="txt">230 V ind; 24 V ud til lavstrømsskinnen.</td><td>Elektriker (230 V)</td></tr>
-      <tr><td class="t">Q2</td><td>3-polet afbryder + sikring</td><td class="txt">Til ventilatoren.</td><td>Elektriker</td></tr>
-      <tr><td class="t">K1</td><td>Eget relæ, sluttekontakt, 24 V-spole</td><td class="txt">Giver 230 V på ventilatorens styreledning = boost. Spolen styres af et relæ i A1; død A1 = ingen boost, ventilatoren kører videre.</td><td>Elektriker (230 V)</td></tr>
-      <tr><td class="t">M</td><td>Vægventilator (elektrikerens valg)</td><td class="txt">Fast 230 V over 3-polet afbryder (Q2), styreledning via K1. Konstant drift og fugtstyring i ventilatoren selv.</td><td>Elektriker</td></tr>
-      <tr><td class="t">P, Q</td><td>Spejl og makeup-spejl med lys</td><td class="txt">Fast 230 V, egen betjening. Kabel over loftet.</td><td>Elektriker</td></tr>
-      <tr><td class="t">A1, U1</td><td>Styreenhed, 0–10 V-modul</td><td class="txt">Lavstrøm, forsynet fra T1. U1 styrer Y1 og Y2; A1 styrer K1's spole.</td><td>Bygherre</td></tr>
-      <tr><td class="t">S</td><td>Trykknap ved døren</td><td class="txt">LK FUGA svagstrømstryk; lavstrømskabel til A1.</td><td>Bygherre</td></tr>
-    </tbody></table>
-</section>
-
-
-<section class="page" data-fane="glas" data-pakke="vvs" style="--accent:var(--c-glas)">
-  <div class="fag-head"><h1>Glarmester</h1></div>
-  <div class="plan" data-fokus="glas"></div>
-
-  <h2>Opgaver og produkter</h2>
-  <table class="buy"><colgroup><col style="width:28px"><col class="emne"><col class="prod"><col></colgroup>
-    <thead><tr><th></th><th>Emne</th><th>Type / model</th><th>Kommentar</th></tr></thead>
-    <tbody data-fag-liste="glas"></tbody></table>
-
-  <h2>Mål</h2>
-  <p class="hint">Mål med „ca.“ er taget fra tegningen og skal kontrolleres.</p>
-  <table class="compact">
-    <tbody>
-      <tr><td class="n"><span class="dot k">B</span></td><td class="t">Hjørnestykke, glasvæg F starter her</td><td class="maal">7 cm</td></tr>
-      <tr><td class="n"><span class="dot k">C</span></td><td class="t">Bagvæg, brusearmatur M ca. midt på</td><td class="maal">102 cm</td></tr>
-      <tr><td class="n"><span class="dot k">D</span></td><td class="t">Sidevæg</td><td class="maal">88 cm</td></tr>
-      <tr><td class="n"><span class="dot k">E</span></td><td class="t">Bundvæg, murværk – støttestang fra F</td><td class="maal">47 cm</td></tr>
-      <tr><td class="n"><span class="dot g">F</span></td><td class="t">Glasvæg, fra væggen ved B til nicheåbningen</td><td class="maal">ca. 89 cm</td></tr>
-      <tr><td class="n"></td><td class="t">Nicheåbning, fra glasset til hjørnet ved E</td><td class="maal">ca. 53 cm</td></tr>
-    </tbody>
-  </table>
-
-  <h2>Bemærk</h2>
-  <ul class="note">
-    <li><b class="warn">(!)</b> Glassets frie ende skal støttes.</li>
-    <li>Walk-in uden kant: nyt gulv med linjeafløb langs C.</li>
-    <li>Glasvæggen går ikke til loftet. Rummet er 223 cm højt (nyt hængeloft); glassets højde aftales (3D viser ca. 200 cm).</li>
-    <li>Profiler og støttestang i mat sort som det øvrige tilbehør.</li>
-  </ul>
-</section>
-
-
-<section class="page" data-fane="tomrer" data-pakke="vvs" style="--accent:var(--c-tomrer)">
-  <div class="fag-head"><h1>Tømrer</h1></div>
-  <div class="plan" data-fokus="tomrer"></div>
-
-  <h2>Opgaver</h2>
-  <table class="buy"><colgroup><col style="width:28px"><col class="emne"><col class="prod"><col></colgroup>
-    <thead><tr><th></th><th>Emne</th><th>Type / model</th><th>Kommentar</th></tr></thead>
-    <tbody data-fag-liste="tomrer"></tbody></table>
-
-  <h2>Bemærk</h2>
-  <ul class="note">
-    <li>Hængeloft: vådrumsplader; 20 cm hulrum til spots (110 mm) og rør; ophæng fri af spots.</li>
-    <li>Fugtskade over loftet meldes før lukning.</li>
-    <li>Rørkasse W, 50 × 29,6 (5 uden på væggen): søjle + skab 29, lukket bag. Sokkel 0–10, lem 10–42 fra midt på faldstammen, front 42–57 (S), skab 57–163 (2 flytbare hylder), DIN 163–195 med egen låge (plade 10 cm fremme). Riste ved gulv og loft, luftspalte bagerst.</li>
-    
-  </ul>
-</section>
-
-
-<section class="page" data-fane="tomrer" data-pakke="vvs" style="--accent:var(--c-tomrer)">
-  <div class="fag-head"><h1>Tømrer</h1><span>rørkasse W forfra</span></div>
-  <div style="display:grid;grid-template-columns:44% 1fr;gap:16px;align-items:start">
-    <div class="din-kort"><img src="cad/w_forfra.svg?v=970503c1" alt="Rørkasse W forfra med låger, lem og mål" style="display:block;width:100%"></div>
-    <ul class="note">
-      <li><b>Mål:</b> 50 cm bred, heraf 5 cm uden på nichens væg (kileliste bag fronten mod den skrå væg); 29,6 cm dyb.</li>
-      <li><b>Lem 10–42:</b> fra midt på faldstammen og hen over skabet; ét rum bag med fordeler og faldstamme.</li>
-      <li><b>Fast front 42–57</b> med toiletrulleholder S.</li>
-      <li><b>Skab 57–163:</b> egen låge; hulrækker i hele højden, 2 flytbare hylder.</li>
-      <li><b>DIN-skab 163–195:</b> egen låge med spalterist forneden; skinnerne på en montageplade 10 cm foran bagsiden.</li>
-      <li><b>195–223:</b> fast front op til loftet; ventilatorens kabel går op her og ud gennem søjlens side.</li>
-      <li>Alle låger i flugt, tryk-og-slip. Luft: riste i siden mod toilettet ved gulv og loft, 2,5 cm spalte bagerst i bunde og hylder.</li>
-    </ul>
-  </div>
-</section>
-
-
-<section class="page" data-fane="murer" data-pakke="vvs" style="--accent:var(--c-murer)">
-  <div class="fag-head"><h1>Murer</h1></div>
-  <div class="plan" data-fokus="murer"></div>
-
-  <h2>Opgaver</h2>
-  <table class="buy"><colgroup><col style="width:28px"><col class="emne"><col class="prod"><col></colgroup>
-    <thead><tr><th></th><th>Emne</th><th>Type / model</th><th>Kommentar</th></tr></thead>
-    <tbody data-fag-liste="murer"></tbody></table>
-
-  <h2>Bemærk</h2>
-  <ul class="note">
-    <li>Gulvet er støbt på træbjælker.</li>
-    <li>Gulvvarme og linjeafløb leveres og lægges af VVS.</li>
-    
-  </ul>
-</section>
-
-
-
+  <div id="print"></div>
+</main>
 <script>
-  // Udgave vælges med #vvs eller #glas i adressen. Uden: fuld intern udgave.
-  // Forslag kan skjules med &uden=udsugning,gulv,loft (fx #vvs&uden=loft).
-  const PAKKER = { intern: 'Intern', vvs: 'Til VVS — koordinerende', glas: 'Til glarmester' };
-  const [hashPakke, ...hashValg] = location.hash.slice(1).split('&');
-  const pakke = 'vvs';
-  const uden = (hashValg.find(v => v.startsWith('uden=')) || 'uden=').slice(5).split(',').filter(Boolean);
-  uden.forEach(u => document.body.classList.add('skjul-' + u));
-  document.querySelectorAll('.valg input').forEach(cb => {
-    cb.checked = !uden.includes(cb.dataset.skjul);
-    cb.onchange = () => document.body.classList.toggle('skjul-' + cb.dataset.skjul, !cb.checked);
-  });
-  if (pakke !== 'intern') document.body.classList.add('hv');
+// ---------- Planer: cm, set fra oven. Væg A = nord (øverst), døren i syd. Samme geometri som plantegningen.
+// Tegnemåde: eksisterende tyndt gråt, nyt kraftigt sort. Skjulte føringer over loftet stiplet (ISO 128).
+// VVS: KV blå, VV rød, afspærring som ventilsymbol. Tømrer: nyt træ skraveret, nyt loft punkt-streg, loftlem stiplet med kryds.
+// El: plansymboler efter DS/EN 60617-11. Fuger: flisenet, elastiske fuger stiplet. Kun referencebetegnelser som tekst på planerne.
+const RUM = "71,0 210,0 210,7 312,7 312,95 265,95 265,141 210.4,147 210.4,161 26,161 26,142 0,139.6 -11.5,138.5 -11.5,29.5 0,28.4 21,26.5 21,29.6 71,29.6";
+const KV = '#2563eb', VV = '#d0453a', NY = '#1f1f1f', EKS = '#a8a8a8', MU = '#8a6a1f', PEF = '#4a7d3a';
+const DEFS = `<defs>
+  <pattern id="trae" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="3" stroke="${NY}" stroke-width=".35"/></pattern>
+  <g id="s-spot"><circle r="3.6" fill="#fff" stroke="${NY}" stroke-width=".55"/><path d="M-2.6 -2.6 L2.6 2.6 M2.6 -2.6 L-2.6 2.6" stroke="${NY}" stroke-width=".45"/></g>
+  <g id="s-vaeg"><path d="M0 0 V-6" stroke="${NY}" stroke-width=".55"/><circle cy="3.4" r="3.4" fill="#fff" stroke="${NY}" stroke-width=".55"/><path d="M-2.4 1 L2.4 5.8 M2.4 1 L-2.4 5.8" stroke="${NY}" stroke-width=".45"/></g>
+  <g id="s-tryk"><circle r="2.4" fill="#fff" stroke="${NY}" stroke-width=".55"/><circle r=".9" fill="${NY}"/></g>
+  <g id="s-vent"><circle r="3.4" fill="#fff" stroke="${NY}" stroke-width=".55"/><path d="M0 0 C-.8 -2.2 1.5 -2.9 1.7 -1.5 Z M0 0 C.8 2.2 -1.5 2.9 -1.7 1.5 Z" fill="${NY}"/></g>
+  <g id="s-udtag"><path d="M0 -3 A3 3 0 0 1 0 3 Z" fill="#fff" stroke="${NY}" stroke-width=".55"/><path d="M-2 0 H0" stroke="${NY}" stroke-width=".55"/></g>
+  <g id="s-daase"><circle r="2" fill="${NY}"/></g>
+  <g id="s-lem"><rect x="-6" y="-6" width="12" height="12" fill="#fff" stroke="${NY}" stroke-width=".5" stroke-dasharray="1.4 .9"/><path d="M-6 -6 L6 6 M6 -6 L-6 6" stroke="${NY}" stroke-width=".3"/></g>
+  <g id="s-afloeb"><rect x="-8" y="-8" width="16" height="16" fill="none" stroke="currentColor" stroke-width=".5"/><circle r="4" fill="none" stroke="currentColor" stroke-width=".5"/><path d="M-4 0 H4 M0 -4 V4" stroke="currentColor" stroke-width=".4"/></g>
+  <g id="s-afsp"><path d="M-2 -1.4 L2 1.4 L2 -1.4 L-2 1.4 Z" fill="#fff" stroke="${NY}" stroke-width=".45"/></g>
+  <g id="s-armatur"><circle r="1.8" fill="#fff" stroke="${NY}" stroke-width=".55"/><circle r=".6" fill="${NY}"/></g>
+  <marker id="pil" viewBox="0 0 4 4" refX="3.5" refY="2" markerWidth="4" markerHeight="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0.5 0.5 L3.5 2 L0.5 3.5" fill="none" stroke="${KV}" stroke-width=".5"/></marker>
+</defs>`;
+// eksisterende inventar (tyndt gråt): vindue, faldstamme, dør, toilet, vask, gulvafløb, bruseniche, radiator
+const EKSIST = `
+  <rect x="-14.5" y="29.5" width="3" height="109" fill="#e8f1f4" stroke="#555" stroke-width=".3"/>
+  <circle class="e" cx="33" cy="9.5" r="6"/><text x="33" y="11.3" text-anchor="middle" style="font-size:4.5px;fill:${EKS}">FS</text>
+  <path class="e" d="M121.4 161 V90 A71 71 0 0 1 192.4 161"/>
+  <rect class="e" x="76.65" y="0" width="35.5" height="18.5" rx="1.2"/><path class="e" d="M81.65 21.9 H107.15 Q109.15 21.9 109.15 23.9 V41 C109.15 53 101.4 62 94.4 62 C87.4 62 79.65 53 79.65 41 V23.9 Q79.65 21.9 81.65 21.9 Z"/>
+  <rect class="e" x="131.4" y="0" width="61" height="45.5" rx="1"/><use href="#s-afloeb" x="175" y="15.5" style="color:${EKS}"/>
+  <rect class="e" x="222" y="7" width="80" height="7"/><rect class="e" x="261.4" y="10.1" width="1.2" height="20.6"/>
+  <rect class="e" x="0" y="48" width="6" height="70"/>`;
+// rummets omkreds lidt inde fra væggen, åben ved døråbningen (x 121.4–192.4 i sydvæggen)
+const OMKREDS = (() => { const k = ([x, y]) => [156 + .975 * (x - 156), 80 + .975 * (y - 80)];
+  const P = RUM.split(' ').map(p => k(p.split(',').map(Number))), ring = [...P.slice(9), ...P.slice(0, 9)], yd = ring[0][1];
+  return 'M' + [[k([121.4, 161])[0], yd], ...ring, [k([192.4, 161])[0], yd]].map(q => q.map(v => v.toFixed(2)).join(' ')).join(' L'); })();
+const rf = (x, y, t, anker = 'start') => `<text class="rf" x="${x}" y="${y}" text-anchor="${anker}">${t}</text>`;
+const plan = (p) => `<svg class="plan" viewBox="-24 -24 350 232" xmlns="http://www.w3.org/2000/svg" role="img">
+  <style>.plan text{font:6px Inter,Arial,sans-serif;fill:#444}.plan .rf{font-weight:700;fill:${NY}}.plan .e{fill:none;stroke:${EKS};stroke-width:.35}.plan .m{fill:none;stroke:#777;stroke-width:.35}.plan .mt{font-size:5px;fill:#777}.plan .h{stroke:#bbb;stroke-width:.25;stroke-dasharray:1 1}.plan .lg{font-size:5.5px}.plan .kb{fill:none;stroke:${NY};stroke-width:.5;stroke-dasharray:2.2 1.2}</style>
+  ${DEFS}
+  <polygon points="${RUM}" fill="#faf8f3" stroke="#333" stroke-width="1.1"/>
+  ${p.bar ? '' : EKSIST}
+  ${p.tegn}
+  <g transform="translate(-20 182)">${p.legend.map((l, i) => `<g transform="translate(${(i % 4) * 84} ${Math.floor(i / 4) * 14})">${l[0]}<text class="lg" x="${l[2] || 14}" y="2">${l[1]}</text></g>`).join('')}</g>
+</svg>`;
 
-  // ---- Mål pr. faggruppe: [x1, y1, x2, y2, tekst] i cm. Vandrette og lodrette linjer. ----
-  const MAAL = {
-    el: [
-      [0, -17, 46, -17, '46'], [46, -17, 110, -17, '64'], [110, -17, 174, -17, '64'], [174, -17, 238, -17, '64'], [238, -17, 286, -17, '48'],
-      [-22, 0, -22, 45, '45'], [-22, 45, -22, 117, '72'],
-      [212, 62, 238, 62, '26'], [286, 62, 312, 62, '26'],
-    ],
-    vvs: [[71, -17, 210, -17, 'A 139'], [210, -17, 312, -17, 'C 102']],
-    glas: [
-      [210, -17, 312, -17, 'C 102'], [329, 7, 329, 95, 'D 88'],
-      [265, 111, 312, 111, 'E 47'], [204, 0, 204, 7, 'B 7'], [204, 7, 204, 95, 'F ca. 89'],
-      [212, 89, 264, 89, 'åbning ca. 53'],
-    ],
-  };
-  // Hjælpelinjer fra målkæden ind til spots (kun el)
-  const HJ = { el: [[46,-17,46,117],[110,-17,110,45],[174,-17,174,45],[238,-17,238,45],[286,-17,286,45],[-22,45,110,45],[-22,117,46,117]] };
+// El-plan: målkæder til spots, spots E1–E8 (nummerering som plantegningen), kabelføringer fra X2
+const SPOTS = [[110, 45], [174, 45], [238, 45], [286, 45], [46, 117], [110, 117], [174, 117], [238, 117]];
+function maalkaede() {
+  const X = [0, 46, 110, 174, 238, 286, 312], Y = [0, 45, 117, 161];
+  return `<path d="M0 -12 H312" class="m"/>` + X.map(x => `<line x1="${x}" y1="-14" x2="${x}" y2="-10" class="m"/>`).join('')
+    + X.slice(1).map((x, i) => `<text class="mt" x="${(x + X[i]) / 2}" y="-14.5" text-anchor="middle">${x - X[i]}</text>`).join('')
+    + `<path d="M-12 0 V161" class="m"/>` + Y.map(y => `<line x1="-14" y1="${y}" x2="-10" y2="${y}" class="m"/>`).join('')
+    + Y.slice(1).map((y, i) => `<text class="mt" x="-15" y="${(y + Y[i]) / 2 + 2}" text-anchor="end">${y - Y[i]}</text>`).join('')
+    + SPOTS.filter(([x, y]) => y === 45 || x === 46).map(([x, y]) => `<line x1="${x}" y1="${y - 4.5}" x2="${x}" y2="-12" class="h"/>`).join('')
+    + [[110, 45], [46, 117]].map(([x, y]) => `<line x1="${x - 4.5}" y1="${y}" x2="-12" y2="${y}" class="h"/>`).join('');
+}
+const KABLER = `<path class="kb" d="M38 159 H27.4 V72 H60 V64"/>
+    <path class="kb" d="M60 52 V45 H286 M110 45 V117 M46 117 H238"/>
+    <path class="kb" d="M66 59 H90 V76 H262 V66.4"/>
+    <path class="kb" d="M66 55 H72 V22 H166.9 V12.8 M128 22 V12.8 M98 22 V26"/>
+    <path class="kb" d="M64 64 V150 H200 V164.6"/>`;
 
-  const NS = 'http://www.w3.org/2000/svg';
-  const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
-  const host = document.getElementById('maal');
-  for (const [fag, list] of Object.entries(MAAL)) {
-    const g = mk('g', { class: 'dim ' + fag }, host);
-    for (const [x1, y1, x2, y2] of HJ[fag] || []) mk('line', { class: 'mext', x1, y1, x2, y2 }, g);
-    for (const [x1, y1, x2, y2, txt] of list) {
-      mk('line', { class: 'mline', x1, y1, x2, y2 }, g);
-      const vert = x1 === x2, t = 1.6;
-      for (const [x, y] of [[x1, y1], [x2, y2]])
-        mk('line', { class: 'mline', x1: vert ? x - t : x - t * .7, y1: vert ? y : y + t * .7, x2: vert ? x + t : x + t * .7, y2: vert ? y : y - t * .7 }, g);
-      const tx = mk('text', { class: 'mtxt' }, g);
-      tx.textContent = txt;
-      if (vert) tx.setAttribute('transform', `translate(${x1 - 1.4} ${(y1 + y2) / 2}) rotate(-90)`);
-      else { tx.setAttribute('x', (x1 + x2) / 2); tx.setAttribute('y', y1 - 1.4); }
-    }
-  }
+// Kanal Ø100 over loftet fra M1 i nichen til det eksisterende hul: to stiplede linjer i kanalens bredde (ISO 128, over snitplanet)
+const KANAL = `<path d="M262 58 H41 V31.5 H14.5 V27.6 M262 68 H31 V41.5 H4.5 V27.6" fill="none" stroke="${NY}" stroke-width=".5" stroke-dasharray="2.2 1.2"/><path d="M5.5 29.4 L13.5 31.4" stroke="${NY}" stroke-width="1"/><circle cx="5.5" cy="29.4" r=".9" fill="${NY}"/>`;   // tilbageslagsspjæld ved hullet
+const PLANER = {
+  vvs: { tegn: `
+    <rect x="71" y="0" width="47" height="29.6" fill="none" stroke="${NY}" stroke-width=".4"/>
+    <path d="M71 0 L199.9 0 L199.9 50.5 A2.5 2.5 0 0 1 197.4 53 L141 53 C127 53 128 29.6 116 29.6 L71 29.6" fill="none" stroke="${NY}" stroke-width=".4"/>
+    <rect x="84" y="3" width="21" height="13" fill="none" stroke="${NY}" stroke-width=".45" stroke-dasharray="2.2 1.2"/>
+    <path d="M74.85 29.6 V75.6 C74.85 86.6 83.6 93.6 94.4 93.6 C105.2 93.6 113.95 86.6 113.95 75.6 V29.6" fill="#fff" stroke="${NY}" stroke-width=".7"/>
+    <ellipse cx="166.9" cy="27.5" rx="30" ry="20" fill="#fff" stroke="${NY}" stroke-width=".7"/><use href="#s-armatur" x="166.9" y="5"/>
+    <path d="M163 20 V3 H112 V24" fill="none" stroke="${NY}" stroke-width=".6" stroke-dasharray="4 1 1 1"/>
+    <path d="M243 10 H281" stroke="${NY}" stroke-width="1.4"/><use href="#s-armatur" x="262" y="10"/><path d="M262 10 V30" stroke="${NY}" stroke-width=".7"/><circle cx="262" cy="32" r="3" fill="none" stroke="${NY}" stroke-width=".5"/>
+    <rect x="0" y="48" width="6" height="70" fill="#fff" stroke="${NY}" stroke-width=".7"/><line x1="0" y1="118" x2="6" y2="48" stroke="${NY}" stroke-width=".5"/>
+    <path d="M48 4 H166.9" fill="none" stroke="${KV}" stroke-width=".7"/><path d="M48 8 H163" fill="none" stroke="${VV}" stroke-width=".7"/>
+    <path d="M48 4 V2 H94.4" fill="none" stroke="${KV}" stroke-width=".7"/>
+    <path d="M52 4 V12 H269.5 V10" fill="none" stroke="${KV}" stroke-width=".7" stroke-dasharray="2.2 1.2"/><path d="M55 8 V15 H254.5 V10" fill="none" stroke="${VV}" stroke-width=".7" stroke-dasharray="2.2 1.2"/>
+    <use href="#s-afsp" x="46" y="4"/><use href="#s-afsp" x="46" y="8"/>
+    ${rf(166.9, 30, 'V1', 'middle')}${rf(166.9, -2.5, 'V4', 'middle')}${rf(267, 24, 'V5')}${rf(9, 85, 'V6')}${rf(40, 24, 'V7')}${rf(94.4, 72, 'V9', 'middle')}${rf(94.4, -2.5, 'V10', 'middle')}`,
+    legend: [
+      [`<path d="M0 0 H10" stroke="${KV}" stroke-width=".8"/>`, 'koldt vand'],
+      [`<path d="M0 0 H10" stroke="${VV}" stroke-width=".8"/>`, 'varmt vand'],
+      [`<path d="M0 0 H10" stroke="${NY}" stroke-width=".8" stroke-dasharray="2.2 1.2"/>`, 'over loftet'],
+      [`<use href="#s-afsp" x="5" y="0"/>`, 'afspærring'],
+      [`<path d="M0 0 H10" stroke="${NY}" stroke-width=".6" stroke-dasharray="4 1 1 1"/>`, 'afløb fra V1 til V9'],
+      [`<rect x="0" y="-3.5" width="10" height="7" fill="none" stroke="${NY}" stroke-width=".45" stroke-dasharray="2.2 1.2"/>`, 'skjult cisterne'],
+    ] },
+  tomrer: { tegn: `
+    <polygon points="${RUM}" fill="none" stroke="${NY}" stroke-width=".6" stroke-dasharray="4 1.2 .8 1.2" transform="translate(156 80) scale(.955) translate(-156 -80)"/>
+    <rect x="26" y="0" width="45" height="29.6" fill="url(#trae)" stroke="${NY}" stroke-width=".7"/>
+    <polygon points="0,28.4 21,26.5 21,29.6 71,29.6 71,43.5 0,43.5" fill="none" stroke="${NY}" stroke-width=".6" stroke-dasharray="2.2 1.2"/>
+    <path d="M4 43.5 H68" stroke="${NY}" stroke-width="1.6"/>
+    <path d="M71 0 L199.9 0 L199.9 50.5 A2.5 2.5 0 0 1 197.4 53 L141 53 C127 53 128 29.6 116 29.6 L71 29.6" fill="none" stroke="${NY}" stroke-width=".5"/>
+    <rect x="136.4" y="0" width="61" height="45.5" fill="none" stroke="${NY}" stroke-width=".45" stroke-dasharray="2.2 1.2"/>
+    <path d="M118 2 H136.4 M118 29.6 H136.4" fill="none" stroke="${NY}" stroke-width=".45" stroke-dasharray="2.2 1.2"/>
+    <rect x="71" y="0" width="47" height="29.6" fill="#fff" stroke="${NY}" stroke-width=".8"/>
+    <path d="M121.4 161 V90 A71 71 0 0 1 192.4 161" fill="none" stroke="${NY}" stroke-width=".8"/><line x1="121.4" y1="161" x2="121.4" y2="90" stroke="${NY}" stroke-width="1.8"/>
+    ${rf(150, 105, 'T1', 'middle')}${rf(36, 39, 'T2', 'middle')}${rf(58, 50.5, 'T4', 'middle')}${rf(126, 152, 'T5')}${rf(73.5, 14, 'T7')}${rf(120, 17, 'T8')}${rf(139, 43, 'T9')}`,
+    legend: [
+      [`<rect x="0" y="-3.5" width="10" height="7" fill="url(#trae)" stroke="${NY}" stroke-width=".5"/>`, 'ny rørkasse'],
+      [`<path d="M0 0 H10" stroke="${NY}" stroke-width=".6" stroke-dasharray="4 1.2 .8 1.2"/>`, 'nyt loft'],
+      [`<path d="M0 0 H10" stroke="${NY}" stroke-width="1.6"/>`, 'aftagelig front'],
+      [`<path d="M0 3 V-3 A6 6 0 0 1 6 3" fill="none" stroke="${NY}" stroke-width=".6"/>`, 'ny dør'],
+      [`<rect x="0" y="-3.5" width="10" height="7" fill="none" stroke="${NY}" stroke-width=".5" stroke-dasharray="2.2 1.2"/>`, 'under loft / bordplade'],
+      [`<rect x="0" y="-3.5" width="10" height="7" fill="#fff" stroke="${NY}" stroke-width=".8"/>`, 'ny kasse langs væg'],
+      [`<path d="M0 0 H10" stroke="${NY}" stroke-width=".5"/>`, 'bordplade'],
+    ] },
+  el: { bar: true, tegn: `
+    ${maalkaede()}
+    ${KANAL}
+    ${KABLER}
+    ${SPOTS.map(([x, y], i) => `<use href="#s-spot" x="${x}" y="${y}"/>` + rf(x + 4.5, y - 4.5, 'E' + (i + 1))).join('')}
+    <use href="#s-vent" x="262" y="63"/>${rf(267, 61.5, 'M1')}
+    <rect x="136.9" y="0" width="60" height="1.6" fill="${NY}"/><use href="#s-vaeg" x="166.9" y="6"/>${rf(162, 12, 'E9', 'end')}<use href="#s-vaeg" x="128" y="6"/>${rf(133, 13, 'E10')}
+    <use href="#s-tryk" x="200" y="167"/>${rf(204, 172, 'S1')}
+    <g transform="translate(38 159) rotate(-90)"><use href="#s-udtag"/></g>${rf(42, 157, 'X1')}
+    <path class="kb" d="M60 41 V64 M60 55 H66 M60 59 H66"/><use href="#s-daase" x="60" y="39"/>${rf(57, 41, 'X2', 'end')}
+    <use href="#s-udtag" x="100" y="26"/>${rf(96, 30, 'X3', 'end')}`,
+    legend: [
+      [`<use href="#s-spot" x="5" y="0"/>`, 'spot'],
+      [`<use href="#s-vent" x="5" y="0"/>`, 'ventilator'],
+      [`<use href="#s-udtag" x="5" y="0"/>`, 'udtag (forsyning)'],
+      [`<use href="#s-daase" x="5" y="0"/>`, 'samledåse med K1, K2'],
+      [`<use href="#s-tryk" x="5" y="0"/>`, 'tryk'],
+      [`<g transform="translate(5 -2) scale(.75)"><use href="#s-vaeg"/></g>`, 'spejl med lys'],
+      [`<path d="M0 0 H10" class="kb"/>`, 'kabel over loft'],
+      [`<path d="M0 -2.2 H10 M0 2.2 H10" stroke="${NY}" stroke-width=".5" stroke-dasharray="2.2 1.2"/>`, 'kanal Ø100 over loft'],
+      [`<path d="M2 -2 L8 2" stroke="${NY}" stroke-width="1"/><circle cx="2" cy="-2" r=".9" fill="${NY}"/>`, 'tilbageslagsspjæld'],
+    ] },
+  glas: { tegn: `
+    <path d="M71 0 L199.9 0 L199.9 50.5 A2.5 2.5 0 0 1 197.4 53 L141 53 C127 53 128 29.6 116 29.6 L71 29.6" fill="none" stroke="${NY}" stroke-width=".5"/>
+    <rect x="136.4" y="0" width="61" height="45.5" fill="none" stroke="${NY}" stroke-width=".45" stroke-dasharray="2.2 1.2"/>
+    <rect x="210.2" y="7" width="1.6" height="50" fill="#dbeef5" stroke="${NY}" stroke-width=".5"/>
+    <path d="M211.8 45 L249.5 7" stroke="${NY}" stroke-width="1"/><circle cx="249.5" cy="8.2" r="1.2" fill="${NY}"/>
+    <path d="M203 57 H219" stroke="${NY}" stroke-width=".35"/><path d="M211 57 V66" stroke="${NY}" stroke-width=".35"/><text class="mt" x="214" y="70">50</text>
+    <use href="#s-afloeb" x="175" y="15.5" style="color:${KV}"/>
+    <path d="M240 40 Q211 40 190 24" fill="none" stroke="${KV}" stroke-width=".7" stroke-dasharray="2 1.2" marker-end="url(#pil)"/>
+    ${rf(214, 20, 'G1')}${rf(185, 43, 'T9')}`,
+    legend: [
+      [`<rect x="4" y="-4" width="1.6" height="8" fill="#dbeef5" stroke="${NY}" stroke-width=".5"/>`, 'fast glasvæg'],
+      [`<path d="M1 3 L9 -3" stroke="${NY}" stroke-width="1"/>`, 'stabiliseringsstang 45°'],
+      [`<rect x="0" y="-3" width="10" height="6" fill="none" stroke="${NY}" stroke-width=".45" stroke-dasharray="2.2 1.2"/>`, 'underskab'],
+      [`<g transform="translate(5 0) scale(.45)" style="color:${KV}"><use href="#s-afloeb"/></g>`, 'gulvafløb (eksist.)'],
+      [`<path d="M0 0 H10" stroke="${KV}" stroke-width=".7" stroke-dasharray="2 1.2"/>`, 'vandets vej'],
+    ] },
+  fuger: { tegn: `
+    <path d="${OMKREDS}" fill="none" stroke="${MU}" stroke-width=".9" stroke-dasharray="3 1.5"/>
+    <path d="M71 3 H199.9 M71 29.6 H74.85 V75.6 C74.85 86.6 83.6 93.6 94.4 93.6 C105.2 93.6 113.95 86.6 113.95 75.6 V29.6 H118 V3" fill="none" stroke="${MU}" stroke-width="1.4" stroke-dasharray="1.2 .8"/>
+    <rect x="210.2" y="7" width="1.6" height="50" fill="#dbeef5" stroke="${NY}" stroke-width=".4"/>
+    ${rf(296, 22, 'F1')}${rf(150, 12, 'F2', 'middle')}${rf(94.4, 103, 'F2', 'middle')}${rf(214, 34, 'G1')}`,
+    legend: [
+      [`<path d="M0 0 H10" stroke="${MU}" stroke-width=".9" stroke-dasharray="3 1.5"/>`, 'elastisk fuge, gulv og loft'],
+      [`<path d="M0 0 H10" stroke="${MU}" stroke-width="1.4" stroke-dasharray="1.2 .8"/>`, 'elastisk fuge, sanitet'],
+      [`<rect x="4" y="-4" width="1.6" height="8" fill="#dbeef5" stroke="${NY}" stroke-width=".4"/>`, 'glasvæg, ingen fuge'],
+    ] },
+};
 
-  // ---- Kopiér plantegningen ind på faggruppe-siderne ----
-  const plan = document.getElementById('plan');
-  document.querySelectorAll('.plan[data-fokus]').forEach(div => {
-    const c = plan.cloneNode(true); c.removeAttribute('id');
-    c.setAttribute('viewBox', '-53 -27 387 230');   // plads til faggruppens signatur nederst
-    div.appendChild(c);
-  });
+// ---------- Specifikation og komponentlister (samme referencebetegnelser som tegningerne)
+const SPEC = {
+  vvs: [
+    '<b>V1</b> Opsatsvask midt på underskab <b>T9</b>, armatur <b>V4</b>, bundventil <b>V2</b>, vandlås <b>V3</b> i T9.',
+    'Afløb og vandrør til V1 via T7: langs væggen under T9 og hylden, op i T9. Afspærring under T9. Afløbet kobles på toilettets afløb i T7; VVS vurderer udluftningsventil.',
+    'Eksisterende gulvafløb under T9 bevares som rummets eneste gulvafløb (brusevand).',
+    '<b>V9</b> Gulvstående toiletskål tæt mod T7 med løst douchesæde (fx Duravit ME by Starck til SensoWash med SensoWash C). Skål og sæde skal være godkendt til hinanden. Koldt vand og 230 V (X3) fra T7, tilslutninger skjult. Vandret afløb Ø102 i 180 mm højde ført i T7 med bøjning ned i det eksisterende hul; forudsætter at hullet ligger under T7 med plads til bøjningen. VVS måler. Dækker det gamle toilets aftryk. Eksisterende toilet demonteres af VVS.',
+    '<b>V10</b> Indbygningscisterne 82 cm til V9 i T7, betjening forfra: trykplade i fronten af T7 over V9 (service gennem trykpladen).',
+    '<b>V5</b> Brusearmatur i nichen. KV og VV over loftet fra V7 til V5, uden samlinger over loftet.',
+    '<b>V6</b> Radiator under vinduet. VVS dimensionerer (ydervæg, enkeltglas). Eksisterende radiator demonteres af VVS.',
+    '<b>V7</b> Afspærring ved faldstammen, tilgængelig gennem rørkassens dør (T2). Tilsvarende i køkkenet (T3).',
+    '<b>V8</b> Køkkenarmatur udskiftes.'],
+  tomrer: [
+    'Eksisterende hængeloft demonteres og bortskaffes. Svamp i hulrummet over nichen afrenses og behandles. Tørt før lukning.',
+    '<b>T1</b> Nyt hængeloft i hele rummet, vådrumsegnet, 223 cm over gulv, lufttæt mod hulrummet. Udskæringer til E1–E8 (Ø76 mm) og M1.',
+    '<b>T2</b> Rørkasse ved faldstammen, gulv til loft, med lille dør forneden til V7, ca. 30 × 25 cm. Foroven kasse i hele bredden om kanalen fra M1 og X2, i ét med T2, ca. 71 × 22 cm, med aftagelig front <b>T4</b>. Klar til maling. <b>T3</b> som T2 i køkkenet, uden kasse.',
+    '<b>T4</b> Aftagelig front på kassen på T2: adgang til X2 (K1, K2) og tilbageslagsspjældet.',
+    '<b>T5</b> Dør med karm og gerigter, luftspalte forneden. Tømreren foreslår.',
+    '<b>T7</b> Kasse langs væggen fra T2 til forbi toilettet, i ét med T2 og med fronten i flugt. Rummer V10 og rør til V1 og V9. Overflade som T2. Hylde mellem T7 og T9, underside i flugt med T9, front i flugt med T2, åben bagtil.',
+    '<b>T8</b> Bordplade i én højde over T7 og T9, ca. 85 cm over gulv, ca. 53 cm dyb, i flugt med T2 over T7 og blød bue ud til T9. Ca. 7,5 cm udhæng over T9 foran og 2,5 cm mod G1 med rundt hjørne, fri af G1. Materiale afklares: lyst træ ca. 3 cm eller lys kvartskomposit 2 cm. Bæres af T7 og skjulte konsoller over T9.',
+    '<b>T9</b> Underskab under T8, væghængt med frit gulv under, skyggefuge mod T8.',
+    '<b>T6</b> Tilvalg: tætningslister i alle vinduer, 9 vinduer à 4 fag, koblede rammer, udadgående. Gamle lister fjernes, rillen renses, nye monteres. Ventiler bevares.'],
+  el: [
+    '<b>E1–E8</b> Spots, placering jf. plan. Tænd/sluk samlet via <b>K1</b>. Ingen dæmpning.',
+    '<b>S1</b> Nyt 230 V-tryk i eksisterende dåse ved døren, på K1\'s indgang. Eksisterende svagstrømstryk udgår.',
+    '<b>M1</b> Ventilator i loftet i nichen. Fast forsyning, konstant drift. Boost via <b>K2</b> på ventilatorens SL-indgang.',
+    'Kanal Ø100 over loftet fra M1 til eksisterende hul i ydervæggen, sidste stykke i kassen på T2. Tilbageslagsspjæld lige ved hullet, så kold udeluft ikke trænger ind i kanalen; tilgængeligt bag T4. Afkast gennem ydervæg er godkendt af kommunen. Eksisterende vægventilator demonteres.',
+    '<b>X3</b> Udtag 230 V med jord til douchesædet V9 i T7, fra X2. Gruppe og RCD efter sædets krav. Placering efter sædets tilslutning.',
+    '<b>E9</b> Spejl med lys, centreret over V1, fast forsyning. PE fremføres.',
+    '<b>E10</b> Makeupspejl med lys på arm, på væggen tæt ved venstre side af E9, vinklet mod pladsen foran vasken, fast forsyning, egen betjening. IP20: elektrikeren bekræfter zonen.',
+    '<b>X1</b> Forsyning fra eksisterende udtag, op i væggen og over loftet til samledåse <b>X2</b> med K1 og K2. X2 i kassen på T2 bag T4.',
+    'Kabler fra X2 til E1–E8, M1, E9 og S1 over loftet.',
+    'Forslag: bygherre leverer og indstiller K1 og K2, elektrikeren monterer.',
+    '<b>GT</b> Tilvalg: ny gruppetavle for lejligheden, erstatter den eksisterende. Eksisterende grupper overføres. Elektrikeren foreslår opbygning.'],
+  glas: [
+    '<b>G1</b> Fast glasvæg ca. 50 cm, højde ca. 180 cm, i nicheåbningen ved bordpladen T8.',
+    'Uden gulvprofil og uden fuge under: fri af gulvet, så vand kan løbe under til gulvafløbet under T9.',
+    'Stabiliseringsstang 45° fra glassets top nær den frie ende ind til nichens bagvæg, sort.',
+    'Udføres af entreprenør eller glarmester.'],
+  fuger: [
+    '<b>F1</b> Elastisk fuge langs gulvet rundt i hele rummet og langs T1.',
+    '<b>F2</b> Elastisk fuge langs T7 og T8 mod væggen, langs foden af T7 og rundt om toilettets fod langs gulvet.',
+    'Ingen fuge under G1. Øvrige flisefuger bevares.'],
+};
+const KOMP = {
+  vvs: [
+    ['V1', 'Opsatsvask', 'Oval 60 × 40 × 10,3 cm, uden overløb, uden hanehul, lav og blød fordybning, på bordplade T8', 'Grohe Essence Ceramic, hvid', '3960800H', '1', 'Bygherre'],
+    ['V2', 'Bundventil', 'Tvangsåben (kan ikke lukkes), til vask uden overløb, 1¼″. Klemlængde kontrolleres mod V1 og T8', 'Damixa, mat sort', '238606100', '1', 'Bygherre'],
+    ['V3', 'Vandlås', 'Pladsbesparende, i T9', 'Sanibell', '750655010', '1', 'Bygherre'],
+    ['V4', 'Vaskearmatur', 'Berøringsfri, høj model 279 mm, udløb 140 mm, batteri (230 V-adapter fås). Bestilles via VVS. Reserve: Hansgrohe Talis E 240 mat sort, 71717670', 'Gustavsberg Sensoric 1.0 med 240 mm fodring, mat sort', 'GB4121848153', '1', 'Bygherre'],
+    ['V5', 'Brusearmatur', 'Termostat med brusestang, hovedbruser Ø205, håndbruser. c/c 150. Top i ca. 217 cm ved termostat i 105 cm', 'Hansgrohe Vernis Blend Showerpipe 200, mat sort', '26276670', '1', 'Bygherre'],
+    ['V6', 'Radiator', 'Under vinduet, dimensioneres af VVS', 'VVS', '', '1', 'VVS'],
+    ['V7', 'Afspærring', 'KV og VV, bad og køkken', 'VVS', '', '2 sæt', 'VVS'],
+    ['V8', 'Køkkenarmatur', 'Køkkenbatteri', 'Grohe Start Hybrid', '1012432430', '1', 'Bygherre'],
+    ['V9', 'Toiletskål', 'Gulvstående back-to-wall til douchesæde, vandret afløb, skjulte tilslutninger til vand og strøm', 'Fx Duravit ME by Starck gulvstående til SensoWash', 'Afklares (216959, kontrolleres)', '1', 'Bygherre'],
+    ['V9', 'Douchesæde', 'Løst douchesæde til skålen: vask, varmt sæde, soft close. Koldt vand og 230 V fra T7', 'Fx Duravit SensoWash C (Starck C) til ME by Starck', 'Afklares', '1', 'Bygherre'],
+    ['V10', 'Cisterneelement', 'Indbygningscisterne 82 cm til gulvstående toilet, 6/3 l, betjening forfra. Skylleforbindelse til V9 (Ø55) afklares af VVS', 'Geberit Omega 12 cm, 82 cm', '109.042.00.1', '1', 'VVS']],
+  tomrer: [
+    ['T1', 'Hængeloft', 'Vådrumsegnede plader, hele rummet, 223 cm over gulv', 'Tømrer', '', '', 'Tømrer'],
+    ['T2', 'Rørkasse, bad', 'Lukket kasse, lille dør forneden, kasse foroven om kanal og X2, klar til maling', 'Tømrer', '', '1', 'Tømrer'],
+    ['T3', 'Rørkasse, køkken', 'Som T2, uden kasse', 'Tømrer', '', '1', 'Tømrer'],
+    ['T4', 'Aftagelig front', 'På kassen på T2, adgang til X2 og spjæld', 'Tømrer', '', '1', 'Tømrer'],
+    ['T5', 'Dør', 'Indvendig dør med karm og gerigter, luftspalte forneden', 'Tømreren foreslår', '', '1', 'Tømrer'],
+    ['T7', 'Kasse langs væg', 'Skelet med vådrumsplader, ca. 30 cm dyb i flugt med T2, overflade som T2, hylde mod T9', 'Tømrer', '', '1', 'Tømrer'],
+    ['T8', 'Bordplade', 'Lyst træ ca. 3 cm eller lys kvartskomposit 2 cm, ca. 129 × 53 cm, blød bue ved toilettet, frie hjørner afrundet', 'Afklares', 'Afklares', '1', 'Tømrer'],
+    ['T9', 'Underskab', 'Væghængt, 60 × 44 × 40 cm, 1 skuffe med udskæring til afløb, soft-close. Frontens finish (sort struktur) kontrolleres', 'Dansani Mido+ 60×44, sort', 'P40-1029', '1', 'Bygherre'],
+    ['T6', 'Tætningslister', 'Tilvalg. Svejseliste til eksisterende rille, 36 fag', 'Primo 6307, grå', '6307-2003-49', 'ca. 110 m', 'Bygherre']],
+  el: [
+    ['X1', 'Tilslutning', 'Eksisterende udtag, gruppe i GT med RCD', 'Eksisterende', '', '1', 'Elektriker'],
+    ['X2', 'Samledåse', 'Til K1 og K2, i kassen på T2 bag T4', 'Elektriker', '', '1', 'Elektriker'],
+    ['S1', 'Tryk', '230 V, 1-pol, afbryder med trykfjeder (impulstryk), 1 modul, hvid, i eksisterende dåse ved døren', 'LK FUGA', '542D6001 + 505N0000', '1', 'Elektriker'],
+    ['K1', 'Relæmodul, lys', 'Zigbee 3.0 certificeret, 230 V, 14 A, strømmåling (W, kWh), indgang til 230 V-tryk, 40 × 44 × 17 mm', 'Schneider Electric Wiser Power Micromodule', 'CCTFR6730', '1', 'Bygherre'],
+    ['K2', 'Relæmodul, ventilator', 'Som K1. Kontakt på M1\'s SL-indgang (boost)', 'Schneider Electric Wiser Power Micromodule', 'CCTFR6730', '1', 'Bygherre'],
+    ['E1–E8', 'Spots', 'Indbygningsspot IP65, klasse II, hul Ø76 mm, dybde 110 mm', 'Astro Minima Round, mat sort', '1249017', '8', 'Bygherre'],
+    ['E1–E8', 'Lyskilder', 'LED GU10 3,7 W 927, 2 i reserve', 'Philips MASTER LEDspot Value', 'EAN 8719514308114', '10', 'Bygherre'],
+    ['M1', 'Ventilator', 'Loft- eller vægmonteret, IPX4, klasse II. Konstant drift 15 l/s (dip-switch), konstant flow til ca. 40 Pa, fugtstyring 60–90 % RF, overstyring via 230 V-indgang (K2), 4–7 W. Ledningsdiagram kontrolleres ved levering', 'Thermex Ecoair Design m/hygrostat (Soler & Palau Ecoair Design Ecowatt H)', '200.34.3133.2', '1', 'Bygherre'],
+    ['M1', 'Kanal', 'Ø100, ca. 3 m over loftet, til eksisterende hul i ydervæggen', 'Entreprenørens valg', '', '1', 'Entreprenør'],
+    ['M1', 'Tilbageslagsspjæld', 'Ø100, stål, lige ved hullet i ydervæggen, tilgængeligt bag T4. Tryktab ca. 27 Pa ved 15 l/s: samlet tryktab kontrolleres mod M1', 'Lindab DOSU 100', '505845', '1', 'Entreprenør'],
+    ['X3', 'Udtag', 'Stikkontakt 2-pol + jord, 1 modul, hvid, med afdækning og ramme, i T7. Gruppe og RCD efter douchesædets krav', 'LK FUGA', '501D0011 (kontrolleres)', '1', 'Elektriker'],
+    ['E9', 'Spejl med lys', '60 × 80 × 3,1 cm, rammeløst med afrundede hjørner, IP44, 30 W LED, touch-dæmpning, fast 230 V. Beskyttelsesklasse afklares', 'Dansani Mido+ Glow', '94660', '1', 'Bygherre'],
+    ['E10', 'Makeupspejl med lys', 'Ø16 cm, 3× forstørrelse, LED, teleskoparm, IP20, fast 230 V. Beskyttelsesklasse afklares', 'Hansgrohe AddStoris, mat sort', '41790670', '1', 'Bygherre'],
+    ['GT', 'Gruppetavle', 'Tilvalg. Lejlighedens tavle, eksisterende grupper overføres, RCD, reserve', 'Elektrikeren foreslår', '', '1', 'Elektriker']],
+  glas: [
+    ['G1', 'Glasvæg', 'Fast sidevæg 50 × ca. 180 cm, 8 mm hærdet klart glas, sort vægprofil, monteret hævet over gulvet uden gulvprofil, stabiliseringsstang 45° sort. Dansani Match fast væg 47–49 cm sort findes, men kun med vandret stang', 'Glarmester, specialmål', 'Afklares', '1', 'Bygherre']],
+  fuger: [
+    ['F1, F2', 'Sanitetsfugemasse', 'Elastisk fuge. Farve aftales', 'Entreprenørens valg', '', '', 'Entreprenør']],
+};
+const tabel = rows => `<div class="tabel"><table class="prod"><tr><th>Ref.</th><th>Komponent</th><th>Type / data</th><th>Fabrikat / model</th><th>Varenr.</th><th>Antal</th><th>Leveres af (forslag)</th></tr>`
+  + rows.map(r => '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>').join('') + '</table></div>';
 
-  // ---- Faggruppe-lister hentes fra købslisten (uden pris) ----
-  document.querySelectorAll('[data-fag-liste]').forEach(tb => {
-    const fag = tb.dataset.fagListe;
-    document.querySelectorAll('#koebsliste tr[data-fag]').forEach(tr => {
-      if (!tr.dataset.fag.split(' ').includes(fag)) return;
-      const c = tr.cloneNode(true); c.querySelector('td.pris')?.remove(); tb.appendChild(c);
-    });
-  });
-  // ---- Hvem gør hvad: én række pr. linje i købslisten, ✓ i de faggrupper der står i data-fag ----
-  const ANSVAR = ['vvs', 'el', 'glas', 'tomrer', 'murer', 'selv'];
-  const ansvar = document.getElementById('ansvar');
-  const ansvarRk = (dot, emne, fag) => {
-    const r = document.createElement('tr');
-    r.innerHTML = `<td class="n">${dot}</td><td class="t">${emne}</td>` + ANSVAR.map(k => `<td class="x ${k}">${fag.includes(k) ? '✓' : ''}</td>`).join('');
-    ansvar.appendChild(r);
-  };
-  document.querySelectorAll('#koebsliste tr[data-fag]').forEach(tr =>
-    ansvarRk(tr.querySelector('.dot').outerHTML, tr.querySelector('td.t').textContent, tr.dataset.fag.split(' ')));
-  ansvarRk('<span class="dot p">•</span>', 'Nedrivning og bortskaffelse (undtagen hængeloft og radiator)', ['selv']);
+// ---------- Strømvejsskema (IEC 60617 symboler, IEC 81346 betegnelser). Kun betegnelser og klemmemærker som tekst.
+const S = '#1f1f1f';
+const el = d => `<path d="${d}" class="el"/>`;
+const pe = d => `<path d="${d}" class="el" style="stroke:${PEF}"/>`;
+const prik = (x, y, c = S) => `<circle cx="${x}" cy="${y}" r="1.1" fill="${c}"/>`;
+const klemme = (x, y, c = S) => `<circle cx="${x}" cy="${y}" r="1.5" fill="#fff" stroke="${c}" stroke-width=".6"/>`;
+const ref = (x, y, t, anker = 'start') => `<text x="${x}" y="${y}" class="ref" text-anchor="${anker}">${t}</text>`;
+const pin = (x, y, t, anker = 'middle') => `<text x="${x}" y="${y}" class="pin" text-anchor="${anker}">${t}</text>`;
+function slutte(x, y1, y2) { const a = y1 + (y2 - y1) * .3, b = y1 + (y2 - y1) * .7;            // lodret sluttekontakt
+  return el(`M${x} ${y1} V${a} M${x} ${b} V${y2} M${x} ${b} L${x - 4.5} ${a + .8}`); }
+const kontakt = (x, y, navn) => slutte(x, y - 9, y + 9) + ref(x + 5, y + 2, navn);
+function tryk(x, y, navn) {                                        // trykknap: sluttekontakt med manuel betjening
+  return slutte(x, y - 9, y + 9) + el(`M${x - 3} ${y} H${x - 7} M${x - 7} ${y - 2.5} V${y + 2.5}`) + ref(x - 9, y + 2, navn, 'end'); }
+function armatur(x, y, r = 4.5) { const d = r * .7;
+  return `<circle cx="${x}" cy="${y}" r="${r}" class="sym"/>` + el(`M${x - d} ${y - d} L${x + d} ${y + d} M${x + d} ${y - d} L${x - d} ${y + d}`); }
+const motor = (x, y, r = 6) => `<circle cx="${x}" cy="${y}" r="${r}" class="sym"/><text x="${x}" y="${y + .5}" class="ref" text-anchor="middle">M</text>` + pin(x, y + 4.6, '1~');
+const klasse2 = (x, y) => `<rect x="${x - 3}" y="${y - 3}" width="6" height="6" class="sym"/><rect x="${x - 1.8}" y="${y - 1.8}" width="3.6" height="3.6" class="sym"/>`;
+// spole (A1/A2) med krydshenvisning til kontaktens strømvej
+function spole(x, y, navn, kontaktvej) {
+  return `<rect x="${x - 4}" y="${y - 7}" width="8" height="14" class="sym"/>` + ref(x + 7, y + 2, navn)
+    + pin(x + 1.5, y - 8.5, 'A1', 'start') + pin(x + 1.5, y + 11, 'A2', 'start')
+    + `<path d="M${x + 6} ${y + 13} V${y + 15} M${x + 6} ${y + 17.5} V${y + 19.5} M${x + 6} ${y + 17.5} L${x + 4.2} ${y + 15.4}" class="el" style="stroke-width:.45"/>`
+    + pin(x + 8.5, y + 18, kontaktvej, 'start');
+}
+// indgangsklemme (mærke t) ud for et symbol med venstre kant ved xs, fra ledning i strømvej sx (nederste ende sy)
+function indgang(xs, y, t, sx, sy) { const kx = xs - 5.5;
+  return klemme(kx, y) + pin(kx, y - 3, t) + el(`M${kx + 1.5} ${y} H${xs}`) + el(`M${sx} ${sy} V${y} H${kx - 1.5}`); }
 
-  // ---- Tjekliste: alt i købslisten markeret data-koeb ----
-  const tjek = document.getElementById('tjekliste');
-  if (tjek) document.querySelectorAll('#koebsliste tr[data-koeb]').forEach(tr => {
-    const li = document.createElement('li');
-    li.innerHTML = tr.querySelector('.dot').outerHTML + '<span>' + tr.querySelector('td.t').textContent + '</span>';
-    tjek.appendChild(li);
-  });
-  document.querySelectorAll('[data-kopi]').forEach(t => { t.innerHTML = document.getElementById(t.dataset.kopi).innerHTML; });
+const yL = 18, yN = 134, yPE = 146, x0 = 18, x1 = 424, yS = 80, yK = 53, yE = 112.5;
+let D = `<svg class="skema" viewBox="0 0 440 160" xmlns="http://www.w3.org/2000/svg" role="img">
+  <style>.skema text{font:5.5px Inter,Arial,sans-serif;fill:#444}.skema .ref{font-weight:700;fill:${S};font-size:6px}.skema .pin{font-size:4px;fill:#555}.skema .el{fill:none;stroke:${S};stroke-width:.7}.skema .sym{fill:#fff;stroke:${S};stroke-width:.7}</style>`;
+// X1: tilslutning og skinner L, N, PE
+D += klemme(x0, yL) + klemme(x0, yN) + klemme(x0, yPE, PEF) + ref(x0 - 4, yL - 4, 'X1')
+   + pin(x0 - 4, yL + 1.5, 'L', 'end') + pin(x0 - 4, yN + 1.5, 'N', 'end') + pin(x0 - 4, yPE + 1.5, 'PE', 'end')
+   + el(`M${x0 + 1.5} ${yL} H${x1} M${x0 + 1.5} ${yN} H${x1}`) + pe(`M${x0 + 1.5} ${yPE} H${x1}`);
+// X2: samledåse med K1 og K2 (punkt-streg-ramme)
+D += `<rect x="50" y="34" width="172" height="70" fill="none" stroke="${S}" stroke-width=".5" stroke-dasharray="4 1.2 .8 1.2"/>` + ref(52, 31, 'X2');
+// 1: S1 og K1-spole
+D += prik(38, yL) + el(`M38 ${yL} V${yK - 9}`) + tryk(38, yK, 'S1');
+D += prik(70, yL) + el(`M70 ${yL} V${yS - 7}`) + spole(70, yS, 'K1', '2') + el(`M70 ${yS + 7} V${yN}`) + prik(70, yN) + indgang(66, yS, 'I', 38, yK + 9);
+// 2: K1-kontakt og E1–E8
+D += prik(115, yL) + el(`M115 ${yL} V${yK - 9}`) + kontakt(115, yK, 'K1') + el(`M115 ${yK + 9} V${yE - 4.5}`) + armatur(115, yE) + el(`M115 ${yE + 4.5} V${yN}`) + prik(115, yN)
+   + ref(122, 111, 'E1–E8') + klasse2(125, 117);
+// 3: K2-spole
+D += prik(165, yL) + el(`M165 ${yL} V${yS - 7}`) + spole(165, yS, 'K2', '4') + el(`M165 ${yS + 7} V${yN}`) + prik(165, yN);
+// 4: K2-kontakt til M1's SL-indgang (boost)
+D += prik(205, yL) + el(`M205 ${yL} V${yK - 9}`) + kontakt(205, yK, 'K2') + indgang(244, yE, 'SL', 205, yK + 9);
+// 5: M1 fast forsyning, med PE
+D += prik(250, yL) + el(`M250 ${yL} V${yE - 6}`) + motor(250, yE) + el(`M250 ${yE + 6} V${yN}`) + prik(250, yN)
+   + pe(`M256 ${yE} H266 V${yPE}`) + prik(266, yPE, PEF) + ref(258, 105, 'M1');
+// 6: E9 fast forsyning, PE fremført
+D += prik(320, yL) + el(`M320 ${yL} V${yE - 4.5}`) + armatur(320, yE) + el(`M320 ${yE + 4.5} V${yN}`) + prik(320, yN)
+   + pe(`M324.5 ${yE} H334 V${yPE}`) + prik(334, yPE, PEF) + ref(326, 105, 'E9');
+D += prik(362, yL) + el(`M362 ${yL} V${yE - 4.5}`) + armatur(362, yE) + el(`M362 ${yE + 4.5} V${yN}`) + prik(362, yN)
+   + pe(`M366.5 ${yE} H376 V${yPE}`) + prik(376, yPE, PEF) + ref(366, 105, 'E10');
+// 8: X3 udtag med jord til V9 (douchetoilet): halvcirkel (IEC 60617-11) med L, N og PE
+D += prik(400, yL) + el(`M400 ${yL} V${yE - 4} M400 ${yE} V${yN}`) + prik(400, yN)
+   + `<path d="M395 ${yE - 4} H405 M395 ${yE - 4} A5 5 0 0 0 405 ${yE - 4}" class="el"/>` + pe(`M404 ${yE + .5} H414 V${yPE}`) + prik(414, yPE, PEF) + ref(404, 105, 'X3');
+// strømvejsnumre
+D += [54, 115, 165, 205, 250, 320, 362, 400].map((x, i) => pin(x, 156, i + 1)).join('');
+D += `</svg>`;
+const DIAGRAM = D;
 
-  // ---- Fjern sider der ikke hører til udgaven, og sæt sidefod ----
-  document.querySelectorAll('section.page').forEach(p => {
-    if (p.dataset.pakke.split(' ').includes(pakke)) return;
-    p.remove();
-  });
-  if (pakke !== 'intern') document.getElementById('udgave').textContent = 'Til håndværkerne';
-  const sider = document.querySelectorAll('section.page');
-  sider.forEach((p, i) => {
-    const f = document.createElement('div'); f.className = 'fod';
-    f.innerHTML = `<span>Renovering af badeværelse · 09.11.2026</span><span>${pakke === 'intern' ? 'Intern · ' : ''}Side ${i + 1} af ${sider.length}</span>`;
-    p.appendChild(f);
-  });
-
-  // ---- Prissummer. Tal skrives uden "kr"; tusindtalspunktum er tilladt. ----
-  const kr = n => n.toLocaleString('da-DK') + ' kr';
-  const sum = g => [...document.querySelectorAll(`tbody[data-group="${g}"] td.pris`)]
-    .reduce((s, td) => s + (parseFloat(td.textContent.replace(/\./g, '').replace(',', '.')) || 0), 0);
-  const p = sum('produkter'), y = sum('yderligere');
-  if (document.getElementById('sum-total')) {   // findes ikke i den offentlige udgave
-    document.getElementById('sum-produkter').textContent = kr(p);
-    document.getElementById('sum-yderligere').textContent = kr(y);
-    document.getElementById('sum-total').textContent = kr(p + y);
-  }
-</script>
-
-<section class="web" id="forside" data-fane="oversigt">
-  <style>
-    /* Forside som ét skærmbillede: plan til venstre, punkter og ændringer til højre, faser nederst */
-    .web { max-width: 1480px; margin: 0 auto; padding: 18px 24px 24px; font-family: Inter, Arial, sans-serif; color: var(--ink);
-           display: grid; grid-template-columns: 3fr 2fr; grid-template-rows: auto 1fr auto; gap: 16px 20px;
-           grid-template-areas: "top top" "plan side" "faser faser"; min-height: calc(100vh - 62px); box-sizing: border-box; }
-    .web .top { grid-area: top; display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; }
-    .web h1 { font-size: 28px; letter-spacing: -.3px; margin: 0; white-space: nowrap; }
-    .web .lead { font-size: 15px; line-height: 1.5; color: #3b3b3b; margin: 0; flex: 1 1 520px; }
-    .web h2 { font-size: 12px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
-    .web .kort { background: #fff; border-radius: 14px; padding: 18px 20px; box-shadow: 0 2px 14px rgba(0,0,0,.06); }
-    .plankort { grid-area: plan; display: flex; align-items: center; }
-    .plankort svg { display: block; width: 100%; height: auto; max-height: calc(100vh - 290px); }
-    .side { grid-area: side; display: flex; flex-direction: column; gap: 16px; }
-    /* det aktuelle: det vi venter på, med hvad svaret afgør */
-    .punkter { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-    .punkter li { display: grid; grid-template-columns: 11px 1fr; column-gap: 11px; font-size: 14.5px; line-height: 1.4; }
-    .punkter b { display: block; font-size: 15.5px; font-weight: 700; }
-    .punkter span { color: #55554f; }
-    .puls { width: 11px; height: 11px; margin-top: 6px; border-radius: 50%; background: var(--red); animation: aande 2.4s ease-in-out infinite; }
-    @keyframes aande {
-      0%, 100% { transform: scale(.82); box-shadow: 0 0 0 0 rgba(192,57,43,.45); }
-      50% { transform: scale(1); box-shadow: 0 0 0 7px rgba(192,57,43,0); }
-    }
-    @media (prefers-reduced-motion: reduce) { .puls { animation: none; } }
-    .ogsaa { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line-strong); font-size: 13.5px; line-height: 1.45; color: var(--muted); }
-    .ogsaa + .ogsaa { margin-top: 4px; padding-top: 0; border-top: 0; }
-    /* seneste ændringer: én linje pr. helhed, dato = seneste ændring */
-    .aendr { list-style: none; margin: 0; padding: 0; font-size: 14.5px; }
-    .aendr li { display: grid; grid-template-columns: 52px 92px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line-strong); }
-    .aendr li:last-child { border-bottom: 0; padding-bottom: 0; } .aendr li:first-child { padding-top: 0; }
-    .aendr time, .aendr .omr { color: var(--muted); font-size: 13px; padding-top: 1px; }
-    /* projektfaser */
-    .faserkort { grid-area: faser; }
-    .faser { display: grid; grid-template-columns: repeat(10, 1fr); list-style: none; margin: 0; padding: 0; counter-reset: f; }
-    .faser li { position: relative; text-align: center; font-size: 12px; color: var(--muted); padding-top: 32px; line-height: 1.35; }
-    .faser li::before { counter-increment: f; content: counter(f); position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-                        width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 2px solid var(--line-strong);
-                        font: 700 11px/20px Inter, Arial, sans-serif; color: var(--muted); z-index: 1; box-sizing: border-box; }
-    .faser li::after { content: ''; position: absolute; top: 11px; left: 50%; width: 100%; height: 2px; background: var(--line-strong); }
-    .faser li:last-child::after { display: none; }
-    .faser li.faerdig::before { content: '✓'; background: var(--green); border-color: var(--green); color: #fff; }
-    .faser li.nu::before { border-color: var(--green); color: var(--green); box-shadow: 0 0 0 5px rgba(47,125,84,.15); }
-    .faser li.nu { color: var(--ink); }
-    .faser li b { display: block; font-weight: 600; color: var(--ink); font-size: 13px; }
-    @media (max-height: 1000px) and (min-width: 1001px) {   /* lave skærme: tættere, så alt er synligt uden scroll */
-      .web { padding-top: 12px; padding-bottom: 12px; gap: 10px 16px; } .web h1 { font-size: 24px; } .web .lead { font-size: 13.5px; }
-      .web .kort { padding: 12px 16px; } .side { gap: 10px; }
-      .punkter { gap: 10px; } .punkter li { font-size: 13.5px; line-height: 1.35; } .punkter b { font-size: 14.5px; } .puls { margin-top: 4px; } .ogsaa { margin-top: 10px; padding-top: 8px; font-size: 12.5px; } .web h2 { margin-bottom: 6px; } .aendr { font-size: 13px; } .aendr li { padding: 4px 0; }
-      .faser li { padding-top: 28px; font-size: 11px; } .faser li b { font-size: 12px; }
-    }
-    @media (max-width: 1000px) {
-      .web { grid-template-columns: 1fr; grid-template-areas: "top" "plan" "side" "faser"; min-height: 0; padding: 20px 16px 40px; }
-      .plankort svg { max-height: none; }
-      .faser { grid-template-columns: 1fr; gap: 10px; } .faser li { text-align: left; padding: 3px 0 0 38px; min-height: 26px; }
-      .faser li::before { left: 0; transform: none; } .faser li::after { display: none; }
-    }
-  </style>
-
-  <div class="top">
-    <h1>Renovering af badeværelse</h1>
-  </div>
-
-  <div class="kort plankort" id="forside-plan"></div>
-
-  <div class="side">
-    <div class="kort"><h2>Afventer svar</h2>
-      <ul class="punkter">
-        <li><i class="puls"></i><div><b>Kommunen</b><span>15 eller ca. 23 l/s? Afgør ventilatorens størrelse.</span></div></li>
-        <li><i class="puls"></i><div><b>Glarmester</b><span>Glasvæg i gulvprofil og støtte af den frie ende. Afgør løsning og pris for glasvæg F.</span></div></li>
-        <li><i class="puls"></i><div><b>VVS</b><span>Varmetab, gulvtemperatur ved fremløbet og afløbskanal i det støbte gulv. Afgør radiatorens størrelse, linjeafløb og samlet tilbud.</span></div></li>
-      </ul>
-      <p class="ogsaa">Mangler valg: brusearmatur M, dør R, gulvflise</p>
-      <p class="ogsaa">Afklares: foreningens godkendelse, gamle rør i W, murerarbejde</p>
-    </div>
-    <div class="kort"><h2>Seneste ændringer</h2>
-      <ul class="aendr">
-        <li><time>09.11</time><span class="omr">VVS</span><span>Gulvvarme, radiator, linjeafløb og glasvæg ændret</span></li>
-        <li><time>09.11</time><span class="omr">El</span><span>Ventilation forenklet</span></li>
-        <li><time>05.11</time><span class="omr">VVS</span><span>Ventilation ændret</span></li>
-        <li><time>02.11</time><span class="omr">VVS</span><span>Rør og afløb ændret</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="kort faserkort"><h2>Hvor er vi</h2>
-    <ol class="faser">
-      <li class="faerdig"><b>Besigtigelse</b>VVS, tømrer, el</li>
-      <li class="nu"><b>Godkend rettelser</b>nu</li>
-      <li><b>Tilbud</b></li>
-      <li><b>Beslut og book</b></li>
-      <li><b>Køb</b></li>
-      <li><b>Klar til start</b>alt leveret</li>
-      <li><b>Nedrivning</b>bygherre</li>
-      <li><b>Håndværkerperioden</b>VVS koordinerer, skøn 3–5 uger</li>
-      <li><b>Aflevering</b>med VVS</li>
-      <li><b>Afslutning</b>bygherre</li>
-    </ol>
-  </div>
-</section>
-<script>
-  // Plantegningen (forsiden viser kun rum og inventar)
-  const fp = document.getElementById('plan').cloneNode(true); fp.removeAttribute('id');
-  fp.querySelectorAll('.inst:not(.spot), .b, .spot text').forEach(e => e.remove());   // rum, inventar og spots, uden bogstaver/numre
-  fp.querySelectorAll('.spot circle').forEach(c => { c.style.fill = '#fff'; c.style.stroke = '#2f7d54'; });
-  fp.setAttribute('viewBox', '-20 -20 360 205');
-  document.getElementById('forside-plan').appendChild(fp);
-  document.body.prepend(document.getElementById('forside'));   // forsiden øverst
-</script>
-
-<style>
-  .faner { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
-           padding: 10px 12px; background: rgba(233,230,223,.95); border-bottom: 1px solid #d6d1c4; }
-  .faner a { font: 600 14px Inter, Arial, sans-serif; color: #1f1f1f; text-decoration: none; padding: 8px 14px;
-             border-radius: 8px; background: #fff; border: 1px solid #d6d1c4; }
-  .faner a.on { background: #2f7d54; border-color: #2f7d54; color: #fff; }
-  .tre-d iframe { display: block; width: 100%; height: calc(100vh - 62px); border: 0; background: #e9e6df; }
-  @media print { .faner, .tre-d { display: none; } }
-</style>
-<nav class="faner"></nav>
-<section class="tre-d" data-fane="3d"></section>
-<script>
-  const FANER = [['oversigt', 'Oversigt'], ['vvs', 'VVS'], ['el', 'El'], ['glas', 'Glarmester'], ['tomrer', 'Tømrer'], ['murer', 'Murer'],
-                 ['ansvar', 'Hvem gør hvad'], ['3d', '3D'], ['detaljer', 'Plan og produkter']];
-  const nav = document.querySelector('.faner');
-  document.body.prepend(nav);
-  nav.innerHTML = FANER.map(([k, t]) => `<a href="#${k}" data-k="${k}">${t}</a>`).join('');
-  function visFane() {
-    const k = FANER.some(([f]) => '#' + f === location.hash) ? location.hash.slice(1) : 'oversigt';
-    document.querySelectorAll('section[data-fane]').forEach(p => p.style.display = p.dataset.fane === k ? '' : 'none');
-    const tre = document.querySelector('.tre-d');                 // 3D indlæses først, når fanen åbnes
-    if (k === '3d' && !tre.firstChild) tre.innerHTML = '<iframe src="cad/badevaerelse_3d.html?v=6f922c8f#hv"></iframe>';
-    nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.k === k));
-    scrollTo(0, 0);
-  }
-  addEventListener('hashchange', visFane);
-  visFane();
+// ---------- Visning: én fane ad gangen på skærm, alle fag efter hinanden ved print
+const NAVN = { vvs: 'VVS', tomrer: 'Tømrer', el: 'El', glas: 'Glasvæg', fuger: 'Fuger' };
+const TRE_D = { vvs: ['', '3D-model'], tomrer: ['', '3D-model'], el: ['', '3D-model'] };
+const panel = fag => `<h3>${NAVN[fag]}</h3>` + plan(PLANER[fag])
+  + (TRE_D[fag] ? `<p class="tre-d"><a href="udsugning-3d.html?v=e54f8e5e${TRE_D[fag][0]}" target="_blank" rel="noopener">${TRE_D[fag][1]}</a></p>` : '')
+  + (fag === 'el' ? `<h4>Strømvejsskema</h4>${DIAGRAM}` : '')
+  + `<h4>Specifikation</h4><ul class="spec">${SPEC[fag].map(x => `<li>${x}</li>`).join('')}</ul>`
+  + `<h4>Komponentliste</h4>${tabel(KOMP[fag])}`;
+const knapper = [...document.querySelectorAll('.punkter button')];
+function vis(fag) {
+  document.getElementById('tavle').innerHTML = panel(fag);
+  knapper.forEach(k => k.setAttribute('aria-selected', k.dataset.fag === fag));
+}
+knapper.forEach(k => k.addEventListener('click', () => vis(k.dataset.fag)));
+vis('vvs');
+document.getElementById('print').innerHTML = Object.keys(NAVN).map(f => `<section class="kort panel fag">${panel(f)}</section>`).join('');
 </script>
 <script>
 (() => {
-  const V = '2fce73a4a2';
+  const V = '280b2dcd83';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
