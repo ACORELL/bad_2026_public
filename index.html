@@ -136,7 +136,6 @@
       <ul>
         <li>Bygherre kan selv stå for nedrivning og bortskaffelse, undtagen hængeloft, radiator, toilet, ventilator og tilvalgene T6 og GT. Entreprenøren må gerne foreslå andet.</li>
         <li>Komponentlisterne foreslår produkter og hvem der leverer (kolonnen Leveres af). Bygherre kan levere de markerede produkter selv, eller entreprenøren kan levere dem. Produkter markeret Afklares vælges i fællesskab før opstart.</li>
-        <li>Bygherre kan selv stå for maling af rørkasserne T2 og T3 og kassen T7.</li>
         <li>Bygherre indstiller gerne selv relæmodulerne K1 og K2.</li>
         <li>Mål er vejledende og kontrolleres på stedet.</li>
       </ul>
@@ -330,7 +329,7 @@ const SPEC = {
   tomrer: [
     'Eksisterende hængeloft demonteres og bortskaffes. Svamp i hulrummet over nichen afrenses og behandles. Tørt før lukning.',
     '<b>T1</b> Nyt hængeloft i hele rummet, vådrumsegnet, 223 cm over gulv, lufttæt mod hulrummet. Udskæringer til E1–E8 (Ø76 mm) og M1.',
-    '<b>T2</b> Rørkasse ved faldstammen, gulv til loft, med lille dør forneden til V7, ca. 30 × 25 cm. Foroven kasse i hele bredden om kanalen fra M1 og X2, i ét med T2, ca. 71 × 22 cm, med aftagelig front <b>T4</b>. Klar til maling. <b>T3</b> som T2 i køkkenet, uden kasse.',
+    '<b>T2</b> Rørkasse ved faldstammen, gulv til loft, med lille dør forneden til V7, ca. 30 × 25 cm. Foroven kasse i hele bredden om kanalen fra M1 og X2, i ét med T2, ca. 71 × 22 cm, med aftagelig front <b>T4</b>. Males færdig. <b>T3</b> som T2 i køkkenet, uden kasse.',
     '<b>T4</b> Aftagelig front på kassen på T2: adgang til X2 (K1, K2) og tilbageslagsspjældet.',
     '<b>T5</b> Dør med karm og gerigter, luftspalte forneden. Tømreren foreslår.',
     '<b>T7</b> Kasse langs væggen fra T2 til forbi toilettet, i ét med T2 og med fronten i flugt. Rummer V10 og rør til V1 og V9. Overflade som T2. Hylde mellem T7 og T9, underside i flugt med T9, front i flugt med T2, åben bagtil.',
@@ -374,7 +373,7 @@ const KOMP = {
     ['V10', 'Cisterneelement', 'Indbygningscisterne 82 cm til gulvstående toilet, 6/3 l, betjening forfra. Skylleforbindelse til V9 (Ø55) afklares af VVS', 'Geberit Omega 12 cm, 82 cm', '109.042.00.1', '1', 'VVS']],
   tomrer: [
     ['T1', 'Hængeloft', 'Vådrumsegnede plader, hele rummet, 223 cm over gulv', 'Tømrer', '', '', 'Tømrer'],
-    ['T2', 'Rørkasse, bad', 'Lukket kasse, lille dør forneden, kasse foroven om kanal og X2, klar til maling', 'Tømrer', '', '1', 'Tømrer'],
+    ['T2', 'Rørkasse, bad', 'Lukket kasse, lille dør forneden, kasse foroven om kanal og X2, males færdig', 'Tømrer', '', '1', 'Tømrer'],
     ['T3', 'Rørkasse, køkken', 'Som T2, uden kasse', 'Tømrer', '', '1', 'Tømrer'],
     ['T4', 'Aftagelig front', 'På kassen på T2, adgang til X2 og spjæld', 'Tømrer', '', '1', 'Tømrer'],
     ['T5', 'Dør', 'Indvendig dør med karm og gerigter, luftspalte forneden', 'Tømreren foreslår', '', '1', 'Tømrer'],
@@ -542,7 +541,7 @@ document.getElementById('print').innerHTML = Object.keys(NAVN).map(f => `<sectio
 </script>
 <script>
 (() => {
-  const V = 'c0d2876f6c';
+  const V = 'be4315bbb3';
   async function tjek() {
     try {
       const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
